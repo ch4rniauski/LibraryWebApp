@@ -1,8 +1,12 @@
+using Library.DataContext;
+
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Services.AddDataContext();
 
 var app = builder.Build();
 

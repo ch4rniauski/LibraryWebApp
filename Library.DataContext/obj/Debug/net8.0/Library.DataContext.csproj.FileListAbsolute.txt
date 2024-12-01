@@ -1,0 +1,16 @@
+D:\C#\LibraryWebApp\Library.DataContext\bin\Debug\net8.0\Library.DataContext.deps.json
+D:\C#\LibraryWebApp\Library.DataContext\bin\Debug\net8.0\Library.DataContext.dll
+D:\C#\LibraryWebApp\Library.DataContext\bin\Debug\net8.0\Library.DataContext.pdb
+D:\C#\LibraryWebApp\Library.DataContext\bin\Debug\net8.0\Domain.dll
+D:\C#\LibraryWebApp\Library.DataContext\bin\Debug\net8.0\Domain.pdb
+D:\C#\LibraryWebApp\Library.DataContext\obj\Debug\net8.0\Library.DataContext.csproj.AssemblyReference.cache
+D:\C#\LibraryWebApp\Library.DataContext\obj\Debug\net8.0\Library.DataContext.GeneratedMSBuildEditorConfig.editorconfig
+D:\C#\LibraryWebApp\Library.DataContext\obj\Debug\net8.0\Library.DataContext.AssemblyInfoInputs.cache
+D:\C#\LibraryWebApp\Library.DataContext\obj\Debug\net8.0\Library.DataContext.AssemblyInfo.cs
+D:\C#\LibraryWebApp\Library.DataContext\obj\Debug\net8.0\Library.DataContext.csproj.CoreCompileInputs.cache
+D:\C#\LibraryWebApp\Library.DataContext\obj\Debug\net8.0\Library.DataContext.sourcelink.json
+D:\C#\LibraryWebApp\Library.DataContext\obj\Debug\net8.0\Library..07581B02.Up2Date
+D:\C#\LibraryWebApp\Library.DataContext\obj\Debug\net8.0\Library.DataContext.dll
+D:\C#\LibraryWebApp\Library.DataContext\obj\Debug\net8.0\refint\Library.DataContext.dll
+D:\C#\LibraryWebApp\Library.DataContext\obj\Debug\net8.0\Library.DataContext.pdb
+D:\C#\LibraryWebApp\Library.DataContext\obj\Debug\net8.0\ref\Library.DataContext.dll
