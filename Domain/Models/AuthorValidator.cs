@@ -16,14 +16,14 @@ namespace Domain.Models
                 .NotNull()
                 .Length(1, 30);
 
-            RuleFor(a => a.BirthDate)
-                .NotNull()
-                .LessThanOrEqualTo(DateOnly.FromDateTime(DateTime.Now))
-                .GreaterThanOrEqualTo(new DateOnly(1908, 5, 23));
-
             RuleFor(a => a.Country)
                 .NotNull()
                 .Length(1, 168);
+
+            RuleFor(a => a.BirthDate)
+                .NotNull()
+                .LessThanOrEqualTo(DateOnly.FromDateTime(DateTime.Today))
+                .GreaterThanOrEqualTo(new DateOnly(1908, 5, 23));
         }
     }
 }
