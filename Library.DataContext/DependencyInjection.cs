@@ -9,7 +9,7 @@ namespace Library.DataContext
         {
             services.AddDbContext<LibraryContext>(options =>
             {
-                options.UseSqlServer("Data Source=.;Initial Catalog=GamesMarket;User ID=Admin;Password=5432;TrustServerCertificate=true");
+                options.UseSqlServer("Data Source=.;Initial Catalog=Library;User ID=Admin;Password=5432;TrustServerCertificate=true");
             });
 
             return services;
