@@ -10,5 +10,15 @@
         public string? AuthorName { get; set; }
         public DateOnly? TakenAt { get; set; } = null;
         public DateOnly? DueDate { get; set; } = null;
-    }
+
+        public Book(Guid id, string isbn, string title, string? genre, string? description, string? authorName)
+        {
+            Id = id;
+            ISBN = isbn;
+            Title = title;
+            Genre = genre;
+            Description = description;
+            AuthorName = authorName;
+        }
+    }    
 }
