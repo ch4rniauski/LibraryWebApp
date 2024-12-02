@@ -1,8 +1,9 @@
 ﻿using Domain.Abstractions.Records;
 using Microsoft.AspNetCore.Mvc;
+
 namespace Domain.Abstractions.Repositories
 {
-    internal interface IBookRepository
+    public interface IBookRepository
     {
         Task<ActionResult> CreateBook(BookRecord book);
         Task<ActionResult<BookRecord>> GetBook(Guid id);
