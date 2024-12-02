@@ -177,3 +177,5 @@ D:\C#\LibraryWebApp\LibraryWebApp\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysi
 D:\C#\LibraryWebApp\LibraryWebApp\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
 D:\C#\LibraryWebApp\LibraryWebApp\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
 D:\C#\LibraryWebApp\LibraryWebApp\bin\Debug\net8.0\Newtonsoft.Json.dll
+D:\C#\LibraryWebApp\LibraryWebApp\bin\Debug\net8.0\Mapster.dll
+D:\C#\LibraryWebApp\LibraryWebApp\bin\Debug\net8.0\Mapster.Core.dll

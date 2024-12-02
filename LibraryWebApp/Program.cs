@@ -1,4 +1,5 @@
 using Library.DataContext;
+using Domain;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -7,6 +8,8 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddDataContext();
+
+builder.Services.AddValidators();
 
 var app = builder.Build();
 

@@ -1,6 +1,8 @@
 ﻿using Domain.Abstractions.Records;
 using Domain.Abstractions.Repositories;
-using Microsoft.AspNetCore.Mvc;
+using Domain.Entities;
+using Mapster;
+using Microsoft.EntityFrameworkCore;
 
 namespace Library.DataContext.Repositories
 {
@@ -13,29 +15,49 @@ namespace Library.DataContext.Repositories
             _db = db;
         }
 
-        public Task<ActionResult> CreateAuthor(AuthorRecord author)
+        public async Task<bool> CreateAuthor(AuthorRecord author)
         {
-            throw new NotImplementedException();
+            AuthorEntity newAuthor = author.Adapt<AuthorEntity>();
+
+            var createdAuthor = await _db.Auhtors.AddAsync(newAuthor);
+
+            return (createdAuthor is not null);
         }
 
-        public Task<ActionResult> DeleteAutor(AuthorRecord author)
+        public async Task<bool> DeleteAutor(Guid id)
         {
-            throw new NotImplementedException();
+            var author = await _db.Auhtors.FirstOrDefaultAsync(a => a.Id == id);
+
+            if (author is null)
+                return false;
+
+            _db.Auhtors.Remove(author);
+
+            return true;
         }
 
-        public Task<ActionResult<List<AuthorRecord>>> GetAllAuthors()
+        public List<AuthorRecord>? GetAllAuthors()
         {
-            throw new NotImplementedException();
+            return _db.Auhtors?.Adapt<List<AuthorRecord>>();
         }
 
-        public Task<ActionResult<AuthorRecord>> GetAuthor(Guid id)
+        public async Task<AuthorRecord?> GetAuthor(Guid id)
         {
-            throw new NotImplementedException();
+            var author = await _db.Auhtors.FirstOrDefaultAsync(a => a.Id == id);
+
+            return author?.Adapt<AuthorRecord>();
         }
 
-        public Task<ActionResult> UpdateAuthor(AuthorRecord author)
+        public async Task<bool> UpdateAuthor(AuthorRecord author)
         {
-            throw new NotImplementedException();
+            var authorToUpdate = await _db.Auhtors.FirstOrDefaultAsync(a => a.Id == author.Id);
+
+            if (authorToUpdate is null)
+                return false;
+
+            authorToUpdate = author.Adapt<AuthorEntity>();
+
+            return true;
         }
     }
 }

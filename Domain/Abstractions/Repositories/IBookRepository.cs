@@ -5,10 +5,10 @@ namespace Domain.Abstractions.Repositories
 {
     public interface IBookRepository
     {
-        Task<ActionResult> CreateBook(BookRecord book);
-        Task<ActionResult<BookRecord>> GetBook(Guid id);
-        Task<ActionResult<List<BookRecord>>> GetAllBooks();
-        Task<ActionResult> UpdateBook(BookRecord book);
-        Task<ActionResult> DeleteBook(BookRecord book);
+        Task CreateBook(BookRecord book);
+        Task<BookRecord> GetBook(Guid id);
+        Task<List<BookRecord>> GetAllBooks();
+        Task<bool> UpdateBook(BookRecord book);
+        Task<bool> DeleteBook(BookRecord book);
     }
 }

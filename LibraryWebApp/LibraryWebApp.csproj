@@ -16,11 +16,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
+    <ProjectReference Include="..\Library.DataContext\Library.DataContext.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Library.DataContext\Library.DataContext.csproj" />
+    <Folder Include="Controllers\" />
   </ItemGroup>
 
 </Project>

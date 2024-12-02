@@ -4,29 +4,29 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Library.DataContext.Repositories
 {
-    internal class BookRepository : IBookRepository
+    public class BookRepository : IBookRepository
     {
-        public Task<ActionResult> CreateBook(BookRecord book)
+        public Task CreateBook(BookRecord book)
         {
             throw new NotImplementedException();
         }
 
-        public Task<ActionResult> DeleteBook(BookRecord book)
+        public Task<bool> DeleteBook(BookRecord book)
         {
             throw new NotImplementedException();
         }
 
-        public Task<ActionResult<List<BookRecord>>> GetAllBooks()
+        public Task<List<BookRecord>> GetAllBooks()
         {
             throw new NotImplementedException();
         }
 
-        public Task<ActionResult<BookRecord>> GetBook(Guid id)
+        public Task<BookRecord> GetBook(Guid id)
         {
             throw new NotImplementedException();
         }
 
-        public Task<ActionResult> UpdateBook(BookRecord book)
+        public Task<bool> UpdateBook(BookRecord book)
         {
             throw new NotImplementedException();
         }
