@@ -1,8 +1,9 @@
-﻿using FluentValidation;
+﻿using Domain.Abstractions.Records;
+using FluentValidation;
 
-namespace Domain.Models
+namespace Domain.Validators
 {
-    public class BookValidator : AbstractValidator<Book>
+    public class BookValidator : AbstractValidator<BookRecord>
     {
         public BookValidator()
         {
@@ -17,7 +18,7 @@ namespace Domain.Models
             RuleFor(b => b.Genre).Length(1, 89);
 
             RuleFor(b => b.Description).Length(1, 100);
-                        
+
             RuleFor(b => b.AuthorName).Length(1, 30);
 
             RuleFor(b => b.TakenAt)
@@ -25,7 +26,7 @@ namespace Domain.Models
                 .GreaterThanOrEqualTo(new DateOnly(2000, 1, 1));
 
             RuleFor(b => b.DueDate)
-                .GreaterThan(DateOnly.FromDateTime(DateTime.Today))
+                .GreaterThanOrEqualTo(DateOnly.FromDateTime(DateTime.Today))
                 .LessThan(DateOnly.FromDateTime(DateTime.Today.AddDays(30)));
         }
     }

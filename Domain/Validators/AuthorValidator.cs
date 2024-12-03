@@ -1,8 +1,9 @@
-﻿using FluentValidation;
+﻿using Domain.Abstractions.Records;
+using FluentValidation;
 
-namespace Domain.Models
+namespace Domain.Validators
 {
-    public class AuthorValidator : AbstractValidator<Author>
+    public class AuthorValidator : AbstractValidator<AuthorRecord>
     {
         public AuthorValidator()
         {

@@ -7,7 +7,7 @@ namespace Library.DataContext.UnitsOfWork
     {
         public IAuthorRepository AuthorRepository {  get; }
         public IBookRepository BookRepository { get; }
-        private readonly LibraryContext _db;
+        private LibraryContext _db;
 
         public UnitOfWork(LibraryContext db, IAuthorRepository authorRepository, IBookRepository bookRepository)
         {
@@ -16,9 +16,9 @@ namespace Library.DataContext.UnitsOfWork
             BookRepository = bookRepository;
         }
 
-        public async void Save()
+        public void Save()
         {
-            await _db.SaveChangesAsync();
+            _db.SaveChanges();
         }
     }
 }

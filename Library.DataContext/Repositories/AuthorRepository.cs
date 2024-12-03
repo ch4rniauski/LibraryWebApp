@@ -36,13 +36,8 @@ namespace Library.DataContext.Repositories
             return true;
         }
 
-        public List<AuthorRecord>? GetAllAuthors()
+        public List<AuthorRecord> GetAllAuthors()
         {
-            var authors = _db.Auhtors;
-
-            if (authors is null)
-                return null;
-
             return _db.Auhtors.Adapt<List<AuthorRecord>>();
         }
 
@@ -63,7 +58,11 @@ namespace Library.DataContext.Repositories
             if (authorToUpdate is null)
                 return false;
 
-            authorToUpdate = author.Adapt<AuthorEntity>();
+            authorToUpdate.Id = author.Id;
+            authorToUpdate.BirthDate = author.BirthDate;
+            authorToUpdate.Name = author.Name;
+            authorToUpdate.SecondName = author.SecondName;
+            authorToUpdate.Country = author.Country;
 
             return true;
         }

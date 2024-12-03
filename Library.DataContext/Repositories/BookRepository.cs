@@ -19,9 +19,9 @@ namespace Library.DataContext.Repositories
         {
             BookEntity newBook = book.Adapt<BookEntity>();
 
-            var createdAuthor = await _db.Books.AddAsync(newBook);
+            var createdBook = await _db.Books.AddAsync(newBook);
 
-            return (createdAuthor is not null);
+            return (createdBook is not null);
         }
 
         public async Task<bool> DeleteBook(Guid id)
@@ -36,13 +36,8 @@ namespace Library.DataContext.Repositories
             return true;
         }
 
-        public List<BookRecord>? GetAllBooks()
+        public List<BookRecord> GetAllBooks()
         {
-            var books = _db.Books;
-
-            if (books is null)
-                return null;
-
             return _db.Books.Adapt<List<BookRecord>>();
         }
 
@@ -63,7 +58,14 @@ namespace Library.DataContext.Repositories
             if (bookToUpdate is null)
                 return false;
 
-            bookToUpdate = book.Adapt<BookEntity>();
+            bookToUpdate.ISBN = book.ISBN;
+            bookToUpdate.TakenAt = book.TakenAt;
+            bookToUpdate.DueDate = book.DueDate;
+            bookToUpdate.Description = book.Description;
+            bookToUpdate.AuthorName = book.AuthorName;
+            bookToUpdate.Genre = book.Genre;
+            bookToUpdate.Title = book.Title;
+            bookToUpdate.Id = book.Id;
 
             return true;
         }

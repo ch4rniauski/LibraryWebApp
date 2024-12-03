@@ -1,5 +1,4 @@
 ﻿using Domain.Abstractions.Records;
-using Microsoft.AspNetCore.Mvc;
 
 namespace Domain.Abstractions.Repositories
 {
@@ -7,7 +6,7 @@ namespace Domain.Abstractions.Repositories
     {
         Task<bool> CreateBook(BookRecord book);
         Task<BookRecord?> GetBook(Guid id);
-        List<BookRecord>? GetAllBooks();
+        List<BookRecord> GetAllBooks();
         Task<bool> UpdateBook(BookRecord book);
         Task<bool> DeleteBook(Guid id);
     }
