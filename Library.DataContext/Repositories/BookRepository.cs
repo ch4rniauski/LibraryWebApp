@@ -1,34 +1,71 @@
 ﻿using Domain.Abstractions.Records;
 using Domain.Abstractions.Repositories;
-using Microsoft.AspNetCore.Mvc;
+using Domain.Entities;
+using Mapster;
+using Microsoft.EntityFrameworkCore;
 
 namespace Library.DataContext.Repositories
 {
     public class BookRepository : IBookRepository
     {
-        public Task CreateBook(BookRecord book)
+        private readonly LibraryContext _db;
+
+        public BookRepository(LibraryContext db)
         {
-            throw new NotImplementedException();
+            _db = db;
         }
 
-        public Task<bool> DeleteBook(BookRecord book)
+        public async Task<bool> CreateBook(BookRecord book)
         {
-            throw new NotImplementedException();
+            BookEntity newBook = book.Adapt<BookEntity>();
+
+            var createdAuthor = await _db.Books.AddAsync(newBook);
+
+            return (createdAuthor is not null);
         }
 
-        public Task<List<BookRecord>> GetAllBooks()
+        public async Task<bool> DeleteBook(Guid id)
         {
-            throw new NotImplementedException();
+            var book = await _db.Books.FirstOrDefaultAsync(b => b.Id == id);
+
+            if (book is null)
+                return false;
+
+            _db.Books.Remove(book);
+
+            return true;
         }
 
-        public Task<BookRecord> GetBook(Guid id)
+        public List<BookRecord>? GetAllBooks()
         {
-            throw new NotImplementedException();
+            var books = _db.Books;
+
+            if (books is null)
+                return null;
+
+            return _db.Books.Adapt<List<BookRecord>>();
         }
 
-        public Task<bool> UpdateBook(BookRecord book)
+        public async Task<BookRecord?> GetBook(Guid id)
         {
-            throw new NotImplementedException();
+            var book = await _db.Books.FirstOrDefaultAsync(b => b.Id == id);
+
+            if (book is null)
+                return null;
+
+            return book.Adapt<BookRecord>();
+        }
+
+        public async Task<bool> UpdateBook(BookRecord book)
+        {
+            var bookToUpdate = await _db.Books.FirstOrDefaultAsync(b => b.Id == book.Id);
+
+            if (bookToUpdate is null)
+                return false;
+
+            bookToUpdate = book.Adapt<BookEntity>();
+
+            return true;
         }
     }
 }

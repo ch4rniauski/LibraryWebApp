@@ -38,14 +38,22 @@ namespace Library.DataContext.Repositories
 
         public List<AuthorRecord>? GetAllAuthors()
         {
-            return _db.Auhtors?.Adapt<List<AuthorRecord>>();
+            var authors = _db.Auhtors;
+
+            if (authors is null)
+                return null;
+
+            return _db.Auhtors.Adapt<List<AuthorRecord>>();
         }
 
         public async Task<AuthorRecord?> GetAuthor(Guid id)
         {
             var author = await _db.Auhtors.FirstOrDefaultAsync(a => a.Id == id);
 
-            return author?.Adapt<AuthorRecord>();
+            if (author is null)
+                return null;
+
+            return author.Adapt<AuthorRecord>();
         }
 
         public async Task<bool> UpdateAuthor(AuthorRecord author)
