@@ -1,0 +1,12 @@
+{
+  "Version": 1,
+  "Hash": "Zm4V4emIUJyzGUe7g9f57EfhT7yRKs896I9FxP7RXUk=",
+  "Source": "LibraryWebApp",
+  "BasePath": "_content/LibraryWebApp",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": [],
+  "Endpoints": []
+}

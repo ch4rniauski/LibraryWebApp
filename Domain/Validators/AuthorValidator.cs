@@ -7,8 +7,6 @@ namespace Domain.Validators
     {
         public AuthorValidator()
         {
-            RuleFor(a => a.Id).NotNull();
-
             RuleFor(a => a.Name)
                 .NotNull()
                 .Length(1, 30);

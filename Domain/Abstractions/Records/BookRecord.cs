@@ -1,6 +1,7 @@
 ﻿namespace Domain.Abstractions.Records
 {
-    public record BookRecord(Guid Id,
+    public record BookRecord(
+        Guid Id,
         string ISBN,
         string Title,
         string? Genre,

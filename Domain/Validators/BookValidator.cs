@@ -7,8 +7,6 @@ namespace Domain.Validators
     {
         public BookValidator()
         {
-            RuleFor(b => b.Id).NotNull();
-
             RuleFor(b => b.ISBN).NotNull();
 
             RuleFor(b => b.Title)

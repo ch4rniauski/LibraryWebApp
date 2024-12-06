@@ -3,11 +3,11 @@ using Domain.Abstractions.UnitsOfWork;
 
 namespace Library.DataContext.UnitsOfWork
 {
-    public class UnitOfWork : IUnitOfWork
+    public class UnitOfWork : IUnitOfWorkLibrary
     {
         public IAuthorRepository AuthorRepository {  get; }
         public IBookRepository BookRepository { get; }
-        private LibraryContext _db;
+        private readonly LibraryContext _db;
 
         public UnitOfWork(LibraryContext db, IAuthorRepository authorRepository, IBookRepository bookRepository)
         {

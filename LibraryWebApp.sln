@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "Domain\Domain.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Library.DataContext", "Library.DataContext\Library.DataContext.csproj", "{37AD2630-A0D2-4B45-94D9-804B508E022A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibraryAccounts.DataContext", "LibraryAccounts.DataContext\LibraryAccounts.DataContext.csproj", "{2AB049DF-EA4C-49A6-8731-83BD1A4C5C17}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{37AD2630-A0D2-4B45-94D9-804B508E022A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{37AD2630-A0D2-4B45-94D9-804B508E022A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{37AD2630-A0D2-4B45-94D9-804B508E022A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2AB049DF-EA4C-49A6-8731-83BD1A4C5C17}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2AB049DF-EA4C-49A6-8731-83BD1A4C5C17}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2AB049DF-EA4C-49A6-8731-83BD1A4C5C17}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2AB049DF-EA4C-49A6-8731-83BD1A4C5C17}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,0 +1,16 @@
+D:\C#\LibraryWebApp\LibraryAccounts.DataContext\bin\Debug\net9.0\LibraryAccounts.DataContext.deps.json
+D:\C#\LibraryWebApp\LibraryAccounts.DataContext\bin\Debug\net9.0\LibraryAccounts.DataContext.dll
+D:\C#\LibraryWebApp\LibraryAccounts.DataContext\bin\Debug\net9.0\LibraryAccounts.DataContext.pdb
+D:\C#\LibraryWebApp\LibraryAccounts.DataContext\bin\Debug\net9.0\Domain.dll
+D:\C#\LibraryWebApp\LibraryAccounts.DataContext\bin\Debug\net9.0\Domain.pdb
+D:\C#\LibraryWebApp\LibraryAccounts.DataContext\obj\Debug\net9.0\LibraryAccounts.DataContext.csproj.AssemblyReference.cache
+D:\C#\LibraryWebApp\LibraryAccounts.DataContext\obj\Debug\net9.0\LibraryAccounts.DataContext.GeneratedMSBuildEditorConfig.editorconfig
+D:\C#\LibraryWebApp\LibraryAccounts.DataContext\obj\Debug\net9.0\LibraryAccounts.DataContext.AssemblyInfoInputs.cache
+D:\C#\LibraryWebApp\LibraryAccounts.DataContext\obj\Debug\net9.0\LibraryAccounts.DataContext.AssemblyInfo.cs
+D:\C#\LibraryWebApp\LibraryAccounts.DataContext\obj\Debug\net9.0\LibraryAccounts.DataContext.csproj.CoreCompileInputs.cache
+D:\C#\LibraryWebApp\LibraryAccounts.DataContext\obj\Debug\net9.0\LibraryAccounts.DataContext.sourcelink.json
+D:\C#\LibraryWebApp\LibraryAccounts.DataContext\obj\Debug\net9.0\LibraryA.AE4C7643.Up2Date
+D:\C#\LibraryWebApp\LibraryAccounts.DataContext\obj\Debug\net9.0\LibraryAccounts.DataContext.dll
+D:\C#\LibraryWebApp\LibraryAccounts.DataContext\obj\Debug\net9.0\refint\LibraryAccounts.DataContext.dll
+D:\C#\LibraryWebApp\LibraryAccounts.DataContext\obj\Debug\net9.0\LibraryAccounts.DataContext.pdb
+D:\C#\LibraryWebApp\LibraryAccounts.DataContext\obj\Debug\net9.0\ref\LibraryAccounts.DataContext.dll

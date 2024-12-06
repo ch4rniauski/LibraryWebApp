@@ -9,10 +9,10 @@ namespace LibraryWebApp.Controllers
     [Route("[controller]")]
     public class BookController : ControllerBase
     {
-        private readonly IUnitOfWork _uof;
+        private readonly IUnitOfWorkLibrary _uof;
         private readonly IValidator<BookRecord> _validator;
 
-        public BookController(IUnitOfWork uof, IValidator<BookRecord> validator)
+        public BookController(IUnitOfWorkLibrary uof, IValidator<BookRecord> validator)
         {
             _uof = uof;
             _validator = validator;

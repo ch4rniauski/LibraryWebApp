@@ -179,3 +179,6 @@ D:\C#\LibraryWebApp\LibraryWebApp\obj\Debug\net8.0\staticwebassets.upToDateCheck
 D:\C#\LibraryWebApp\LibraryWebApp\bin\Debug\net8.0\Newtonsoft.Json.dll
 D:\C#\LibraryWebApp\LibraryWebApp\bin\Debug\net8.0\Mapster.dll
 D:\C#\LibraryWebApp\LibraryWebApp\bin\Debug\net8.0\Mapster.Core.dll
+D:\C#\LibraryWebApp\LibraryWebApp\bin\Debug\net8.0\Microsoft.AspNet.Identity.Core.dll
+D:\C#\LibraryWebApp\LibraryWebApp\bin\Debug\net8.0\LibraryAccounts.DataContext.dll
+D:\C#\LibraryWebApp\LibraryWebApp\bin\Debug\net8.0\LibraryAccounts.DataContext.pdb

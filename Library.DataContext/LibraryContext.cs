@@ -5,8 +5,8 @@ namespace Library.DataContext
 {
     public class LibraryContext : DbContext
     {
-        public DbSet<AuthorEntity>? Auhtors { get; set; }
-        public DbSet<BookEntity>? Books { get; set; }
+        public DbSet<AuthorEntity> Auhtors { get; set; }
+        public DbSet<BookEntity> Books { get; set; }
 
         public LibraryContext(DbContextOptions<LibraryContext> options) : base(options)
         {
