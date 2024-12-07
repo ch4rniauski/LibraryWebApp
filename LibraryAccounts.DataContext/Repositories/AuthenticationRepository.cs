@@ -12,15 +12,15 @@ namespace LibraryAccounts.DataContext.Repositories
     public class AuthenticationRepository : IAuthenticationRepository
     {
         private readonly AccountsContext _db;
-        private readonly TokenProvider _provider;
+        private readonly TokenProvider _tokenProvider;
 
-        public AuthenticationRepository(AccountsContext db, TokenProvider provider)
+        public AuthenticationRepository(AccountsContext db, TokenProvider tokenProvider)
         {
             _db = db;
-            _provider = provider;
+            _tokenProvider = tokenProvider;
         }
 
-        public async Task<string?> LogInUser(UserRecord user)
+        public async Task<LogInResponseRecord?> LogInUser(UserRecord user)
         {
             var userEntity = await _db.Users.FirstOrDefaultAsync(u => u.Login == user.Login);
 
@@ -32,7 +32,13 @@ namespace LibraryAccounts.DataContext.Repositories
             if (result == PasswordVerificationResult.Failed)
                 return null;
 
-            return _provider.CreateToken(userEntity);
+            var accessToken = _tokenProvider.CreateToken(userEntity);
+            var refreshToken = _tokenProvider.GenerateRefreshToken();
+
+            userEntity.RefreshToken = refreshToken;
+            userEntity.RefreshTokenExpiresAt = DateTime.UtcNow.AddDays(3);
+
+            return new LogInResponseRecord(accessToken, refreshToken);
         }
 
         public async Task<bool> RegisterUser(UserRecord user)

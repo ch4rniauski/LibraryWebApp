@@ -15,7 +15,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "System.String",
+        "Type": "Domain.Abstractions.Records.LogInResponseRecord",
         "MediaTypes": [
           "text/plain",
           "application/json",

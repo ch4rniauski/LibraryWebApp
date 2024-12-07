@@ -32,22 +32,26 @@ namespace LibraryWebApp.Controllers
                 return BadRequest("User wasn't registered");
 
             _uof.Save();
+
             return Ok();
         }
 
         [HttpPost("login")]
-        public async Task<ActionResult<string>> LogIn([FromBody] UserRecord request)
+        public async Task<ActionResult<LogInResponseRecord>> LogIn([FromBody] UserRecord request)
         {
             var result = await _validator.ValidateAsync(request);
 
             if (!result.IsValid)
                 return BadRequest(result.Errors.Select(e => new { e.ErrorCode, e.ErrorMessage }));
 
-            var token = await _uof.AuthenticationRepository.LogInUser(request);
+            var response = await _uof.AuthenticationRepository.LogInUser(request);
 
-            if (token is null)
+            if (response is null)
                 return BadRequest("Incorrect data");
-            return Ok(token);
+
+            _uof.Save();
+
+            return Ok(response);
         }
     }
 }
