@@ -35,7 +35,7 @@ namespace LibraryAccounts.DataContext.Repositories
             return _provider.CreateToken(userEntity);
         }
 
-        public void RegisterUser(UserRecord user)
+        public async Task<bool> RegisterUser(UserRecord user)
         {
             var userEntity = user.Adapt<UserEntity>();
 
@@ -43,6 +43,12 @@ namespace LibraryAccounts.DataContext.Repositories
 
             userEntity.Id = Guid.NewGuid();
             userEntity.PasswordHash = passwordHash;
+
+            var createdUser = await _db.Users.AddAsync(userEntity);
+
+            if (createdUser is null)
+                return false;
+            return true;
         }
     }
 }

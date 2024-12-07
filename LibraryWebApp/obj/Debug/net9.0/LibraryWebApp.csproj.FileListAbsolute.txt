@@ -160,10 +160,10 @@ D:\C#\LibraryWebApp\LibraryWebApp\obj\Debug\net9.0\staticwebassets\msbuild.build
 D:\C#\LibraryWebApp\LibraryWebApp\obj\Debug\net9.0\staticwebassets\msbuild.buildMultiTargeting.LibraryWebApp.props
 D:\C#\LibraryWebApp\LibraryWebApp\obj\Debug\net9.0\staticwebassets\msbuild.buildTransitive.LibraryWebApp.props
 D:\C#\LibraryWebApp\LibraryWebApp\obj\Debug\net9.0\staticwebassets.pack.json
-D:\C#\LibraryWebApp\LibraryWebApp\obj\Debug\net9.0\staticwebassets.upToDateCheck.txt
 D:\C#\LibraryWebApp\LibraryWebApp\obj\Debug\net9.0\LibraryW.C588A628.Up2Date
 D:\C#\LibraryWebApp\LibraryWebApp\obj\Debug\net9.0\LibraryWebApp.dll
 D:\C#\LibraryWebApp\LibraryWebApp\obj\Debug\net9.0\refint\LibraryWebApp.dll
 D:\C#\LibraryWebApp\LibraryWebApp\obj\Debug\net9.0\LibraryWebApp.pdb
 D:\C#\LibraryWebApp\LibraryWebApp\obj\Debug\net9.0\LibraryWebApp.genruntimeconfig.cache
 D:\C#\LibraryWebApp\LibraryWebApp\obj\Debug\net9.0\ref\LibraryWebApp.dll
+D:\C#\LibraryWebApp\LibraryWebApp\obj\Debug\net9.0\staticwebassets.upToDateCheck.txt

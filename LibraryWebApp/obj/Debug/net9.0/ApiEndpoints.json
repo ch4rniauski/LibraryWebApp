@@ -1,5 +1,47 @@
 [
   {
+    "ContainingType": "LibraryWebApp.Controllers.AuthenticationController",
+    "Method": "LogIn",
+    "RelativePath": "Authentication/login",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "Domain.Abstractions.Records.UserRecord",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.String",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "LibraryWebApp.Controllers.AuthenticationController",
+    "Method": "Register",
+    "RelativePath": "Authentication/register",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "Domain.Abstractions.Records.UserRecord",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "LibraryWebApp.Controllers.AuthorController",
     "Method": "Create",
     "RelativePath": "Author",

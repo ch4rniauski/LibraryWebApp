@@ -1,5 +1,4 @@
-﻿using Domain.Abstractions.Records;
-using Domain.Entities;
+﻿using Domain.Entities;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.JsonWebTokens;
 using Microsoft.IdentityModel.Tokens;
