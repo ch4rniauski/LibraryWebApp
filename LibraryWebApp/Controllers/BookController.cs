@@ -1,6 +1,9 @@
 ﻿using Domain.Abstractions.Records;
 using Domain.Abstractions.UnitsOfWork;
+using Domain.Entities;
+using Domain.Models;
 using FluentValidation;
+using Mapster;
 using Microsoft.AspNetCore.Mvc;
 
 namespace LibraryWebApp.Controllers
@@ -10,16 +13,16 @@ namespace LibraryWebApp.Controllers
     public class BookController : ControllerBase
     {
         private readonly IUnitOfWorkLibrary _uof;
-        private readonly IValidator<BookRecord> _validator;
+        private readonly IValidator<CreateBookRecord> _validator;
 
-        public BookController(IUnitOfWorkLibrary uof, IValidator<BookRecord> validator)
+        public BookController(IUnitOfWorkLibrary uof, IValidator<CreateBookRecord> validator)
         {
             _uof = uof;
             _validator = validator;
         }
 
         [HttpPost]
-        public async Task<ActionResult> Create([FromBody] BookRecord request)
+        public async Task<ActionResult> Create([FromBody] CreateBookRecord request)
         {
             var result = await _validator.ValidateAsync(request);
 
@@ -37,18 +40,28 @@ namespace LibraryWebApp.Controllers
         }
 
         [HttpGet]
-        public ActionResult<List<BookRecord>?> GetAll()
+        public ActionResult<List<CreateBookRecord>?> GetAll()
         {
             return Ok(_uof.BookRepository.GetAllBooks());
         }
 
         [HttpGet("{id:Guid}")]
-        public async Task<ActionResult<BookRecord?>> Get(Guid id)
+        public async Task<ActionResult<UpdateBookRecord?>> GetById(Guid id)
         {
-            var book = await _uof.BookRepository.GetBook(id);
+            var book = await _uof.BookRepository.GetBookById(id);
 
             if (book is null)
                 return NotFound("Book with that ID wasn't found");
+            return Ok(book);
+        }
+
+        [HttpGet("{isbn}")]
+        public async Task<ActionResult<UpdateBookRecord?>> GetByISBN(string isbn)
+        {
+            var book = await _uof.BookRepository.GetBookByISBN(isbn);
+
+            if (book is null)
+                return NotFound("Book with that ISBN wasn't found");
             return Ok(book);
         }
 
@@ -66,9 +79,10 @@ namespace LibraryWebApp.Controllers
         }
 
         [HttpPut]
-        public async Task<ActionResult> Update([FromBody] BookRecord request)
+        public async Task<ActionResult> Update([FromBody] UpdateBookRecord request)
         {
-            var result = await _validator.ValidateAsync(request);
+            var bookToValidate = request.Adapt<CreateBookRecord>();
+            var result = await _validator.ValidateAsync(bookToValidate);
 
             if (!result.IsValid)
                 return BadRequest(result.Errors.Select(e => new { e.ErrorCode, e.ErrorMessage }));

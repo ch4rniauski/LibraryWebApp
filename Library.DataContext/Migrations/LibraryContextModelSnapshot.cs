@@ -36,7 +36,7 @@ namespace Library.DataContext.Migrations
                         .HasMaxLength(168)
                         .HasColumnType("nvarchar(168)");
 
-                    b.Property<string>("Name")
+                    b.Property<string>("FirstName")
                         .IsRequired()
                         .HasMaxLength(30)
                         .HasColumnType("nvarchar(30)");
@@ -57,10 +57,14 @@ namespace Library.DataContext.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<string>("AuthorFirstName")
+                        .HasMaxLength(30)
+                        .HasColumnType("nvarchar(30)");
+
                     b.Property<Guid?>("AuthorId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("AuthorName")
+                    b.Property<string>("AuthorSecondName")
                         .HasMaxLength(30)
                         .HasColumnType("nvarchar(30)");
 

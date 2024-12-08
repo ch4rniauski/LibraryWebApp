@@ -4,10 +4,10 @@ namespace Domain.Abstractions.Repositories
 {
     public interface IAuthorRepository
     {
-        Task<bool> CreateAuthor(AuthorRecord author);
-        Task<AuthorRecord?> GetAuthor(Guid id);
-        List<AuthorRecord> GetAllAuthors();
-        Task<bool> UpdateAuthor(AuthorRecord author);
+        Task<bool> CreateAuthor(CreateAuthorRecord author);
+        Task<CreateAuthorRecord?> GetAuthor(Guid id);
+        List<CreateAuthorRecord> GetAllAuthors();
+        Task<bool> UpdateAuthor(UpdateAuthorRecord author);
         Task<bool> DeleteAutor(Guid id);
     }
 }

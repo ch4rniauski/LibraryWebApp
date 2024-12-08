@@ -3,11 +3,11 @@ using FluentValidation;
 
 namespace Domain.Validators
 {
-    public class AuthorValidator : AbstractValidator<AuthorRecord>
+    public class AuthorValidator : AbstractValidator<CreateAuthorRecord>
     {
         public AuthorValidator()
         {
-            RuleFor(a => a.Name)
+            RuleFor(a => a.FirstName)
                 .NotNull()
                 .Length(1, 30);
 

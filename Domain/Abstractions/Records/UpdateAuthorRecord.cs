@@ -1,8 +1,8 @@
 ﻿namespace Domain.Abstractions.Records
 {
-    public record AuthorRecord(
+    public record UpdateAuthorRecord(
         Guid Id,
-        string Name,
+        string FirstName,
         string SecondName,
         string Country,
         DateOnly BirthDate);

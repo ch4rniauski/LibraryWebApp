@@ -15,9 +15,10 @@ namespace Library.DataContext.Repositories
             _db = db;
         }
 
-        public async Task<bool> CreateAuthor(AuthorRecord author)
+        public async Task<bool> CreateAuthor(CreateAuthorRecord author)
         {
-            AuthorEntity newAuthor = author.Adapt<AuthorEntity>();
+            var newAuthor = author.Adapt<AuthorEntity>();
+            newAuthor.Id = Guid.NewGuid();
 
             var createdAuthor = await _db.Auhtors.AddAsync(newAuthor);
 
@@ -36,22 +37,22 @@ namespace Library.DataContext.Repositories
             return true;
         }
 
-        public List<AuthorRecord> GetAllAuthors()
+        public List<CreateAuthorRecord> GetAllAuthors()
         {
-            return _db.Auhtors.Adapt<List<AuthorRecord>>();
+            return _db.Auhtors.Adapt<List<CreateAuthorRecord>>();
         }
 
-        public async Task<AuthorRecord?> GetAuthor(Guid id)
+        public async Task<CreateAuthorRecord?> GetAuthor(Guid id)
         {
             var author = await _db.Auhtors.FirstOrDefaultAsync(a => a.Id == id);
 
             if (author is null)
                 return null;
 
-            return author.Adapt<AuthorRecord>();
+            return author.Adapt<CreateAuthorRecord>();
         }
 
-        public async Task<bool> UpdateAuthor(AuthorRecord author)
+        public async Task<bool> UpdateAuthor(UpdateAuthorRecord author)
         {
             var authorToUpdate = await _db.Auhtors.FirstOrDefaultAsync(a => a.Id == author.Id);
 
@@ -60,7 +61,7 @@ namespace Library.DataContext.Repositories
 
             authorToUpdate.Id = author.Id;
             authorToUpdate.BirthDate = author.BirthDate;
-            authorToUpdate.Name = author.Name;
+            authorToUpdate.FirstName = author.FirstName;
             authorToUpdate.SecondName = author.SecondName;
             authorToUpdate.Country = author.Country;
 

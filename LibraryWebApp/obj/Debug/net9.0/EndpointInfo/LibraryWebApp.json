@@ -93,17 +93,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/AuthorRecord"
+                "$ref": "#/components/schemas/CreateAuthorRecord"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/AuthorRecord"
+                "$ref": "#/components/schemas/CreateAuthorRecord"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/AuthorRecord"
+                "$ref": "#/components/schemas/CreateAuthorRecord"
               }
             }
           }
@@ -132,17 +132,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/AuthorRecord"
+                "$ref": "#/components/schemas/UpdateAuthorRecord"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/AuthorRecord"
+                "$ref": "#/components/schemas/UpdateAuthorRecord"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/AuthorRecord"
+                "$ref": "#/components/schemas/UpdateAuthorRecord"
               }
             }
           }
@@ -207,17 +207,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/BookRecord"
+                "$ref": "#/components/schemas/CreateBookRecord"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/BookRecord"
+                "$ref": "#/components/schemas/CreateBookRecord"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/BookRecord"
+                "$ref": "#/components/schemas/CreateBookRecord"
               }
             }
           }
@@ -240,7 +240,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/BookRecord"
+                    "$ref": "#/components/schemas/CreateBookRecord"
                   }
                 }
               },
@@ -248,7 +248,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/BookRecord"
+                    "$ref": "#/components/schemas/CreateBookRecord"
                   }
                 }
               },
@@ -256,7 +256,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/BookRecord"
+                    "$ref": "#/components/schemas/CreateBookRecord"
                   }
                 }
               }
@@ -272,17 +272,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/BookRecord"
+                "$ref": "#/components/schemas/UpdateBookRecord"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/BookRecord"
+                "$ref": "#/components/schemas/UpdateBookRecord"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/BookRecord"
+                "$ref": "#/components/schemas/UpdateBookRecord"
               }
             }
           }
@@ -316,17 +316,17 @@
             "content": {
               "text/plain": {
                 "schema": {
-                  "$ref": "#/components/schemas/BookRecord"
+                  "$ref": "#/components/schemas/UpdateBookRecord"
                 }
               },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/BookRecord"
+                  "$ref": "#/components/schemas/UpdateBookRecord"
                 }
               },
               "text/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/BookRecord"
+                  "$ref": "#/components/schemas/UpdateBookRecord"
                 }
               }
             }
@@ -354,18 +354,53 @@
           }
         }
       }
+    },
+    "/Book/{isbn}": {
+      "get": {
+        "tags": [
+          "Book"
+        ],
+        "parameters": [
+          {
+            "name": "isbn",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/UpdateBookRecord"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UpdateBookRecord"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UpdateBookRecord"
+                }
+              }
+            }
+          }
+        }
+      }
     }
   },
   "components": {
     "schemas": {
-      "AuthorRecord": {
+      "CreateAuthorRecord": {
         "type": "object",
         "properties": {
-          "id": {
-            "type": "string",
-            "format": "uuid"
-          },
-          "name": {
+          "firstName": {
             "type": "string",
             "nullable": true
           },
@@ -384,13 +419,9 @@
         },
         "additionalProperties": false
       },
-      "BookRecord": {
+      "CreateBookRecord": {
         "type": "object",
         "properties": {
-          "id": {
-            "type": "string",
-            "format": "uuid"
-          },
           "isbn": {
             "type": "string",
             "nullable": true
@@ -407,7 +438,11 @@
             "type": "string",
             "nullable": true
           },
-          "authorName": {
+          "authorFirstName": {
+            "type": "string",
+            "nullable": true
+          },
+          "authorSecondName": {
             "type": "string",
             "nullable": true
           },
@@ -433,6 +468,76 @@
           },
           "refreshToken": {
             "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "UpdateAuthorRecord": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "firstName": {
+            "type": "string",
+            "nullable": true
+          },
+          "secondName": {
+            "type": "string",
+            "nullable": true
+          },
+          "country": {
+            "type": "string",
+            "nullable": true
+          },
+          "birthDate": {
+            "type": "string",
+            "format": "date"
+          }
+        },
+        "additionalProperties": false
+      },
+      "UpdateBookRecord": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "isbn": {
+            "type": "string",
+            "nullable": true
+          },
+          "title": {
+            "type": "string",
+            "nullable": true
+          },
+          "genre": {
+            "type": "string",
+            "nullable": true
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "authorFirstName": {
+            "type": "string",
+            "nullable": true
+          },
+          "authorSecondName": {
+            "type": "string",
+            "nullable": true
+          },
+          "takenAt": {
+            "type": "string",
+            "format": "date",
+            "nullable": true
+          },
+          "dueDate": {
+            "type": "string",
+            "format": "date",
             "nullable": true
           }
         },

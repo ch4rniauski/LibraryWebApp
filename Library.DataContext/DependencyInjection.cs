@@ -10,7 +10,7 @@ namespace Library.DataContext
 {
     public static class DependencyInjection
     {
-        public static IServiceCollection AddLibraryContext(this IServiceCollection services, IConfigurationManager configurationManager)
+        public static IServiceCollection AddLibraryContext(this IServiceCollection services, IConfiguration configurationManager)
         {
             services.AddScoped<IAuthorRepository, AuthorRepository>();
             services.AddScoped<IBookRepository, BookRepository>();

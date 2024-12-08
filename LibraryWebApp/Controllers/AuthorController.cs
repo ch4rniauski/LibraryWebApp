@@ -1,6 +1,8 @@
 ﻿using Domain.Abstractions.Records;
 using Domain.Abstractions.UnitsOfWork;
 using FluentValidation;
+using Mapster;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace LibraryWebApp.Controllers
@@ -10,16 +12,16 @@ namespace LibraryWebApp.Controllers
     public class AuthorController : ControllerBase
     {
         private readonly IUnitOfWorkLibrary _uof;
-        private readonly IValidator<AuthorRecord> _validator;
+        private readonly IValidator<CreateAuthorRecord> _validator;
 
-        public AuthorController(IUnitOfWorkLibrary uof, IValidator<AuthorRecord> validator)
+        public AuthorController(IUnitOfWorkLibrary uof, IValidator<CreateAuthorRecord> validator)
         {
             _uof = uof;
             _validator = validator;
         }
 
         [HttpPost]
-        public async Task<ActionResult> Create([FromBody] AuthorRecord request)
+        public async Task<ActionResult> Create([FromBody] CreateAuthorRecord request)
         {
             var result = await _validator.ValidateAsync(request);
 
@@ -66,9 +68,10 @@ namespace LibraryWebApp.Controllers
         }
 
         [HttpPut]
-        public async Task<ActionResult> Update([FromBody] AuthorRecord request)
+        public async Task<ActionResult> Update([FromBody] UpdateAuthorRecord request)
         {
-            var result = await _validator.ValidateAsync(request);
+            var authorToValidate = request.Adapt<CreateAuthorRecord>();
+            var result = await _validator.ValidateAsync(authorToValidate);
 
             if (!result.IsValid)
                 return BadRequest(result.Errors.Select(e => new { e.ErrorCode, e.ErrorMessage }));

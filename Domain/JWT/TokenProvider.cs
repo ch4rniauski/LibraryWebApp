@@ -2,7 +2,6 @@
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.JsonWebTokens;
 using Microsoft.IdentityModel.Tokens;
-using System.Security.Claims;
 using System.Security.Cryptography;
 using System.Text;
 
@@ -17,7 +16,7 @@ namespace Domain.JWT
             _settings = settings.Value;
         }
 
-        public string CreateToken(UserEntity user)
+        public string GenerateAccessToken(UserEntity user)
         {
             var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_settings.SecretKey));
             var creditionals = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);

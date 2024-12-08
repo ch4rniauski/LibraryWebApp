@@ -19,7 +19,7 @@ namespace Library.DataContext
             {
                 a.Property(a => a.Id).IsRequired();
 
-                a.Property(a => a.Name)
+                a.Property(a => a.FirstName)
                 .IsRequired()
                 .HasMaxLength(30);
 
@@ -51,9 +51,13 @@ namespace Library.DataContext
 
                 b.Property(b => b.Description).HasMaxLength(100);
 
-                b.Property(b => b.AuthorName).HasMaxLength(30);
+                b.Property(b => b.AuthorFirstName).HasMaxLength(30);
+                b.Property(b => b.AuthorSecondName).HasMaxLength(30);
 
-                b.HasOne(b => b.Author).WithMany(a => a.Books);
+                b.HasOne(b => b.Author)
+                .WithMany(a => a.Books)
+                .HasForeignKey(b => b.AuthorId)
+                .IsRequired(false);
             });
         }
     }

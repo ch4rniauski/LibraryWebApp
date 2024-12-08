@@ -51,7 +51,7 @@
     "Parameters": [
       {
         "Name": "request",
-        "Type": "Domain.Abstractions.Records.AuthorRecord",
+        "Type": "Domain.Abstractions.Records.CreateAuthorRecord",
         "IsRequired": true
       }
     ],
@@ -77,7 +77,7 @@
     "Parameters": [
       {
         "Name": "request",
-        "Type": "Domain.Abstractions.Records.AuthorRecord",
+        "Type": "Domain.Abstractions.Records.UpdateAuthorRecord",
         "IsRequired": true
       }
     ],
@@ -125,7 +125,7 @@
     "Parameters": [
       {
         "Name": "request",
-        "Type": "Domain.Abstractions.Records.BookRecord",
+        "Type": "Domain.Abstractions.Records.CreateBookRecord",
         "IsRequired": true
       }
     ],
@@ -141,7 +141,7 @@
     "Parameters": [],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.List\u00601[[Domain.Abstractions.Records.BookRecord, Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.List\u00601[[Domain.Abstractions.Records.CreateBookRecord, Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -161,7 +161,7 @@
     "Parameters": [
       {
         "Name": "request",
-        "Type": "Domain.Abstractions.Records.BookRecord",
+        "Type": "Domain.Abstractions.Records.UpdateBookRecord",
         "IsRequired": true
       }
     ],
@@ -169,7 +169,7 @@
   },
   {
     "ContainingType": "LibraryWebApp.Controllers.BookController",
-    "Method": "Get",
+    "Method": "GetById",
     "RelativePath": "Book/{id}",
     "HttpMethod": "GET",
     "IsController": true,
@@ -183,7 +183,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "Domain.Abstractions.Records.BookRecord",
+        "Type": "Domain.Abstractions.Records.UpdateBookRecord",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -208,5 +208,31 @@
       }
     ],
     "ReturnTypes": []
+  },
+  {
+    "ContainingType": "LibraryWebApp.Controllers.BookController",
+    "Method": "GetByISBN",
+    "RelativePath": "Book/{isbn}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "isbn",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "Domain.Abstractions.Records.UpdateBookRecord",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
   }
 ]

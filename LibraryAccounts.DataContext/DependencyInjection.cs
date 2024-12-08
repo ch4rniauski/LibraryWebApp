@@ -11,7 +11,7 @@ namespace Accounts.DataContext
 {
     static public class DependencyInjection
     {
-        static public IServiceCollection AddAccountsContext(this IServiceCollection services, IConfigurationManager configurationManager)
+        static public IServiceCollection AddAccountsContext(this IServiceCollection services, IConfiguration configurationManager)
         {
             services.AddScoped<IAuthenticationRepository, AuthenticationRepository>();
             services.AddScoped<IUnitOfWorkAccounts, UnitOfWork>();

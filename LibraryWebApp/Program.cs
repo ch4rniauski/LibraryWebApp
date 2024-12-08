@@ -1,6 +1,7 @@
 using Library.DataContext;
 using Domain;
 using Accounts.DataContext;
+using Domain.JWT;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,7 +12,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddLibraryContext(builder.Configuration);
 builder.Services.AddAccountsContext(builder.Configuration);
 
-builder.Services.AddValidators();
+builder.Services.AddDomainConfiguration();
 builder.Services.AddJWTConfiguration(builder.Configuration);
 
 var app = builder.Build();

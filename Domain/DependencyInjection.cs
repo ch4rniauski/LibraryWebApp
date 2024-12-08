@@ -13,18 +13,18 @@ namespace Domain
 {
     static public class DependencyInjection
     {
-        static public IServiceCollection AddValidators(this IServiceCollection services)
+        static public IServiceCollection AddDomainConfiguration(this IServiceCollection services)
         {
-            services.AddScoped<IValidator<AuthorRecord>, AuthorValidator>();
-            services.AddScoped<IValidator<BookRecord>, BookValidator>();
+            services.AddScoped<IValidator<CreateAuthorRecord>, AuthorValidator>();
+            services.AddScoped<IValidator<CreateBookRecord>, BookValidator>();
             services.AddScoped<IValidator<UserRecord>, UserValidator>();
+            services.AddScoped<TokenProvider>();
 
             return services;
         }
 
-        static public IServiceCollection AddJWTConfiguration(this IServiceCollection services, IConfigurationManager configurationManager)
+        static public IServiceCollection AddJWTConfiguration(this IServiceCollection services, IConfiguration configurationManager)
         {
-            services.AddScoped<TokenProvider>();
             services.Configure<JWTSettings>(configurationManager.GetSection("JWTSettings"));
 
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
@@ -36,7 +36,7 @@ namespace Domain
                         ValidateAudience = false,
                         ValidateLifetime = true,
                         ValidateIssuerSigningKey = true,
-                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(new JWTSettings().SecretKey))
+                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configurationManager.GetValue<string>("JWTSettings:SecretKey")!))
                     };
                 });
             services.AddAuthorization();

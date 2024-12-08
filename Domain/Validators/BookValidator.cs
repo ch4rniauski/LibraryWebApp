@@ -3,7 +3,7 @@ using FluentValidation;
 
 namespace Domain.Validators
 {
-    public class BookValidator : AbstractValidator<BookRecord>
+    public class BookValidator : AbstractValidator<CreateBookRecord>
     {
         public BookValidator()
         {
@@ -17,7 +17,8 @@ namespace Domain.Validators
 
             RuleFor(b => b.Description).Length(1, 100);
 
-            RuleFor(b => b.AuthorName).Length(1, 30);
+            RuleFor(b => b.AuthorFirstName).Length(1, 30);
+            RuleFor(b => b.AuthorSecondName).Length(1, 30);
 
             RuleFor(b => b.TakenAt)
                 .LessThanOrEqualTo(DateOnly.FromDateTime(DateTime.Today))

@@ -32,7 +32,7 @@ namespace LibraryAccounts.DataContext.Repositories
             if (result == PasswordVerificationResult.Failed)
                 return null;
 
-            var accessToken = _tokenProvider.CreateToken(userEntity);
+            var accessToken = _tokenProvider.GenerateAccessToken(userEntity);
             var refreshToken = _tokenProvider.GenerateRefreshToken();
 
             userEntity.RefreshToken = refreshToken;
