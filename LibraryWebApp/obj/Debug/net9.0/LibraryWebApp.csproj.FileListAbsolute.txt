@@ -166,3 +166,4 @@ D:\C#\LibraryWebApp\LibraryWebApp\obj\Debug\net9.0\refint\LibraryWebApp.dll
 D:\C#\LibraryWebApp\LibraryWebApp\obj\Debug\net9.0\LibraryWebApp.pdb
 D:\C#\LibraryWebApp\LibraryWebApp\obj\Debug\net9.0\LibraryWebApp.genruntimeconfig.cache
 D:\C#\LibraryWebApp\LibraryWebApp\obj\Debug\net9.0\ref\LibraryWebApp.dll
+D:\C#\LibraryWebApp\LibraryWebApp\obj\Debug\net9.0\staticwebassets.upToDateCheck.txt

@@ -1,0 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=Playwrite+NG+Modern:wght@100..400&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap');
+
+*{
+    margin: 0;
+}
+
+header{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color:rgb(110, 110, 110);
+    height: 60px;
+    transition: .25s;
+}
+
+header:hover{
+    transform: scaleY(1.15);
+}
+
+.HeaderTitle{
+    display: flex;
+    font-family: "Roboto Condensed";
+    font-size: 30px;
+    color: white;
+    text-shadow: 0 2px 5px #000;
+    transition: .25s;
+}
+
+.HeaderTitle:hover{
+    transform: scale(1.15);
+    cursor: pointer;
+}

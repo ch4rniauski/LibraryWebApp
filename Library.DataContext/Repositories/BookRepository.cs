@@ -26,15 +26,12 @@ namespace Library.DataContext.Repositories
 
                 if (authorByFirstName is not null)
                     newBook.AuthorId = authorByFirstName.Id;
-                else
+                else if (book.AuthorSecondName is not null)
                 {
-                    if (book.AuthorSecondName is not null)
-                    {
-                        var authorBySecondName = await _db.Auhtors.FirstOrDefaultAsync(a => a.SecondName.ToLower() == book.AuthorSecondName.ToLower());
+                    var authorBySecondName = await _db.Auhtors.FirstOrDefaultAsync(a => a.SecondName.ToLower() == book.AuthorSecondName.ToLower());
 
-                        if (authorBySecondName is not null)
-                            newBook.AuthorId = authorBySecondName.Id;
-                    }
+                    if (authorBySecondName is not null)
+                        newBook.AuthorId = authorBySecondName.Id;
                 }
             }
             if (book.AuthorSecondName is not null && newBook.AuthorId is null)
@@ -99,9 +96,40 @@ namespace Library.DataContext.Repositories
             bookToUpdate.DueDate = book.DueDate;
             bookToUpdate.Description = book.Description;
             bookToUpdate.AuthorFirstName = book.AuthorFirstName;
+            bookToUpdate.AuthorSecondName = book.AuthorSecondName;
             bookToUpdate.Genre = book.Genre;
             bookToUpdate.Title = book.Title;
             bookToUpdate.Id = book.Id;
+
+            var isAuthorChanged = false;
+
+            if (book.AuthorFirstName is not null)
+            {
+                var authorByFirstName = await _db.Auhtors.FirstOrDefaultAsync(a => a.FirstName.ToLower() == book.AuthorFirstName.ToLower());
+
+                if (authorByFirstName is not null)
+                {
+                    bookToUpdate.AuthorId = authorByFirstName.Id;
+                    isAuthorChanged = true;
+                }
+                else if (book.AuthorSecondName is not null)
+                {
+                    var authorBySecondName = await _db.Auhtors.FirstOrDefaultAsync(a => a.SecondName.ToLower() == book.AuthorSecondName.ToLower());
+
+                    if (authorBySecondName is not null)
+                    {
+                        bookToUpdate.AuthorId = authorBySecondName.Id;
+                        isAuthorChanged = true;
+                    }
+                }
+            }
+            if (isAuthorChanged == false && book.AuthorSecondName is not null && bookToUpdate.AuthorId is null)
+            {
+                var authorBySecondName = await _db.Auhtors.FirstOrDefaultAsync(a => a.SecondName.ToLower() == book.AuthorSecondName.ToLower());
+
+                if (authorBySecondName is not null)
+                    bookToUpdate.AuthorId = authorBySecondName.Id;
+            }
 
             return true;
         }
