@@ -1,13 +1,8 @@
 import "./RegistrationForm.css"
 
 export default function RegistrationForm(){
-    function RegisterButtonClickHandler(){
-        let login = document.getElementById("login");
-        let email = document.getElementById("email");
-        let password = document.getElementById("password");
-        let confirmPassword = document.getElementById("confirmPassword");
 
-        if (password.value)
+    function RegisterButtonClickHandler(){
         window.location.href = "/";
     }
 

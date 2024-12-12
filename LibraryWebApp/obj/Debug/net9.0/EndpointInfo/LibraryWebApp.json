@@ -240,7 +240,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/CreateBookRecord"
+                    "$ref": "#/components/schemas/GetBookRecord"
                   }
                 }
               },
@@ -248,7 +248,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/CreateBookRecord"
+                    "$ref": "#/components/schemas/GetBookRecord"
                   }
                 }
               },
@@ -256,7 +256,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/CreateBookRecord"
+                    "$ref": "#/components/schemas/GetBookRecord"
                   }
                 }
               }
@@ -422,6 +422,50 @@
       "CreateBookRecord": {
         "type": "object",
         "properties": {
+          "isbn": {
+            "type": "string",
+            "nullable": true
+          },
+          "title": {
+            "type": "string",
+            "nullable": true
+          },
+          "genre": {
+            "type": "string",
+            "nullable": true
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "authorFirstName": {
+            "type": "string",
+            "nullable": true
+          },
+          "authorSecondName": {
+            "type": "string",
+            "nullable": true
+          },
+          "takenAt": {
+            "type": "string",
+            "format": "date",
+            "nullable": true
+          },
+          "dueDate": {
+            "type": "string",
+            "format": "date",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "GetBookRecord": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
           "isbn": {
             "type": "string",
             "nullable": true

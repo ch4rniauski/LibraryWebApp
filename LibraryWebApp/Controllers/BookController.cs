@@ -29,10 +29,10 @@ namespace LibraryWebApp.Controllers
             if (!result.IsValid)
                 return BadRequest(result.Errors.Select(e => new { e.ErrorCode, e.ErrorMessage }));
 
-            bool isCreated = await _uof.BookRepository.CreateBook(request);
+            string? isCreated = await _uof.BookRepository.CreateBook(request);
 
-            if (!isCreated)
-                return BadRequest("Book wasn't created");
+            if (!string.IsNullOrEmpty(isCreated))
+                return BadRequest($"Book wasn't created. {isCreated}");
 
             _uof.Save();
 
@@ -40,7 +40,7 @@ namespace LibraryWebApp.Controllers
         }
 
         [HttpGet]
-        public ActionResult<List<CreateBookRecord>?> GetAll()
+        public ActionResult<List<GetBookRecord>> GetAll()
         {
             return Ok(_uof.BookRepository.GetAllBooks());
         }

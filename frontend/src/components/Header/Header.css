@@ -47,4 +47,9 @@ header:hover{
     height: 40px;
     width: 65px;
     border-radius: 20%;
+    transition: .25s;
+}
+
+.LogInButton:hover{
+    transform: scale(1.05);
 }

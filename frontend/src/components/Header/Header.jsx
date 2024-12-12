@@ -2,9 +2,10 @@ import './Header.css';
 //import Avatar from '@mui/material/Avatar';
 
 export default function Header(){
-    function OnLogInBtnClick(){
+    const clickHandler = () => {
         window.location.href = "/auth/login";
     }
+
     return(
         <section>
             <header className='HomePageHeader'>
@@ -12,7 +13,7 @@ export default function Header(){
                     Online Library
                 </a> 
                 
-                <button className='LogInButton' onClick={OnLogInBtnClick}>
+                <button className='LogInButton' onClick={clickHandler}>
                     Log In
                 </button>
             </header>

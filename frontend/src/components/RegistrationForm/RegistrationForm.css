@@ -1,9 +1,5 @@
 .RegistrationPageBody{
-    background-image: url(https://images.unsplash.com/photo-1487088678257-3a541e6e3922?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8bG9naW4lMjBiYWNrZ3JvdW5kfGVufDB8fDB8fHww);
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-attachment: fixed;
+    background-color:slategrey;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -18,7 +14,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background: rgba(255, 255, 255, 0.9);
+    background: rgba(255, 255, 255, 0.6);
     padding: 10px;
     border-radius: 7%;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
@@ -37,10 +33,12 @@
     width: 90px;
     border-radius: 20%;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+    transition: 0.15s;
 }
 
 .RegistrationButton:hover{
     background-color:rgb(26, 184, 184);
+    transform: scale(0.95);
 }
 
 .RegistrInputBox{

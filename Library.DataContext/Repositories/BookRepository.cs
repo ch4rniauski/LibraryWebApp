@@ -15,7 +15,7 @@ namespace Library.DataContext.Repositories
             _db = db;
         }
 
-        public async Task<bool> CreateBook(CreateBookRecord book)
+        public async Task<string?> CreateBook(CreateBookRecord book)
         {
             BookEntity newBook = book.Adapt<BookEntity>();
             newBook.Id = Guid.NewGuid();
@@ -40,11 +40,13 @@ namespace Library.DataContext.Repositories
 
                 if (authorBySecondName is not null)
                     newBook.AuthorId = authorBySecondName.Id;
+                else
+                    return "That author doesn't exist";
             }
 
             var createdBook = await _db.Books.AddAsync(newBook);
 
-            return (createdBook is not null);
+            return string.Empty;
         }
 
         public async Task<bool> DeleteBook(Guid id)
@@ -59,9 +61,9 @@ namespace Library.DataContext.Repositories
             return true;
         }
 
-        public List<CreateBookRecord> GetAllBooks()
+        public List<GetBookRecord> GetAllBooks()
         {
-            return _db.Books.Adapt<List<CreateBookRecord>>();
+            return _db.Books.Adapt<List<GetBookRecord>>();
         }
 
         public async Task<UpdateBookRecord?> GetBookById(Guid id)

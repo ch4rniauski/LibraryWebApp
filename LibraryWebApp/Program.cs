@@ -1,13 +1,22 @@
 using Library.DataContext;
 using Domain;
 using Accounts.DataContext;
-using Domain.JWT;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Services.AddCors(o =>
+{
+    o.AddDefaultPolicy(p =>
+    {
+        p.AllowAnyHeader();
+        p.AllowAnyMethod();
+        p.WithOrigins("http://localhost:5173");
+    });
+});
 
 builder.Services.AddLibraryContext(builder.Configuration);
 builder.Services.AddAccountsContext(builder.Configuration);
@@ -26,6 +35,8 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 app.UseAuthentication();
 app.UseAuthorization();
+
+app.UseCors();
 
 app.MapControllers();
 

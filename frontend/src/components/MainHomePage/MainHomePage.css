@@ -1,0 +1,7 @@
+.MainHomePage{
+    margin: 55px 0;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    height: 100%;
+}

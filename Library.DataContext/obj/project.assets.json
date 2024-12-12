@@ -5525,11 +5525,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\C#\\LibraryWebApp\\Library.DataContext\\Library.DataContext.csproj",
+      "projectUniqueName": "D:\\CSharp\\LibraryWebApp\\Library.DataContext\\Library.DataContext.csproj",
       "projectName": "Library.DataContext",
-      "projectPath": "D:\\C#\\LibraryWebApp\\Library.DataContext\\Library.DataContext.csproj",
+      "projectPath": "D:\\CSharp\\LibraryWebApp\\Library.DataContext\\Library.DataContext.csproj",
       "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-      "outputPath": "D:\\C#\\LibraryWebApp\\Library.DataContext\\obj\\",
+      "outputPath": "D:\\CSharp\\LibraryWebApp\\Library.DataContext\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "D:\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -5550,8 +5550,8 @@
         "net9.0": {
           "targetAlias": "net9.0",
           "projectReferences": {
-            "D:\\C#\\LibraryWebApp\\Domain\\Domain.csproj": {
-              "projectPath": "D:\\C#\\LibraryWebApp\\Domain\\Domain.csproj"
+            "D:\\CSharp\\LibraryWebApp\\Domain\\Domain.csproj": {
+              "projectPath": "D:\\CSharp\\LibraryWebApp\\Domain\\Domain.csproj"
             }
           }
         }

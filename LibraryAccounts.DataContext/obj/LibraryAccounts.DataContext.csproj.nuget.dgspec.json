@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\C#\\LibraryWebApp\\LibraryAccounts.DataContext\\LibraryAccounts.DataContext.csproj": {}
+    "D:\\CSharp\\LibraryWebApp\\LibraryAccounts.DataContext\\LibraryAccounts.DataContext.csproj": {}
   },
   "projects": {
-    "D:\\C#\\LibraryWebApp\\Domain\\Domain.csproj": {
+    "D:\\CSharp\\LibraryWebApp\\Domain\\Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\C#\\LibraryWebApp\\Domain\\Domain.csproj",
+        "projectUniqueName": "D:\\CSharp\\LibraryWebApp\\Domain\\Domain.csproj",
         "projectName": "Domain",
-        "projectPath": "D:\\C#\\LibraryWebApp\\Domain\\Domain.csproj",
+        "projectPath": "D:\\CSharp\\LibraryWebApp\\Domain\\Domain.csproj",
         "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-        "outputPath": "D:\\C#\\LibraryWebApp\\Domain\\obj\\",
+        "outputPath": "D:\\CSharp\\LibraryWebApp\\Domain\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "D:\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -91,14 +91,14 @@
         }
       }
     },
-    "D:\\C#\\LibraryWebApp\\LibraryAccounts.DataContext\\LibraryAccounts.DataContext.csproj": {
+    "D:\\CSharp\\LibraryWebApp\\LibraryAccounts.DataContext\\LibraryAccounts.DataContext.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\C#\\LibraryWebApp\\LibraryAccounts.DataContext\\LibraryAccounts.DataContext.csproj",
+        "projectUniqueName": "D:\\CSharp\\LibraryWebApp\\LibraryAccounts.DataContext\\LibraryAccounts.DataContext.csproj",
         "projectName": "LibraryAccounts.DataContext",
-        "projectPath": "D:\\C#\\LibraryWebApp\\LibraryAccounts.DataContext\\LibraryAccounts.DataContext.csproj",
+        "projectPath": "D:\\CSharp\\LibraryWebApp\\LibraryAccounts.DataContext\\LibraryAccounts.DataContext.csproj",
         "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-        "outputPath": "D:\\C#\\LibraryWebApp\\LibraryAccounts.DataContext\\obj\\",
+        "outputPath": "D:\\CSharp\\LibraryWebApp\\LibraryAccounts.DataContext\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "D:\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -119,8 +119,8 @@
           "net9.0": {
             "targetAlias": "net9.0",
             "projectReferences": {
-              "D:\\C#\\LibraryWebApp\\Domain\\Domain.csproj": {
-                "projectPath": "D:\\C#\\LibraryWebApp\\Domain\\Domain.csproj"
+              "D:\\CSharp\\LibraryWebApp\\Domain\\Domain.csproj": {
+                "projectPath": "D:\\CSharp\\LibraryWebApp\\Domain\\Domain.csproj"
               }
             }
           }

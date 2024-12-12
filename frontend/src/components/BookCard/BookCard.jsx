@@ -6,7 +6,7 @@ import Typography from '@mui/material/Typography';
 import CardActionArea from '@mui/material/CardActionArea';
 import './BookCard.css'
 
-export default function BookCard() {
+export default function BookCard(props) {
   return (
     <div className='BookCard'>
         <Card sx={{ maxWidth: 345 }}>
@@ -18,11 +18,8 @@ export default function BookCard() {
             alt="Book"
             />
             <CardContent>
-            <Typography gutterBottom variant="h5" component="div">
-                Title
-            </Typography>
-            <Typography variant="body2" sx={{ color: 'text.secondary' }}>
-                Descirption
+            <Typography gutterBottom variant="h5" component="div" justifyContent="center" display="flex">
+                {props.title}
             </Typography>
             </CardContent>
         </CardActionArea>
