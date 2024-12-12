@@ -1,31 +1,50 @@
 @import url('https://fonts.googleapis.com/css2?family=Playwrite+NG+Modern:wght@100..400&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap');
 
-header{
+.HomePageHeader{
     display: flex;
     position:absolute;
     top: 0;
     left: 0;
     right: 0;
-    justify-content: center;
+    justify-content: space-between;
+    padding: 0 2%;
     align-items: center;
     background-color:rgb(110, 110, 110);
     height: 60px;
     transition: .25s;
-  }
+}
 
 header:hover{
-    transform: scaleY(1.15);
+    transform: scaleY(1.1);
 }
 
 .HeaderTitle{
     font-family: "Roboto Condensed";
-    font-size: 30px;
+    font-size: 31px;
     color: white;
     text-shadow: 0 2px 5px #000;
     transition: .25s;
+    display: flex;
 }
 
 .HeaderTitle:hover{
-    transform: scale(1.15);
+    transform: scale(1.1);
     cursor: pointer;
+}
+
+.Avatar{
+    cursor: pointer;
+    margin-left: 97%;
+}
+
+.LogInButton{
+    font-family: "Roboto Condensed";
+    font-size: 17px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    width: 65px;
+    border-radius: 20%;
 }

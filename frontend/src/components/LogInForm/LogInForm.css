@@ -1,0 +1,62 @@
+.LogInPageBody{
+    background-image: url(https://e0.pxfuel.com/wallpapers/177/481/desktop-wallpaper-login-background-for-android-tip.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+}
+
+.LogInForm{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.7);
+    padding: 10px;
+    border-radius: 7%;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+}
+
+.LogInButtonLogForm{
+    margin-top: 5px;
+    background-color:aqua;
+    font-family: "Roboto Condensed";
+    font-size: 17px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    width: 65px;
+    border-radius: 20%;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+}
+
+.LogInButtonLogForm:hover{
+    background-color:rgb(26, 184, 184);
+}
+
+.LogInInputBox{
+    margin: 10px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+}
+
+.LogInInputBox input {
+    padding: 8px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+
+.RegistrationOffer{
+    margin-top: 5px;
+    font-family: "Roboto Condensed";
+    font-size: 17px;
+}

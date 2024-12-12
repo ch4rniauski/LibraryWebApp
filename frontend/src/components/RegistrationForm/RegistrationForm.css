@@ -1,0 +1,56 @@
+.RegistrationPageBody{
+    background-image: url(https://images.unsplash.com/photo-1487088678257-3a541e6e3922?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8bG9naW4lMjBiYWNrZ3JvdW5kfGVufDB8fDB8fHww);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+}
+
+.RegistrationForm{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 10px;
+    border-radius: 7%;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+}
+
+.RegistrationButton{
+    margin-top: 5px;
+    background-color:aqua;
+    font-family: "Roboto Condensed";
+    font-size: 17px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    width: 90px;
+    border-radius: 20%;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+}
+
+.RegistrationButton:hover{
+    background-color:rgb(26, 184, 184);
+}
+
+.RegistrInputBox{
+    margin: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+}
+
+.RegistrInputBox input {
+    padding: 8px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
