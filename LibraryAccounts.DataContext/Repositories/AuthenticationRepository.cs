@@ -41,8 +41,18 @@ namespace LibraryAccounts.DataContext.Repositories
             return new LogInResponseRecord(accessToken, refreshToken);
         }
 
-        public async Task<bool> RegisterUser(UserRecord user)
+        public async Task<string?> RegisterUser(UserRecord user)
         {
+            var isUserExist = await _db.Users.FirstOrDefaultAsync(u => u.Login == user.Login);
+
+            if (isUserExist is not null)
+                return "User with that login already exists";
+            else
+                isUserExist = await _db.Users.FirstOrDefaultAsync(u => u.Email == user.Email);
+
+            if (isUserExist is not null)
+                return "User with that email already exists";
+
             var userEntity = user.Adapt<UserEntity>();
 
             var passwordHash = new PasswordHasher<UserEntity>().HashPassword(userEntity, user.Password);
@@ -53,8 +63,8 @@ namespace LibraryAccounts.DataContext.Repositories
             var createdUser = await _db.Users.AddAsync(userEntity);
 
             if (createdUser is null)
-                return false;
-            return true;
+                return "User wasn't registered";
+            return null;
         }
     }
 }

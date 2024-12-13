@@ -19,7 +19,7 @@ namespace LibraryWebApp.Controllers
         }
 
         [HttpPost("register")]
-        public async Task<ActionResult> Register([FromBody] UserRecord request)
+        public async Task<ActionResult<string>> Register([FromBody] UserRecord request)
         {
             var result = await _validator.ValidateAsync(request);
 
@@ -28,8 +28,8 @@ namespace LibraryWebApp.Controllers
 
             var isRegistered = await _uof.AuthenticationRepository.RegisterUser(request);
 
-            if (isRegistered == false)
-                return BadRequest("User wasn't registered");
+            if (isRegistered is not null)
+                return BadRequest(isRegistered);
 
             _uof.Save();
 
