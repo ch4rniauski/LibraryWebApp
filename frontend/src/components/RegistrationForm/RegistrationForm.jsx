@@ -1,12 +1,14 @@
 import "./RegistrationForm.css";
 import { useForm } from "react-hook-form";
 import { useState } from "react";
-import RegisterUser from "../services/Registration.js";
+import RegisterUser from "../../services/Registration.js";
 
 export default function RegistrationForm(){
     document.body.classList.add('RegistrationPageBody');
 
-    const [tabContent, setTabContent] = useState(null);
+    const [loginError, setLoginError] = useState(null);
+    const [emailError, setEmailError] = useState(null);
+    const [passwordError, setPasswordError] = useState(null);
 
     const {register, handleSubmit, formState: {
         errors
@@ -14,11 +16,25 @@ export default function RegistrationForm(){
         mode: "onBlur"
     });
 
-    const onSubmit = (data) => {
-        if (data.password == data.confirmPassword)
-            window.location.href = "/";
+    const onSubmit = async (data) => {
+        if (data.password == data.confirmPassword){
+            const response = await RegisterUser(data);
+
+            if (response.response.status == 400){
+                switch(response.response.data){
+                    case "User with that login already exists":
+                        setLoginError(<div> <p className="ErrorMessage"> {response.response.data} </p> </div>);
+                        break;
+                    case "User with that email already exists":
+                        setEmailError(<div> <p className="ErrorMessage"> {response.response.data} </p> </div>);
+                        break;
+                }
+            }
+            else
+                window.location.href("/");
+        }
         else
-            setTabContent(<div> <p className="ErrorMessage"> Passwords are not the similar </p> </div>);
+            setPasswordError(<div> <p className="ErrorMessage"> Passwords are not the similar </p> </div>);
     }
 
     return(
@@ -27,6 +43,7 @@ export default function RegistrationForm(){
                 <h2>Registration</h2>
 
                 <div> {errors?.login && <p className="ErrorMessage">{errors.login.message} </p>} </div>
+                {loginError}
                 <div className="RegisterInputBox" id="login">
                     <input type="text" 
                     placeholder="Login"
@@ -40,6 +57,7 @@ export default function RegistrationForm(){
                 </div>
                 
                 <div> {errors?.email && <p className="ErrorMessage">{errors.email.message} </p>} </div>
+                {emailError}
                 <div className="RegisterInputBox" id="email">
                     <input type="email" 
                     placeholder="Email"
@@ -66,7 +84,7 @@ export default function RegistrationForm(){
                 </div>
                 
                 <div> {errors?.confirmPassword && <p className="ErrorMessage"> {errors.confirmPassword.message} </p>} </div>
-                {tabContent}
+                {passwordError}
                 <div className="RegisterInputBox" id="confirmPassword">
                     <input type="password" 
                     placeholder="Confirm Password"

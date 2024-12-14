@@ -1,12 +1,13 @@
-import axios from 'axios'
+import axios from "axios";
 
-export default async function RegisterUser(data){
+export default async function LogInUser(data){
     try{
-        let response = await axios.post("https://localhost:7186/Authentication/register", {
+        const response = await axios.post("https://localhost:7186/Authentication/login", {
             login: data.login,
             email: data.email,
             password: data.password
         })
+
         return response;
     }
     catch(error){

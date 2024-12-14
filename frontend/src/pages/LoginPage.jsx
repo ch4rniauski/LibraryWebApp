@@ -10,7 +10,6 @@ export default function LoginPage(){
 
             <div>
                 <LogInForm />
-
             </div>
         </section>
     );

@@ -1,5 +1,5 @@
 .RegistrationPageBody{
-    background-color:slategrey;
+    background-color:rgb(62, 74, 87);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -58,6 +58,8 @@
 }
 
 .ErrorMessage{
+    font-family: "Roboto Condensed";
+    font-size: 15px;
     display: flex;
     right: 0;
     justify-content: center;

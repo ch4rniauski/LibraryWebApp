@@ -1,9 +1,5 @@
 .LogInPageBody{
-    background-image: url(https://e0.pxfuel.com/wallpapers/177/481/desktop-wallpaper-login-background-for-android-tip.jpg);
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-attachment: fixed;
+    background-color:rgb(62, 74, 87);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -15,27 +11,30 @@
 
 .LogInForm{
     display: flex;
+    text-shadow: 0 0 1px rgba(0, 0, 0, 0.3);
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background: rgba(255, 255, 255, 0.7);
+    background: rgba(255, 255, 255, 0.6);
     padding: 10px;
     border-radius: 7%;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+    width: 225px;
 }
 
 .LogInButtonLogForm{
-    margin-top: 5px;
-    background-color:aqua;
+    text-shadow: 0 0 1px rgba(0, 0, 0, 0.3);
+    margin: 7px;
+    background-color:deepskyblue;
     font-family: "Roboto Condensed";
     font-size: 17px;
     cursor: pointer;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 40px;
-    width: 65px;
-    border-radius: 20%;
+    height: 38px;
+    width: 95px;
+    border-radius: 10%;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
     transition: 0.15s;
 }
@@ -46,19 +45,31 @@
 }
 
 .LogInInputBox{
-    margin: 10px;
+    margin: 5px;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
     border-radius: 10px;
 }
 
 .LogInInputBox input {
+    text-shadow: 0 0 1px rgba(0, 0, 0, 0.3);
     padding: 8px;
     border-radius: 4px;
     border: 1px solid #ccc;
 }
 
 .RegistrationOffer{
-    margin-top: 5px;
     font-family: "Roboto Condensed";
     font-size: 17px;
+}
+
+.ErrorMessage{
+    font-family: "Roboto Condensed";
+    font-size: 15px;
+    display: flex;
+    right: 0;
+    justify-content: center;
+    align-items: center;
+    text-shadow: 0 0 1px rgba(0, 0, 0, 0.3);
+    margin: 0;
+    color: red;
 }
