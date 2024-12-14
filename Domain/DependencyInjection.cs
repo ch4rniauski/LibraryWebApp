@@ -23,9 +23,10 @@ namespace Domain
             return services;
         }
 
-        static public IServiceCollection AddJWTConfiguration(this IServiceCollection services, IConfiguration configurationManager)
+        static public IServiceCollection AddJWTConfiguration(this IServiceCollection services, IConfiguration configuration)
         {
-            services.Configure<JWTSettings>(configurationManager.GetSection("JWTSettings"));
+            services.AddAuthorization();
+            services.Configure<JWTSettings>(configuration.GetSection("JWTSettings"));
 
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddJwtBearer(o =>
@@ -36,10 +37,22 @@ namespace Domain
                         ValidateAudience = false,
                         ValidateLifetime = true,
                         ValidateIssuerSigningKey = true,
-                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configurationManager.GetValue<string>("JWTSettings:SecretKey")!))
+                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration.GetValue<string>("JWTSettings:SecretKey")!))
+                    };
+
+                    o.Events = new JwtBearerEvents
+                    {
+                        OnMessageReceived = ctx =>
+                        {
+                            ctx.Request.Cookies.TryGetValue("accessToken", out string? accessToken);
+
+                            if (accessToken is not null)
+                                ctx.Token = accessToken;
+
+                            return Task.CompletedTask;
+                        }
                     };
                 });
-            services.AddAuthorization();
 
             return services;
         }

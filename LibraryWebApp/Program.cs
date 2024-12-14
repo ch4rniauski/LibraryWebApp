@@ -1,6 +1,7 @@
 using Library.DataContext;
 using Domain;
 using Accounts.DataContext;
+using Microsoft.AspNetCore.CookiePolicy;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,7 +15,8 @@ builder.Services.AddCors(o =>
     {
         p.AllowAnyHeader();
         p.AllowAnyMethod();
-        p.WithOrigins("http://localhost:5173");
+        p.WithOrigins("https://localhost:5173");
+        p.AllowCredentials();
     });
 });
 
@@ -35,6 +37,13 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 app.UseAuthentication();
 app.UseAuthorization();
+
+app.UseCookiePolicy(new CookiePolicyOptions
+{
+    HttpOnly = HttpOnlyPolicy.Always,
+    Secure = CookieSecurePolicy.Always,
+    MinimumSameSitePolicy = SameSiteMode.Strict
+});
 
 app.UseCors();
 

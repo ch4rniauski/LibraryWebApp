@@ -19,7 +19,7 @@ export default function LogInForm(){
         
         if (response.status == 200)
             console.log(response);
-        else if (response.response.status == 404)
+        else
             setDataError(<div> <p className="ErrorMessage"> Check if your data is correct </p> </div>);
     }
 

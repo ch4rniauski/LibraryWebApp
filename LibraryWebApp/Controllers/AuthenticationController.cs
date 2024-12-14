@@ -44,7 +44,7 @@ namespace LibraryWebApp.Controllers
             if (!result.IsValid)
                 return BadRequest(result.Errors.Select(e => new { e.ErrorCode, e.ErrorMessage }));
 
-            var response = await _uof.AuthenticationRepository.LogInUser(request);
+            var response = await _uof.AuthenticationRepository.LogInUser(request, HttpContext);
 
             if (response is null)
                 return BadRequest("Incorrect data");

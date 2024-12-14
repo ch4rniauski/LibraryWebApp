@@ -4,6 +4,7 @@ using Domain.Abstractions.Repositories;
 using Domain.Entities;
 using Domain.JWT;
 using Mapster;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -20,7 +21,7 @@ namespace LibraryAccounts.DataContext.Repositories
             _tokenProvider = tokenProvider;
         }
 
-        public async Task<LogInResponseRecord?> LogInUser(UserRecord user)
+        public async Task<LogInResponseRecord?> LogInUser(UserRecord user, HttpContext context)
         {
             var userEntity = await _db.Users.FirstOrDefaultAsync(u => u.Login == user.Login);
 
@@ -37,6 +38,9 @@ namespace LibraryAccounts.DataContext.Repositories
 
             userEntity.RefreshToken = refreshToken;
             userEntity.RefreshTokenExpiresAt = DateTime.UtcNow.AddDays(3);
+
+            context.Response.Cookies.Append("accesToken", accessToken);
+            context.Response.Cookies.Append("refreshToken", refreshToken);
 
             return new LogInResponseRecord(accessToken, refreshToken);
         }
