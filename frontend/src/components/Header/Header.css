@@ -25,6 +25,7 @@ header:hover{
     text-shadow: 0 2px 5px #000;
     transition: .25s;
     display: flex;
+    text-decoration: none;
 }
 
 .HeaderTitle:hover{

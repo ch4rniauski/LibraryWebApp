@@ -113,6 +113,29 @@
         }
       }
     },
+    "/Authentication/{id}": {
+      "delete": {
+        "tags": [
+          "Authentication"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/Author": {
       "post": {
         "tags": [
@@ -292,35 +315,6 @@
             }
           }
         }
-      },
-      "put": {
-        "tags": [
-          "Book"
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/UpdateBookRecord"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/UpdateBookRecord"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/UpdateBookRecord"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
       }
     },
     "/Book/{id}": {
@@ -345,17 +339,17 @@
             "content": {
               "text/plain": {
                 "schema": {
-                  "$ref": "#/components/schemas/UpdateBookRecord"
+                  "$ref": "#/components/schemas/GetBookRecord"
                 }
               },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/UpdateBookRecord"
+                  "$ref": "#/components/schemas/GetBookRecord"
                 }
               },
               "text/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/UpdateBookRecord"
+                  "$ref": "#/components/schemas/GetBookRecord"
                 }
               }
             }
@@ -377,6 +371,46 @@
             }
           }
         ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Book"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateBookRecord"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateBookRecord"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateBookRecord"
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
             "description": "OK"
@@ -423,7 +457,7 @@
         }
       }
     },
-    "/User/user": {
+    "/User/{id}": {
       "get": {
         "tags": [
           "User"
@@ -431,7 +465,8 @@
         "parameters": [
           {
             "name": "id",
-            "in": "query",
+            "in": "path",
+            "required": true,
             "schema": {
               "type": "string",
               "format": "uuid"
@@ -514,6 +549,10 @@
             "type": "string",
             "nullable": true
           },
+          "imageURL": {
+            "type": "string",
+            "nullable": true
+          },
           "takenAt": {
             "type": "string",
             "format": "date",
@@ -558,14 +597,8 @@
             "type": "string",
             "nullable": true
           },
-          "takenAt": {
+          "imageURL": {
             "type": "string",
-            "format": "date",
-            "nullable": true
-          },
-          "dueDate": {
-            "type": "string",
-            "format": "date",
             "nullable": true
           }
         },
@@ -643,6 +676,10 @@
             "nullable": true
           },
           "authorSecondName": {
+            "type": "string",
+            "nullable": true
+          },
+          "imageURL": {
             "type": "string",
             "nullable": true
           },

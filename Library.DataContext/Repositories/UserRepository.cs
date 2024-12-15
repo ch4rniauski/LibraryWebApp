@@ -15,12 +15,12 @@ namespace LibraryAccounts.DataContext.Repositories
             _db = db;
         }
 
-        public async Task<UserRecord?> GetUserInfo(Guid id)
+        public async Task<UserInfoResponse?> GetUserInfo(Guid id)
         {
             var user = await _db.Users.FirstOrDefaultAsync(u => u.Id == id);
 
             if (user is not null)
-                return user.Adapt<UserRecord>();
+                return user.Adapt<UserInfoResponse>();
             return null;
         }
     }

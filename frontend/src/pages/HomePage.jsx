@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import Header from "../components/Header/Header.jsx";
-import FetchAllBooks from "../services/Book.js";
+import FetchAllBooks from "../services/FetchAllBooks.js";
 import MainHomePage from "../components/MainHomePage/MainHomePage.jsx";
 
 export default function HomePage(){

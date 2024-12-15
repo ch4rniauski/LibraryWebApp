@@ -2,7 +2,7 @@ import axios from "axios";
 
 export default async function GetUserData(id){
     try{
-        const link = "https://localhost:7186/User/user?id=" + id;
+        const link = "https://localhost:7186/User/" + id;
         const response = await axios.get(link, {
             withCredentials: true
         });

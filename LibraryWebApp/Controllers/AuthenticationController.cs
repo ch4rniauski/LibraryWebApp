@@ -61,5 +61,18 @@ namespace LibraryWebApp.Controllers
         {
             return Ok();
         }
+
+        [HttpDelete("{id:guid}")]
+        [Authorize]
+        public async Task<ActionResult> DeleteUser(Guid id)
+        {
+            var isDeleted = await _uof.AuthenticationRepository.DeleteUser(id);
+
+            if (!isDeleted)
+                return BadRequest("User with that ID wasn't deleted");
+
+            _uof.Save();
+            return Ok();
+        }
     }
 }

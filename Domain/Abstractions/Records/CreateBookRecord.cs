@@ -7,6 +7,7 @@
         string? Description,
         string? AuthorFirstName,
         string? AuthorSecondName,
+        string? ImageURL,
         DateOnly? TakenAt,
         DateOnly? DueDate);
 }

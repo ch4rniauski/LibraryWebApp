@@ -4,6 +4,6 @@ namespace Domain.Abstractions.Repositories
 {
     public interface IUserRepository
     {
-        Task<UserRecord?> GetUserInfo(Guid id);
+        Task<UserInfoResponse?> GetUserInfo(Guid id);
     }
 }

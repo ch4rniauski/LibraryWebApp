@@ -20,7 +20,7 @@ export default function RegistrationForm(){
         if (data.password == data.confirmPassword){
             const response = await RegisterUser(data);
 
-            if (response.response.status == 400){
+            if (response.status == 400){
                 switch(response.response.data){
                     case "User with that login already exists":
                         setLoginError(<div> <p className="ErrorMessage"> {response.response.data} </p> </div>);
@@ -31,7 +31,7 @@ export default function RegistrationForm(){
                 }
             }
             else
-                window.location.href("/");
+                window.location.href = "/";
         }
         else
             setPasswordError(<div> <p className="ErrorMessage"> Passwords are not the similar </p> </div>);

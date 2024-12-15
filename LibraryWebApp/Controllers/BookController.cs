@@ -44,7 +44,7 @@ namespace LibraryWebApp.Controllers
         }
 
         [HttpGet("{id:Guid}")]
-        public async Task<ActionResult<UpdateBookRecord?>> GetById(Guid id)
+        public async Task<ActionResult<GetBookRecord?>> GetById(Guid id)
         {
             var book = await _uof.BookRepository.GetBookById(id);
 
@@ -76,19 +76,18 @@ namespace LibraryWebApp.Controllers
             return Ok();
         }
 
-        [HttpPut]
-        public async Task<ActionResult> Update([FromBody] UpdateBookRecord request)
+        [HttpPut("{id:guid}")]
+        public async Task<ActionResult> Update([FromBody] CreateBookRecord request, Guid id)
         {
-            var bookToValidate = request.Adapt<CreateBookRecord>();
-            var result = await _validator.ValidateAsync(bookToValidate);
+            var result = await _validator.ValidateAsync(request);
 
             if (!result.IsValid)
                 return BadRequest(result.Errors.Select(e => new { e.ErrorCode, e.ErrorMessage }));
 
-            bool isUpdated = await _uof.BookRepository.UpdateBook(request);
+            bool isUpdated = await _uof.BookRepository.UpdateBook(request, id);
 
             if (!isUpdated)
-                return NotFound("Book with that ID wasn't found");
+                return NotFound("Book wasn't updated");
 
             _uof.Save();
 

@@ -70,5 +70,16 @@ namespace LibraryAccounts.DataContext.Repositories
                 return "User wasn't registered";
             return null;
         }
+
+        public async Task<bool> DeleteUser(Guid id)
+        {
+            var user = await _db.Users.FirstOrDefaultAsync(u => u.Id == id);
+
+            if (user is null)
+                return false;
+
+            _db.Users.Remove(user);
+            return true;
+        }
     }
 }

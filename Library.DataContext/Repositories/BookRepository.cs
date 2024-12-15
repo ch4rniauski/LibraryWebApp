@@ -66,42 +66,56 @@ namespace Library.DataContext.Repositories
             return _db.Books.Adapt<List<GetBookRecord>>();
         }
 
-        public async Task<UpdateBookRecord?> GetBookById(Guid id)
+        public async Task<GetBookRecord?> GetBookById(Guid id)
         {
             var book = await _db.Books.FirstOrDefaultAsync(b => b.Id == id);
 
             if (book is null)
                 return null;
 
-            return book.Adapt<UpdateBookRecord>();
+            return new GetBookRecord(
+                book.Id,
+                book.ISBN,
+                book.Title,
+                book.Genre,
+                book.Description,
+                book.AuthorFirstName,
+                book.AuthorSecondName,
+                book.ImageURL);
         }
 
-        public async Task<UpdateBookRecord?> GetBookByISBN(string ISBN)
+        public async Task<GetBookRecord?> GetBookByISBN(string ISBN)
         {
             var book = await _db.Books.FirstOrDefaultAsync(b => b.ISBN == ISBN);
 
             if (book is null)
                 return null;
 
-            return book.Adapt<UpdateBookRecord>();
+            return book.Adapt<GetBookRecord>();
         }
 
-        public async Task<bool> UpdateBook(UpdateBookRecord book)
+        public async Task<bool> UpdateBook(CreateBookRecord book, Guid id)
         {
-            var bookToUpdate = await _db.Books.FirstOrDefaultAsync(b => b.Id == book.Id);
+            var bookToUpdate = await _db.Books.FirstOrDefaultAsync(b => b.Id == id);
 
             if (bookToUpdate is null)
                 return false;
+
+            if (book.AuthorFirstName is null && book.AuthorSecondName is null)
+            {
+                bookToUpdate.AuthorId = null;
+                bookToUpdate.AuthorFirstName = null;
+                bookToUpdate.AuthorSecondName = null;
+            }
 
             bookToUpdate.ISBN = book.ISBN;
             bookToUpdate.TakenAt = book.TakenAt;
             bookToUpdate.DueDate = book.DueDate;
             bookToUpdate.Description = book.Description;
-            bookToUpdate.AuthorFirstName = book.AuthorFirstName;
-            bookToUpdate.AuthorSecondName = book.AuthorSecondName;
             bookToUpdate.Genre = book.Genre;
             bookToUpdate.Title = book.Title;
-            bookToUpdate.Id = book.Id;
+            bookToUpdate.Id = id;
+            bookToUpdate.ImageURL = book.ImageURL;
 
             var isAuthorChanged = false;
 
@@ -113,8 +127,16 @@ namespace Library.DataContext.Repositories
                 {
                     bookToUpdate.AuthorId = authorByFirstName.Id;
                     isAuthorChanged = true;
+
+                    if (book.AuthorSecondName is not null && book.AuthorSecondName.ToLower() != authorByFirstName.SecondName.ToLower())
+                        isAuthorChanged = false;
+                    else
+                    {
+                        bookToUpdate.AuthorFirstName = authorByFirstName.FirstName;
+                        bookToUpdate.AuthorSecondName = authorByFirstName.SecondName;
+                    }
                 }
-                else if (book.AuthorSecondName is not null)
+                if (book.AuthorSecondName is not null)
                 {
                     var authorBySecondName = await _db.Auhtors.FirstOrDefaultAsync(a => a.SecondName.ToLower() == book.AuthorSecondName.ToLower());
 
@@ -122,17 +144,38 @@ namespace Library.DataContext.Repositories
                     {
                         bookToUpdate.AuthorId = authorBySecondName.Id;
                         isAuthorChanged = true;
+
+                        if (book.AuthorFirstName is not null && book.AuthorFirstName.ToLower() != authorBySecondName.SecondName.ToLower())
+                            isAuthorChanged = false;
+                        else
+                        {
+                            bookToUpdate.AuthorFirstName = authorBySecondName.FirstName;
+                            bookToUpdate.AuthorSecondName = authorBySecondName.SecondName;
+                        }
                     }
                 }
             }
-            if (isAuthorChanged == false && book.AuthorSecondName is not null && bookToUpdate.AuthorId is null)
+            if (isAuthorChanged == false && book.AuthorSecondName is not null)
             {
                 var authorBySecondName = await _db.Auhtors.FirstOrDefaultAsync(a => a.SecondName.ToLower() == book.AuthorSecondName.ToLower());
 
                 if (authorBySecondName is not null)
+                {
                     bookToUpdate.AuthorId = authorBySecondName.Id;
+                    isAuthorChanged = true;
+
+                    if (book.AuthorFirstName is not null && book.AuthorFirstName.ToLower() != authorBySecondName.FirstName.ToLower())
+                        isAuthorChanged = false;
+                    else
+                    {
+                        bookToUpdate.AuthorFirstName = authorBySecondName.FirstName;
+                        bookToUpdate.AuthorSecondName = authorBySecondName.SecondName;
+                    }
+                }
             }
 
+            if (book.AuthorFirstName is not null && book.AuthorSecondName is not null && !isAuthorChanged)
+                return false;
             return true;
         }
     }

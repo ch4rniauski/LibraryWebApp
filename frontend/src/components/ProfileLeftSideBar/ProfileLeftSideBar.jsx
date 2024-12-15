@@ -8,7 +8,6 @@ export default function ProfileLeftSideBar(){
 
     useEffect( () => {
         const getUserData = async () => {
-            console.log(localStorage.getItem("userId"));
             const response = await GetUserData(localStorage.getItem("userId"));
 
             if (response.status == 200){
