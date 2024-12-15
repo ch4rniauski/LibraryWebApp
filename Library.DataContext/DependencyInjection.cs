@@ -2,6 +2,7 @@
 using Domain.Abstractions.UnitsOfWork;
 using Library.DataContext.Repositories;
 using Library.DataContext.UnitsOfWork;
+using LibraryAccounts.DataContext.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -14,7 +15,9 @@ namespace Library.DataContext
         {
             services.AddScoped<IAuthorRepository, AuthorRepository>();
             services.AddScoped<IBookRepository, BookRepository>();
-            services.AddScoped<IUnitOfWorkLibrary, UnitOfWork>();
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
+            services.AddScoped<IAuthenticationRepository, AuthenticationRepository>();
+            services.AddScoped<IUserRepository, UserRepository>();
 
             services.AddDbContext<LibraryContext>(options =>
             {

@@ -307,9 +307,7 @@ D:\CSharp\LibraryWebApp\LibraryWebApp\bin\Debug\net9.0\runtimes\win\lib\net6.0\S
 D:\CSharp\LibraryWebApp\LibraryWebApp\bin\Debug\net9.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
 D:\CSharp\LibraryWebApp\LibraryWebApp\bin\Debug\net9.0\Domain.dll
 D:\CSharp\LibraryWebApp\LibraryWebApp\bin\Debug\net9.0\Library.DataContext.dll
-D:\CSharp\LibraryWebApp\LibraryWebApp\bin\Debug\net9.0\LibraryAccounts.DataContext.dll
 D:\CSharp\LibraryWebApp\LibraryWebApp\bin\Debug\net9.0\Library.DataContext.pdb
-D:\CSharp\LibraryWebApp\LibraryWebApp\bin\Debug\net9.0\LibraryAccounts.DataContext.pdb
 D:\CSharp\LibraryWebApp\LibraryWebApp\bin\Debug\net9.0\Domain.pdb
 D:\CSharp\LibraryWebApp\LibraryWebApp\obj\Debug\net9.0\LibraryWebApp.csproj.AssemblyReference.cache
 D:\CSharp\LibraryWebApp\LibraryWebApp\obj\Debug\net9.0\LibraryWebApp.GeneratedMSBuildEditorConfig.editorconfig
@@ -329,10 +327,10 @@ D:\CSharp\LibraryWebApp\LibraryWebApp\obj\Debug\net9.0\staticwebassets\msbuild.b
 D:\CSharp\LibraryWebApp\LibraryWebApp\obj\Debug\net9.0\staticwebassets\msbuild.buildMultiTargeting.LibraryWebApp.props
 D:\CSharp\LibraryWebApp\LibraryWebApp\obj\Debug\net9.0\staticwebassets\msbuild.buildTransitive.LibraryWebApp.props
 D:\CSharp\LibraryWebApp\LibraryWebApp\obj\Debug\net9.0\staticwebassets.pack.json
-D:\CSharp\LibraryWebApp\LibraryWebApp\obj\Debug\net9.0\staticwebassets.upToDateCheck.txt
 D:\CSharp\LibraryWebApp\LibraryWebApp\obj\Debug\net9.0\LibraryW.C588A628.Up2Date
 D:\CSharp\LibraryWebApp\LibraryWebApp\obj\Debug\net9.0\LibraryWebApp.dll
 D:\CSharp\LibraryWebApp\LibraryWebApp\obj\Debug\net9.0\refint\LibraryWebApp.dll
 D:\CSharp\LibraryWebApp\LibraryWebApp\obj\Debug\net9.0\LibraryWebApp.pdb
 D:\CSharp\LibraryWebApp\LibraryWebApp\obj\Debug\net9.0\LibraryWebApp.genruntimeconfig.cache
 D:\CSharp\LibraryWebApp\LibraryWebApp\obj\Debug\net9.0\ref\LibraryWebApp.dll
+D:\CSharp\LibraryWebApp\LibraryWebApp\obj\Debug\net9.0\staticwebassets.upToDateCheck.txt

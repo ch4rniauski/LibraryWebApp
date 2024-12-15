@@ -17,8 +17,11 @@ export default function LogInForm(){
     const onSubmit = async (data) => {
         const response = await LogInUser(data);
         
-        if (response.status == 200)
-            console.log(response);
+        if (response.status == 200){
+            localStorage.setItem("userId", response.data.id)
+            window.location.href = "/";
+
+        }
         else
             setDataError(<div> <p className="ErrorMessage"> Check if your data is correct </p> </div>);
     }
@@ -29,19 +32,6 @@ export default function LogInForm(){
                 <h2>Login</h2>
 
                 {dataError}
-
-                <div> { errors?.email && <p className="ErrorMessage">{errors.email.message} </p> } </div>
-                <div className="LogInInputBox">
-                    <input type="email" 
-                    placeholder="Email" 
-                    {...register("email" , {
-                        required: "That field is required",
-                        pattern: {
-                            value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
-                            message: "Incorrect data"
-                        }
-                    })}/>
-                </div>
                 
                 <div> {errors?.login && <p className="ErrorMessage"> {errors.login.message} </p> } </div>
                 <div className="LogInInputBox">
@@ -52,6 +42,19 @@ export default function LogInForm(){
                         minLength: {
                             value: 3,
                             message: "Login must be at least 3 characters"
+                        }
+                    })}/>
+                </div>
+
+                <div> { errors?.email && <p className="ErrorMessage">{errors.email.message} </p> } </div>
+                <div className="LogInInputBox">
+                    <input type="email" 
+                    placeholder="Email" 
+                    {...register("email" , {
+                        required: "That field is required",
+                        pattern: {
+                            value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+                            message: "Incorrect data"
                         }
                     })}/>
                 </div>

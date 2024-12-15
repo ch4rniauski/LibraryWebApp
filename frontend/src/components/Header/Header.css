@@ -34,7 +34,7 @@ header:hover{
 
 .Avatar{
     cursor: pointer;
-    margin-left: 97%;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
 }
 
 .LogInButton{

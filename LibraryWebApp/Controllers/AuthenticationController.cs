@@ -1,6 +1,7 @@
 ﻿using Domain.Abstractions.Records;
 using Domain.Abstractions.UnitsOfWork;
 using FluentValidation;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace LibraryWebApp.Controllers
@@ -9,10 +10,10 @@ namespace LibraryWebApp.Controllers
     [Route("[controller]")]
     public class AuthenticationController : ControllerBase
     {
-        private readonly IUnitOfWorkAccounts _uof;
+        private readonly IUnitOfWork _uof;
         private readonly IValidator<UserRecord> _validator;
 
-        public AuthenticationController(IUnitOfWorkAccounts uof, IValidator<UserRecord> validator)
+        public AuthenticationController(IUnitOfWork uof, IValidator<UserRecord> validator)
         {
             _uof = uof;
             _validator = validator;
@@ -52,6 +53,13 @@ namespace LibraryWebApp.Controllers
             _uof.Save();
 
             return Ok(response);
+        }
+
+        [HttpGet("auth")]
+        [Authorize]
+        public ActionResult IsAuthorized()
+        {
+            return Ok();
         }
     }
 }

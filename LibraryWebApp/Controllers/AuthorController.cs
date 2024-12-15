@@ -2,7 +2,6 @@
 using Domain.Abstractions.UnitsOfWork;
 using FluentValidation;
 using Mapster;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace LibraryWebApp.Controllers
@@ -11,10 +10,10 @@ namespace LibraryWebApp.Controllers
     [Route("[controller]")]
     public class AuthorController : ControllerBase
     {
-        private readonly IUnitOfWorkLibrary _uof;
+        private readonly IUnitOfWork _uof;
         private readonly IValidator<CreateAuthorRecord> _validator;
 
-        public AuthorController(IUnitOfWorkLibrary uof, IValidator<CreateAuthorRecord> validator)
+        public AuthorController(IUnitOfWork uof, IValidator<CreateAuthorRecord> validator)
         {
             _uof = uof;
             _validator = validator;

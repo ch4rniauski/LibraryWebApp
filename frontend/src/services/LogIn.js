@@ -9,7 +9,6 @@ export default async function LogInUser(data){
         },{
             withCredentials: true
         });
-
         return response;
     }
     catch(error){

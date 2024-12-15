@@ -13,5 +13,8 @@
         public AuthorEntity? Author { get; set; }
         public DateOnly? TakenAt { get; set; } = null;
         public DateOnly? DueDate { get; set; } = null;
+        public UserEntity? User { get; set; } = null;
+        public Guid? UserId { get; set; } = null;
+        public string? ImageURL { get; set; } = null;
     }
 }

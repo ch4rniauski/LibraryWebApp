@@ -17,7 +17,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Library.DataContext\Library.DataContext.csproj" />
-    <ProjectReference Include="..\LibraryAccounts.DataContext\LibraryAccounts.DataContext.csproj" />
   </ItemGroup>
 
 </Project>

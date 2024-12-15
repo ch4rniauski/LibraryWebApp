@@ -1,6 +1,5 @@
 using Library.DataContext;
 using Domain;
-using Accounts.DataContext;
 using Microsoft.AspNetCore.CookiePolicy;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -21,7 +20,6 @@ builder.Services.AddCors(o =>
 });
 
 builder.Services.AddLibraryContext(builder.Configuration);
-builder.Services.AddAccountsContext(builder.Configuration);
 
 builder.Services.AddDomainConfiguration();
 builder.Services.AddJWTConfiguration(builder.Configuration);

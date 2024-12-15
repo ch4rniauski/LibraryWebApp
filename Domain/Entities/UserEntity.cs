@@ -8,5 +8,6 @@
         public string PasswordHash { get; set; } = string.Empty;
         public string? RefreshToken { get; set; } = null;
         public DateTime? RefreshTokenExpiresAt { get; set; } = null;
+        public List<BookEntity>? Books { get; set; }
     }
 }

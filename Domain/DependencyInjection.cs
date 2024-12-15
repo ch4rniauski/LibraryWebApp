@@ -5,7 +5,6 @@ using FluentValidation;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 
@@ -25,7 +24,6 @@ namespace Domain
 
         static public IServiceCollection AddJWTConfiguration(this IServiceCollection services, IConfiguration configuration)
         {
-            services.AddAuthorization();
             services.Configure<JWTSettings>(configuration.GetSection("JWTSettings"));
 
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
@@ -53,6 +51,8 @@ namespace Domain
                         }
                     };
                 });
+
+            services.AddAuthorization();
 
             return services;
         }

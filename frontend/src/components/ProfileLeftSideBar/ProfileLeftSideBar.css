@@ -1,0 +1,23 @@
+.LeftSideBar{
+    position: absolute;
+    display: flex;
+    top: 0;
+    left: 0;
+    width: 12%;
+    justify-content: flex-start;
+    align-items: center;
+    height: 100vh;
+    background-color:rgb(110, 110, 110);
+    flex-direction: column;
+}
+
+.ProfileAvatar{
+    margin-top: 35%;
+    scale: 300%;
+}
+
+.UserLogin{
+    font-family: "Roboto Condensed";
+    font-size: 25px;
+    margin-top: 10%;
+}

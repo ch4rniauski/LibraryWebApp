@@ -5,3 +5,11 @@
     flex-wrap: wrap;
     height: 100%;
 }
+
+.BookCard{
+    transition: 0.3s;
+}
+
+.BookCard:hover{
+    transform: scale(1.03);
+}

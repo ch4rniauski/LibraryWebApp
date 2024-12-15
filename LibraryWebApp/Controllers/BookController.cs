@@ -1,7 +1,5 @@
 ﻿using Domain.Abstractions.Records;
 using Domain.Abstractions.UnitsOfWork;
-using Domain.Entities;
-using Domain.Models;
 using FluentValidation;
 using Mapster;
 using Microsoft.AspNetCore.Mvc;
@@ -12,10 +10,10 @@ namespace LibraryWebApp.Controllers
     [Route("[controller]")]
     public class BookController : ControllerBase
     {
-        private readonly IUnitOfWorkLibrary _uof;
+        private readonly IUnitOfWork _uof;
         private readonly IValidator<CreateBookRecord> _validator;
 
-        public BookController(IUnitOfWorkLibrary uof, IValidator<CreateBookRecord> validator)
+        public BookController(IUnitOfWork uof, IValidator<CreateBookRecord> validator)
         {
             _uof = uof;
             _validator = validator;

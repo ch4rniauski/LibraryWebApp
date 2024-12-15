@@ -2,10 +2,12 @@
 
 namespace Domain.Abstractions.UnitsOfWork
 {
-    public interface IUnitOfWorkLibrary
+    public interface IUnitOfWork
     {
         IAuthorRepository AuthorRepository { get; }
         IBookRepository BookRepository { get; }
+        IAuthenticationRepository AuthenticationRepository { get; }
+        IUserRepository UserRepository { get; }
 
         void Save();
     }

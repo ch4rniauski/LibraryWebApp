@@ -7,6 +7,7 @@ namespace Library.DataContext
     {
         public DbSet<AuthorEntity> Auhtors { get; set; }
         public DbSet<BookEntity> Books { get; set; }
+        public DbSet<UserEntity> Users { get; set; }
 
         public LibraryContext(DbContextOptions<LibraryContext> options) : base(options)
         {
@@ -52,12 +53,33 @@ namespace Library.DataContext
                 b.Property(b => b.Description).HasMaxLength(100);
 
                 b.Property(b => b.AuthorFirstName).HasMaxLength(30);
+
                 b.Property(b => b.AuthorSecondName).HasMaxLength(30);
 
                 b.HasOne(b => b.Author)
                 .WithMany(a => a.Books)
                 .HasForeignKey(b => b.AuthorId)
                 .IsRequired(false);
+
+                b.HasOne(b => b.User)
+                .WithMany(u => u.Books)
+                .HasForeignKey(b => b.UserId)
+                .IsRequired(false);
+            });
+
+            modelBuilder.Entity<UserEntity>().HasKey(u => u.Id);
+            modelBuilder.Entity<UserEntity>(u =>
+            {
+                u.Property(u => u.Id).IsRequired();
+
+                u.Property(u => u.Login).IsRequired();
+
+                u.Property(u => u.Email).IsRequired();
+
+                u.Property(u => u.PasswordHash).IsRequired();
+
+                u.HasMany(u => u.Books)
+                .WithOne(b => b.User);
             });
         }
     }
