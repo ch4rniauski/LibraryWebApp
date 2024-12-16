@@ -23,5 +23,29 @@ namespace LibraryAccounts.DataContext.Repositories
                 return user.Adapt<UserInfoResponse>();
             return null;
         }
+
+        public async Task<bool> BorrowBook(Guid userId, Guid bookId)
+        {
+            var user = await _db.Users
+                .Include(u => u.Books)
+                .FirstOrDefaultAsync(u => u.Id == userId);
+
+            if (user is null)
+                return false;
+
+            var book = await _db.Books.FirstOrDefaultAsync(b => b.Id == bookId);
+
+            if (book is null)
+                return false;
+
+            book.TakenAt = DateOnly.FromDateTime(DateTime.UtcNow);
+            book.DueDate = DateOnly.FromDateTime(DateTime.UtcNow.AddDays(30));
+            book.UserId = user.Id;
+            book.User = user;
+
+            user.Books.Add(book);
+
+            return true;
+        }
     }
 }

@@ -14,7 +14,7 @@ export default function BookCard(props) {
             <CardMedia
             component="img"
             height="140"
-            image="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSEzSwHWYtdecUbj-IpGr1d4tpon6ybWlTnLw&s"
+            image={props.imageURL}
             alt="Book"
             />
             <CardContent>

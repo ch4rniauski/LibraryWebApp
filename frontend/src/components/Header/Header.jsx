@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import './Header.css';
 import IsAuthorized from "../../services/IsAuthorized.js";
 import Avatar from '@mui/material/Avatar';
+import Relogin from '../../services/Relogin.js';
 
 export default function Header(){
     const loginClickHandler = () => {
@@ -16,7 +17,7 @@ export default function Header(){
 
     useEffect( () => {
         const isAuthorized = async () => {
-            const response = await IsAuthorized();
+            let response = await IsAuthorized();
 
             if (response){
                 setHeaderButton(
@@ -24,11 +25,18 @@ export default function Header(){
                 );
             }
             else{
-                setHeaderButton(
-                <button className='LogInButton' onClick={loginClickHandler}>
-                    Log In
-                </button>
-                );
+                if (!(await Relogin(localStorage.getItem("userId")))){
+                    setHeaderButton(
+                    <button className='LogInButton' onClick={loginClickHandler}>
+                        Log In
+                    </button>
+                    );
+                }
+                else{
+                    setHeaderButton(
+                        <Avatar className='Avatar' onClick={profileClickHandler} />
+                    );
+                }
             }
         }
 

@@ -8,5 +8,6 @@
         string? Description,
         string? AuthorFirstName,
         string? AuthorSecondName,
-        string? ImageURL);
+        string? ImageURL,
+        Guid? UserId);
 }

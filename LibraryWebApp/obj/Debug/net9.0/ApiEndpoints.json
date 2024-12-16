@@ -53,6 +53,16 @@
   },
   {
     "ContainingType": "LibraryWebApp.Controllers.AuthenticationController",
+    "Method": "LogOut",
+    "RelativePath": "Authentication/logout",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "LibraryWebApp.Controllers.AuthenticationController",
     "Method": "Register",
     "RelativePath": "Authentication/register",
     "HttpMethod": "POST",
@@ -63,6 +73,32 @@
         "Name": "request",
         "Type": "Domain.Abstractions.Records.UserRecord",
         "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.String",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "LibraryWebApp.Controllers.AuthenticationController",
+    "Method": "UpdateAccessToken",
+    "RelativePath": "Authentication/relogin",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": false
       }
     ],
     "ReturnTypes": [
@@ -277,6 +313,32 @@
     ]
   },
   {
+    "ContainingType": "LibraryWebApp.Controllers.BookController",
+    "Method": "GetBooksByUserId",
+    "RelativePath": "Book/borrowed",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.Guid",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.List\u00601[[Domain.Abstractions.Records.GetBookRecord, Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
     "ContainingType": "LibraryWebApp.Controllers.UserController",
     "Method": "GetUsetInfo",
     "RelativePath": "User/{id}",
@@ -301,5 +363,21 @@
         "StatusCode": 200
       }
     ]
+  },
+  {
+    "ContainingType": "LibraryWebApp.Controllers.UserController",
+    "Method": "BorrowBook",
+    "RelativePath": "User/borrow",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "Domain.Abstractions.Records.BorrowBookRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
   }
 ]

@@ -81,5 +81,16 @@ namespace LibraryAccounts.DataContext.Repositories
             _db.Users.Remove(user);
             return true;
         }
+
+        public async Task<string?> UpdateAccessToken(Guid id, string refreshToken)
+        {
+            var user = await _db.Users.FirstOrDefaultAsync(u => u.Id == id);
+
+            if (user is null || user.RefreshToken != refreshToken || user.RefreshTokenExpiresAt < DateTime.UtcNow)
+                return null;
+
+            string accessToken = _tokenProvider.GenerateAccessToken(user);
+            return accessToken;
+        }
     }
 }

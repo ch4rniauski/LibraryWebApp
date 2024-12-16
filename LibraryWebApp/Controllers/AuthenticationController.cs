@@ -74,5 +74,30 @@ namespace LibraryWebApp.Controllers
             _uof.Save();
             return Ok();
         }
+
+        [HttpGet("relogin")]
+        public async Task<ActionResult<string>> UpdateAccessToken(Guid id)
+        {
+            HttpContext.Request.Cookies.TryGetValue("refreshToken", out string? refreshToken);
+
+            if (refreshToken is null)
+                return BadRequest("Refresh token doesn't exist");
+
+            var accessToken = await _uof.AuthenticationRepository.UpdateAccessToken(id, refreshToken);
+
+            if (accessToken is null)
+                return BadRequest("Either user with that ID doesn't exist or refresh token has expired");
+
+            HttpContext.Response.Cookies.Append("accessToken", accessToken);
+            return Ok();
+        }
+
+        [HttpGet("logout")]
+        public ActionResult LogOut()
+        {
+            HttpContext.Response.Cookies.Delete("accessToken");
+            HttpContext.Response.Cookies.Delete("refreshToken");
+            return Ok();
+        }
     }
 }

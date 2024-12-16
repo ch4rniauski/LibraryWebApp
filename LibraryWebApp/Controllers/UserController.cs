@@ -30,5 +30,19 @@ namespace LibraryWebApp.Controllers
                 return BadRequest("User with that ID wasn't found");
             return Ok(user);
         }
+
+        [HttpPost("borrow")]
+        [Authorize]
+        public async Task<ActionResult> BorrowBook([FromBody] BorrowBookRequest request)
+        {
+            var isBorrowed = await _uof.UserRepository.BorrowBook(request.UserId, request.BookId);
+
+            if (!isBorrowed)
+                return BadRequest("Book wasn't borrowed");
+
+            _uof.Save();
+
+            return Ok();
+        }
     }
 }

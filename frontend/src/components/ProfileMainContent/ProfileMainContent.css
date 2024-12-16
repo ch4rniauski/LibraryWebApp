@@ -1,0 +1,20 @@
+.ProfileMainContent{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    height: 100%;
+    top: 0;
+    left: 0;
+    margin-left: 11%;
+}
+
+.Card{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: .3s;
+}
+
+.ButtonOnHover{
+    position: absolute;
+}

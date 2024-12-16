@@ -17,7 +17,9 @@ export default function BookInfoPage(){
             const bookId = url.substring(28);
 
             const response = await GetBookInfoById(bookId);
+
             setBookInfo(response);
+            console.log(response);
         }
 
         getBookInfoById();
@@ -33,7 +35,7 @@ export default function BookInfoPage(){
                 {bookInfo.data && <BookInfoAuthor authorFirstName={bookInfo.data.authorFirstName} authorSecondName={bookInfo.data.authorSecondName} />}
                 {bookInfo.data && <BookInfoGenre genre={bookInfo.data.genre} />}
 
-                <BorrowBookButton />
+                {bookInfo.data && <BorrowBookButton bookId={bookInfo.data.id} userId={localStorage.getItem("userId")} bookUserId={bookInfo.data.userId}/>}
             </main>
         </section>
     );

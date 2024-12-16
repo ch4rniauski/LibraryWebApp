@@ -63,7 +63,27 @@ namespace Library.DataContext.Repositories
 
         public List<GetBookRecord> GetAllBooks()
         {
-            return _db.Books.Adapt<List<GetBookRecord>>();
+            var books = _db.Books;
+
+            List<GetBookRecord> booksToReturn = new();
+
+            foreach (var book in books)
+            {
+                var newBook = new GetBookRecord(
+                    book.Id,
+                    book.ISBN,
+                    book.Title,
+                    book.Genre,
+                    book.Description,
+                    book.AuthorFirstName,
+                    book.AuthorSecondName,
+                    book.ImageURL,
+                    book.UserId);
+
+                booksToReturn.Add(newBook);
+            }
+
+            return booksToReturn;
         }
 
         public async Task<GetBookRecord?> GetBookById(Guid id)
@@ -81,7 +101,8 @@ namespace Library.DataContext.Repositories
                 book.Description,
                 book.AuthorFirstName,
                 book.AuthorSecondName,
-                book.ImageURL);
+                book.ImageURL,
+                book.UserId);
         }
 
         public async Task<GetBookRecord?> GetBookByISBN(string ISBN)
@@ -92,6 +113,31 @@ namespace Library.DataContext.Repositories
                 return null;
 
             return book.Adapt<GetBookRecord>();
+        }
+
+        public List<GetBookRecord>? GetBooksByUserId(Guid id)
+        {
+            var books = _db.Books.Where(b => b.UserId == id);
+
+            List<GetBookRecord> booksToReturn = new();
+
+            foreach (var book in books)
+            {
+                var newBook = new GetBookRecord(
+                    book.Id,
+                    book.ISBN,
+                    book.Title,
+                    book.Genre,
+                    book.Description,
+                    book.AuthorFirstName,
+                    book.AuthorSecondName,
+                    book.ImageURL,
+                    book.UserId);
+
+                booksToReturn.Add(newBook);
+            }
+
+            return booksToReturn;
         }
 
         public async Task<bool> UpdateBook(CreateBookRecord book, Guid id)

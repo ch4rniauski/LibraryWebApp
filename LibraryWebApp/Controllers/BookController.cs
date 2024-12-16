@@ -2,6 +2,7 @@
 using Domain.Abstractions.UnitsOfWork;
 using FluentValidation;
 using Mapster;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace LibraryWebApp.Controllers
@@ -92,6 +93,15 @@ namespace LibraryWebApp.Controllers
             _uof.Save();
 
             return Ok();
+        }
+
+        [HttpGet("borrowed")]
+        [Authorize]
+        public ActionResult<List<GetBookRecord>?> GetBooksByUserId(Guid userId)
+        {
+            var books = _uof.BookRepository.GetBooksByUserId(userId);
+
+            return Ok(books);
         }
     }
 }
