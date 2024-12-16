@@ -1,0 +1,26 @@
+.BookInfoDescription{
+    display: flex;
+    position: absolute;
+    left: 25%;
+    margin-top: 60px;
+    right: 15%;
+    top: 12%;
+    font-family: "Roboto Condensed";
+    font-size: 20px;
+    width: 60%;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.HorizontalLineDescription {
+    position: absolute;
+    display: flex;
+    width: 60%;
+    height: 1px;
+    background-color: black;
+    margin-top: 170px;
+    top: 9%;
+    margin-left: 25%;
+}
+

@@ -69,8 +69,8 @@ namespace Library.DataContext.Migrations
                         .HasColumnType("nvarchar(30)");
 
                     b.Property<string>("Description")
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
 
                     b.Property<DateOnly?>("DueDate")
                         .HasColumnType("date");

@@ -15,7 +15,7 @@ namespace Domain.Validators
 
             RuleFor(b => b.Genre).Length(1, 89);
 
-            RuleFor(b => b.Description).Length(1, 100);
+            RuleFor(b => b.Description).Length(1, 250);
 
             RuleFor(b => b.AuthorFirstName).Length(1, 30);
             RuleFor(b => b.AuthorSecondName).Length(1, 30);

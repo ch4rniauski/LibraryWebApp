@@ -1,0 +1,23 @@
+.BookInfoTitle{
+    display: flex;
+    position: absolute;
+    margin-left: 0%;
+    left: 0;
+    margin-top: 60px;
+    font-family: "Roboto Condensed";
+    font-size: 38px;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.HorizontalLineTitle {
+    position: absolute;
+    display: flex;
+    width: 60%;
+    height: 1px;
+    background-color: black;
+    margin-top: 100px;
+    top: 4%;
+    margin-left: 25%;
+}

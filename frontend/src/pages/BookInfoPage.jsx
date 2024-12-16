@@ -1,7 +1,12 @@
 import { useEffect, useState } from "react";
-import BookPicture from "../components/BookPicture/BookPicture";
+import BookInfoPicture from "../components/BookInfoPicture/BookInfoPicture";
 import Header from "../components/Header/Header";
 import GetBookInfoById from "../services/GetBookInfoById";
+import BookInfoTitle from "../components/BookInfoTitle/BookInfoTitle";
+import BookInfoDescription from "../components/BookInfoDescription/BookInfoDescription";
+import BookInfoAuthor from "../components/BookInfoAuthor/BookInfoAuthor";
+import BookInfoGenre from "../components/BookInfoGenre/BookInfoGenre";
+import BorrowBookButton from "../components/BorrowBookButton/BorrowBookButton";
 
 export default function BookInfoPage(){
     const [bookInfo, setBookInfo] = useState({});
@@ -21,7 +26,15 @@ export default function BookInfoPage(){
     return(
         <section>
             <Header />
-            {bookInfo.data && <BookPicture imageURL={bookInfo.data.imageURL} />}
+            <main>
+                {bookInfo.data && <BookInfoPicture imageURL={bookInfo.data.imageURL} />}
+                {bookInfo.data && <BookInfoTitle title={bookInfo.data.title} />}
+                {bookInfo.data && <BookInfoDescription description={bookInfo.data.description} />}
+                {bookInfo.data && <BookInfoAuthor authorFirstName={bookInfo.data.authorFirstName} authorSecondName={bookInfo.data.authorSecondName} />}
+                {bookInfo.data && <BookInfoGenre genre={bookInfo.data.genre} />}
+
+                <BorrowBookButton />
+            </main>
         </section>
     );
 }

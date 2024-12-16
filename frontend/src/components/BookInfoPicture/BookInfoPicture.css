@@ -1,0 +1,16 @@
+.BookPicture{
+    position: absolute;
+    display: flex;
+    height: 90vh;
+    width: 17%;
+    justify-content: center;
+    align-items: center;
+    margin-top: 60px;
+    top: 0;
+    margin-left: 0.5%;
+}
+
+.BookInfoPicture{
+    border-radius: 10px;
+    width: 100%;
+}

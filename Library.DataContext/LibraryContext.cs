@@ -50,7 +50,7 @@ namespace Library.DataContext
 
                 b.Property(b => b.Genre).HasMaxLength(89);
 
-                b.Property(b => b.Description).HasMaxLength(100);
+                b.Property(b => b.Description).HasMaxLength(250);
 
                 b.Property(b => b.AuthorFirstName).HasMaxLength(30);
 

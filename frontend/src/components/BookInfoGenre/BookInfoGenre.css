@@ -1,0 +1,24 @@
+.BookInfoGenre{
+    display: flex;
+    position: absolute;
+    font-family: "Roboto Condensed";
+    font-size: 20px;
+    left: 26%;
+    top: 12%;
+    margin-top: 215px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.HorizontalLineGenre {
+    position: absolute;
+    display: flex;
+    width: 60%;
+    height: 1px;
+    background-color: black;
+    margin-top: 280px;
+    top: 9%;
+    margin-left: 25%;
+}
+
