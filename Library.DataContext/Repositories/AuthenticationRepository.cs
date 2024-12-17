@@ -21,7 +21,7 @@ namespace LibraryAccounts.DataContext.Repositories
             _tokenProvider = tokenProvider;
         }
 
-        public async Task<LogInResponseRecord?> LogInUser(LogInUserRecord user, HttpContext context)
+        public async Task<LogInResponseRecord?> LogInUser(RegisterUserRecord user, HttpContext context)
         {
             var userEntity = await _db.Users.FirstOrDefaultAsync(u => u.Login == user.Login);
 
@@ -66,6 +66,11 @@ namespace LibraryAccounts.DataContext.Repositories
 
             userEntity.Id = Guid.NewGuid();
             userEntity.PasswordHash = passwordHash;
+            
+            if (user.IsAdmin == "true")
+                userEntity.IsAdmin = true;
+            else
+                userEntity.IsAdmin = false;
 
             var createdUser = await _db.Users.AddAsync(userEntity);
 

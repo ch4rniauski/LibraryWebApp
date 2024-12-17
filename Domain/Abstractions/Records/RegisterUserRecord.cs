@@ -4,5 +4,5 @@
         string Login,
         string Email,
         string Password,
-        bool IsAdmin);
+        string IsAdmin);
 }

@@ -93,6 +93,12 @@ export default function RegistrationForm(){
                     })}/>
                 </div>
 
+                <div className="IsAdminCheckBox">
+                    <input type="checkbox" {...register("isAdmin", {
+                        required: false
+                    })}/>Check if you are an Admin
+                </div>
+
                 <button type="submit" className="RegistrationButton">
                     Registration
                 </button>

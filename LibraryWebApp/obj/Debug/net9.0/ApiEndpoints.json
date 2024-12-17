@@ -35,7 +35,7 @@
     "Parameters": [
       {
         "Name": "request",
-        "Type": "Domain.Abstractions.Records.LogInUserRecord",
+        "Type": "Domain.Abstractions.Records.RegisterUserRecord",
         "IsRequired": true
       }
     ],

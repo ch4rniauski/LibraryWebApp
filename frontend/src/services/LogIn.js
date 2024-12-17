@@ -6,6 +6,7 @@ export default async function LogInUser(data){
             login: data.login,
             email: data.email,
             password: data.password,
+            isAdmin: "false",
         },{
             withCredentials: true
         });

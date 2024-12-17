@@ -62,17 +62,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/LogInUserRecord"
+                "$ref": "#/components/schemas/RegisterUserRecord"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/LogInUserRecord"
+                "$ref": "#/components/schemas/RegisterUserRecord"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/LogInUserRecord"
+                "$ref": "#/components/schemas/RegisterUserRecord"
               }
             }
           }
@@ -771,24 +771,6 @@
         },
         "additionalProperties": false
       },
-      "LogInUserRecord": {
-        "type": "object",
-        "properties": {
-          "login": {
-            "type": "string",
-            "nullable": true
-          },
-          "email": {
-            "type": "string",
-            "nullable": true
-          },
-          "password": {
-            "type": "string",
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
-      },
       "RegisterUserRecord": {
         "type": "object",
         "properties": {
@@ -805,7 +787,8 @@
             "nullable": true
           },
           "isAdmin": {
-            "type": "boolean"
+            "type": "string",
+            "nullable": true
           }
         },
         "additionalProperties": false
