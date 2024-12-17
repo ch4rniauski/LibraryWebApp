@@ -32,14 +32,14 @@ namespace LibraryWebApp.Controllers
             string? isCreated = await _uof.BookRepository.CreateBook(request);
 
             if (!string.IsNullOrEmpty(isCreated))
-                return BadRequest($"Book wasn't created. {isCreated}");
+                return BadRequest($"{isCreated}");
 
             _uof.Save();
 
             return Ok();
         }
 
-        [HttpGet]
+        [HttpGet("all")]
         public ActionResult<List<GetBookRecord>> GetAll()
         {
             return Ok(_uof.BookRepository.GetAllBooks());
@@ -63,6 +63,12 @@ namespace LibraryWebApp.Controllers
             if (book is null)
                 return NotFound("Book with that ISBN wasn't found");
             return Ok(book);
+        }
+
+        [HttpGet]
+        public async Task<ActionResult<List<GetBookRecord>?>> GetWithParams()
+        {
+            return Ok();
         }
 
         [HttpDelete("{id:Guid}")]

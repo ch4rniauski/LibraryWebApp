@@ -63,6 +63,13 @@ namespace LibraryWebApp.Controllers
             return Ok();
         }
 
+        [HttpGet("admin")]
+        [Authorize(Policy = "AdminPolicy")]
+        public ActionResult IsAdmin()
+        {
+            return Ok();
+        }
+
         [HttpDelete("{id:guid}")]
         [Authorize]
         public async Task<ActionResult> DeleteUser(Guid id)

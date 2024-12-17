@@ -1,0 +1,16 @@
+.SubmitButton{
+    text-shadow: 0 0 1px rgba(0, 0, 0, 0.3);
+    margin: 7px;
+    background-color:rgb(24, 233, 181);
+    font-family: "Roboto Condensed";
+    font-size: 17px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 38px;
+    width: 95px;
+    border-radius: 10%;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+    transition: 0.15s;
+}

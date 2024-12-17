@@ -17,6 +17,16 @@
   },
   {
     "ContainingType": "LibraryWebApp.Controllers.AuthenticationController",
+    "Method": "IsAdmin",
+    "RelativePath": "Authentication/admin",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "LibraryWebApp.Controllers.AuthenticationController",
     "Method": "IsAuthorized",
     "RelativePath": "Authentication/auth",
     "HttpMethod": "GET",
@@ -205,7 +215,7 @@
   },
   {
     "ContainingType": "LibraryWebApp.Controllers.BookController",
-    "Method": "GetAll",
+    "Method": "GetWithParams",
     "RelativePath": "Book",
     "HttpMethod": "GET",
     "IsController": true,
@@ -303,6 +313,26 @@
     "ReturnTypes": [
       {
         "Type": "Domain.Abstractions.Records.UpdateBookRecord",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "LibraryWebApp.Controllers.BookController",
+    "Method": "GetAll",
+    "RelativePath": "Book/all",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.List\u00601[[Domain.Abstractions.Records.GetBookRecord, Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",

@@ -12,12 +12,20 @@
 }
 
 .ProfileAvatar{
-    margin-top: 50%;
+    top: 30px;
+    margin-top: 45%;
     scale: 300%;
 }
 
 .UserLogin{
     font-family: "Roboto Condensed";
     font-size: 25px;
-    margin-top: 10%;
+    margin-top: 25%;
+}
+
+.AdminButtons{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }

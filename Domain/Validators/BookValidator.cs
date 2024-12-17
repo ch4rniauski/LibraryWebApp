@@ -1,5 +1,6 @@
 ﻿using Domain.Abstractions.Records;
 using FluentValidation;
+using System.Text.RegularExpressions;
 
 namespace Domain.Validators
 {
@@ -27,6 +28,21 @@ namespace Domain.Validators
             RuleFor(b => b.DueDate)
                 .GreaterThanOrEqualTo(DateOnly.FromDateTime(DateTime.Today))
                 .LessThan(DateOnly.FromDateTime(DateTime.Today.AddDays(30)));
+
+            RuleFor(book => book.ISBN)
+                .Must(isValidISBNCode)
+                .WithMessage("Invalid ISBN format");
+        }
+
+        public static bool isValidISBNCode(string str)
+        {
+            string strRegex
+                = @"^(?=(?:[^0-9]*[0-9]){10}(?:(?:[^0-9]*[0-9]){3})?$)[\d-]+$";
+            Regex re = new Regex(strRegex);
+            if (re.IsMatch(str))
+                return (true);
+            else
+                return (false);
         }
     }
 }

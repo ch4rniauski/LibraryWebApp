@@ -13,6 +13,7 @@
   "dependencies": {
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.0",
+    "@mui/base": "^5.0.0-beta.67",
     "@mui/material": "^5.16.11",
     "axios": "^1.7.9",
     "mkcert": "^3.2.0",

@@ -113,6 +113,18 @@
         }
       }
     },
+    "/Authentication/admin": {
+      "get": {
+        "tags": [
+          "Authentication"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/Authentication/{id}": {
       "delete": {
         "tags": [
@@ -331,6 +343,44 @@
           }
         }
       },
+      "get": {
+        "tags": [
+          "Book"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/GetBookRecord"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/GetBookRecord"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/GetBookRecord"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Book/all": {
       "get": {
         "tags": [
           "Book"

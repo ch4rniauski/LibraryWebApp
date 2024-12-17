@@ -6,12 +6,11 @@ import "./ProfileMainContent.css";
 
 export default function ProfileMainContent(){
     const [borrowedBooks, setBorrowedBooks] = useState(null);
-    const [isHovered, setIsHovered] = useState(false);
+    //const [isHovered, setIsHovered] = useState(false);
 
     useEffect( () => {
         const getBorrowedBooks = async () => {
             const response = await GetBooksByUserId(localStorage.getItem("userId"));
-            console.log(response);
             if (response)
                 setBorrowedBooks(response.data);
         }

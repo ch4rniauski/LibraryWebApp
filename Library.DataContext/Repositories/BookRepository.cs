@@ -18,31 +18,70 @@ namespace Library.DataContext.Repositories
         public async Task<string?> CreateBook(CreateBookRecord book)
         {
             BookEntity newBook = book.Adapt<BookEntity>();
+
             newBook.Id = Guid.NewGuid();
+            newBook.AuthorFirstName = null;
+            newBook.AuthorSecondName = null;
+
+            var isAuthorChanged = false;
 
             if (book.AuthorFirstName is not null)
             {
                 var authorByFirstName = await _db.Auhtors.FirstOrDefaultAsync(a => a.FirstName.ToLower() == book.AuthorFirstName.ToLower());
 
                 if (authorByFirstName is not null)
+                {
                     newBook.AuthorId = authorByFirstName.Id;
-                else if (book.AuthorSecondName is not null)
+                    isAuthorChanged = true;
+
+                    if (book.AuthorSecondName is not null && book.AuthorSecondName.ToLower() != authorByFirstName.SecondName.ToLower())
+                        isAuthorChanged = false;
+                    else
+                    {
+                        newBook.AuthorFirstName = authorByFirstName.FirstName;
+                        newBook.AuthorSecondName = authorByFirstName.SecondName;
+                    }
+                }
+                if (book.AuthorSecondName is not null)
                 {
                     var authorBySecondName = await _db.Auhtors.FirstOrDefaultAsync(a => a.SecondName.ToLower() == book.AuthorSecondName.ToLower());
 
                     if (authorBySecondName is not null)
+                    {
                         newBook.AuthorId = authorBySecondName.Id;
+                        isAuthorChanged = true;
+
+                        if (book.AuthorFirstName is not null && book.AuthorFirstName.ToLower() != authorBySecondName.SecondName.ToLower())
+                            isAuthorChanged = false;
+                        else
+                        {
+                            newBook.AuthorFirstName = authorBySecondName.FirstName;
+                            newBook.AuthorSecondName = authorBySecondName.SecondName;
+                        }
+                    }
                 }
             }
-            if (book.AuthorSecondName is not null && newBook.AuthorId is null)
+            if (isAuthorChanged == false && book.AuthorSecondName is not null)
             {
                 var authorBySecondName = await _db.Auhtors.FirstOrDefaultAsync(a => a.SecondName.ToLower() == book.AuthorSecondName.ToLower());
 
                 if (authorBySecondName is not null)
+                {
                     newBook.AuthorId = authorBySecondName.Id;
-                else
-                    return "That author doesn't exist";
+                    isAuthorChanged = true;
+
+                    if (book.AuthorFirstName is not null && book.AuthorFirstName.ToLower() != authorBySecondName.FirstName.ToLower())
+                        isAuthorChanged = false;
+                    else
+                    {
+                        newBook.AuthorFirstName = authorBySecondName.FirstName;
+                        newBook.AuthorSecondName = authorBySecondName.SecondName;
+                    }
+                }
             }
+
+            if ((book.AuthorFirstName is null || book.AuthorSecondName is null) && !isAuthorChanged)
+                return "Author with that name doesn't exist";
 
             var createdBook = await _db.Books.AddAsync(newBook);
 
