@@ -78,6 +78,8 @@ namespace Library.DataContext
 
                 u.Property(u => u.PasswordHash).IsRequired();
 
+                u.Property(u => u.IsAdmin).IsRequired();
+
                 u.HasMany(u => u.Books)
                 .WithOne(b => b.User);
             });

@@ -21,6 +21,7 @@ namespace LibraryWebApp.Controllers
         }
 
         [HttpPost]
+        [Authorize(Policy = "AdminPolicy")]
         public async Task<ActionResult> Create([FromBody] CreateBookRecord request)
         {
             var result = await _validator.ValidateAsync(request);
@@ -65,6 +66,7 @@ namespace LibraryWebApp.Controllers
         }
 
         [HttpDelete("{id:Guid}")]
+        [Authorize(Policy = "AdminPolicy")]
         public async Task<ActionResult> Delete(Guid id)
         {
             bool isDeleted = await _uof.BookRepository.DeleteBook(id);
@@ -78,6 +80,7 @@ namespace LibraryWebApp.Controllers
         }
 
         [HttpPut("{id:guid}")]
+        [Authorize(Policy = "AdminPolicy")]
         public async Task<ActionResult> Update([FromBody] CreateBookRecord request, Guid id)
         {
             var result = await _validator.ValidateAsync(request);

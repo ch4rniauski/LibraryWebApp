@@ -4,6 +4,7 @@ import LogOut from "../../services/LogOut";
 export default function LogOutButton(){
     const logOutClickHandler = () => {
         LogOut();
+        localStorage.removeItem("userId");
         window.location.href = "/";
     }
     

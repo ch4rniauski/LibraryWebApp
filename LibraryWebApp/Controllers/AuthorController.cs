@@ -2,6 +2,7 @@
 using Domain.Abstractions.UnitsOfWork;
 using FluentValidation;
 using Mapster;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace LibraryWebApp.Controllers
@@ -20,6 +21,7 @@ namespace LibraryWebApp.Controllers
         }
 
         [HttpPost]
+        [Authorize(Policy = "AdminPolicy")]
         public async Task<ActionResult> Create([FromBody] CreateAuthorRecord request)
         {
             var result = await _validator.ValidateAsync(request);
@@ -54,6 +56,7 @@ namespace LibraryWebApp.Controllers
         }
 
         [HttpDelete("{id:Guid}")]
+        [Authorize(Policy = "AdminPolicy")]
         public async Task<ActionResult> Delete(Guid id)
         {
             bool isDeleted = await _uof.AuthorRepository.DeleteAutor(id);
@@ -67,6 +70,7 @@ namespace LibraryWebApp.Controllers
         }
 
         [HttpPut]
+        [Authorize(Policy = "AdminPolicy")]
         public async Task<ActionResult> Update([FromBody] UpdateAuthorRecord request)
         {
             var authorToValidate = request.Adapt<CreateAuthorRecord>();

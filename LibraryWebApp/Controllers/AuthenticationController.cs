@@ -1,6 +1,7 @@
 ﻿using Domain.Abstractions.Records;
 using Domain.Abstractions.UnitsOfWork;
 using FluentValidation;
+using Mapster;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -11,16 +12,16 @@ namespace LibraryWebApp.Controllers
     public class AuthenticationController : ControllerBase
     {
         private readonly IUnitOfWork _uof;
-        private readonly IValidator<UserRecord> _validator;
+        private readonly IValidator<RegisterUserRecord> _validator;
 
-        public AuthenticationController(IUnitOfWork uof, IValidator<UserRecord> validator)
+        public AuthenticationController(IUnitOfWork uof, IValidator<RegisterUserRecord> validator)
         {
             _uof = uof;
             _validator = validator;
         }
 
         [HttpPost("register")]
-        public async Task<ActionResult<string>> Register([FromBody] UserRecord request)
+        public async Task<ActionResult<string>> Register([FromBody] RegisterUserRecord request)
         {
             var result = await _validator.ValidateAsync(request);
 
@@ -38,9 +39,9 @@ namespace LibraryWebApp.Controllers
         }
 
         [HttpPost("login")]
-        public async Task<ActionResult<LogInResponseRecord>> LogIn([FromBody] UserRecord request)
+        public async Task<ActionResult<LogInResponseRecord>> LogIn([FromBody] LogInUserRecord request)
         {
-            var result = await _validator.ValidateAsync(request);
+            var result = await _validator.ValidateAsync(request.Adapt<RegisterUserRecord>());
 
             if (!result.IsValid)
                 return BadRequest(result.Errors.Select(e => new { e.ErrorCode, e.ErrorMessage }));
@@ -97,6 +98,8 @@ namespace LibraryWebApp.Controllers
         {
             HttpContext.Response.Cookies.Delete("accessToken");
             HttpContext.Response.Cookies.Delete("refreshToken");
+            HttpContext.Response.Cookies.Delete("admin");
+
             return Ok();
         }
     }

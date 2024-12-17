@@ -3,7 +3,7 @@ using FluentValidation;
 
 namespace Domain.Validators
 {
-    public class UserValidator : AbstractValidator <UserRecord>
+    public class UserValidator : AbstractValidator <RegisterUserRecord>
     {
         public UserValidator()
         {
@@ -18,6 +18,8 @@ namespace Domain.Validators
             RuleFor(u => u.Login)
                 .NotNull()
                 .MinimumLength(3);
+
+            RuleFor(u => u.IsAdmin).NotEmpty();
         }
     }
 }

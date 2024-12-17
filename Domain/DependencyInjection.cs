@@ -1,8 +1,11 @@
 ﻿using Domain.Abstractions.Records;
+using Domain.Authorization.Handlers;
+using Domain.Authorization.Requirements;
 using Domain.JWT;
 using Domain.Validators;
 using FluentValidation;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
@@ -16,7 +19,7 @@ namespace Domain
         {
             services.AddScoped<IValidator<CreateAuthorRecord>, AuthorValidator>();
             services.AddScoped<IValidator<CreateBookRecord>, BookValidator>();
-            services.AddScoped<IValidator<UserRecord>, UserValidator>();
+            services.AddScoped<IValidator<RegisterUserRecord>, UserValidator>();
             services.AddScoped<TokenProvider>();
 
             return services;
@@ -24,6 +27,9 @@ namespace Domain
 
         static public IServiceCollection AddJWTConfiguration(this IServiceCollection services, IConfiguration configuration)
         {
+            services.AddHttpContextAccessor();
+            services.AddSingleton<IAuthorizationHandler, AdminHandler>();
+
             services.Configure<JWTSettings>(configuration.GetSection("JWTSettings"));
 
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
@@ -52,7 +58,13 @@ namespace Domain
                     };
                 });
 
-            services.AddAuthorization();
+            services.AddAuthorization( o =>
+            {
+                o.AddPolicy("AdminPolicy", policy =>
+                {
+                    policy.Requirements.Add(new AdminRequirement("admin"));
+                });
+            });
 
             return services;
         }

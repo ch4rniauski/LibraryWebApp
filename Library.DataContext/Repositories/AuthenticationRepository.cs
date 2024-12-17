@@ -21,7 +21,7 @@ namespace LibraryAccounts.DataContext.Repositories
             _tokenProvider = tokenProvider;
         }
 
-        public async Task<LogInResponseRecord?> LogInUser(UserRecord user, HttpContext context)
+        public async Task<LogInResponseRecord?> LogInUser(LogInUserRecord user, HttpContext context)
         {
             var userEntity = await _db.Users.FirstOrDefaultAsync(u => u.Login == user.Login);
 
@@ -42,10 +42,13 @@ namespace LibraryAccounts.DataContext.Repositories
             context.Response.Cookies.Append("accessToken", accessToken);
             context.Response.Cookies.Append("refreshToken", refreshToken);
 
+            if (userEntity.IsAdmin)
+                context.Response.Cookies.Append("admin", "true");
+
             return new LogInResponseRecord(userEntity.Id ,accessToken, refreshToken);
         }
 
-        public async Task<string?> RegisterUser(UserRecord user)
+        public async Task<string?> RegisterUser(RegisterUserRecord user)
         {
             var isUserExist = await _db.Users.FirstOrDefaultAsync(u => u.Login == user.Login);
 

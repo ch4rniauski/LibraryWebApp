@@ -12,9 +12,9 @@ namespace LibraryWebApp.Controllers
     public class UserController : ControllerBase
     {
         private readonly IUnitOfWork _uof;
-        private readonly IValidator<UserRecord> _validator;
+        private readonly IValidator<RegisterUserRecord> _validator;
 
-        public UserController(IUnitOfWork uof, IValidator<UserRecord> validator)
+        public UserController(IUnitOfWork uof, IValidator<RegisterUserRecord> validator)
         {
             _uof = uof;
             _validator = validator;
@@ -22,7 +22,7 @@ namespace LibraryWebApp.Controllers
 
         [HttpGet("{id:guid}")]
         [Authorize]
-        public async Task<ActionResult<UserRecord?>> GetUsetInfo(Guid id)
+        public async Task<ActionResult<RegisterUserRecord?>> GetUsetInfo(Guid id)
         {
             var user = await _uof.UserRepository.GetUserInfo(id);
 

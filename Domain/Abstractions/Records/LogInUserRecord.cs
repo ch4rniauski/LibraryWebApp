@@ -1,6 +1,6 @@
 ﻿namespace Domain.Abstractions.Records
 {
-    public record UserRecord(
+    public record LogInUserRecord(
         string Login,
         string Email,
         string Password);

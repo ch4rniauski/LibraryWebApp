@@ -35,7 +35,7 @@
     "Parameters": [
       {
         "Name": "request",
-        "Type": "Domain.Abstractions.Records.UserRecord",
+        "Type": "Domain.Abstractions.Records.LogInUserRecord",
         "IsRequired": true
       }
     ],
@@ -71,7 +71,7 @@
     "Parameters": [
       {
         "Name": "request",
-        "Type": "Domain.Abstractions.Records.UserRecord",
+        "Type": "Domain.Abstractions.Records.RegisterUserRecord",
         "IsRequired": true
       }
     ],
@@ -354,7 +354,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "Domain.Abstractions.Records.UserRecord",
+        "Type": "Domain.Abstractions.Records.RegisterUserRecord",
         "MediaTypes": [
           "text/plain",
           "application/json",
