@@ -1,10 +1,9 @@
-import "./AddAuthorButton.css";
+import "./DeleteBookButton.css";
 import * as React from 'react';
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
-import "./AddAuthorButton.css";
-import AddAuthorForm from '../AddAuthorForm/AddAuthorForm.jsx';
-import CloseModalButton from "../CloseModalButton/CloseModalButton.jsx";
+import CloseModalButton from "../CloseModalButton/CloseModalButton";
+import DeleteBookForm from "../DeleteBookForm/DeleteBookForm";
 
 const style = {
     position: 'absolute',
@@ -18,14 +17,15 @@ const style = {
     p: 4,
 };
 
-export default function AddAuthorButton(){
+export default function DeleteBookButton(){
     const [open, setOpen] = React.useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
 
-    return(
-        <div>
-            <button className='AddAuthorButton' onClick={handleOpen}>Add Author</button>
+    return (
+        <div className="DeleteBook">
+            <button className="DeleteBookButton" onClick={handleOpen}>Delete Book</button>
+
             <Modal 
                 open={open}
                 onClose={handleClose}
@@ -33,10 +33,11 @@ export default function AddAuthorButton(){
                 aria-describedby="modal-modal-description"
             >
                 <Box sx={style}>
-                    <CloseModalButton setOpen={setOpen}/>
-                <AddAuthorForm />
+                <CloseModalButton setOpen={setOpen}/>
+                <DeleteBookForm />
                 </Box>
             </Modal>
+
         </div>
     );
 }

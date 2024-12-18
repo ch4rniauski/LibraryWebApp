@@ -214,8 +214,7 @@
               "RelativeToolTip": "LibraryWebApp\\Controllers\\AuthenticationController.cs",
               "ViewState": "AgIAACIAAAAAAAAAAAAIwCkAAABaAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-07T06:02:01.974Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-07T06:02:01.974Z"
             },
             {
               "$type": "Document",
@@ -288,8 +287,7 @@
               "RelativeToolTip": "Domain\\DependencyInjection.cs",
               "ViewState": "AgIAABMAAAAAAAAAAAAgwBMAAAA8AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-02T18:05:06.863Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-02T18:05:06.863Z"
             },
             {
               "$type": "Document",
@@ -301,8 +299,7 @@
               "RelativeToolTip": "Library.DataContext\\LibraryContext.cs",
               "ViewState": "AgIAAEkAAAAAAAAAAAAvwFcAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-01T08:36:40.234Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-01T08:36:40.234Z"
             },
             {
               "$type": "Document",
@@ -314,8 +311,7 @@
               "RelativeToolTip": "LibraryWebApp\\Controllers\\BookController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAASAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-03T16:36:53.287Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-03T16:36:53.287Z"
             },
             {
               "$type": "Document",
@@ -387,8 +383,7 @@
               "RelativeToolTip": "Domain\\Validators\\BookValidator.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAYwA4AAAAcAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-30T18:51:18.898Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-30T18:51:18.898Z"
             },
             {
               "$type": "Document",
@@ -400,8 +395,7 @@
               "RelativeToolTip": "LibraryWebApp\\Controllers\\AuthorController.cs",
               "ViewState": "AgIAAAkAAAAAAAAAAAAAABoAAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-04T11:05:50.376Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-04T11:05:50.376Z"
             },
             {
               "$type": "Document",
@@ -521,8 +515,7 @@
               "RelativeToolTip": "Domain\\Abstractions\\Records\\GetBookResponse.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-17T20:19:34.28Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-17T20:19:34.28Z"
             },
             {
               "$type": "Document",
@@ -594,8 +587,7 @@
               "RelativeToolTip": "Library.DataContext\\UnitsOfWork\\UnitOfWork.cs",
               "ViewState": "AgIAAAkAAAAAAAAAAAAowBwAAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-02T17:03:52.945Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-02T17:03:52.945Z"
             },
             {
               "$type": "Document",
@@ -607,8 +599,7 @@
               "RelativeToolTip": "Domain\\Abstractions\\UnitsOfWork\\IUnitOfWorkLibrary.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAqwAQAAAAVAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-02T16:57:35.6Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-02T16:57:35.6Z"
             },
             {
               "$type": "Document",
@@ -632,8 +623,7 @@
               "RelativeToolTip": "Domain\\Abstractions\\Records\\CreateAuthorRecord.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAASAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-01T17:28:39.159Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-01T17:28:39.159Z"
             },
             {
               "$type": "Document",
@@ -657,8 +647,7 @@
               "RelativeToolTip": "Library.DataContext\\DependencyInjection.cs",
               "ViewState": "AgIAAAYAAAAAAAAAAAAAABEAAAA2AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-01T13:24:18.238Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-01T13:24:18.238Z"
             },
             {
               "$type": "Document",
@@ -694,8 +683,7 @@
               "RelativeToolTip": "Domain\\Validators\\AuthorValidator.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAqwAUAAABHAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-30T18:43:51.651Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-30T18:43:51.651Z"
             },
             {
               "$type": "Document",
@@ -779,8 +767,7 @@
               "RelativeToolTip": "LibraryWebApp\\Program.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAAnAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-30T13:04:04.728Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-30T13:04:04.728Z"
             }
           ]
         }

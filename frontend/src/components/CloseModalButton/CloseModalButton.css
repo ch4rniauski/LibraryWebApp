@@ -1,0 +1,20 @@
+.CloseModalButton{
+    display: flex;
+    justify-content: center;
+    text-shadow: 0 0 1px rgba(0, 0, 0, 0.3);
+    left: 0;
+    bottom: 0;
+    width: 70px;
+    height: 30px;
+    font-size: 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.15s;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+    background-color:cornflowerblue;
+}
+
+.CloseModalButton:hover{
+    transform: scale(1.05);
+}
+

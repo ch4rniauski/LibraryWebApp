@@ -15,7 +15,6 @@ export default function MainHomePage(props){
         const getBooks = async () => {
             const response = await GetBooksWithParams(filter);
             setBooks(response.data);
-            console.log(response);
         }
 
         getBooks();

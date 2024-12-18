@@ -3,6 +3,7 @@ import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import "./AddBookButton.css";
 import AddBookForm from '../AddBookForm/AddBookForm';
+import CloseModalButton from '../CloseModalButton/CloseModalButton';
 
 const style = {
   position: 'absolute',
@@ -31,6 +32,7 @@ export default function BasicModal() {
             aria-describedby="modal-modal-description"
         >
             <Box sx={style}>
+              <CloseModalButton setOpen={setOpen}/>
             <AddBookForm />
             </Box>
         </Modal>

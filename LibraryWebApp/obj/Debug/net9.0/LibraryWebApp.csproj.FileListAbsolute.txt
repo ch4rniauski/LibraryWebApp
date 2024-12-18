@@ -500,3 +500,4 @@ C:\CSharp\LibraryWebApp\LibraryWebApp\obj\Debug\net9.0\refint\LibraryWebApp.dll
 C:\CSharp\LibraryWebApp\LibraryWebApp\obj\Debug\net9.0\LibraryWebApp.pdb
 C:\CSharp\LibraryWebApp\LibraryWebApp\obj\Debug\net9.0\LibraryWebApp.genruntimeconfig.cache
 C:\CSharp\LibraryWebApp\LibraryWebApp\obj\Debug\net9.0\ref\LibraryWebApp.dll
+D:\CSharp\LibraryWebApp\LibraryWebApp\obj\Debug\net9.0\staticwebassets.upToDateCheck.txt
