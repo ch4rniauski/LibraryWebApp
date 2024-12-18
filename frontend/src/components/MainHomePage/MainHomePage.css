@@ -1,5 +1,5 @@
 .MainHomePage{
-    margin: 55px 0;
+    margin: 40px 0;
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
@@ -12,4 +12,51 @@
 
 .BookCard:hover{
     transform: scale(1.03);
+}
+
+.SearchComponents{
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    top: 50px;
+    right: 5px;
+    margin-right: 8px;
+}
+
+.SearchFilter {
+    margin: 20px;
+}
+
+.sortBy {
+    display: flex;
+    padding: 10px;
+    font-size: 16px;
+    border: 2px solid #3498db;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+.sortBy option {
+    background-color: #f9f9f9;
+}
+
+.BookTitleSearch {
+    display: flex;
+    position: relative;
+    width: 180px;
+    padding: 10px;
+    font-size: 16px;
+    border: 2px solid #3498db;
+    border-radius: 5px;;
+}
+
+.BookTitleSearch::placeholder {
+    color: #a9a9a9;
+}
+
+.NoBooksMessage{
+    font-family: "Roboto Condensed";
+    display: flex;
+    font-size: 40px;
 }

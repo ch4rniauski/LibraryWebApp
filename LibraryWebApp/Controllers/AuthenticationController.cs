@@ -39,9 +39,9 @@ namespace LibraryWebApp.Controllers
         }
 
         [HttpPost("login")]
-        public async Task<ActionResult<LogInResponseRecord>> LogIn([FromBody] RegisterUserRecord request)
+        public async Task<ActionResult<LogInResponseRecord>> LogIn([FromBody] LogInRequest request)
         {
-            var result = await _validator.ValidateAsync(request);
+            var result = await _validator.ValidateAsync(request.Adapt<RegisterUserRecord>());
 
             if (!result.IsValid)
                 return BadRequest(result.Errors.Select(e => new { e.ErrorCode, e.ErrorMessage }));

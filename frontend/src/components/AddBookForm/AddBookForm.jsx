@@ -1,11 +1,12 @@
 import { useForm } from "react-hook-form";
 import "./AddBookForm.css";
-import SubmitButton from "../SubmitButton/SubmitButton";
-import AddBook from "../../services/AddBook";
+import SubmitButton from "../SubmitButton/SubmitButton.jsx";
+import AddBook from "../../services/AddBook.js";
 import { useState } from "react";
 
 export default function AddBookForm(){
     const [responseError, setResponseError] = useState(null);
+    const [success, setSuccess] = useState("");
 
     const {register, handleSubmit, formState:{
         errors
@@ -14,6 +15,8 @@ export default function AddBookForm(){
     });
 
     const submitHandler = async (data) => {
+        setSuccess("");
+
         const response = await AddBook(data);
 
         if (response.status != 200){
@@ -22,13 +25,25 @@ export default function AddBookForm(){
             else
                 setResponseError(response.response.data);
         }
+        else
+            setSuccess("Book was successfully added")
+    }
+
+    const onInputHandler = (e) => {
+        if (e.target.value.trim() === '') {
+            e.target.value = null;
+            e.target.dispatchEvent(new Event('input'));
+        }
     }
 
     return (
         <form className="AddBookForm" onSubmit={handleSubmit(submitHandler)}>
             <h2>Book Information</h2>
 
+            {success != "" && <p className="SuccessResponse"> {success} </p>}
+
             {responseError && <p className="ErrorMessage"> {responseError} </p> }
+            
             {errors.title && <p className="ErrorMessage"> {errors.title.message} </p> }
             <div className="AddBookInput">
                 <input type="text" placeholder="Title *"{...register("title", {
@@ -53,12 +68,12 @@ export default function AddBookForm(){
             
             {errors.genre && <p className="ErrorMessage"> {errors.genre.message} </p> }
             <div className="AddBookInput">
-                <input type="text" placeholder="Genre"{...register("genre", {
+                <input type="text" placeholder="Genre *"{...register("genre", {
+                    required: "That field is required",
                     maxLength: {
                         value: 89,
                         message: "Genre can't contain more than 89 symbols"
-                    },
-                    value: null
+                    }
                 })}/>
             </div>
             
@@ -70,7 +85,8 @@ export default function AddBookForm(){
                         message: "Description cant contain more than 250 symbols"
                     },
                     value: null
-                })}/>
+                })}
+                onInput={(e) => onInputHandler(e)}/>
             </div>
             
             {errors.authorFirstName && <p className="ErrorMessage"> {errors.authorFirstName.message} </p> }
@@ -81,7 +97,8 @@ export default function AddBookForm(){
                         message: "That field cant contain more than 30 symbols"
                     },
                     value: null
-                })}/>
+                })}
+                onInput={(e) => onInputHandler(e)}/>
             </div>
             
             {errors.authorSecondName && <p className="ErrorMessage"> {errors.authorSecondName.message} </p> }
@@ -92,13 +109,15 @@ export default function AddBookForm(){
                         message: "That field cant contain more than 30 symbols"
                     },
                     value: null
-                })}/>
+                })}
+                onInput={(e) => onInputHandler(e)}/>
             </div>
             
             <div className="AddBookInput">
                 <input type="text" placeholder="Image URL"{...register("imageURL", {
                     value: null
-                })}/>
+                })}
+                onInput={(e) => onInputHandler(e)}/>
             </div>
 
             <SubmitButton />

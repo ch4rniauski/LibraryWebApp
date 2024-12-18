@@ -48,7 +48,9 @@ namespace Library.DataContext
                 .IsRequired()
                 .HasMaxLength(50);
 
-                b.Property(b => b.Genre).HasMaxLength(89);
+                b.Property(b => b.Genre)
+                .IsRequired()
+                .HasMaxLength(89);
 
                 b.Property(b => b.Description).HasMaxLength(250);
 

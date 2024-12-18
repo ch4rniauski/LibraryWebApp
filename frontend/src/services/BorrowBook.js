@@ -12,8 +12,6 @@ export default async function BorrowBook(UserId, BookId) {
         return true;
     }
     catch(error){
-        console.error(error);
-
         return false;
     }
 }

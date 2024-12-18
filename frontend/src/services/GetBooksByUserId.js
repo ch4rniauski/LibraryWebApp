@@ -10,8 +10,6 @@ export default async function GetBooksByUserId(userId){
         return response
     }
     catch(error){
-        console.error(error);
-        
         return null;
     }
 }

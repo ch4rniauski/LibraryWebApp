@@ -80,7 +80,7 @@ namespace Library.DataContext.Repositories
                 }
             }
 
-            if ((book.AuthorFirstName is null || book.AuthorSecondName is null) && !isAuthorChanged)
+            if ((book.AuthorFirstName is not null || book.AuthorSecondName is not null) && !isAuthorChanged)
                 return "Author with that name doesn't exist";
 
             var createdBook = await _db.Books.AddAsync(newBook);
@@ -100,7 +100,7 @@ namespace Library.DataContext.Repositories
             return true;
         }
 
-        public List<GetBookRecord> GetAllBooks()
+        public List<GetBookRecord>? GetAllBooks()
         {
             var books = _db.Books;
 
@@ -193,12 +193,18 @@ namespace Library.DataContext.Repositories
 
             if (books is not null)
             {
-                booksToReturn = request.SortBy switch
+                books = request.SortBy switch
                 {
-                    "genre" => books.OrderBy(b => b.Genre).Adapt<List<GetBookResponse>>(),
-                    "author" => books.OrderBy(b => b.Author).Adapt<List<GetBookResponse>>(),
-                    _ => books.Adapt<List<GetBookResponse>>()
+                    "genre" => books.OrderBy(b => b.Genre).ToList(),
+                    "author" => books.OrderBy(b => b.AuthorFirstName).ThenBy(b => b.AuthorSecondName).ToList(),
+                    _ => books
                 };
+            }
+
+            if (books is not null)
+            {
+                foreach(var book in books)
+                    booksToReturn.Add(new GetBookResponse(book.Id, book.Title, book.ImageURL));
             }
 
             return booksToReturn;
@@ -219,8 +225,6 @@ namespace Library.DataContext.Repositories
             }
 
             bookToUpdate.ISBN = book.ISBN;
-            bookToUpdate.TakenAt = book.TakenAt;
-            bookToUpdate.DueDate = book.DueDate;
             bookToUpdate.Description = book.Description;
             bookToUpdate.Genre = book.Genre;
             bookToUpdate.Title = book.Title;
@@ -284,7 +288,7 @@ namespace Library.DataContext.Repositories
                 }
             }
 
-            if (book.AuthorFirstName is not null && book.AuthorSecondName is not null && !isAuthorChanged)
+            if ((book.AuthorFirstName is not null || book.AuthorSecondName is not null) && !isAuthorChanged)
                 return false;
             return true;
         }

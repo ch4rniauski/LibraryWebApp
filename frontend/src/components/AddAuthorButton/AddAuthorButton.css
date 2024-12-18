@@ -1,9 +1,9 @@
 .AddAuthorButton{
     text-shadow: 0 0 1px rgba(0, 0, 0, 0.3);
     left: 0;
+    margin-top: 10px;
     bottom: 0;
-    margin: 10px;
-    width: 115px;
+    width: 120px;
     height: 40px;
     font-size: 20px;
     border-radius: 5px;

@@ -76,6 +76,7 @@ namespace Library.DataContext.Migrations
                         .HasColumnType("date");
 
                     b.Property<string>("Genre")
+                        .IsRequired()
                         .HasMaxLength(89)
                         .HasColumnType("nvarchar(89)");
 
