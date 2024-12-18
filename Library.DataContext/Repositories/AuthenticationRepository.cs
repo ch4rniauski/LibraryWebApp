@@ -21,7 +21,7 @@ namespace LibraryAccounts.DataContext.Repositories
             _tokenProvider = tokenProvider;
         }
 
-        public async Task<LogInResponseRecord?> LogInUser(RegisterUserRecord user, HttpContext context)
+        public async Task<LogInResponseRecord?> LogInUser(LogInRequest user, HttpContext context)
         {
             var userEntity = await _db.Users.FirstOrDefaultAsync(u => u.Login == user.Login);
 

@@ -19,7 +19,7 @@ export default function HomePage(){
     return(
         <div>
             <Header />
-            <Search />
+            {/* <Search /> */}
             <MainHomePage books={books}/>
         </div>
     );

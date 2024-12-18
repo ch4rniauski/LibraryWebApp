@@ -1,7 +1,12 @@
 import axios from 'axios'
 
 export default async function FetchAllBooks() {
-    const response = await axios.get("https://localhost:7186/Book");
+    try{
+        const response = await axios.get("https://localhost:7186/Book/all");
+        
+        return response.data;
+    }catch(error){
+        return null;
+    }
     
-    return response.data;
 }

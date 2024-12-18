@@ -5656,19 +5656,19 @@
   },
   "packageFolders": {
     "C:\\Users\\Admin\\.nuget\\packages\\": {},
-    "D:\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\CSharp\\LibraryWebApp\\LibraryWebApp\\LibraryWebApp.csproj",
+      "projectUniqueName": "C:\\CSharp\\LibraryWebApp\\LibraryWebApp\\LibraryWebApp.csproj",
       "projectName": "LibraryWebApp",
-      "projectPath": "D:\\CSharp\\LibraryWebApp\\LibraryWebApp\\LibraryWebApp.csproj",
+      "projectPath": "C:\\CSharp\\LibraryWebApp\\LibraryWebApp\\LibraryWebApp.csproj",
       "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-      "outputPath": "D:\\CSharp\\LibraryWebApp\\LibraryWebApp\\obj\\",
+      "outputPath": "C:\\CSharp\\LibraryWebApp\\LibraryWebApp\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "D:\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
         "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -5686,8 +5686,8 @@
         "net9.0": {
           "targetAlias": "net9.0",
           "projectReferences": {
-            "D:\\CSharp\\LibraryWebApp\\Library.DataContext\\Library.DataContext.csproj": {
-              "projectPath": "D:\\CSharp\\LibraryWebApp\\Library.DataContext\\Library.DataContext.csproj"
+            "C:\\CSharp\\LibraryWebApp\\Library.DataContext\\Library.DataContext.csproj": {
+              "projectPath": "C:\\CSharp\\LibraryWebApp\\Library.DataContext\\Library.DataContext.csproj"
             }
           }
         }
@@ -5700,7 +5700,7 @@
       "restoreAuditProperties": {
         "enableAudit": "true",
         "auditLevel": "low",
-        "auditMode": "direct"
+        "auditMode": "all"
       },
       "SdkAnalysisLevel": "9.0.100"
     },
@@ -5742,7 +5742,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "c:\\program files\\dotnet\\sdk\\9.0.101/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.100/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

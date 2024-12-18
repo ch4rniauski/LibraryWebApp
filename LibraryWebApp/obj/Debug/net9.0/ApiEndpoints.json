@@ -45,7 +45,7 @@
     "Parameters": [
       {
         "Name": "request",
-        "Type": "Domain.Abstractions.Records.RegisterUserRecord",
+        "Type": "Domain.Abstractions.Records.LogInRequest",
         "IsRequired": true
       }
     ],
@@ -215,26 +215,6 @@
   },
   {
     "ContainingType": "LibraryWebApp.Controllers.BookController",
-    "Method": "GetWithParams",
-    "RelativePath": "Book",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [],
-    "ReturnTypes": [
-      {
-        "Type": "System.Collections.Generic.List\u00601[[Domain.Abstractions.Records.GetBookRecord, Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
-      }
-    ]
-  },
-  {
-    "ContainingType": "LibraryWebApp.Controllers.BookController",
     "Method": "GetById",
     "RelativePath": "Book/{id}",
     "HttpMethod": "GET",
@@ -359,6 +339,32 @@
     "ReturnTypes": [
       {
         "Type": "System.Collections.Generic.List\u00601[[Domain.Abstractions.Records.GetBookRecord, Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "LibraryWebApp.Controllers.BookController",
+    "Method": "GetWithParams",
+    "RelativePath": "Book/getbooks",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "Domain.Abstractions.Records.GetBookRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.List\u00601[[Domain.Abstractions.Records.GetBookResponse, Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",

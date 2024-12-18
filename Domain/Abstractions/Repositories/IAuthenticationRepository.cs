@@ -6,7 +6,7 @@ namespace Domain.Abstractions.Repositories
     public interface IAuthenticationRepository
     {
         Task<string?> RegisterUser(RegisterUserRecord user);
-        Task<LogInResponseRecord?> LogInUser(RegisterUserRecord user, HttpContext context);
+        Task<LogInResponseRecord?> LogInUser(LogInRequest user, HttpContext context);
         Task<bool> DeleteUser(Guid id);
         Task<string?> UpdateAccessToken(Guid id, string refreshToken);
     }

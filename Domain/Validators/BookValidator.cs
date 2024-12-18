@@ -14,7 +14,9 @@ namespace Domain.Validators
                 .NotNull()
                 .Length(1, 50);
 
-            RuleFor(b => b.Genre).Length(1, 89);
+            RuleFor(b => b.Genre)
+                .NotNull()
+                .Length(1, 89);
 
             RuleFor(b => b.Description).Length(1, 250);
 

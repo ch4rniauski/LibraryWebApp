@@ -1,5 +1,11 @@
-.sortBy{
-    margin-top: 100px;
+.SearchComponents{
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    top: 50px;
+    right: 5px;
+    margin-right: 8px;
 }
 
 .SearchFilter {
@@ -7,6 +13,7 @@
 }
 
 .sortBy {
+    display: flex;
     padding: 10px;
     font-size: 16px;
     border: 2px solid #3498db;
@@ -16,4 +23,18 @@
 
 .sortBy option {
     background-color: #f9f9f9;
+}
+
+.BookTitleSearch {
+    display: flex;
+    position: relative;
+    width: 180px;
+    padding: 10px;
+    font-size: 16px;
+    border: 2px solid #3498db;
+    border-radius: 5px;;
+}
+
+.BookTitleSearch::placeholder {
+    color: #a9a9a9;
 }

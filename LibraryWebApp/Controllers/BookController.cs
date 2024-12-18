@@ -40,7 +40,7 @@ namespace LibraryWebApp.Controllers
         }
 
         [HttpGet("all")]
-        public ActionResult<List<GetBookRecord>> GetAll()
+        public ActionResult<List<GetBookRecord>?> GetAll()
         {
             return Ok(_uof.BookRepository.GetAllBooks());
         }
@@ -65,12 +65,12 @@ namespace LibraryWebApp.Controllers
             return Ok(book);
         }
 
-        [HttpGet]
+        [HttpPost("getbooks")]
         public async Task<ActionResult<List<GetBookResponse>?>> GetWithParams([FromBody] GetBookRequest request)
         {
             var books = await _uof.BookRepository.GetBooksWithParams(request);
 
-            return Ok();
+            return Ok(books);
         }
 
         [HttpDelete("{id:Guid}")]

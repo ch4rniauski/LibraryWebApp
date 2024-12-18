@@ -1,27 +1,45 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./Search.css";
+import GetBooksWithParams from "../../services/GetBooksWithParams";
 
 export default function Search(){
     const [filter, setFilter] = useState({
         search: "",
         sortBy: "author"
     })
-    const onChangeHandler = (data) => {
+
+    useEffect( () => {
+        const getBooksWithParams = async () => {
+            const response = await GetBooksWithParams(filter);
+    
+            console.log(response);
+        }
+
+        getBooksWithParams();
+    }, [filter]);
+    
+    const changeFilterHandler = (data) => {
         setFilter({...filter, sortBy: data})
-        console.log(data);
-        // let lala = document.querySelector(".MainHomePage");
-        // lala.remove();
     }
+
+    const changeSearchHandler = (data) => {
+        setFilter({...filter, search: data})
+    }
+
+    
+
     return(
-        <section>
+        <section className="SearchComponents">
             <div className="SearchFilter">
-                <select name="sortBy" className="sortBy" onChange={ (e) => onChangeHandler(e.target.value)}>
+                <select name="sortBy" className="sortBy" onChange={ (e) => changeFilterHandler(e.target.value)}>
                     <option value="author"> Sort by author</option>
                     <option value="genre"> Sort by genre</option>
                 </select>
             </div>
 
-            <div className="SearchInput"></div>
+            <div className="SearchInput">
+                <input type="text" placeholder="Type book title..." className="BookTitleSearch" onChange={ (e) => changeSearchHandler(e.target.value)}/>
+            </div>
         </section>
     );
 }

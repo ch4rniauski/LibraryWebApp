@@ -18,8 +18,6 @@ namespace Domain.Validators
             RuleFor(u => u.Login)
                 .NotNull()
                 .MinimumLength(3);
-
-            RuleFor(u => u.IsAdmin).NotEmpty();
         }
     }
 }

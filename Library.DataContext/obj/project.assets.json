@@ -5520,19 +5520,19 @@
   },
   "packageFolders": {
     "C:\\Users\\Admin\\.nuget\\packages\\": {},
-    "D:\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\CSharp\\LibraryWebApp\\Library.DataContext\\Library.DataContext.csproj",
+      "projectUniqueName": "C:\\CSharp\\LibraryWebApp\\Library.DataContext\\Library.DataContext.csproj",
       "projectName": "Library.DataContext",
-      "projectPath": "D:\\CSharp\\LibraryWebApp\\Library.DataContext\\Library.DataContext.csproj",
+      "projectPath": "C:\\CSharp\\LibraryWebApp\\Library.DataContext\\Library.DataContext.csproj",
       "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-      "outputPath": "D:\\CSharp\\LibraryWebApp\\Library.DataContext\\obj\\",
+      "outputPath": "C:\\CSharp\\LibraryWebApp\\Library.DataContext\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "D:\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
         "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -5550,8 +5550,8 @@
         "net9.0": {
           "targetAlias": "net9.0",
           "projectReferences": {
-            "D:\\CSharp\\LibraryWebApp\\Domain\\Domain.csproj": {
-              "projectPath": "D:\\CSharp\\LibraryWebApp\\Domain\\Domain.csproj"
+            "C:\\CSharp\\LibraryWebApp\\Domain\\Domain.csproj": {
+              "projectPath": "C:\\CSharp\\LibraryWebApp\\Domain\\Domain.csproj"
             }
           }
         }
@@ -5564,7 +5564,7 @@
       "restoreAuditProperties": {
         "enableAudit": "true",
         "auditLevel": "low",
-        "auditMode": "direct"
+        "auditMode": "all"
       },
       "SdkAnalysisLevel": "9.0.100"
     },
@@ -5605,7 +5605,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "c:\\program files\\dotnet\\sdk\\9.0.101/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.100/PortableRuntimeIdentifierGraph.json"
       }
     }
   }
