@@ -66,8 +66,10 @@ namespace LibraryWebApp.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<List<GetBookRecord>?>> GetWithParams()
+        public async Task<ActionResult<List<GetBookResponse>?>> GetWithParams([FromBody] GetBookRequest request)
         {
+            var books = await _uof.BookRepository.GetBooksWithParams(request);
+
             return Ok();
         }
 

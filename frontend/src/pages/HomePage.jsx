@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import Header from "../components/Header/Header.jsx";
 import FetchAllBooks from "../services/FetchAllBooks.js";
 import MainHomePage from "../components/MainHomePage/MainHomePage.jsx";
-import UnstyledInputBasic from "../components/SearchInput/SearchInput.jsx";
+import Search from "../components/Search/Search.jsx";
 
 export default function HomePage(){
     let [books, setBooks] = useState([]);
@@ -19,7 +19,7 @@ export default function HomePage(){
     return(
         <div>
             <Header />
-            <UnstyledInputBasic onClick={() => console.log("sad")} />
+            <Search />
             <MainHomePage books={books}/>
         </div>
     );

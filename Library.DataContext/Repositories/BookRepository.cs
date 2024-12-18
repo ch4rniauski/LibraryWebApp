@@ -179,6 +179,31 @@ namespace Library.DataContext.Repositories
             return booksToReturn;
         }
 
+        public async Task<List<GetBookResponse>?> GetBooksWithParams(GetBookRequest request)
+        {
+            List<GetBookResponse>? booksToReturn = new();
+            var books = await _db.Books.ToListAsync();
+
+            if (!string.IsNullOrWhiteSpace(request.Search) && books is not null)
+            {
+                books = await _db.Books
+                    .Where(b => b.Title.Contains(request.Search))
+                    .ToListAsync();
+            }
+
+            if (books is not null)
+            {
+                booksToReturn = request.SortBy switch
+                {
+                    "genre" => books.OrderBy(b => b.Genre).Adapt<List<GetBookResponse>>(),
+                    "author" => books.OrderBy(b => b.Author).Adapt<List<GetBookResponse>>(),
+                    _ => books.Adapt<List<GetBookResponse>>()
+                };
+            }
+
+            return booksToReturn;
+        }
+
         public async Task<bool> UpdateBook(CreateBookRecord book, Guid id)
         {
             var bookToUpdate = await _db.Books.FirstOrDefaultAsync(b => b.Id == id);

@@ -11,5 +11,6 @@ namespace Domain.Abstractions.Repositories
         Task<bool> UpdateBook(CreateBookRecord book, Guid id);
         Task<bool> DeleteBook(Guid id);
         List<GetBookRecord>? GetBooksByUserId(Guid id);
+        Task<List<GetBookResponse>?> GetBooksWithParams(GetBookRequest request);
     }
 }
