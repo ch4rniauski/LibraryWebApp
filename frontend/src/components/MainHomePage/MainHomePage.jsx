@@ -2,23 +2,66 @@ import { useEffect, useState } from "react";
 import BookCard from "../BookCard/BookCard";
 import "./MainHomePage.css"
 import GetBooksWithParams from "../../services/GetBooksWithParams";
+import PaginationControlled from "../Pagination/Pagination";
 
-export default function MainHomePage(props){
+export default function MainHomePage(){
     const [filter, setFilter] = useState({
         search: "",
         sortBy: "author"
     })
-
-    const [books, setBooks] = useState(null);
+    const [page, setPage] = useState(1);
+    const [pageLimit, setPageLimit] = useState(1)
+    const [allBooks, setAllBooks] = useState(null);
+    const [displayBooks, setDisplayBooks] = useState(null);
+    const [booksLimit, setBooksLimit] = useState(15);
 
     useEffect( () => {
         const getBooks = async () => {
             const response = await GetBooksWithParams(filter);
-            setBooks(response.data);
+            setAllBooks(response.data);
+
+            if (response.data.length % booksLimit == 0)
+                setPageLimit(response.data.length / booksLimit);
+            else
+                setPageLimit(Math.floor(response.data.length / booksLimit) + 1);
         }
 
         getBooks();
     }, [filter]);
+
+    useEffect( () => {
+        const chooseBooksToReturn = () => {
+            let array = [];
+            
+            if (allBooks != null){
+                for (let i = (page - 1) * booksLimit; i <= (page - 1) * booksLimit + (booksLimit - 1); i++)
+                {
+                    if (!allBooks[i])
+                        break;
+                    array.push(allBooks[i]);
+                }
+        
+                setDisplayBooks(array);
+            }
+        }
+
+        chooseBooksToReturn();
+    }, [allBooks]);
+
+    useEffect( () => {
+        let array = [];
+        
+        if (allBooks != null){
+            for (let i = (page - 1) * booksLimit; i <= (page - 1) * booksLimit + (booksLimit - 1); i++)
+            {
+                if (!allBooks[i])
+                    break;
+                array.push(allBooks[i]);
+            }
+    
+            setDisplayBooks(array);
+        }
+    }, [page]);
     
     const changeSortByHandler = (data) => {
         setFilter({...filter, sortBy: data});
@@ -34,6 +77,10 @@ export default function MainHomePage(props){
 
     return(
         <main className="MainHomePage">
+            {!displayBooks && 
+            <div className="MainHomePage">
+                <p className="NoBooksMessage">Books are not found</p>
+            </div>}
 
             <div className="SearchComponents">
 
@@ -50,20 +97,19 @@ export default function MainHomePage(props){
 
             </div>
 
-            {books && 
+            {displayBooks && 
             <div className="MainHomePage">
-                {books.map((b) => (
+                {displayBooks.map((b) => (
                     <div className="Card" key={b.id} onClick={() => onClickHandler(b)}>
                         <BookCard key={b.id} title={b.title} imageURL={b.imageURL}/>
                     </div>
                 ))}
             </div>
             }
-            {!books && 
-            <div className="MainHomePage">
-                <p className="NoBooksMessage">Books are not found</p>
-            </div>}
-
+            
+            <div className="paginationWrapper">
+                <PaginationControlled setPage={setPage} page={page} pageLimit={pageLimit}/> 
+            </div>          
         </main>
     );
 }

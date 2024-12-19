@@ -1,12 +1,22 @@
 .BookCard{
     display: flex;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-    margin: 20px;
-    top: 40px;
-    text-align: center;
+    top: 5px;
     position: relative;
 }
 
 .Card{
-    margin: 15px;
+    display: flex;
+    margin: 10px;
+    height: 145px;
+    margin-top: 75px;
+}
+
+.List{
+    display: flex;
+    position: relative;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 0;
+    padding: 0px 0px 0px 15px;
 }

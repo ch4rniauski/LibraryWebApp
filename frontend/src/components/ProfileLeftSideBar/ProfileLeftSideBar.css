@@ -18,9 +18,10 @@
 }
 
 .UserLogin{
+    display: flex;
     font-family: "Roboto Condensed";
     font-size: 25px;
-    margin-top: 25%;
+    margin-top: 30%;
 }
 
 .AdminButtons{

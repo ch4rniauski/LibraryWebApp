@@ -3,7 +3,6 @@
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    height: 100%;
 }
 
 .BookCard{
@@ -61,8 +60,10 @@
     font-size: 40px;
 }
 
-.Card{
+.paginationWrapper {
+    position: relative;
+    bottom: 0;
     display: flex;
-    height: 145px;
-    margin-top: 95px;
+    width: 100%;
+    justify-content: center;
 }

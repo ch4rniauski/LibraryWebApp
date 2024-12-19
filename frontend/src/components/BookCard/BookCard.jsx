@@ -13,15 +13,21 @@ export default function BookCard(props) {
         <CardActionArea>
             <CardMedia
             component="img"
-            height="140"
+            height="130"
             image={props.imageURL}
             alt="Book"
             />
             <CardContent>
-            <Typography gutterBottom component="div" justifyContent="center" display="flex">
-              <p className='Paragraph'>{props.title}</p>
-              <p className='Paragraph'>Taken At: {props.takenAt}</p>
-              <p className='Paragraph'>Due Date: {props.dueDate}</p>
+
+            <Typography gutterBottom fontSize="18px" component="div" justifyContent="center" display="flex">
+              <span>{props.title}</span>
+
+              {(props.takenAt && props.dueDate) && 
+                <ul className='List'>
+                  <span className='TakenAt'>Taken At: {props.takenAt}</span>
+                  <span className='Paragraph'>Due Date: {props.dueDate}</span>
+                </ul>
+              }
             </Typography>
             </CardContent>
         </CardActionArea>
