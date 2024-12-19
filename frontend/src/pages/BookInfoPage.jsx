@@ -39,7 +39,7 @@ export default function BookInfoPage(){
     return(
         <section>
             <Header />
-
+            
             <main>
                 {bookInfo.data && 
                     <BookInfoPicture imageURL={bookInfo.data.imageURL} />

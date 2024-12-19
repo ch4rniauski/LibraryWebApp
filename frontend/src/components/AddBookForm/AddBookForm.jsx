@@ -19,14 +19,14 @@ export default function AddBookForm(){
 
         const response = await AddBook(data);
 
-        // if (response.status != 200){
-        //     if (response.response.data.length == 1)
-        //         setResponseError(response.response.data[0].errorMessage);
-        //     else
-        //         setResponseError(response.response.data);
-        // }
-        // else
-        //     setSuccess("Book was successfully added")
+        if (response.status != 200){
+            if (response.response.data.length == 1)
+                setResponseError(response.response.data[0].errorMessage);
+            else
+                setResponseError(response.response.data);
+        }
+        else
+            setSuccess("Book was successfully added")
     }
 
     return (

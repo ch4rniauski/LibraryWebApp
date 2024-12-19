@@ -1,7 +1,6 @@
 ﻿using Domain.Abstractions.Records;
 using Domain.Abstractions.UnitsOfWork;
 using FluentValidation;
-using Mapster;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -89,17 +88,17 @@ namespace LibraryWebApp.Controllers
 
         [HttpPut("{id:guid}")]
         [Authorize(Policy = "AdminPolicy")]
-        public async Task<ActionResult> Update([FromBody] CreateBookRecord request, Guid id)
+        public async Task<ActionResult<string?>> Update([FromBody] CreateBookRecord request, Guid id)
         {
             var result = await _validator.ValidateAsync(request);
 
             if (!result.IsValid)
                 return BadRequest(result.Errors.Select(e => new { e.ErrorCode, e.ErrorMessage }));
 
-            bool isUpdated = await _uof.BookRepository.UpdateBook(request, id);
+            var isUpdated = await _uof.BookRepository.UpdateBook(request, id);
 
-            if (!isUpdated)
-                return NotFound("Book wasn't updated");
+            if (!string.IsNullOrEmpty(isUpdated))
+                return BadRequest($"{isUpdated}");
 
             _uof.Save();
 
@@ -113,6 +112,20 @@ namespace LibraryWebApp.Controllers
             var books = _uof.BookRepository.GetBooksByUserId(userId);
 
             return Ok(books);
+        }
+
+        [HttpPut("return/{id:guid}")]
+        [Authorize]
+        public async Task<ActionResult> ReturnBook(Guid id)
+        {
+            var isReturned = await _uof.BookRepository.ReturnBook(id);
+
+            if (!isReturned)
+                return BadRequest();
+
+            _uof.Save();
+
+            return Ok();
         }
     }
 }

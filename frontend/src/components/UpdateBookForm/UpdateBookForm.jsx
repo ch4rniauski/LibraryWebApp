@@ -2,6 +2,7 @@ import { useForm } from "react-hook-form";
 import "./UpdateBookForm.css";
 import SubmitButton from "../SubmitButton/SubmitButton.jsx";
 import { useEffect, useState } from "react";
+import UpdateBook from "../../services/UpdateBook.js";
 
 export default function UpdateBookForm({bookData}){
     const [responseError, setResponseError] = useState(null);
@@ -24,16 +25,23 @@ export default function UpdateBookForm({bookData}){
     const submitHandler = async (data) => {
         setSuccess("");
 
-        // const response = await AddBook(data);
+        const url = window.location.href;
+        let bookId = url.substring(28);
+        const parts = bookId.split('/');
+        bookId = parts[0];
 
-        // if (response.status != 200){
-        //     if (response.response.data.length == 1)
-        //         setResponseError(response.response.data[0].errorMessage);
-        //     else
-        //         setResponseError(response.response.data);
-        // }
-        // else
-        //     setSuccess("Book was successfully added")
+        const response = await UpdateBook(data, bookId);
+
+        if (response.status != 200){
+            if (response.response.data.length == 1)
+                setResponseError(response.response.data[0].errorMessage);
+            else
+                setResponseError(response.response.data);
+        }
+        else{
+            setResponseError(null);
+            setSuccess("Book was successfully updated")
+        }
     }
 
     const onInputHandler = (e) => {
@@ -56,10 +64,6 @@ export default function UpdateBookForm({bookData}){
         }
         e.target.dispatchEvent(new Event('input'));
     }
-
-    useEffect( () => {
-        console.log(description);
-    },[description])
 
     return (
         <form className="UpdateBookForm" onSubmit={handleSubmit(submitHandler)}>

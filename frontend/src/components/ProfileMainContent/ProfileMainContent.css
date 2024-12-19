@@ -18,3 +18,8 @@
 .ButtonOnHover{
     position: absolute;
 }
+
+.Reminder{
+    position: absolute;
+    justify-content: center;
+}

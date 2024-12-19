@@ -117,6 +117,8 @@ namespace Library.DataContext.Repositories
                     book.AuthorFirstName,
                     book.AuthorSecondName,
                     book.ImageURL,
+                    book.TakenAt,
+                    book.DueDate,
                     book.UserId);
 
                 booksToReturn.Add(newBook);
@@ -141,6 +143,8 @@ namespace Library.DataContext.Repositories
                 book.AuthorFirstName,
                 book.AuthorSecondName,
                 book.ImageURL,
+                book.TakenAt,
+                book.DueDate,
                 book.UserId);
         }
 
@@ -169,8 +173,10 @@ namespace Library.DataContext.Repositories
                     book.Genre,
                     book.Description,
                     book.AuthorFirstName,
-                    book.AuthorSecondName,
+                    book.AuthorSecondName,                    
                     book.ImageURL,
+                    book.TakenAt,
+                    book.DueDate,
                     book.UserId);
 
                 booksToReturn.Add(newBook);
@@ -210,12 +216,27 @@ namespace Library.DataContext.Repositories
             return booksToReturn;
         }
 
-        public async Task<bool> UpdateBook(CreateBookRecord book, Guid id)
+        public async Task<bool> ReturnBook(Guid id)
+        {
+            var book = await _db.Books.FirstOrDefaultAsync(b => b.Id == id);
+
+            if (book is null)
+                return false;
+
+            book.UserId = null;
+            book.User = null;
+            book.TakenAt = null;
+            book.DueDate = null;
+
+            return true;
+        }
+
+        public async Task<string?> UpdateBook(CreateBookRecord book, Guid id)
         {
             var bookToUpdate = await _db.Books.FirstOrDefaultAsync(b => b.Id == id);
 
             if (bookToUpdate is null)
-                return false;
+                return "Book with that ID wasn't found";
 
             if (book.AuthorFirstName is null && book.AuthorSecondName is null)
             {
@@ -289,8 +310,8 @@ namespace Library.DataContext.Repositories
             }
 
             if ((book.AuthorFirstName is not null || book.AuthorSecondName is not null) && !isAuthorChanged)
-                return false;
-            return true;
+                return "Author with that name doesn't exist";
+            return string.Empty;
         }
     }
 }

@@ -18,8 +18,10 @@ export default function BookCard(props) {
             alt="Book"
             />
             <CardContent>
-            <Typography gutterBottom variant="h5" component="div" justifyContent="center" display="flex">
-                {props.title}
+            <Typography gutterBottom component="div" justifyContent="center" display="flex">
+              <p className='Paragraph'>{props.title}</p>
+              <p className='Paragraph'>Taken At: {props.takenAt}</p>
+              <p className='Paragraph'>Due Date: {props.dueDate}</p>
             </Typography>
             </CardContent>
         </CardActionArea>

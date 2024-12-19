@@ -3,10 +3,6 @@ import IsAdmin from "../services/IsAdmin";
 import GetBookInfoById from "../services/GetBookInfoById";
 import Header from "../components/Header/Header";
 import UpdateBookForm from "../components/UpdateBookForm/UpdateBookForm";
-import BookInfoPicture from "../components/BookInfoPicture/BookInfoPicture";
-import BookInfoGenre from "../components/BookInfoGenre/BookInfoGenre";
-import BookInfoAuthor from "../components/BookInfoAuthor/BookInfoAuthor";
-import BookInfoTitle from "../components/BookInfoTitle/BookInfoTitle";
 
 export default function UpdateBookInfoPage(){
     const [bookInfo, setBookInfo] = useState({});

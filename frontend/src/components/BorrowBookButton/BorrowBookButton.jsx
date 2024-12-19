@@ -5,12 +5,16 @@ import IsAuthorized from "../../services/IsAuthorized.js";
 
 export default function BorrowBookButton(props){
     const [isAuthorized, setIsAuthorized] = useState(false);
+    const [isBookDisabled, setIsBookDisabled] = useState(false);
 
     const clickHandler = async () => {
         const response = await BorrowBook(props.userId, props.bookId);
 
         if (response)
-            window.location.href = "/";
+        {
+            setIsBookDisabled(true);
+            //window.location.href = "/";
+        }
     }
 
     useEffect( () => {
@@ -31,7 +35,7 @@ export default function BorrowBookButton(props){
                 Borrow Book
             </button>}
             
-            {(!isAuthorized || props.bookUserId != null) && 
+            {(!isAuthorized || props.bookUserId != null || isBookDisabled) && 
             <button className="BorrowBookButton" disabled={true}>
                 Borrow Book
             </button>}

@@ -274,7 +274,17 @@
         "IsRequired": true
       }
     ],
-    "ReturnTypes": []
+    "ReturnTypes": [
+      {
+        "Type": "System.String",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
   },
   {
     "ContainingType": "LibraryWebApp.Controllers.BookController",
@@ -373,6 +383,22 @@
         "StatusCode": 200
       }
     ]
+  },
+  {
+    "ContainingType": "LibraryWebApp.Controllers.BookController",
+    "Method": "ReturnBook",
+    "RelativePath": "Book/return/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
   },
   {
     "ContainingType": "LibraryWebApp.Controllers.UserController",
