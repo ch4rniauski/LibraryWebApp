@@ -1,6 +1,7 @@
 using Library.DataContext;
 using Domain;
 using Microsoft.AspNetCore.CookiePolicy;
+using Domain.Exceptions;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -25,6 +26,8 @@ builder.Services.AddDomainConfiguration();
 builder.Services.AddJWTConfiguration(builder.Configuration);
 
 var app = builder.Build();
+
+app.UseMiddleware<GlobalExceptionsHandler>();
 
 if (app.Environment.IsDevelopment())
 {
