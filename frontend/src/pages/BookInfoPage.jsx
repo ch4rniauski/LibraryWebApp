@@ -9,6 +9,7 @@ import BookInfoGenre from "../components/BookInfoGenre/BookInfoGenre";
 import BorrowBookButton from "../components/BorrowBookButton/BorrowBookButton";
 import IsAdmin from "../services/IsAdmin";
 import DeleteBookButton from "../components/DeleteBookButton/DeleteBookButton";
+import UpdateBookButton from "../components/UpdateBookButton/UpdateBookButton";
 
 export default function BookInfoPage(){
     const [bookInfo, setBookInfo] = useState({});
@@ -34,8 +35,6 @@ export default function BookInfoPage(){
         checkIfAdmin();
         getBookInfoById();
     }, []);
-
-    
 
     return(
         <section>
@@ -68,6 +67,10 @@ export default function BookInfoPage(){
 
                 {isAdmin &&
                     <DeleteBookButton />
+                }
+
+                {isAdmin &&
+                    <UpdateBookButton />
                 }
             </main>
 

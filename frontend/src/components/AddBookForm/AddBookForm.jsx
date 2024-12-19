@@ -19,21 +19,14 @@ export default function AddBookForm(){
 
         const response = await AddBook(data);
 
-        if (response.status != 200){
-            if (response.response.data.length == 1)
-                setResponseError(response.response.data[0].errorMessage);
-            else
-                setResponseError(response.response.data);
-        }
-        else
-            setSuccess("Book was successfully added")
-    }
-
-    const onInputHandler = (e) => {
-        if (e.target.value.trim() === '') {
-            e.target.value = null;
-            e.target.dispatchEvent(new Event('input'));
-        }
+        // if (response.status != 200){
+        //     if (response.response.data.length == 1)
+        //         setResponseError(response.response.data[0].errorMessage);
+        //     else
+        //         setResponseError(response.response.data);
+        // }
+        // else
+        //     setSuccess("Book was successfully added")
     }
 
     return (
@@ -85,8 +78,7 @@ export default function AddBookForm(){
                         message: "Description cant contain more than 250 symbols"
                     },
                     value: null
-                })}
-                onInput={(e) => onInputHandler(e)}/>
+                })}/>
             </div>
             
             {errors.authorFirstName && <p className="ErrorMessage"> {errors.authorFirstName.message} </p> }
@@ -97,8 +89,7 @@ export default function AddBookForm(){
                         message: "That field cant contain more than 30 symbols"
                     },
                     value: null
-                })}
-                onInput={(e) => onInputHandler(e)}/>
+                })}/>
             </div>
             
             {errors.authorSecondName && <p className="ErrorMessage"> {errors.authorSecondName.message} </p> }
@@ -109,15 +100,13 @@ export default function AddBookForm(){
                         message: "That field cant contain more than 30 symbols"
                     },
                     value: null
-                })}
-                onInput={(e) => onInputHandler(e)}/>
+                })}/>
             </div>
             
             <div className="AddBookInput">
                 <input type="text" placeholder="Image URL"{...register("imageURL", {
                     value: null
-                })}
-                onInput={(e) => onInputHandler(e)}/>
+                })}/>
             </div>
 
             <SubmitButton />

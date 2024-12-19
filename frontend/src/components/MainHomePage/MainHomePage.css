@@ -60,3 +60,9 @@
     display: flex;
     font-size: 40px;
 }
+
+.Card{
+    display: flex;
+    height: 145px;
+    margin-top: 70px;
+}

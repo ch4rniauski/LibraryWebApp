@@ -1,0 +1,29 @@
+.UpdateBook{
+    position: absolute;
+    display: flex;
+    width: 100%;
+    top: 450px;
+    left: 0;
+    justify-content: center;
+}
+
+.UpdateBookButton{
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+    text-shadow: 0 0 1px rgba(0, 0, 0, 0.3);
+    width: 140px;
+    height: 45px;
+    font-size: 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.15s;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+    background-color:rgb(255, 115, 0);
+}
+
+.UpdateBookButton:hover{
+    transform: scale(1.05);
+}

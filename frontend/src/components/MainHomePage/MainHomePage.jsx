@@ -49,10 +49,11 @@ export default function MainHomePage(props){
                 </div>
 
             </div>
+
             {books && 
             <div className="MainHomePage">
                 {books.map((b) => (
-                    <div key={b.id} onClick={() => onClickHandler(b)}>
+                    <div className="Card" key={b.id} onClick={() => onClickHandler(b)}>
                         <BookCard key={b.id} title={b.title} imageURL={b.imageURL}/>
                     </div>
                 ))}

@@ -5,6 +5,7 @@ import LoginPage from './pages/LoginPage.jsx';
 import RegistrationPage from './pages/RegistrationPage.jsx';
 import ProfilePage from './pages/ProfilePage.jsx';
 import BookInfoPage from './pages/BookInfoPage.jsx';
+import UpdateBookInfoPage from './pages/UpdateBookInfoPage.jsx';
 
 export default function App() {
   return (
@@ -14,6 +15,7 @@ export default function App() {
       <Route path='/auth/registration' element={<RegistrationPage />}/>
       <Route path='/profile' element={<ProfilePage />}/>
       <Route path='/book/:id' element={<BookInfoPage />}/>
+      <Route path='/book/:id/update' element={<UpdateBookInfoPage />}/>
     </Routes>
   );
 }
