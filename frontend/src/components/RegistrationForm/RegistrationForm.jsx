@@ -20,13 +20,13 @@ export default function RegistrationForm(){
         if (data.password == data.confirmPassword){
             const response = await RegisterUser(data);
 
-            if (response.status == 400){
-                switch(response.response.data){
+            if (response.status == 500){
+                switch(response.response.data.Message){
                     case "User with that login already exists":
-                        setLoginError(<div> <p className="ErrorMessage"> {response.response.data} </p> </div>);
+                        setLoginError(<div> <p className="ErrorMessage"> {response.response.data.Message} </p> </div>);
                         break;
                     case "User with that email already exists":
-                        setEmailError(<div> <p className="ErrorMessage"> {response.response.data} </p> </div>);
+                        setEmailError(<div> <p className="ErrorMessage"> {response.response.data.Message} </p> </div>);
                         break;
                 }
             }

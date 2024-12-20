@@ -11,7 +11,7 @@ namespace Library.DataContext
 {
     public static class DependencyInjection
     {
-        public static IServiceCollection AddLibraryContext(this IServiceCollection services, IConfiguration configurationManager)
+        public static IServiceCollection AddLibraryContext(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddScoped<IAuthorRepository, AuthorRepository>();
             services.AddScoped<IBookRepository, BookRepository>();
@@ -21,7 +21,7 @@ namespace Library.DataContext
 
             services.AddDbContext<LibraryContext>(options =>
             {
-                options.UseSqlServer(configurationManager.GetConnectionString("LibraryDb"));
+                options.UseSqlServer(configuration.GetConnectionString("LibraryDb"));
             });
 
             return services;

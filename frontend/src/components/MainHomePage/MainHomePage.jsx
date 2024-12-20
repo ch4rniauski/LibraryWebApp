@@ -18,12 +18,17 @@ export default function MainHomePage(){
     useEffect( () => {
         const getBooks = async () => {
             const response = await GetBooksWithParams(filter);
-            setAllBooks(response.data);
 
-            if (response.data.length % booksLimit == 0)
-                setPageLimit(response.data.length / booksLimit);
-            else
-                setPageLimit(Math.floor(response.data.length / booksLimit) + 1);
+            if (response == null)
+                setAllBooks(null);
+            else{
+                setAllBooks(response.data);
+    
+                if (response.data.length % booksLimit == 0)
+                    setPageLimit(response.data.length / booksLimit);
+                else
+                    setPageLimit(Math.floor(response.data.length / booksLimit) + 1);
+            }
         }
 
         getBooks();
@@ -31,9 +36,9 @@ export default function MainHomePage(){
 
     useEffect( () => {
         const chooseBooksToReturn = () => {
-            let array = [];
-            
             if (allBooks != null){
+                let array = [];
+
                 for (let i = (page - 1) * booksLimit; i <= (page - 1) * booksLimit + (booksLimit - 1); i++)
                 {
                     if (!allBooks[i])
@@ -43,15 +48,17 @@ export default function MainHomePage(){
         
                 setDisplayBooks(array);
             }
+            else
+                setDisplayBooks(null);
         }
 
         chooseBooksToReturn();
     }, [allBooks]);
 
     useEffect( () => {
-        let array = [];
-        
         if (allBooks != null){
+            let array = [];
+
             for (let i = (page - 1) * booksLimit; i <= (page - 1) * booksLimit + (booksLimit - 1); i++)
             {
                 if (!allBooks[i])
@@ -61,6 +68,8 @@ export default function MainHomePage(){
     
             setDisplayBooks(array);
         }
+        else
+            setDisplayBooks(null);
     }, [page]);
     
     const changeSortByHandler = (data) => {
@@ -77,7 +86,7 @@ export default function MainHomePage(){
 
     return(
         <main className="MainHomePage">
-            {!displayBooks && 
+            {(!displayBooks || !allBooks) && 
             <div className="MainHomePage">
                 <p className="NoBooksMessage">Books are not found</p>
             </div>}
@@ -107,9 +116,11 @@ export default function MainHomePage(){
             </div>
             }
             
-            <div className="paginationWrapper">
-                <PaginationControlled setPage={setPage} page={page} pageLimit={pageLimit}/> 
-            </div>          
+            {displayBooks && 
+                <div className="paginationWrapper">
+                    <PaginationControlled setPage={setPage} page={page} pageLimit={pageLimit}/> 
+                </div>         
+            }
         </main>
     );
 }

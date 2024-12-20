@@ -28,10 +28,7 @@ namespace LibraryWebApp.Controllers
             if (!result.IsValid)
                 return BadRequest(result.Errors.Select(e => new { e.ErrorCode, e.ErrorMessage }));
 
-            string? isCreated = await _uof.BookRepository.CreateBook(request);
-
-            if (!string.IsNullOrEmpty(isCreated))
-                return BadRequest($"{isCreated}");
+            await _uof.BookRepository.CreateBook(request);
 
             _uof.Save();
 
@@ -49,8 +46,6 @@ namespace LibraryWebApp.Controllers
         {
             var book = await _uof.BookRepository.GetBookById(id);
 
-            if (book is null)
-                return NotFound("Book with that ID wasn't found");
             return Ok(book);
         }
 
@@ -59,8 +54,6 @@ namespace LibraryWebApp.Controllers
         {
             var book = await _uof.BookRepository.GetBookByISBN(isbn);
 
-            if (book is null)
-                return NotFound("Book with that ISBN wasn't found");
             return Ok(book);
         }
 
@@ -76,10 +69,7 @@ namespace LibraryWebApp.Controllers
         [Authorize(Policy = "AdminPolicy")]
         public async Task<ActionResult> Delete(Guid id)
         {
-            bool isDeleted = await _uof.BookRepository.DeleteBook(id);
-
-            if (!isDeleted)
-                return NotFound("Book with that ID wasn't found");
+            await _uof.BookRepository.DeleteBook(id);
 
             _uof.Save();
 
@@ -95,10 +85,7 @@ namespace LibraryWebApp.Controllers
             if (!result.IsValid)
                 return BadRequest(result.Errors.Select(e => new { e.ErrorCode, e.ErrorMessage }));
 
-            var isUpdated = await _uof.BookRepository.UpdateBook(request, id);
-
-            if (!string.IsNullOrEmpty(isUpdated))
-                return BadRequest($"{isUpdated}");
+            await _uof.BookRepository.UpdateBook(request, id);
 
             _uof.Save();
 
@@ -118,10 +105,7 @@ namespace LibraryWebApp.Controllers
         [Authorize]
         public async Task<ActionResult> ReturnBook(Guid id)
         {
-            var isReturned = await _uof.BookRepository.ReturnBook(id);
-
-            if (!isReturned)
-                return BadRequest();
+            await _uof.BookRepository.ReturnBook(id);
 
             _uof.Save();
 

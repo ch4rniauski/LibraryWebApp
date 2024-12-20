@@ -19,16 +19,17 @@ export default function AddAuthorForm(){
         setResponseError(null);
 
         const response = await AddAuthor(data);
-        console.log(response);
 
         if (response.status != 200){
-            if (response.response.data.length == 1)
+            if (response.response.data.length)
                 setResponseError(response.response.data[0].errorMessage);
             else
-                setResponseError(response.response.data.title);
+                setResponseError(response.response.data.Message);
         }
-        else
+        else{
+            setResponseError(null);
             setSuccess("Author was successfully added")
+        }
     }
 
     const formatNumber = (e) => {

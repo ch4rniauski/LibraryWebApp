@@ -6,6 +6,9 @@ export default async function GetBooksWithParams(data){
             search: data.search,
             sortBy: data.sortBy
         });
+        
+        if (response.data.length == 0)
+            return null;
 
         return response;
     }catch(error){

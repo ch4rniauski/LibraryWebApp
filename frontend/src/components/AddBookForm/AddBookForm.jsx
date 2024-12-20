@@ -16,17 +16,20 @@ export default function AddBookForm(){
 
     const submitHandler = async (data) => {
         setSuccess("");
+        setResponseError(null);
 
         const response = await AddBook(data);
 
         if (response.status != 200){
-            if (response.response.data.length == 1)
+            if (response.response.data.length)
                 setResponseError(response.response.data[0].errorMessage);
             else
-                setResponseError(response.response.data);
+                setResponseError(response.response.data.Message);
         }
-        else
+        else{
+            setResponseError(null);
             setSuccess("Book was successfully added")
+        }
     }
 
     return (

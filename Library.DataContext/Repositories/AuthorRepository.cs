@@ -15,26 +15,25 @@ namespace Library.DataContext.Repositories
             _db = db;
         }
 
-        public async Task<bool> CreateAuthor(CreateAuthorRecord author)
+        public async Task CreateAuthor(CreateAuthorRecord author)
         {
             var newAuthor = author.Adapt<AuthorEntity>();
             newAuthor.Id = Guid.NewGuid();
 
             var createdAuthor = await _db.Auhtors.AddAsync(newAuthor);
 
-            return (createdAuthor is not null);
+            if (createdAuthor is null)
+                throw new Exception("Author wasn't created");
         }
 
-        public async Task<bool> DeleteAutor(Guid id)
+        public async Task DeleteAutor(Guid id)
         {
             var author = await _db.Auhtors.FirstOrDefaultAsync(a => a.Id == id);
 
             if (author is null)
-                return false;
+                throw new Exception("Author with that ID doesn't exist");
 
             _db.Auhtors.Remove(author);
-
-            return true;
         }
 
         public List<CreateAuthorRecord> GetAllAuthors()
@@ -42,30 +41,28 @@ namespace Library.DataContext.Repositories
             return _db.Auhtors.Adapt<List<CreateAuthorRecord>>();
         }
 
-        public async Task<CreateAuthorRecord?> GetAuthor(Guid id)
+        public async Task<CreateAuthorRecord> GetAuthor(Guid id)
         {
             var author = await _db.Auhtors.FirstOrDefaultAsync(a => a.Id == id);
 
             if (author is null)
-                return null;
+                throw new Exception("Author with that id doesn't exist");
 
             return author.Adapt<CreateAuthorRecord>();
         }
 
-        public async Task<bool> UpdateAuthor(UpdateAuthorRecord author)
+        public async Task UpdateAuthor(UpdateAuthorRecord author)
         {
             var authorToUpdate = await _db.Auhtors.FirstOrDefaultAsync(a => a.Id == author.Id);
 
             if (authorToUpdate is null)
-                return false;
+                throw new Exception("Author with that id doesn't exist");
 
             authorToUpdate.Id = author.Id;
             authorToUpdate.BirthDate = author.BirthDate;
             authorToUpdate.FirstName = author.FirstName;
             authorToUpdate.SecondName = author.SecondName;
             authorToUpdate.Country = author.Country;
-
-            return true;
         }
     }
 }

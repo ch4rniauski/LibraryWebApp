@@ -15,28 +15,28 @@ namespace LibraryAccounts.DataContext.Repositories
             _db = db;
         }
 
-        public async Task<UserInfoResponse?> GetUserInfo(Guid id)
+        public async Task<UserInfoResponse> GetUserInfo(Guid id)
         {
             var user = await _db.Users.FirstOrDefaultAsync(u => u.Id == id);
 
-            if (user is not null)
-                return user.Adapt<UserInfoResponse>();
-            return null;
+            if (user is null)
+                throw new Exception("User with that ID doesn't exist");
+            return user.Adapt<UserInfoResponse>();
         }
 
-        public async Task<bool> BorrowBook(Guid userId, Guid bookId)
+        public async Task BorrowBook(Guid userId, Guid bookId)
         {
             var user = await _db.Users
                 .Include(u => u.Books)
                 .FirstOrDefaultAsync(u => u.Id == userId);
 
             if (user is null)
-                return false;
+                throw new Exception("User with that ID doesn't exist");
 
             var book = await _db.Books.FirstOrDefaultAsync(b => b.Id == bookId);
 
             if (book is null)
-                return false;
+                throw new Exception("Book with that ID doesn't exist");
 
             book.TakenAt = DateOnly.FromDateTime(DateTime.UtcNow);
             book.DueDate = DateOnly.FromDateTime(DateTime.UtcNow.AddDays(30));
@@ -44,8 +44,6 @@ namespace LibraryAccounts.DataContext.Repositories
             book.User = user;
 
             user.Books.Add(book);
-
-            return true;
         }
     }
 }

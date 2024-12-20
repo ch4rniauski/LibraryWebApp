@@ -1,7 +1,6 @@
 ﻿using Domain.Abstractions.Records;
 using Domain.Abstractions.UnitsOfWork;
 using FluentValidation;
-using Library.DataContext.UnitsOfWork;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -22,7 +21,7 @@ namespace LibraryWebApp.Controllers
 
         [HttpGet("{id:guid}")]
         [Authorize]
-        public async Task<ActionResult<RegisterUserRecord?>> GetUsetInfo(Guid id)
+        public async Task<ActionResult<RegisterUserRecord?>> GetUserInfo(Guid id)
         {
             var user = await _uof.UserRepository.GetUserInfo(id);
 
@@ -35,10 +34,7 @@ namespace LibraryWebApp.Controllers
         [Authorize]
         public async Task<ActionResult> BorrowBook([FromBody] BorrowBookRequest request)
         {
-            var isBorrowed = await _uof.UserRepository.BorrowBook(request.UserId, request.BookId);
-
-            if (!isBorrowed)
-                return BadRequest("Book wasn't borrowed");
+            await _uof.UserRepository.BorrowBook(request.UserId, request.BookId);
 
             _uof.Save();
 

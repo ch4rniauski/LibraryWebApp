@@ -21,17 +21,14 @@ namespace LibraryWebApp.Controllers
         }
 
         [HttpPost("register")]
-        public async Task<ActionResult<string>> Register([FromBody] RegisterUserRecord request)
+        public async Task<ActionResult> Register([FromBody] RegisterUserRecord request)
         {
             var result = await _validator.ValidateAsync(request);
 
             if (!result.IsValid)
                 return BadRequest(result.Errors.Select(e => new { e.ErrorCode, e.ErrorMessage }));
 
-            var isRegistered = await _uof.AuthenticationRepository.RegisterUser(request);
-
-            if (isRegistered is not null)
-                return BadRequest(isRegistered);
+            await _uof.AuthenticationRepository.RegisterUser(request);
 
             _uof.Save();
 
@@ -47,9 +44,6 @@ namespace LibraryWebApp.Controllers
                 return BadRequest(result.Errors.Select(e => new { e.ErrorCode, e.ErrorMessage }));
 
             var response = await _uof.AuthenticationRepository.LogInUser(request, HttpContext);
-
-            if (response is null)
-                return BadRequest("Incorrect data");
 
             _uof.Save();
 
@@ -74,12 +68,10 @@ namespace LibraryWebApp.Controllers
         [Authorize]
         public async Task<ActionResult> DeleteUser(Guid id)
         {
-            var isDeleted = await _uof.AuthenticationRepository.DeleteUser(id);
-
-            if (!isDeleted)
-                return BadRequest("User with that ID wasn't deleted");
+            await _uof.AuthenticationRepository.DeleteUser(id);
 
             _uof.Save();
+
             return Ok();
         }
 
@@ -92,9 +84,6 @@ namespace LibraryWebApp.Controllers
                 return BadRequest("Refresh token doesn't exist");
 
             var accessToken = await _uof.AuthenticationRepository.UpdateAccessToken(id, refreshToken);
-
-            if (accessToken is null)
-                return BadRequest("Either user with that ID doesn't exist or refresh token has expired");
 
             HttpContext.Response.Cookies.Append("accessToken", accessToken);
             return Ok();

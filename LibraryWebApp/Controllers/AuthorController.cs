@@ -29,10 +29,7 @@ namespace LibraryWebApp.Controllers
             if (!result.IsValid)
                 return BadRequest(result.Errors.Select(e => new { e.ErrorCode, e.ErrorMessage }));
 
-            bool isCreated = await _uof.AuthorRepository.CreateAuthor(request);
-
-            if (!isCreated)
-                return BadRequest("Book wasn't created");
+            await _uof.AuthorRepository.CreateAuthor(request);
 
             _uof.Save();
 
@@ -50,8 +47,6 @@ namespace LibraryWebApp.Controllers
         {
             var author = await _uof.AuthorRepository.GetAuthor(id);
 
-            if (author is null)
-                return NotFound("Author with that ID wasn't found");
             return Ok(author);
         }
 
@@ -59,10 +54,7 @@ namespace LibraryWebApp.Controllers
         [Authorize(Policy = "AdminPolicy")]
         public async Task<ActionResult> Delete(Guid id)
         {
-            bool isDeleted = await _uof.AuthorRepository.DeleteAutor(id);
-
-            if (!isDeleted)
-                return NotFound("Author with that ID wasn't found");
+            await _uof.AuthorRepository.DeleteAutor(id);
 
             _uof.Save();
 
@@ -79,10 +71,7 @@ namespace LibraryWebApp.Controllers
             if (!result.IsValid)
                 return BadRequest(result.Errors.Select(e => new { e.ErrorCode, e.ErrorMessage }));
 
-            bool isUpdated = await _uof.AuthorRepository.UpdateAuthor(request);
-
-            if (!isUpdated)
-                return NotFound("Author with that ID wasn't found");
+            await _uof.AuthorRepository.UpdateAuthor(request);
 
             _uof.Save();
 

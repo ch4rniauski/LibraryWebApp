@@ -15,7 +15,7 @@ namespace Library.DataContext.Repositories
             _db = db;
         }
 
-        public async Task<string?> CreateBook(CreateBookRecord book)
+        public async Task CreateBook(CreateBookRecord book)
         {
             BookEntity newBook = book.Adapt<BookEntity>();
 
@@ -81,23 +81,19 @@ namespace Library.DataContext.Repositories
             }
 
             if ((book.AuthorFirstName is not null || book.AuthorSecondName is not null) && !isAuthorChanged)
-                return "Author with that name doesn't exist";
+                throw new Exception("Author with that name doesn't exist");
 
-            var createdBook = await _db.Books.AddAsync(newBook);
-
-            return string.Empty;
+            await _db.Books.AddAsync(newBook);
         }
 
-        public async Task<bool> DeleteBook(Guid id)
+        public async Task DeleteBook(Guid id)
         {
             var book = await _db.Books.FirstOrDefaultAsync(b => b.Id == id);
 
             if (book is null)
-                return false;
+                throw new Exception("Book with that ID wasn't found");
 
             _db.Books.Remove(book);
-
-            return true;
         }
 
         public List<GetBookRecord>? GetAllBooks()
@@ -127,12 +123,12 @@ namespace Library.DataContext.Repositories
             return booksToReturn;
         }
 
-        public async Task<GetBookRecord?> GetBookById(Guid id)
+        public async Task<GetBookRecord> GetBookById(Guid id)
         {
             var book = await _db.Books.FirstOrDefaultAsync(b => b.Id == id);
 
             if (book is null)
-                return null;
+                throw new Exception("Book with that ID wasn't found");
 
             return new GetBookRecord(
                 book.Id,
@@ -148,12 +144,12 @@ namespace Library.DataContext.Repositories
                 book.UserId);
         }
 
-        public async Task<GetBookRecord?> GetBookByISBN(string ISBN)
+        public async Task<GetBookRecord> GetBookByISBN(string ISBN)
         {
             var book = await _db.Books.FirstOrDefaultAsync(b => b.ISBN == ISBN);
 
             if (book is null)
-                return null;
+                throw new Exception("Book with that ISBN wasn't found");
 
             return book.Adapt<GetBookRecord>();
         }
@@ -216,27 +212,25 @@ namespace Library.DataContext.Repositories
             return booksToReturn;
         }
 
-        public async Task<bool> ReturnBook(Guid id)
+        public async Task ReturnBook(Guid id)
         {
             var book = await _db.Books.FirstOrDefaultAsync(b => b.Id == id);
 
             if (book is null)
-                return false;
+                throw new Exception("Book with that ID doesn't exist");
 
             book.UserId = null;
             book.User = null;
             book.TakenAt = null;
             book.DueDate = null;
-
-            return true;
         }
 
-        public async Task<string?> UpdateBook(CreateBookRecord book, Guid id)
+        public async Task UpdateBook(CreateBookRecord book, Guid id)
         {
             var bookToUpdate = await _db.Books.FirstOrDefaultAsync(b => b.Id == id);
 
             if (bookToUpdate is null)
-                return "Book with that ID wasn't found";
+                throw new Exception("Book with that ID wasn't found");
 
             if (book.AuthorFirstName is null && book.AuthorSecondName is null)
             {
@@ -310,8 +304,7 @@ namespace Library.DataContext.Repositories
             }
 
             if ((book.AuthorFirstName is not null || book.AuthorSecondName is not null) && !isAuthorChanged)
-                return "Author with that name doesn't exist";
-            return string.Empty;
+                throw new Exception("Author with that name doesn't exist");
         }
     }
 }

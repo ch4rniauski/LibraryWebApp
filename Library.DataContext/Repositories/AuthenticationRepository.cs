@@ -21,17 +21,20 @@ namespace LibraryAccounts.DataContext.Repositories
             _tokenProvider = tokenProvider;
         }
 
-        public async Task<LogInResponseRecord?> LogInUser(LogInRequest user, HttpContext context)
+        public async Task<LogInResponseRecord> LogInUser(LogInRequest user, HttpContext context)
         {
             var userEntity = await _db.Users.FirstOrDefaultAsync(u => u.Login == user.Login);
 
             if (userEntity is null)
-                return null;
+                throw new Exception("User with that logn wasn't found");
+
+            if (userEntity.Email != user.Email)
+                throw new Exception("User with that Email wasn't found");
 
             var result = new PasswordHasher<UserEntity>().VerifyHashedPassword(userEntity, userEntity.PasswordHash, user.Password);
 
             if (result == PasswordVerificationResult.Failed)
-                return null;
+                throw new Exception("Incorrect password");
 
             var accessToken = _tokenProvider.GenerateAccessToken(userEntity);
             var refreshToken = _tokenProvider.GenerateRefreshToken();
@@ -48,17 +51,17 @@ namespace LibraryAccounts.DataContext.Repositories
             return new LogInResponseRecord(userEntity.Id ,accessToken, refreshToken);
         }
 
-        public async Task<string?> RegisterUser(RegisterUserRecord user)
+        public async Task RegisterUser(RegisterUserRecord user)
         {
             var isUserExist = await _db.Users.FirstOrDefaultAsync(u => u.Login == user.Login);
 
             if (isUserExist is not null)
-                return "User with that login already exists";
+                throw new Exception("User with that login already exists");
             else
                 isUserExist = await _db.Users.FirstOrDefaultAsync(u => u.Email == user.Email);
 
             if (isUserExist is not null)
-                return "User with that email already exists";
+                throw new Exception("User with that email already exists");
 
             var userEntity = user.Adapt<UserEntity>();
 
@@ -75,29 +78,28 @@ namespace LibraryAccounts.DataContext.Repositories
             var createdUser = await _db.Users.AddAsync(userEntity);
 
             if (createdUser is null)
-                return "User wasn't registered";
-            return null;
+                throw new Exception("User wasn't registered");
         }
 
-        public async Task<bool> DeleteUser(Guid id)
+        public async Task DeleteUser(Guid id)
         {
             var user = await _db.Users.FirstOrDefaultAsync(u => u.Id == id);
 
             if (user is null)
-                return false;
+                throw new Exception("User with that ID wasn't found");
 
             _db.Users.Remove(user);
-            return true;
         }
 
-        public async Task<string?> UpdateAccessToken(Guid id, string refreshToken)
+        public async Task<string> UpdateAccessToken(Guid id, string refreshToken)
         {
             var user = await _db.Users.FirstOrDefaultAsync(u => u.Id == id);
 
             if (user is null || user.RefreshToken != refreshToken || user.RefreshTokenExpiresAt < DateTime.UtcNow)
-                return null;
+                throw new Exception("Either user with that ID doesn't exist or refresh token has expired");
 
             string accessToken = _tokenProvider.GenerateAccessToken(user);
+
             return accessToken;
         }
     }

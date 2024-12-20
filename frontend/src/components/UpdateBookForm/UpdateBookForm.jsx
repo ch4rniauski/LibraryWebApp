@@ -24,6 +24,7 @@ export default function UpdateBookForm({bookData}){
 
     const submitHandler = async (data) => {
         setSuccess("");
+        setResponseError(null);
 
         const url = window.location.href;
         let bookId = url.substring(28);
@@ -33,10 +34,10 @@ export default function UpdateBookForm({bookData}){
         const response = await UpdateBook(data, bookId);
 
         if (response.status != 200){
-            if (response.response.data.length == 1)
+            if (response.response.data.length)
                 setResponseError(response.response.data[0].errorMessage);
             else
-                setResponseError(response.response.data);
+                setResponseError(response.response.data.Message);
         }
         else{
             setResponseError(null);

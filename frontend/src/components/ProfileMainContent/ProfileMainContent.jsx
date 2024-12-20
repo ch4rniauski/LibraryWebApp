@@ -16,7 +16,7 @@ export default function ProfileMainContent(){
         }
 
         getBorrowedBooks();
-    }, [borrowedBooks]);
+    }, []);
 
     const returnBookHandler = async (data) => {
         const response = await ReturnBook(data.id);
