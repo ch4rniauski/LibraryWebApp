@@ -10,12 +10,12 @@ namespace LibraryWebApp.Controllers
     [Route("[controller]")]
     public class UserController : ControllerBase
     {
-        private readonly IUnitOfWork _uof;
+        private readonly IUnitOfWork _uow;
         private readonly IValidator<RegisterUserRecord> _validator;
 
-        public UserController(IUnitOfWork uof, IValidator<RegisterUserRecord> validator)
+        public UserController(IUnitOfWork uow, IValidator<RegisterUserRecord> validator)
         {
-            _uof = uof;
+            _uow = uow;
             _validator = validator;
         }
 
@@ -23,7 +23,7 @@ namespace LibraryWebApp.Controllers
         [Authorize]
         public async Task<ActionResult<RegisterUserRecord?>> GetUserInfo(Guid id)
         {
-            var user = await _uof.UserRepository.GetUserInfo(id);
+            var user = await _uow.UserRepository.GetUserInfo(id);
 
             if (user is null)
                 return BadRequest("User with that ID wasn't found");
@@ -34,9 +34,9 @@ namespace LibraryWebApp.Controllers
         [Authorize]
         public async Task<ActionResult> BorrowBook([FromBody] BorrowBookRequest request)
         {
-            await _uof.UserRepository.BorrowBook(request.UserId, request.BookId);
+            await _uow.UserRepository.BorrowBook(request.UserId, request.BookId);
 
-            _uof.Save();
+            _uow.Save();
 
             return Ok();
         }

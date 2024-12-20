@@ -11,13 +11,13 @@ namespace LibraryWebApp.Controllers
     [Route("[controller]")]
     public class AuthorController : ControllerBase
     {
-        private readonly IUnitOfWork _uof;
+        private readonly IUnitOfWork _uow;
         private readonly IValidator<CreateAuthorRecord> _validator;
         private readonly IMapper _mapper;
 
-        public AuthorController(IUnitOfWork uof, IValidator<CreateAuthorRecord> validator, IMapper mapper)
+        public AuthorController(IUnitOfWork uow, IValidator<CreateAuthorRecord> validator, IMapper mapper)
         {
-            _uof = uof;
+            _uow = uow;
             _validator = validator;
             _mapper = mapper;
         }
@@ -31,9 +31,9 @@ namespace LibraryWebApp.Controllers
             if (!result.IsValid)
                 return BadRequest(result.Errors.Select(e => new { e.ErrorCode, e.ErrorMessage }));
 
-            await _uof.AuthorRepository.CreateAuthor(request);
+            await _uow.AuthorRepository.CreateAuthor(request);
 
-            _uof.Save();
+            _uow.Save();
 
             return Ok();
         }
@@ -41,13 +41,13 @@ namespace LibraryWebApp.Controllers
         [HttpGet]
         public ActionResult GetAll()
         {
-            return Ok(_uof.AuthorRepository.GetAllAuthors());
+            return Ok(_uow.AuthorRepository.GetAllAuthors());
         }
 
         [HttpGet("{id:Guid}")]
         public async Task<ActionResult> Get(Guid id)
         {
-            var author = await _uof.AuthorRepository.GetAuthor(id);
+            var author = await _uow.AuthorRepository.GetAuthor(id);
 
             return Ok(author);
         }
@@ -56,9 +56,9 @@ namespace LibraryWebApp.Controllers
         [Authorize(Policy = "AdminPolicy")]
         public async Task<ActionResult> Delete(Guid id)
         {
-            await _uof.AuthorRepository.DeleteAutor(id);
+            await _uow.AuthorRepository.DeleteAutor(id);
 
-            _uof.Save();
+            _uow.Save();
 
             return Ok();
         }
@@ -73,9 +73,9 @@ namespace LibraryWebApp.Controllers
             if (!result.IsValid)
                 return BadRequest(result.Errors.Select(e => new { e.ErrorCode, e.ErrorMessage }));
 
-            await _uof.AuthorRepository.UpdateAuthor(request);
+            await _uow.AuthorRepository.UpdateAuthor(request);
 
-            _uof.Save();
+            _uow.Save();
 
             return Ok();
         }

@@ -11,13 +11,13 @@ namespace LibraryWebApp.Controllers
     [Route("[controller]")]
     public class AuthenticationController : ControllerBase
     {
-        private readonly IUnitOfWork _uof;
+        private readonly IUnitOfWork _uow;
         private readonly IValidator<RegisterUserRecord> _validator;
         private readonly IMapper _mapper;
 
-        public AuthenticationController(IUnitOfWork uof, IValidator<RegisterUserRecord> validator, IMapper mapper)
+        public AuthenticationController(IUnitOfWork uow, IValidator<RegisterUserRecord> validator, IMapper mapper)
         {
-            _uof = uof;
+            _uow = uow;
             _validator = validator;
             _mapper = mapper;
         }
@@ -30,9 +30,9 @@ namespace LibraryWebApp.Controllers
             if (!result.IsValid)
                 return BadRequest(result.Errors.Select(e => new { e.ErrorCode, e.ErrorMessage }));
 
-            await _uof.AuthenticationRepository.RegisterUser(request);
+            await _uow.AuthenticationRepository.RegisterUser(request);
 
-            _uof.Save();
+            _uow.Save();
 
             return Ok();
         }
@@ -45,9 +45,9 @@ namespace LibraryWebApp.Controllers
             if (!result.IsValid)
                 return BadRequest(result.Errors.Select(e => new { e.ErrorCode, e.ErrorMessage }));
 
-            var response = await _uof.AuthenticationRepository.LogInUser(request, HttpContext);
+            var response = await _uow.AuthenticationRepository.LogInUser(request, HttpContext);
 
-            _uof.Save();
+            _uow.Save();
 
             return Ok(response);
         }
@@ -70,9 +70,9 @@ namespace LibraryWebApp.Controllers
         [Authorize]
         public async Task<ActionResult> DeleteUser(Guid id)
         {
-            await _uof.AuthenticationRepository.DeleteUser(id);
+            await _uow.AuthenticationRepository.DeleteUser(id);
 
-            _uof.Save();
+            _uow.Save();
 
             return Ok();
         }
@@ -85,7 +85,7 @@ namespace LibraryWebApp.Controllers
             if (refreshToken is null)
                 return BadRequest("Refresh token doesn't exist");
 
-            var accessToken = await _uof.AuthenticationRepository.UpdateAccessToken(id, refreshToken);
+            var accessToken = await _uow.AuthenticationRepository.UpdateAccessToken(id, refreshToken);
 
             HttpContext.Response.Cookies.Append("accessToken", accessToken);
             return Ok();

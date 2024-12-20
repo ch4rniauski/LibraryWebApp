@@ -39,6 +39,8 @@ namespace LibraryAccounts.DataContext.Repositories
 
             if (book is null)
                 throw new Exception("Book with that ID doesn't exist");
+            if (book.UserId is not null)
+                throw new Exception("That book is already borrowed");
 
             book.TakenAt = DateOnly.FromDateTime(DateTime.UtcNow);
             book.DueDate = DateOnly.FromDateTime(DateTime.UtcNow.AddDays(30));
