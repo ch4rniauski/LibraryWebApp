@@ -1,7 +1,7 @@
-﻿using Domain.Abstractions.Records;
+﻿using AutoMapper;
+using Domain.Abstractions.Records;
 using Domain.Abstractions.UnitsOfWork;
 using FluentValidation;
-using Mapster;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -13,11 +13,13 @@ namespace LibraryWebApp.Controllers
     {
         private readonly IUnitOfWork _uof;
         private readonly IValidator<RegisterUserRecord> _validator;
+        private readonly IMapper _mapper;
 
-        public AuthenticationController(IUnitOfWork uof, IValidator<RegisterUserRecord> validator)
+        public AuthenticationController(IUnitOfWork uof, IValidator<RegisterUserRecord> validator, IMapper mapper)
         {
             _uof = uof;
             _validator = validator;
+            _mapper = mapper;
         }
 
         [HttpPost("register")]
@@ -38,7 +40,7 @@ namespace LibraryWebApp.Controllers
         [HttpPost("login")]
         public async Task<ActionResult<LogInResponseRecord>> LogIn([FromBody] LogInRequest request)
         {
-            var result = await _validator.ValidateAsync(request.Adapt<RegisterUserRecord>());
+            var result = await _validator.ValidateAsync(_mapper.Map<RegisterUserRecord>(request));
 
             if (!result.IsValid)
                 return BadRequest(result.Errors.Select(e => new { e.ErrorCode, e.ErrorMessage }));

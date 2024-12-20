@@ -2,6 +2,7 @@
 using Domain.Authorization.Handlers;
 using Domain.Authorization.Requirements;
 using Domain.JWT;
+using Domain.Profiles;
 using Domain.Validators;
 using FluentValidation;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -65,6 +66,15 @@ namespace Domain
                     policy.Requirements.Add(new AdminRequirement("admin"));
                 });
             });
+
+            return services;
+        }
+
+        public static IServiceCollection AddAutoMapperConfiguration(this IServiceCollection services)
+        {
+            services.AddAutoMapper(typeof(BookProfile));
+            services.AddAutoMapper(typeof(UserProfile));
+            services.AddAutoMapper(typeof(AuthorProfile));
 
             return services;
         }

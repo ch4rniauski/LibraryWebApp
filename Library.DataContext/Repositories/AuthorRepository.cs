@@ -1,7 +1,7 @@
-﻿using Domain.Abstractions.Records;
+﻿using AutoMapper;
+using Domain.Abstractions.Records;
 using Domain.Abstractions.Repositories;
 using Domain.Entities;
-using Mapster;
 using Microsoft.EntityFrameworkCore;
 
 namespace Library.DataContext.Repositories
@@ -9,15 +9,17 @@ namespace Library.DataContext.Repositories
     public class AuthorRepository : IAuthorRepository
     {
         private readonly LibraryContext _db;
+        private readonly IMapper _mapper;
 
-        public AuthorRepository(LibraryContext db)
+        public AuthorRepository(LibraryContext db, IMapper mapper)
         {
             _db = db;
+            _mapper = mapper;
         }
 
         public async Task CreateAuthor(CreateAuthorRecord author)
         {
-            var newAuthor = author.Adapt<AuthorEntity>();
+            var newAuthor = _mapper.Map<AuthorEntity>(author);
             newAuthor.Id = Guid.NewGuid();
 
             var createdAuthor = await _db.Auhtors.AddAsync(newAuthor);
@@ -38,7 +40,8 @@ namespace Library.DataContext.Repositories
 
         public List<CreateAuthorRecord> GetAllAuthors()
         {
-            return _db.Auhtors.Adapt<List<CreateAuthorRecord>>();
+            var authors = _db.Auhtors;
+            return _mapper.Map<List<CreateAuthorRecord>>(authors);
         }
 
         public async Task<CreateAuthorRecord> GetAuthor(Guid id)
@@ -48,7 +51,7 @@ namespace Library.DataContext.Repositories
             if (author is null)
                 throw new Exception("Author with that id doesn't exist");
 
-            return author.Adapt<CreateAuthorRecord>();
+            return _mapper.Map<CreateAuthorRecord>(author);
         }
 
         public async Task UpdateAuthor(UpdateAuthorRecord author)

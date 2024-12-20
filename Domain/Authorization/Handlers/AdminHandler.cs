@@ -12,6 +12,7 @@ namespace Domain.Authorization.Handlers
         {
             _httpContextAccessor = httpContextAccessor;
         }
+
         protected override Task HandleRequirementAsync(AuthorizationHandlerContext context, AdminRequirement requirement)
         {
             var httpContext = _httpContextAccessor.HttpContext;

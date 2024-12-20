@@ -1,7 +1,7 @@
-﻿using Domain.Abstractions.Records;
+﻿using AutoMapper;
+using Domain.Abstractions.Records;
 using Domain.Abstractions.UnitsOfWork;
 using FluentValidation;
-using Mapster;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -13,11 +13,13 @@ namespace LibraryWebApp.Controllers
     {
         private readonly IUnitOfWork _uof;
         private readonly IValidator<CreateAuthorRecord> _validator;
+        private readonly IMapper _mapper;
 
-        public AuthorController(IUnitOfWork uof, IValidator<CreateAuthorRecord> validator)
+        public AuthorController(IUnitOfWork uof, IValidator<CreateAuthorRecord> validator, IMapper mapper)
         {
             _uof = uof;
             _validator = validator;
+            _mapper = mapper;
         }
 
         [HttpPost]
@@ -65,7 +67,7 @@ namespace LibraryWebApp.Controllers
         [Authorize(Policy = "AdminPolicy")]
         public async Task<ActionResult> Update([FromBody] UpdateAuthorRecord request)
         {
-            var authorToValidate = request.Adapt<CreateAuthorRecord>();
+            var authorToValidate = _mapper.Map<CreateAuthorRecord>(request);
             var result = await _validator.ValidateAsync(authorToValidate);
 
             if (!result.IsValid)

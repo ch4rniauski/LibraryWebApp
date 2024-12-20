@@ -24,6 +24,12 @@ export default function DeleteBookForm(){
         <form className="DeleteBookForm" onSubmit={submitHandler}>
             <h2>Are you sure?</h2>
 
+            {error && 
+                <div>
+                    {error}
+                </div>
+            }
+
             <button className="YesButton" type="submit">Yes</button>
         </form>
     );

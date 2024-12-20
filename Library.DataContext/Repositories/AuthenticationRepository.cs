@@ -1,9 +1,9 @@
-﻿using Domain.Abstractions.Records;
+﻿using AutoMapper;
+using Domain.Abstractions.Records;
 using Domain.Abstractions.Repositories;
 using Domain.Entities;
 using Domain.JWT;
 using Library.DataContext;
-using Mapster;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -14,11 +14,13 @@ namespace LibraryAccounts.DataContext.Repositories
     {
         private readonly LibraryContext _db;
         private readonly TokenProvider _tokenProvider;
+        private readonly IMapper _mapper;
 
-        public AuthenticationRepository(LibraryContext db, TokenProvider tokenProvider)
+        public AuthenticationRepository(LibraryContext db, TokenProvider tokenProvider, IMapper mapper)
         {
             _db = db;
             _tokenProvider = tokenProvider;
+            _mapper = mapper;
         }
 
         public async Task<LogInResponseRecord> LogInUser(LogInRequest user, HttpContext context)
@@ -63,7 +65,7 @@ namespace LibraryAccounts.DataContext.Repositories
             if (isUserExist is not null)
                 throw new Exception("User with that email already exists");
 
-            var userEntity = user.Adapt<UserEntity>();
+            var userEntity = _mapper.Map<UserEntity>(user);
 
             var passwordHash = new PasswordHasher<UserEntity>().HashPassword(userEntity, user.Password);
 

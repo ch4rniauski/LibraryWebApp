@@ -1,7 +1,7 @@
-﻿using Domain.Abstractions.Records;
+﻿using AutoMapper;
+using Domain.Abstractions.Records;
 using Domain.Abstractions.Repositories;
 using Domain.Entities;
-using Mapster;
 using Microsoft.EntityFrameworkCore;
 
 namespace Library.DataContext.Repositories
@@ -9,15 +9,17 @@ namespace Library.DataContext.Repositories
     public class BookRepository : IBookRepository
     {
         private readonly LibraryContext _db;
+        private readonly IMapper _mapper;
 
-        public BookRepository(LibraryContext db)
+        public BookRepository(LibraryContext db, IMapper mapper)
         {
             _db = db;
+            _mapper = mapper;
         }
 
         public async Task CreateBook(CreateBookRecord book)
         {
-            BookEntity newBook = book.Adapt<BookEntity>();
+            var newBook = _mapper.Map<BookEntity>(book);
 
             newBook.Id = Guid.NewGuid();
             newBook.AuthorFirstName = null;
@@ -100,25 +102,7 @@ namespace Library.DataContext.Repositories
         {
             var books = _db.Books;
 
-            List<GetBookRecord> booksToReturn = new();
-
-            foreach (var book in books)
-            {
-                var newBook = new GetBookRecord(
-                    book.Id,
-                    book.ISBN,
-                    book.Title,
-                    book.Genre,
-                    book.Description,
-                    book.AuthorFirstName,
-                    book.AuthorSecondName,
-                    book.ImageURL,
-                    book.TakenAt,
-                    book.DueDate,
-                    book.UserId);
-
-                booksToReturn.Add(newBook);
-            }
+            var booksToReturn = _mapper.Map<List<GetBookRecord>>(books);
 
             return booksToReturn;
         }
@@ -130,18 +114,7 @@ namespace Library.DataContext.Repositories
             if (book is null)
                 throw new Exception("Book with that ID wasn't found");
 
-            return new GetBookRecord(
-                book.Id,
-                book.ISBN,
-                book.Title,
-                book.Genre,
-                book.Description,
-                book.AuthorFirstName,
-                book.AuthorSecondName,
-                book.ImageURL,
-                book.TakenAt,
-                book.DueDate,
-                book.UserId);
+            return _mapper.Map<GetBookRecord>(book);
         }
 
         public async Task<GetBookRecord> GetBookByISBN(string ISBN)
@@ -151,32 +124,14 @@ namespace Library.DataContext.Repositories
             if (book is null)
                 throw new Exception("Book with that ISBN wasn't found");
 
-            return book.Adapt<GetBookRecord>();
+            return _mapper.Map<GetBookRecord>(book);
         }
 
         public List<GetBookRecord>? GetBooksByUserId(Guid id)
         {
             var books = _db.Books.Where(b => b.UserId == id);
 
-            List<GetBookRecord> booksToReturn = new();
-
-            foreach (var book in books)
-            {
-                var newBook = new GetBookRecord(
-                    book.Id,
-                    book.ISBN,
-                    book.Title,
-                    book.Genre,
-                    book.Description,
-                    book.AuthorFirstName,
-                    book.AuthorSecondName,                    
-                    book.ImageURL,
-                    book.TakenAt,
-                    book.DueDate,
-                    book.UserId);
-
-                booksToReturn.Add(newBook);
-            }
+            var booksToReturn = _mapper.Map<List<GetBookRecord>>(books);
 
             return booksToReturn;
         }
@@ -204,10 +159,7 @@ namespace Library.DataContext.Repositories
             }
 
             if (books is not null)
-            {
-                foreach(var book in books)
-                    booksToReturn.Add(new GetBookResponse(book.Id, book.Title, book.ImageURL));
-            }
+                booksToReturn = _mapper.Map<List<GetBookResponse>>(books);
 
             return booksToReturn;
         }

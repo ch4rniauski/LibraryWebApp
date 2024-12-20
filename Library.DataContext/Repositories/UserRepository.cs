@@ -1,7 +1,7 @@
-﻿using Domain.Abstractions.Records;
+﻿using AutoMapper;
+using Domain.Abstractions.Records;
 using Domain.Abstractions.Repositories;
 using Library.DataContext;
-using Mapster;
 using Microsoft.EntityFrameworkCore;
 
 namespace LibraryAccounts.DataContext.Repositories
@@ -9,10 +9,12 @@ namespace LibraryAccounts.DataContext.Repositories
     public class UserRepository : IUserRepository
     {
         private readonly LibraryContext _db;
+        private readonly IMapper _mapper;
 
-        public UserRepository(LibraryContext db)
+        public UserRepository(LibraryContext db, IMapper mapper)
         {
             _db = db;
+            _mapper = mapper;
         }
 
         public async Task<UserInfoResponse> GetUserInfo(Guid id)
@@ -21,7 +23,7 @@ namespace LibraryAccounts.DataContext.Repositories
 
             if (user is null)
                 throw new Exception("User with that ID doesn't exist");
-            return user.Adapt<UserInfoResponse>();
+            return _mapper.Map<UserInfoResponse>(user);
         }
 
         public async Task BorrowBook(Guid userId, Guid bookId)
