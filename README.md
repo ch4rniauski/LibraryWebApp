@@ -13,7 +13,10 @@ This is my pet-project.
 
 ## Installation
 
-1. **Clone the Repository:** Begin by cloning this repository to your local machine (open the terminal inside the folder you want to clone that repository in -> write `git clone https://github.com/ch4rniauski/CRUD-Application.git`).
+1. **Clone the Repository:** Begin by cloning this repository to your local machine (open the terminal inside the folder you want to clone that repository in -> write):
+
+     ```bash
+   git clone https://github.com/ch4rniauski/LibraryWebApp.git
 2. **Install Node.js:** To run that project you must have Node.js.  Download from the offical site `https://nodejs.org/en`
 3. **Install dotnet tools:** To create migration of a database you must have a dotnet tools.  You can check the installation guide here `https://learn.microsoft.com/en-us/ef/core/cli/dotnet`
 4. **Change the connection string:** Replace the connection string (open the project -> move to the appsettings.json -> find `LibraryDb`) with your database connction string.
