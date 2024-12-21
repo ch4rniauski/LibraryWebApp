@@ -32,7 +32,7 @@ This is my pet-project.
 8. **Run the client:** Open the `frontend` folder via the terminal or VSCode. Then install all necessary files using that command:
 
      ```bash
-   npm -install
+   npm run dev
 Then launch client using the that command:
 
      ```bash
