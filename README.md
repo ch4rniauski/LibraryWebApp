@@ -20,7 +20,7 @@ This is my pet-project.
 2. **Install Node.js:** To run that project you must have Node.js.  Download from the offical site `https://nodejs.org/en`
 3. **Install dotnet tools:** To create migration of a database you must have a dotnet tools.  You can check the installation guide here `https://learn.microsoft.com/en-us/ef/core/cli/dotnet`
 4. **Change the connection string:** Replace the connection string (open the project -> move to the appsettings.json -> find `LibraryDb`) with your database connction string.
-6. **Update your database:** To update your database or create new table(if you didnt have it before) write in the Terminal:
+6. **Update your database:** To update your database or create new table(if you didnt have it before) write that command inside the project folder using the Terminal:
 
      ```bash
    dotnet ef database update --startup-project LibraryWebApp --project Library.DataContext
