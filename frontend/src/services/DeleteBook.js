@@ -6,7 +6,8 @@ export default async function DeleteBook(id) {
         const response = await axios.delete(link, {
             withCredentials: true
         })
-        console.log(response);
+
+        window.location.href = "/";
         return true;
     }catch(error){
         return false;

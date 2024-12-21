@@ -2,7 +2,6 @@ using Library.DataContext;
 using Domain;
 using Microsoft.AspNetCore.CookiePolicy;
 using Domain.Exceptions;
-using Domain.Profiles;
 
 var builder = WebApplication.CreateBuilder(args);
 
