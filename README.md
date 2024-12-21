@@ -20,11 +20,12 @@ This is my pet-project.
 2. **Install Node.js:** To run that project you must have Node.js.  Download from the offical site `https://nodejs.org/en`
 3. **Install dotnet tools:** To create migration of a database you must have a dotnet tools.  You can check the installation guide here `https://learn.microsoft.com/en-us/ef/core/cli/dotnet`
 4. **Change the connection string:** Replace the connection string (open the project -> move to the appsettings.json -> find `LibraryDb`) with your database connction string.
+5. **Build the project:** Open the project in Visual Studio or your preferred IDE. Build run the project.
 6. **Update your database:** To update your database or create new table(if you didnt have it before) write that command inside the project folder using the Terminal:
 
      ```bash
    dotnet ef database update --startup-project LibraryWebApp --project Library.DataContext
-7. **Run the server:** Open the project in Visual Studio or your preferred IDE. Build and run the project to launch the web application.
+7. **Run the server:** Open the project in Visual Studio or your preferred IDE. Launch the server.
 8. **Run the client:** Open the `frontend` folder via the terminal or VSCode. Then install all necessary files using that command:
 
      ```bash
