@@ -3,7 +3,6 @@ using Domain.Abstractions.UnitsOfWork;
 using FluentValidation;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using System.ComponentModel.DataAnnotations;
 
 namespace LibraryWebApp.Controllers
 {
@@ -50,7 +49,7 @@ namespace LibraryWebApp.Controllers
         }
 
         [HttpGet("{isbn}")]
-        public async Task<ActionResult<UpdateBookRecord?>> GetByISBN(string isbn)
+        public async Task<ActionResult<GetBookRecord?>> GetByISBN(string isbn)
         {
             var book = await _uow.BookRepository.GetBookByISBN(isbn);
 
@@ -78,7 +77,7 @@ namespace LibraryWebApp.Controllers
 
         [HttpPut("{id:guid}")]
         [Authorize(Policy = "AdminPolicy")]
-        public async Task<ActionResult<string?>> Update([FromBody] CreateBookRecord request, Guid id)
+        public async Task<ActionResult> Update([FromBody] CreateBookRecord request, Guid id)
         {
             var result = await _validator.ValidateAsync(request);
 
@@ -94,9 +93,9 @@ namespace LibraryWebApp.Controllers
 
         [HttpGet("borrowed")]
         [Authorize]
-        public ActionResult<List<GetBookRecord>?> GetBooksByUserId(Guid userId)
+        public async Task <ActionResult<List<GetBookRecord>?>> GetBooksByUserId(Guid userId)
         {
-            var books = _uow.BookRepository.GetBooksByUserId(userId);
+            var books = await _uow.BookRepository.GetBooksByUserId(userId);
 
             return Ok(books);
         }

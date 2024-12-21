@@ -137,7 +137,17 @@
     "IsController": true,
     "Order": 0,
     "Parameters": [],
-    "ReturnTypes": []
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.List\u00601[[Domain.Abstractions.Records.CreateAuthorRecord, Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
   },
   {
     "ContainingType": "LibraryWebApp.Controllers.AuthorController",
@@ -169,7 +179,17 @@
         "IsRequired": true
       }
     ],
-    "ReturnTypes": []
+    "ReturnTypes": [
+      {
+        "Type": "Domain.Abstractions.Records.CreateAuthorRecord",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
   },
   {
     "ContainingType": "LibraryWebApp.Controllers.AuthorController",
@@ -264,17 +284,7 @@
         "IsRequired": true
       }
     ],
-    "ReturnTypes": [
-      {
-        "Type": "System.String",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
-      }
-    ]
+    "ReturnTypes": []
   },
   {
     "ContainingType": "LibraryWebApp.Controllers.BookController",
@@ -292,7 +302,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "Domain.Abstractions.Records.UpdateBookRecord",
+        "Type": "Domain.Abstractions.Records.GetBookRecord",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -406,7 +416,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "Domain.Abstractions.Records.RegisterUserRecord",
+        "Type": "Domain.Abstractions.Records.UserInfoResponse",
         "MediaTypes": [
           "text/plain",
           "application/json",

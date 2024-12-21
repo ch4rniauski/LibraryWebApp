@@ -3,7 +3,7 @@
     public record CreateBookRecord(
         string ISBN,
         string Title,
-        string? Genre,
+        string Genre,
         string? Description,
         string? AuthorFirstName,
         string? AuthorSecondName,

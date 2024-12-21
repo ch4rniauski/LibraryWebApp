@@ -39,13 +39,13 @@ namespace LibraryWebApp.Controllers
         }
 
         [HttpGet]
-        public ActionResult GetAll()
+        public ActionResult<List<CreateAuthorRecord>?> GetAll()
         {
             return Ok(_uow.AuthorRepository.GetAllAuthors());
         }
 
         [HttpGet("{id:Guid}")]
-        public async Task<ActionResult> Get(Guid id)
+        public async Task<ActionResult<CreateAuthorRecord>> Get(Guid id)
         {
             var author = await _uow.AuthorRepository.GetAuthor(id);
 

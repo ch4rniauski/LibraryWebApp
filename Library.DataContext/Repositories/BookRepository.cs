@@ -127,8 +127,12 @@ namespace Library.DataContext.Repositories
             return _mapper.Map<GetBookRecord>(book);
         }
 
-        public List<GetBookRecord>? GetBooksByUserId(Guid id)
+        public async Task<List<GetBookRecord>?> GetBooksByUserId(Guid id)
         {
+            var user = await _db.Users.FirstOrDefaultAsync(u => u.Id == id);
+            if (user is null)
+                throw new Exception("User with that ID doesn't exist");
+
             var books = _db.Books.Where(b => b.UserId == id);
 
             var booksToReturn = _mapper.Map<List<GetBookRecord>>(books);

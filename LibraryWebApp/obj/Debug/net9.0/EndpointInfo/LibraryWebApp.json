@@ -218,7 +218,33 @@
         ],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/CreateAuthorRecord"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/CreateAuthorRecord"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/CreateAuthorRecord"
+                  }
+                }
+              }
+            }
           }
         }
       },
@@ -270,7 +296,24 @@
         ],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreateAuthorRecord"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreateAuthorRecord"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreateAuthorRecord"
+                }
+              }
+            }
           }
         }
       },
@@ -461,24 +504,7 @@
         },
         "responses": {
           "200": {
-            "description": "OK",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "type": "string"
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "type": "string"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "type": "string"
-                }
-              }
-            }
+            "description": "OK"
           }
         }
       }
@@ -504,17 +530,17 @@
             "content": {
               "text/plain": {
                 "schema": {
-                  "$ref": "#/components/schemas/UpdateBookRecord"
+                  "$ref": "#/components/schemas/GetBookRecord"
                 }
               },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/UpdateBookRecord"
+                  "$ref": "#/components/schemas/GetBookRecord"
                 }
               },
               "text/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/UpdateBookRecord"
+                  "$ref": "#/components/schemas/GetBookRecord"
                 }
               }
             }
@@ -672,17 +698,17 @@
             "content": {
               "text/plain": {
                 "schema": {
-                  "$ref": "#/components/schemas/RegisterUserRecord"
+                  "$ref": "#/components/schemas/UserInfoResponse"
                 }
               },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/RegisterUserRecord"
+                  "$ref": "#/components/schemas/UserInfoResponse"
                 }
               },
               "text/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/RegisterUserRecord"
+                  "$ref": "#/components/schemas/UserInfoResponse"
                 }
               }
             }
@@ -973,50 +999,19 @@
         },
         "additionalProperties": false
       },
-      "UpdateBookRecord": {
+      "UserInfoResponse": {
         "type": "object",
         "properties": {
-          "id": {
-            "type": "string",
-            "format": "uuid"
-          },
-          "isbn": {
+          "login": {
             "type": "string",
             "nullable": true
           },
-          "title": {
+          "email": {
             "type": "string",
             "nullable": true
           },
-          "genre": {
-            "type": "string",
-            "nullable": true
-          },
-          "description": {
-            "type": "string",
-            "nullable": true
-          },
-          "authorFirstName": {
-            "type": "string",
-            "nullable": true
-          },
-          "authorSecondName": {
-            "type": "string",
-            "nullable": true
-          },
-          "imageURL": {
-            "type": "string",
-            "nullable": true
-          },
-          "takenAt": {
-            "type": "string",
-            "format": "date",
-            "nullable": true
-          },
-          "dueDate": {
-            "type": "string",
-            "format": "date",
-            "nullable": true
+          "isAdmin": {
+            "type": "boolean"
           }
         },
         "additionalProperties": false

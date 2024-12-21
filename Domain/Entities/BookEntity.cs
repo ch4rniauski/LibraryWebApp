@@ -5,7 +5,7 @@
         public Guid Id { get; set; }
         public string ISBN { get; set; } = string.Empty;
         public string Title { get; set; } = string.Empty;
-        public string? Genre { get; set; }
+        public string Genre { get; set; }
         public string? Description { get; set; }
         public string? AuthorFirstName { get; set; }
         public string? AuthorSecondName { get; set; }

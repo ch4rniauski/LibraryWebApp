@@ -8,7 +8,7 @@ namespace xUnitTests
         static public LibraryContext Generate()
         {
             var options = new DbContextOptionsBuilder<LibraryContext>()
-                .UseInMemoryDatabase("LibraryDb")
+                .UseInMemoryDatabase(Guid.NewGuid().ToString())
                 .Options;
 
             return new LibraryContext(options);

@@ -9,24 +9,27 @@ namespace Domain.Profiles
         public UserProfile()
         {
             CreateMap<RegisterUserRecord, LogInRequest>()
-                .ForMember(dist => dist.Login, opt => opt.MapFrom(src => src.Login))
-                .ForMember(dist => dist.Email, opt => opt.MapFrom(src => src.Email))
-                .ForMember(dist => dist.Password, opt => opt.MapFrom(src => src.Password));
+                .ConstructUsing(src => new LogInRequest(
+                    src.Login, 
+                    src.Email, 
+                    src.Password));
             
             CreateMap<RegisterUserRecord, UserEntity>()
                 .ForMember(dist => dist.Login, opt => opt.MapFrom(src => src.Login))
                 .ForMember(dist => dist.Email, opt => opt.MapFrom(src => src.Email));
 
             CreateMap<LogInRequest, RegisterUserRecord>()
-                .ForMember(dist => dist.Login, opt => opt.MapFrom(src => src.Login))
-                .ForMember(dist => dist.Email, opt => opt.MapFrom(src => src.Email))
-                .ForMember(dist => dist.Password, opt => opt.MapFrom(src => src.Password))
-                .ForMember(dist => dist.IsAdmin, opt => opt.MapFrom(src => "false"));
+                .ConstructUsing(src => new RegisterUserRecord(
+                    src.Login, 
+                    src.Email,
+                    src.Password, 
+                    "false"));
 
             CreateMap<UserEntity, UserInfoResponse>()
-                .ForMember(dist => dist.Login, opt => opt.MapFrom(src => src.Login))
-                .ForMember(dist => dist.Email, opt => opt.MapFrom(src => src.Email))
-                .ForMember(dist => dist.IsAdmin, opt => opt.MapFrom(src => src.IsAdmin));
+                .ConstructUsing(src => new UserInfoResponse(
+                    src.Login, 
+                    src.Email, 
+                    src.IsAdmin));
         }
     }
 }

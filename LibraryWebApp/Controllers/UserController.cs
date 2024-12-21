@@ -21,12 +21,10 @@ namespace LibraryWebApp.Controllers
 
         [HttpGet("{id:guid}")]
         [Authorize]
-        public async Task<ActionResult<RegisterUserRecord?>> GetUserInfo(Guid id)
+        public async Task<ActionResult<UserInfoResponse>> GetUserInfo(Guid id)
         {
             var user = await _uow.UserRepository.GetUserInfo(id);
 
-            if (user is null)
-                return BadRequest("User with that ID wasn't found");
             return Ok(user);
         }
 

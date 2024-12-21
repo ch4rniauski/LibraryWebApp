@@ -9,10 +9,11 @@ namespace Domain.Profiles
         public AuthorProfile()
         {
             CreateMap<UpdateAuthorRecord, CreateAuthorRecord>()
-                .ForMember(dist => dist.FirstName, opt => opt.MapFrom(src => src.FirstName))
-                .ForMember(dist => dist.SecondName, opt => opt.MapFrom(src => src.SecondName))
-                .ForMember(dist => dist.Country, opt => opt.MapFrom(src => src.Country))
-                .ForMember(dist => dist.BirthDate, opt => opt.MapFrom(src => src.BirthDate));
+                .ConstructUsing(src => new CreateAuthorRecord(
+                    src.FirstName,
+                    src.SecondName,
+                    src.Country,
+                    src.BirthDate));
 
             CreateMap<CreateAuthorRecord, AuthorEntity>()
                 .ForMember(dist => dist.FirstName, opt => opt.MapFrom(src => src.FirstName))
@@ -21,10 +22,11 @@ namespace Domain.Profiles
                 .ForMember(dist => dist.BirthDate, opt => opt.MapFrom(src => src.BirthDate));
 
             CreateMap<AuthorEntity, CreateAuthorRecord>()
-                .ForMember(dist => dist.FirstName, opt => opt.MapFrom(src => src.FirstName))
-                .ForMember(dist => dist.SecondName, opt => opt.MapFrom(src => src.SecondName))
-                .ForMember(dist => dist.Country, opt => opt.MapFrom(src => src.Country))
-                .ForMember(dist => dist.BirthDate, opt => opt.MapFrom(src => src.BirthDate));
+                .ConstructUsing(src => new CreateAuthorRecord(
+                    src.FirstName,
+                    src.SecondName,
+                    src.Country,
+                    src.BirthDate));
         }
     }
 }
