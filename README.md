@@ -35,6 +35,6 @@ This is my pet-project.
    npm run dev
 Then launch client using the that command:
 
-     ```bash
-   npm run dev
+    ```bash
+     npm run dev
 And you will see the adress you need to copy and paste in your web-browser
