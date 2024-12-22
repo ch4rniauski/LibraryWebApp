@@ -1,10 +1,8 @@
 ﻿using AutoMapper;
 using Domain.Abstractions.Records;
 using Domain.Entities;
-using Domain.Models;
 using Library.DataContext;
 using Library.DataContext.Repositories;
-using Microsoft.VisualBasic;
 using Moq;
 
 namespace xUnitTests.RepositoriesTests
@@ -35,7 +33,7 @@ namespace xUnitTests.RepositoriesTests
                 DueDate = null,
                 User = null,
                 UserId = null,
-                ImageURL = null
+                ImageData = null
             });
             _context.SaveChanges();
 
@@ -61,7 +59,7 @@ namespace xUnitTests.RepositoriesTests
                 src.Description,
                 src.AuthorFirstName,
                 src.AuthorSecondName,
-                src.ImageURL,
+                src.ImageData,
                 src.TakenAt,
                 src.DueDate,
                 src.UserId));
@@ -94,7 +92,7 @@ namespace xUnitTests.RepositoriesTests
                 DueDate = null,
                 User = null,
                 UserId = null,
-                ImageURL = null
+                ImageData = null
             });
             _context.SaveChanges();
 
@@ -129,7 +127,7 @@ namespace xUnitTests.RepositoriesTests
                 Description = src.Description,
                 AuthorFirstName = src.AuthorFirstName,
                 AuthorSecondName = src.AuthorSecondName,
-                ImageURL = src.ImageURL,
+                ImageData = src.ImageData,
                 TakenAt = src.TakenAt,
                 DueDate = src.DueDate,
             });
@@ -178,7 +176,7 @@ namespace xUnitTests.RepositoriesTests
                 Description = src.Description,
                 AuthorFirstName = src.AuthorFirstName,
                 AuthorSecondName = src.AuthorSecondName,
-                ImageURL = src.ImageURL,
+                ImageData = src.ImageData,
                 TakenAt = src.TakenAt,
                 DueDate = src.DueDate,
             });
