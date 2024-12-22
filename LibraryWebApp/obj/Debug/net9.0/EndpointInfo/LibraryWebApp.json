@@ -813,8 +813,9 @@
             "type": "string",
             "nullable": true
           },
-          "imageURL": {
+          "imageData": {
             "type": "string",
+            "format": "byte",
             "nullable": true
           },
           "takenAt": {
@@ -861,8 +862,9 @@
             "type": "string",
             "nullable": true
           },
-          "imageURL": {
+          "imageData": {
             "type": "string",
+            "format": "byte",
             "nullable": true
           },
           "takenAt": {
@@ -908,8 +910,9 @@
             "type": "string",
             "nullable": true
           },
-          "imageURL": {
+          "imageData": {
             "type": "string",
+            "format": "byte",
             "nullable": true
           }
         },

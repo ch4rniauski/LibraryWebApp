@@ -110,7 +110,7 @@ export default function MainHomePage(){
             <div className="MainHomePage">
                 {displayBooks.map((b) => (
                     <div className="Card" key={b.id} onClick={() => onClickHandler(b)}>
-                        <BookCard key={b.id} title={b.title} imageURL={b.imageURL}/>
+                        <BookCard key={b.id} title={b.title} imageData={b.imageData}/>
                     </div>
                 ))}
             </div>

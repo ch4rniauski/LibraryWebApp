@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export default async function UpdateBook(data, id) {
+export default async function UpdateBook(data, id, image) {
     try{
         if (data.description == "")
             data.description = null;
@@ -8,8 +8,6 @@ export default async function UpdateBook(data, id) {
             data.authorFirstName = null;
         if (data.authorSecondName == "")
             data.authorSecondName = null;
-        if (data.imageURL == "")
-            data.imageURL = null;
 
         const link = "https://localhost:7186/Book/" + id;
         const response = await axios.put(link, {
@@ -19,7 +17,7 @@ export default async function UpdateBook(data, id) {
             description: data.description,
             authorFirstName: data.authorFirstName,
             authorSecondName: data.authorSecondName,
-            imageURL: data.imageURL,
+            imageData: image,
             takenAt: null,
             dueDate: null
         }, {

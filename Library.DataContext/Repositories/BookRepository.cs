@@ -85,6 +85,8 @@ namespace Library.DataContext.Repositories
             if ((book.AuthorFirstName is not null || book.AuthorSecondName is not null) && !isAuthorChanged)
                 throw new Exception("Author with that name doesn't exist");
 
+
+
             await _db.Books.AddAsync(newBook);
         }
 
@@ -200,7 +202,7 @@ namespace Library.DataContext.Repositories
             bookToUpdate.Genre = book.Genre;
             bookToUpdate.Title = book.Title;
             bookToUpdate.Id = id;
-            bookToUpdate.ImageURL = book.ImageURL;
+            bookToUpdate.ImageData = book.ImageData;
 
             var isAuthorChanged = false;
 

@@ -7,6 +7,7 @@ import { useState } from "react";
 export default function AddBookForm(){
     const [responseError, setResponseError] = useState(null);
     const [success, setSuccess] = useState("");
+    const [imageData, setImageData] = useState(null);
 
     const {register, handleSubmit, formState:{
         errors
@@ -14,11 +15,24 @@ export default function AddBookForm(){
         mode: 'onBlur'
     });
 
+    const onUploadImageHandler = (event) => {
+        const reader = new FileReader();
+
+        reader.onload = function(e) {
+            const arrayBuffer = e.target.result;
+            const bytes = new Uint8Array(arrayBuffer);
+            const bytesString = btoa(String.fromCharCode(...bytes));
+            setImageData(bytesString);
+        };
+
+        reader.readAsArrayBuffer(event.target.files[0]);
+    };
+
     const submitHandler = async (data) => {
         setSuccess("");
         setResponseError(null);
 
-        const response = await AddBook(data);
+        const response = await AddBook(data, imageData);
 
         if (response.status != 200){
             if (response.response.data.length)
@@ -105,11 +119,9 @@ export default function AddBookForm(){
                     value: null
                 })}/>
             </div>
-            
+
             <div className="AddBookInput">
-                <input type="text" placeholder="Image URL"{...register("imageURL", {
-                    value: null
-                })}/>
+                <input type="file" onChange={onUploadImageHandler}/>
             </div>
 
             <SubmitButton />

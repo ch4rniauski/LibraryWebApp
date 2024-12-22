@@ -14,7 +14,7 @@ export default function UpdateBookForm({bookData}){
     const [authorFirstName, setAuthorFirstName] = useState(bookData.data.authorFirstName);
     const [authorSecondName, setAuthorSecondName] = useState(bookData.data.authorSecondName);
     const [genre, setGenre] = useState(bookData.data.genre);
-    const [imageURL, setImageURL] = useState(bookData.data.imageURL);
+    const [imageData, setImageData] = useState(null);
     
     const {register, handleSubmit, formState:{
         errors
@@ -31,7 +31,7 @@ export default function UpdateBookForm({bookData}){
         const parts = bookId.split('/');
         bookId = parts[0];
 
-        const response = await UpdateBook(data, bookId);
+        const response = await UpdateBook(data, bookId, imageData);
 
         if (response.status != 200){
             if (response.response.data.length)
@@ -44,6 +44,19 @@ export default function UpdateBookForm({bookData}){
             setSuccess("Book was successfully updated")
         }
     }
+
+    const onUploadImageHandler = (event) => {
+        const reader = new FileReader();
+
+        reader.onload = function(e) {
+            const arrayBuffer = e.target.result;
+            const bytes = new Uint8Array(arrayBuffer);
+            const bytesString = btoa(String.fromCharCode(...bytes));
+            setImageData(bytesString);
+        };
+
+        reader.readAsArrayBuffer(event.target.files[0]);
+    };
 
     const onInputHandler = (e) => {
         if (e.target.value.trim() === '') {
@@ -169,16 +182,9 @@ export default function UpdateBookForm({bookData}){
                     }
                 })}/>
             </div>
-            
-            <div className="UpdateBookInput">
-                <input type="text" 
-                value={imageURL} 
-                placeholder="Image URL" 
-                onInput={(e) => {
-                    onInputHandler(e);
-                    setImageURL(e.target.value);
-                }}
-                {...register("imageURL")}/>
+
+            <div className="AddBookInput">
+                <input type="file" onChange={onUploadImageHandler}/>
             </div>
 
             <SubmitButton />

@@ -67,6 +67,10 @@ namespace Library.DataContext
                 .WithMany(u => u.Books)
                 .HasForeignKey(b => b.UserId)
                 .IsRequired(false);
+
+                b.Property(b => b.ImageData)
+                .HasColumnType("varbinary(max)")
+                .HasMaxLength(int.MaxValue);
             });
 
             modelBuilder.Entity<UserEntity>().HasKey(u => u.Id);

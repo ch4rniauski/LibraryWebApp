@@ -42,7 +42,7 @@ export default function BookInfoPage(){
             
             <main>
                 {bookInfo.data && 
-                    <BookInfoPicture imageURL={bookInfo.data.imageURL} isbn={bookInfo.data.isbn}/>
+                    <BookInfoPicture imageData={bookInfo.data.imageData} isbn={bookInfo.data.isbn}/>
                 }
 
                 {bookInfo.data && 

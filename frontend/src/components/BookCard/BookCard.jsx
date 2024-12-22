@@ -14,7 +14,7 @@ export default function BookCard(props) {
             <CardMedia
             component="img"
             height="130"
-            image={props.imageURL}
+            image={'data:image/jpeg;base64,' + props.imageData}
             alt="Book"
             />
             <CardContent>

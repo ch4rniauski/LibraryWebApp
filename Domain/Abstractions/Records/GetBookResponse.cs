@@ -3,5 +3,5 @@
     public record GetBookResponse(
         Guid Id,
         string Title,
-        string? ImageURL);
+        byte[]? ImageData);
 }

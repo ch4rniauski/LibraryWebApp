@@ -12,7 +12,7 @@ namespace Domain.Profiles
                 .ConstructUsing(src => new GetBookResponse(
                     src.Id,
                     src.Title, 
-                    src.ImageURL));
+                    src.ImageData));
 
             CreateMap<BookEntity, GetBookRecord>()
                 .ConstructUsing(src => new GetBookRecord(
@@ -23,7 +23,7 @@ namespace Domain.Profiles
                     src.Description,
                     src.AuthorFirstName,
                     src.AuthorSecondName,
-                    src.ImageURL,
+                    src.ImageData,
                     src.TakenAt,
                     src.DueDate,
                     src.UserId));
@@ -31,13 +31,13 @@ namespace Domain.Profiles
             CreateMap<CreateBookRecord, BookEntity>()
                 .ForMember(dist => dist.ISBN, opt => opt.MapFrom(src => src.ISBN))
                 .ForMember(dist => dist.Title, opt => opt.MapFrom(src => src.Title))
-                .ForMember(dist => dist.ImageURL, opt => opt.MapFrom(src => src.ImageURL))
                 .ForMember(dist => dist.Genre, opt => opt.MapFrom(src => src.Genre))
                 .ForMember(dist => dist.Description, opt => opt.MapFrom(src => src.Description))
                 .ForMember(dist => dist.AuthorFirstName, opt => opt.MapFrom(src => src.AuthorFirstName))
                 .ForMember(dist => dist.AuthorSecondName, opt => opt.MapFrom(src => src.AuthorSecondName))
                 .ForMember(dist => dist.TakenAt, opt => opt.MapFrom(src => src.TakenAt))
-                .ForMember(dist => dist.DueDate, opt => opt.MapFrom(src => src.DueDate));
+                .ForMember(dist => dist.DueDate, opt => opt.MapFrom(src => src.DueDate))
+                .ForMember(dist => dist.ImageData, opt => opt.MapFrom(src => src.ImageData));
         }
     }
 }
