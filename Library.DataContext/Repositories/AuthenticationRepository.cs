@@ -59,8 +59,8 @@ namespace LibraryAccounts.DataContext.Repositories
 
             if (isUserExist is not null)
                 throw new Exception("User with that login already exists");
-            else
-                isUserExist = await _db.Users.FirstOrDefaultAsync(u => u.Email == user.Email);
+            
+            isUserExist = await _db.Users.FirstOrDefaultAsync(u => u.Email == user.Email);
 
             if (isUserExist is not null)
                 throw new Exception("User with that email already exists");

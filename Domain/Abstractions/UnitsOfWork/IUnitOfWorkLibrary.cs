@@ -9,6 +9,6 @@ namespace Domain.Abstractions.UnitsOfWork
         IAuthenticationRepository AuthenticationRepository { get; }
         IUserRepository UserRepository { get; }
 
-        void Save();
+        Task Save();
     }
 }

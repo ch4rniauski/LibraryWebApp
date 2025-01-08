@@ -10,6 +10,7 @@ export default async function UpdateBook(data, id, image) {
             data.authorSecondName = null;
 
         const link = "https://localhost:7186/Book/" + id;
+        
         const response = await axios.put(link, {
             isbn: data.isbn,
             title: data.title,

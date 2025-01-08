@@ -9,7 +9,7 @@ export default async function GetBooksWithParams(data){
         
         if (response.data.length == 0)
             return null;
-        console.log(response);
+
         return response;
     }catch(error){
         return null;

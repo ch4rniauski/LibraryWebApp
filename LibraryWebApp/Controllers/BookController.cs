@@ -29,7 +29,7 @@ namespace LibraryWebApp.Controllers
 
             await _uow.BookRepository.CreateBook(request);
 
-            _uow.Save();
+            await _uow.Save();
 
             return Ok();
         }
@@ -70,7 +70,7 @@ namespace LibraryWebApp.Controllers
         {
             await _uow.BookRepository.DeleteBook(id);
 
-            _uow.Save();
+            await _uow.Save();
 
             return Ok();
         }
@@ -86,7 +86,7 @@ namespace LibraryWebApp.Controllers
 
             await _uow.BookRepository.UpdateBook(request, id);
 
-            _uow.Save();
+            await _uow.Save();
 
             return Ok();
         }
@@ -106,7 +106,7 @@ namespace LibraryWebApp.Controllers
         {
             await _uow.BookRepository.ReturnBook(id);
 
-            _uow.Save();
+            await _uow.Save();
 
             return Ok();
         }

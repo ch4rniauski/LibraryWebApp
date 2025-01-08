@@ -34,7 +34,7 @@ namespace LibraryWebApp.Controllers
         {
             await _uow.UserRepository.BorrowBook(request.UserId, request.BookId);
 
-            _uow.Save();
+            await _uow.Save();
 
             return Ok();
         }

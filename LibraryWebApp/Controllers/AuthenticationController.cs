@@ -32,7 +32,7 @@ namespace LibraryWebApp.Controllers
 
             await _uow.AuthenticationRepository.RegisterUser(request);
 
-            _uow.Save();
+            await _uow.Save();
 
             return Ok();
         }
@@ -47,7 +47,7 @@ namespace LibraryWebApp.Controllers
 
             var response = await _uow.AuthenticationRepository.LogInUser(request, HttpContext);
 
-            _uow.Save();
+            await _uow.Save();
 
             return Ok(response);
         }
@@ -72,7 +72,7 @@ namespace LibraryWebApp.Controllers
         {
             await _uow.AuthenticationRepository.DeleteUser(id);
 
-            _uow.Save();
+            await _uow.Save();
 
             return Ok();
         }

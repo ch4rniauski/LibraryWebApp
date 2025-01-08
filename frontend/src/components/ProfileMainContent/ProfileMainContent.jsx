@@ -11,6 +11,7 @@ export default function ProfileMainContent(){
     useEffect( () => {
         const getBorrowedBooks = async () => {
             const response = await GetBooksByUserId(localStorage.getItem("userId"));
+            
             if (response)
                 setBorrowedBooks(response.data);
         }
@@ -41,7 +42,7 @@ export default function ProfileMainContent(){
                             title={b.title} 
                             takenAt={b.takenAt}
                             dueDate={b.dueDate}
-                            imageURL={b.imageURL}/>
+                            imageData={b.imageData}/>
                         </div>
                     ))}
                 </div>

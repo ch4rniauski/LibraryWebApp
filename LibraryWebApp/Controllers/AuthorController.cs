@@ -33,7 +33,7 @@ namespace LibraryWebApp.Controllers
 
             await _uow.AuthorRepository.CreateAuthor(request);
 
-            _uow.Save();
+            await _uow.Save();
 
             return Ok();
         }
@@ -58,7 +58,7 @@ namespace LibraryWebApp.Controllers
         {
             await _uow.AuthorRepository.DeleteAutor(id);
 
-            _uow.Save();
+            await _uow.Save();
 
             return Ok();
         }
@@ -75,7 +75,7 @@ namespace LibraryWebApp.Controllers
 
             await _uow.AuthorRepository.UpdateAuthor(request);
 
-            _uow.Save();
+            await _uow.Save();
 
             return Ok();
         }
