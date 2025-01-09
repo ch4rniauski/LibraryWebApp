@@ -1,32 +1,34 @@
 ﻿using Domain.Abstractions.Repositories;
 using Domain.Entities;
-using Domain.JWT;
 using Library.DataContext;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.ChangeTracking;
 
 namespace LibraryAccounts.DataContext.Repositories
 {
     public class AuthenticationRepository : IAuthenticationRepository
     {
         private readonly LibraryContext _db;
-        private readonly TokenProvider _tokenProvider;
 
-        public AuthenticationRepository(LibraryContext db, TokenProvider tokenProvider)
+        public AuthenticationRepository(LibraryContext db)
         {
             _db = db;
-            _tokenProvider = tokenProvider;
         }
 
-        public async Task RegisterUser(UserEntity user)
+        public async Task<EntityEntry<UserEntity>?> RegisterUser(UserEntity user)
         {
-            await _db.Users.AddAsync(user);
+            var registeredUser = await _db.Users.AddAsync(user);
+
+            return registeredUser;
         }
 
-        public async Task DeleteUser(Guid id)
+        public async Task<EntityEntry<UserEntity>?> DeleteUser(Guid id)
         {
             var user = await _db.Users.FirstOrDefaultAsync(u => u.Id == id);
 
-            _db.Users.Remove(user!);
+            var isDeleted = _db.Users.Remove(user!);
+
+            return isDeleted;
         }
     }
 }

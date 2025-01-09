@@ -18,6 +18,7 @@ namespace Application
         {
             services.AddScoped<TokenProvider>();
             services.AddScoped<IAuthenticationUserService, AuthenticationUserService>();
+            services.AddScoped<IAuthorService, AuthorService>();
 
             return services;
         }

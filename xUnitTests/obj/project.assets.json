@@ -2437,6 +2437,7 @@
           "FluentValidation": "11.11.0",
           "Microsoft.AspNetCore.Authentication.JwtBearer": "9.0.0",
           "Microsoft.AspNetCore.Mvc.Core": "2.2.5",
+          "Microsoft.EntityFrameworkCore": "9.0.0",
           "Newtonsoft.Json": "13.0.3",
           "System.Text.Encodings.Web": "9.0.0"
         },

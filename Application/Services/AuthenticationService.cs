@@ -32,7 +32,11 @@ namespace Application.Services
             if (user is null)
                 throw new Exception("User with that ID wasn't found");
 
-            await _uow.AuthenticationRepository.DeleteUser(id);
+            var isDeleted = await _uow.AuthenticationRepository.DeleteUser(id);
+
+            if (isDeleted is null)
+                throw new Exception("User with that ID wasn't deleted");
+
             await _uow.Save();
         }
 
@@ -73,7 +77,7 @@ namespace Application.Services
             var result = await _validator.ValidateAsync(user);
 
             if (!result.IsValid)
-                throw new Exception(/*(result.Errors.Select(e => new { e.ErrorCode, e.ErrorMessage }))*/);
+                throw new Exception(); //return BadRequest(result.Errors.Select(e => new { e.ErrorCode, e.ErrorMessage }));
 
             var isUserExist = await _uow.UserRepository.GetByLogin(user.Login);
 
@@ -97,7 +101,10 @@ namespace Application.Services
             else
                 userEntity.IsAdmin = false;
 
-            await _uow.AuthenticationRepository.RegisterUser(userEntity);
+            var registeredUser = await _uow.AuthenticationRepository.RegisterUser(userEntity);
+
+            if (registeredUser is null)
+                throw new Exception("User wasn't registered");
 
             await _uow.Save();
         }

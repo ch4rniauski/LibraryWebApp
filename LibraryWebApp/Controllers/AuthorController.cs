@@ -1,7 +1,5 @@
-﻿using AutoMapper;
-using Domain.Abstractions.Records;
-using Domain.Abstractions.UnitsOfWork;
-using FluentValidation;
+﻿using Domain.Abstractions.Records;
+using Domain.Abstractions.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -11,43 +9,34 @@ namespace LibraryWebApp.Controllers
     [Route("[controller]")]
     public class AuthorController : ControllerBase
     {
-        private readonly IUnitOfWork _uow;
-        private readonly IValidator<CreateAuthorRecord> _validator;
-        private readonly IMapper _mapper;
+        private readonly IAuthorService _authorService;
 
-        public AuthorController(IUnitOfWork uow, IValidator<CreateAuthorRecord> validator, IMapper mapper)
+        public AuthorController(IAuthorService authorService)
         {
-            _uow = uow;
-            _validator = validator;
-            _mapper = mapper;
+            _authorService = authorService;
         }
 
         [HttpPost]
         [Authorize(Policy = "AdminPolicy")]
         public async Task<ActionResult> Create([FromBody] CreateAuthorRecord request)
         {
-            var result = await _validator.ValidateAsync(request);
-
-            if (!result.IsValid)
-                return BadRequest(result.Errors.Select(e => new { e.ErrorCode, e.ErrorMessage }));
-
-            await _uow.AuthorRepository.CreateAuthor(request);
-
-            await _uow.Save();
+            await _authorService.CreateAuthor(request);
 
             return Ok();
         }
 
         [HttpGet]
-        public ActionResult<List<CreateAuthorRecord>?> GetAll()
+        public async Task<ActionResult<List<CreateAuthorRecord>?>> GetAll()
         {
-            return Ok(_uow.AuthorRepository.GetAllAuthors());
+            var list = await _authorService.GetAllAuthors();
+
+            return Ok(list);
         }
 
         [HttpGet("{id:Guid}")]
         public async Task<ActionResult<CreateAuthorRecord>> Get(Guid id)
         {
-            var author = await _uow.AuthorRepository.GetAuthor(id);
+            var author = await _authorService.GetAuthorById(id);
 
             return Ok(author);
         }
@@ -56,9 +45,7 @@ namespace LibraryWebApp.Controllers
         [Authorize(Policy = "AdminPolicy")]
         public async Task<ActionResult> Delete(Guid id)
         {
-            await _uow.AuthorRepository.DeleteAutor(id);
-
-            await _uow.Save();
+            await _authorService.DeleteAutor(id);
 
             return Ok();
         }
@@ -67,15 +54,7 @@ namespace LibraryWebApp.Controllers
         [Authorize(Policy = "AdminPolicy")]
         public async Task<ActionResult> Update([FromBody] UpdateAuthorRecord request)
         {
-            var authorToValidate = _mapper.Map<CreateAuthorRecord>(request);
-            var result = await _validator.ValidateAsync(authorToValidate);
-
-            if (!result.IsValid)
-                return BadRequest(result.Errors.Select(e => new { e.ErrorCode, e.ErrorMessage }));
-
-            await _uow.AuthorRepository.UpdateAuthor(request);
-
-            await _uow.Save();
+            await _authorService.UpdateAuthor(request);
 
             return Ok();
         }

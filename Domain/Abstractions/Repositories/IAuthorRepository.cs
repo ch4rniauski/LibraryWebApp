@@ -1,13 +1,13 @@
-﻿using Domain.Abstractions.Records;
+﻿using Domain.Entities;
+using Microsoft.EntityFrameworkCore.ChangeTracking;
 
 namespace Domain.Abstractions.Repositories
 {
     public interface IAuthorRepository
     {
-        Task CreateAuthor(CreateAuthorRecord author);
-        Task<CreateAuthorRecord> GetAuthor(Guid id);
-        List<CreateAuthorRecord> GetAllAuthors();
-        Task UpdateAuthor(UpdateAuthorRecord author);
-        Task DeleteAutor(Guid id);
+        Task<EntityEntry<AuthorEntity>?> CreateAuthor(AuthorEntity author);
+        Task<AuthorEntity?> GetById(Guid id);
+        Task<List<AuthorEntity>?> GetAllAuthors();
+        EntityEntry<AuthorEntity>? DeleteAutor(AuthorEntity author);
     }
 }
