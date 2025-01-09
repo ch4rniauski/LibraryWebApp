@@ -46,3 +46,5 @@ C:\CSharp\LibraryWebApp\Library.DataContext\obj\Debug\net9.0\Library.DataContext
 C:\CSharp\LibraryWebApp\Library.DataContext\obj\Debug\net9.0\refint\Library.DataContext.dll
 C:\CSharp\LibraryWebApp\Library.DataContext\obj\Debug\net9.0\Library.DataContext.pdb
 C:\CSharp\LibraryWebApp\Library.DataContext\obj\Debug\net9.0\ref\Library.DataContext.dll
+D:\CSharp\LibraryWebApp\Library.DataContext\bin\Debug\net9.0\Application.dll
+D:\CSharp\LibraryWebApp\Library.DataContext\bin\Debug\net9.0\Application.pdb

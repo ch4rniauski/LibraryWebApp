@@ -500,3 +500,5 @@ C:\CSharp\LibraryWebApp\LibraryWebApp\obj\Debug\net9.0\LibraryWebApp.genruntimec
 C:\CSharp\LibraryWebApp\LibraryWebApp\obj\Debug\net9.0\ref\LibraryWebApp.dll
 D:\CSharp\LibraryWebApp\LibraryWebApp\bin\Debug\net9.0\AutoMapper.dll
 D:\CSharp\LibraryWebApp\LibraryWebApp\obj\Debug\net9.0\staticwebassets.upToDateCheck.txt
+D:\CSharp\LibraryWebApp\LibraryWebApp\bin\Debug\net9.0\Application.dll
+D:\CSharp\LibraryWebApp\LibraryWebApp\bin\Debug\net9.0\Application.pdb

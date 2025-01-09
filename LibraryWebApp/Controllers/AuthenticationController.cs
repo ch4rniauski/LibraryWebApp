@@ -1,7 +1,5 @@
-﻿using AutoMapper;
-using Domain.Abstractions.Records;
-using Domain.Abstractions.UnitsOfWork;
-using FluentValidation;
+﻿using Domain.Abstractions.Records;
+using Domain.Abstractions.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -11,28 +9,17 @@ namespace LibraryWebApp.Controllers
     [Route("[controller]")]
     public class AuthenticationController : ControllerBase
     {
-        private readonly IUnitOfWork _uow;
-        private readonly IValidator<RegisterUserRecord> _validator;
-        private readonly IMapper _mapper;
+        private readonly IAuthenticationUserService _authUserService;
 
-        public AuthenticationController(IUnitOfWork uow, IValidator<RegisterUserRecord> validator, IMapper mapper)
+        public AuthenticationController(IAuthenticationUserService authUserService)
         {
-            _uow = uow;
-            _validator = validator;
-            _mapper = mapper;
+            _authUserService = authUserService;
         }
 
         [HttpPost("register")]
         public async Task<ActionResult> Register([FromBody] RegisterUserRecord request)
         {
-            var result = await _validator.ValidateAsync(request);
-
-            if (!result.IsValid)
-                return BadRequest(result.Errors.Select(e => new { e.ErrorCode, e.ErrorMessage }));
-
-            await _uow.AuthenticationRepository.RegisterUser(request);
-
-            await _uow.Save();
+            await _authUserService.RegisterUser(request);
 
             return Ok();
         }
@@ -40,14 +27,7 @@ namespace LibraryWebApp.Controllers
         [HttpPost("login")]
         public async Task<ActionResult<LogInResponseRecord>> LogIn([FromBody] LogInRequest request)
         {
-            var result = await _validator.ValidateAsync(_mapper.Map<RegisterUserRecord>(request));
-
-            if (!result.IsValid)
-                return BadRequest(result.Errors.Select(e => new { e.ErrorCode, e.ErrorMessage }));
-
-            var response = await _uow.AuthenticationRepository.LogInUser(request, HttpContext);
-
-            await _uow.Save();
+            var response = await _authUserService.LogInUser(request, HttpContext);
 
             return Ok(response);
         }
@@ -70,9 +50,7 @@ namespace LibraryWebApp.Controllers
         [Authorize]
         public async Task<ActionResult> DeleteUser(Guid id)
         {
-            await _uow.AuthenticationRepository.DeleteUser(id);
-
-            await _uow.Save();
+            await _authUserService.DeleteUser(id);
 
             return Ok();
         }
@@ -80,14 +58,8 @@ namespace LibraryWebApp.Controllers
         [HttpGet("relogin")]
         public async Task<ActionResult<string>> UpdateAccessToken(Guid id)
         {
-            HttpContext.Request.Cookies.TryGetValue("refreshToken", out string? refreshToken);
-
-            if (refreshToken is null)
-                return BadRequest("Refresh token doesn't exist");
-
-            var accessToken = await _uow.AuthenticationRepository.UpdateAccessToken(id, refreshToken);
-
-            HttpContext.Response.Cookies.Append("accessToken", accessToken);
+            await _authUserService.UpdateAccessToken(id, HttpContext);
+            
             return Ok();
         }
 

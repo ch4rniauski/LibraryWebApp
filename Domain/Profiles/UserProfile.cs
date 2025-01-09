@@ -16,6 +16,8 @@ namespace Domain.Profiles
             
             CreateMap<RegisterUserRecord, UserEntity>()
                 .ForMember(dist => dist.Login, opt => opt.MapFrom(src => src.Login))
+                .ForMember(dist => dist.IsAdmin, opt => opt.Ignore())
+                .ForMember(dist => dist.PasswordHash, opt => opt.Ignore())
                 .ForMember(dist => dist.Email, opt => opt.MapFrom(src => src.Email));
 
             CreateMap<LogInRequest, RegisterUserRecord>()

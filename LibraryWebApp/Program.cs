@@ -2,6 +2,7 @@ using Library.DataContext;
 using Domain;
 using Microsoft.AspNetCore.CookiePolicy;
 using Domain.Exceptions;
+using Application;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -25,6 +26,7 @@ builder.Services.AddLibraryContext(builder.Configuration);
 builder.Services.AddDomainConfiguration();
 builder.Services.AddJWTConfiguration(builder.Configuration);
 builder.Services.AddAutoMapperConfiguration();
+builder.Services.AddApplicationConfiguration();
 
 var app = builder.Build();
 
