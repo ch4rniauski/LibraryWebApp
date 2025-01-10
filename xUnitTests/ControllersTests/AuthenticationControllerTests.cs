@@ -129,7 +129,7 @@ namespace xUnitTests.ControllerTests
             // Arrange
             var id = Guid.NewGuid();
 
-            _uowMock.Setup(u => u.AuthenticationRepository.DeleteUser(id)).ThrowsAsync(new Exception("User with that ID wasn't found"));
+            _uowMock.Setup(u => u.AuthenticationRepository.Delete(id)).ThrowsAsync(new Exception("User with that ID wasn't found"));
 
             var controller = new AuthenticationController(_uowMock.Object, _validator, _mapperMock.Object);
 
@@ -145,7 +145,7 @@ namespace xUnitTests.ControllerTests
             // Arrange
             var id = Guid.NewGuid();
 
-            _uowMock.Setup(u => u.AuthenticationRepository.DeleteUser(id)).Returns(Task.CompletedTask);
+            _uowMock.Setup(u => u.AuthenticationRepository.Delete(id)).Returns(Task.CompletedTask);
 
             var controller = new AuthenticationController(_uowMock.Object, _validator, _mapperMock.Object);
 

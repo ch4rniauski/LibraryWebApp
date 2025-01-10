@@ -92,26 +92,32 @@ namespace Application.Services
             if ((book.AuthorFirstName is not null || book.AuthorSecondName is not null) && !isAuthorChanged)
                 throw new Exception("Author with that name doesn't exist");
 
-            await _uow.BookRepository.CreateBook(newBook);
+            var createdBook = await _uow.BookRepository.Create(newBook);
+
+            if (createdBook is null)
+                throw new Exception("Author wasn't created");
 
             await _uow.Save();
         }
 
         public async Task DeleteBook(Guid id)
         {
-            var book = await _uow.BookRepository.GetBookById(id);
+            var book = await _uow.BookRepository.GetById(id);
 
             if (book is null)
                 throw new Exception("Book with that ID wasn't found");
 
-            _uow.BookRepository.DeleteBook(book);
+            var isDeleted = _uow.BookRepository.Delete(book);
+
+            if (isDeleted is null)
+                throw new Exception("Author with that ID wasn't deleted");
 
             await _uow.Save();
         }
 
         public async Task<List<GetBookRecord>?> GetAllBooks()
         {
-            var list = await _uow.BookRepository.GetAllBooks();
+            var list = await _uow.BookRepository.GetAll();
 
             var booksToReturn = _mapper.Map<List<GetBookRecord>>(list);
 
@@ -120,7 +126,7 @@ namespace Application.Services
 
         public async Task<GetBookRecord> GetBookById(Guid id)
         {
-            var book = await _uow.BookRepository.GetBookById(id);
+            var book = await _uow.BookRepository.GetById(id);
 
             if (book is null)
                 throw new Exception("Book with that ID wasn't found");
@@ -155,7 +161,7 @@ namespace Application.Services
         public async Task<List<GetBookResponse>?> GetBooksWithParams(GetBookRequest request)
         {
             List<GetBookResponse>? booksToReturn = new();
-            var books = await _uow.BookRepository.GetAllBooks();
+            var books = await _uow.BookRepository.GetAll();
 
             if (!string.IsNullOrWhiteSpace(request.Search) && books is not null)
             {
@@ -182,7 +188,7 @@ namespace Application.Services
 
         public async Task ReturnBook(Guid id)
         {
-            var book = await _uow.BookRepository.GetBookById(id);
+            var book = await _uow.BookRepository.GetById(id);
 
             if (book is null)
                 throw new Exception("Book with that ID doesn't exist");
@@ -202,7 +208,7 @@ namespace Application.Services
             if (!result.IsValid)
                 throw new Exception();//return BadRequest(result.Errors.Select(e => new { e.ErrorCode, e.ErrorMessage }));
 
-            var bookToUpdate = await _uow.BookRepository.GetBookById(id);
+            var bookToUpdate = await _uow.BookRepository.GetById(id);
 
             if (bookToUpdate is null)
                 throw new Exception("Book with that ID wasn't found");

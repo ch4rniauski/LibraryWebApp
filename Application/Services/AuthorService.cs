@@ -30,7 +30,7 @@ namespace Application.Services
             var newAuthor = _mapper.Map<AuthorEntity>(author);
             newAuthor.Id = Guid.NewGuid();
 
-            var createdAuthor = await _uow.AuthorRepository.CreateAuthor(newAuthor);
+            var createdAuthor = await _uow.AuthorRepository.Create(newAuthor);
 
             if (createdAuthor is null)
                 throw new Exception("Author wasn't created");
@@ -45,7 +45,7 @@ namespace Application.Services
             if (author is null)
                 throw new Exception("Author with that ID doesn't exist");
 
-            var isDeleted = _uow.AuthorRepository.DeleteAutor(author);
+            var isDeleted = _uow.AuthorRepository.Delete(author);
 
             if (isDeleted is null)
                 throw new Exception("Author with that ID wasn't deleted");
@@ -55,7 +55,7 @@ namespace Application.Services
 
         public async Task<List<CreateAuthorRecord>?> GetAllAuthors()
         {
-            var list = await _uow.AuthorRepository.GetAllAuthors();
+            var list = await _uow.AuthorRepository.GetAll();
 
             if (list is null)
                 return null;

@@ -81,7 +81,7 @@ namespace xUnitTests.ControllerTests
             // Arrange
             var list = new List<CreateAuthorRecord>();
 
-            _uowMock.Setup(u => u.AuthorRepository.GetAllAuthors()).Returns(list);
+            _uowMock.Setup(u => u.AuthorRepository.GetAll()).Returns(list);
 
             var controller = new AuthorController(_uowMock.Object, _validator, _mapperMock.Object);
 

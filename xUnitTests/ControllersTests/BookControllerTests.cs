@@ -93,7 +93,7 @@ namespace xUnitTests.ControllerTests
             // Arrange
             var list = new List<GetBookRecord>();
 
-            _uowMock.Setup(u => u.BookRepository.GetAllBooks()).Returns(list);
+            _uowMock.Setup(u => u.BookRepository.GetAll()).Returns(list);
 
             var controller = new BookController(_uowMock.Object, _validator);
 

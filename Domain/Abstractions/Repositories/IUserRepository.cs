@@ -2,9 +2,8 @@
 
 namespace Domain.Abstractions.Repositories
 {
-    public interface IUserRepository
+    public interface IUserRepository : IGenericRepository<UserEntity>
     {
-        Task<UserEntity?> GetById(Guid id);
         Task<UserEntity?> GetByLogin(string login);
         Task<UserEntity?> GetByEmail(string email);
     }

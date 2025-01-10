@@ -26,7 +26,7 @@ namespace Application.Services
             if (user is null)
                 throw new Exception("User with that ID doesn't exist");
 
-            var book = await _uow.BookRepository.GetBookById(bookId);
+            var book = await _uow.BookRepository.GetById(bookId);
 
             if (book is null)
                 throw new Exception("Book with that ID doesn't exist");

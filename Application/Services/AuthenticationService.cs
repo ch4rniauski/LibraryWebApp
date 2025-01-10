@@ -32,7 +32,7 @@ namespace Application.Services
             if (user is null)
                 throw new Exception("User with that ID wasn't found");
 
-            var isDeleted = await _uow.AuthenticationRepository.DeleteUser(id);
+            var isDeleted = _uow.AuthenticationRepository.Delete(user);
 
             if (isDeleted is null)
                 throw new Exception("User with that ID wasn't deleted");
@@ -101,7 +101,7 @@ namespace Application.Services
             else
                 userEntity.IsAdmin = false;
 
-            var registeredUser = await _uow.AuthenticationRepository.RegisterUser(userEntity);
+            var registeredUser = await _uow.AuthenticationRepository.Create(userEntity);
 
             if (registeredUser is null)
                 throw new Exception("User wasn't registered");
