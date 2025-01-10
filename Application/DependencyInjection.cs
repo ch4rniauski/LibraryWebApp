@@ -19,6 +19,7 @@ namespace Application
             services.AddScoped<TokenProvider>();
             services.AddScoped<IAuthenticationUserService, AuthenticationUserService>();
             services.AddScoped<IAuthorService, AuthorService>();
+            services.AddScoped<IBookService, BookService>();
 
             return services;
         }

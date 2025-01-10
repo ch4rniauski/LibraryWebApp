@@ -41,5 +41,19 @@ namespace Library.DataContext.Repositories
 
             return author;
         }
+
+        public async Task<AuthorEntity?> GetByFirstName(string firstName)
+        {
+            var authorByFirstName = await _db.Auhtors.FirstOrDefaultAsync(a => a.FirstName.ToLower() == firstName.ToLower());
+
+            return authorByFirstName;
+        }
+
+        public async Task<AuthorEntity?> GetBySecondName(string secondName)
+        {
+            var authorByFirstName = await _db.Auhtors.FirstOrDefaultAsync(a => a.FirstName.ToLower() == secondName.ToLower());
+
+            return authorByFirstName;
+        }
     }
 }

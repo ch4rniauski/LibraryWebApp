@@ -1,6 +1,5 @@
 ﻿using Domain.Abstractions.Records;
-using Domain.Abstractions.UnitsOfWork;
-using FluentValidation;
+using Domain.Abstractions.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -10,40 +9,34 @@ namespace LibraryWebApp.Controllers
     [Route("[controller]")]
     public class BookController : ControllerBase
     {
-        private readonly IUnitOfWork _uow;
-        private readonly IValidator<CreateBookRecord> _validator;
+        private readonly IBookService _bookService;
 
-        public BookController(IUnitOfWork uow, IValidator<CreateBookRecord> validator)
+        public BookController(IBookService bookService)
         {
-            _uow = uow;
-            _validator = validator;
+            _bookService = bookService;
         }
 
         [HttpPost]
         [Authorize(Policy = "AdminPolicy")]
         public async Task<ActionResult> Create([FromBody] CreateBookRecord request)
         {
-            var result = await _validator.ValidateAsync(request);
-            if (!result.IsValid)
-                return BadRequest(result.Errors.Select(e => new { e.ErrorCode, e.ErrorMessage }));
-
-            await _uow.BookRepository.CreateBook(request);
-
-            await _uow.Save();
+            await _bookService.CreateBook(request);
 
             return Ok();
         }
 
         [HttpGet("all")]
-        public ActionResult<List<GetBookRecord>?> GetAll()
+        public async Task<ActionResult<List<GetBookRecord>?>> GetAll()
         {
-            return Ok(_uow.BookRepository.GetAllBooks());
+            var list = await _bookService.GetAllBooks();
+            
+            return Ok(list);
         }
 
         [HttpGet("{id:Guid}")]
         public async Task<ActionResult<GetBookRecord?>> GetById(Guid id)
         {
-            var book = await _uow.BookRepository.GetBookById(id);
+            var book = await _bookService.GetBookById(id);
 
             return Ok(book);
         }
@@ -51,7 +44,7 @@ namespace LibraryWebApp.Controllers
         [HttpGet("{isbn}")]
         public async Task<ActionResult<GetBookRecord?>> GetByISBN(string isbn)
         {
-            var book = await _uow.BookRepository.GetBookByISBN(isbn);
+            var book = await _bookService.GetBookByISBN(isbn);
 
             return Ok(book);
         }
@@ -59,7 +52,7 @@ namespace LibraryWebApp.Controllers
         [HttpPost("getbooks")]
         public async Task<ActionResult<List<GetBookResponse>?>> GetWithParams([FromBody] GetBookRequest request)
         {
-            var books = await _uow.BookRepository.GetBooksWithParams(request);
+            var books = await _bookService.GetBooksWithParams(request);
 
             return Ok(books);
         }
@@ -68,9 +61,7 @@ namespace LibraryWebApp.Controllers
         [Authorize(Policy = "AdminPolicy")]
         public async Task<ActionResult> Delete(Guid id)
         {
-            await _uow.BookRepository.DeleteBook(id);
-
-            await _uow.Save();
+            await _bookService.DeleteBook(id);
 
             return Ok();
         }
@@ -79,14 +70,7 @@ namespace LibraryWebApp.Controllers
         [Authorize(Policy = "AdminPolicy")]
         public async Task<ActionResult> Update([FromBody] CreateBookRecord request, Guid id)
         {
-            var result = await _validator.ValidateAsync(request);
-
-            if (!result.IsValid)
-                return BadRequest(result.Errors.Select(e => new { e.ErrorCode, e.ErrorMessage }));
-
-            await _uow.BookRepository.UpdateBook(request, id);
-
-            await _uow.Save();
+            await _bookService.UpdateBook(request, id);
 
             return Ok();
         }
@@ -95,7 +79,7 @@ namespace LibraryWebApp.Controllers
         [Authorize]
         public async Task <ActionResult<List<GetBookRecord>?>> GetBooksByUserId(Guid userId)
         {
-            var books = await _uow.BookRepository.GetBooksByUserId(userId);
+            var books = await _bookService.GetBooksByUserId(userId);
 
             return Ok(books);
         }
@@ -104,9 +88,7 @@ namespace LibraryWebApp.Controllers
         [Authorize]
         public async Task<ActionResult> ReturnBook(Guid id)
         {
-            await _uow.BookRepository.ReturnBook(id);
-
-            await _uow.Save();
+            await _bookService.ReturnBook(id);
 
             return Ok();
         }

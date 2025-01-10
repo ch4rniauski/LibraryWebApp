@@ -58,9 +58,9 @@ namespace LibraryWebApp.Controllers
         [HttpGet("relogin")]
         public async Task<ActionResult<string>> UpdateAccessToken(Guid id)
         {
-            await _authUserService.UpdateAccessToken(id, HttpContext);
+            var accessToken = await _authUserService.UpdateAccessToken(id, HttpContext);
             
-            return Ok();
+            return Ok(accessToken);
         }
 
         [HttpGet("logout")]
