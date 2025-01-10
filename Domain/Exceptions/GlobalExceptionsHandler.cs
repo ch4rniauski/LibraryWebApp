@@ -1,4 +1,5 @@
 ﻿using Domain.Exceptions.Abstractions;
+using Domain.Exceptions.CustomExceptions;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 using System.Net;
@@ -22,17 +23,47 @@ namespace Domain.Exceptions
             {
                 await _next(context);
             }
+            catch (AlreadyExistsException ex)
+            {
+                _logger.LogError(ex.Message);
+
+                await HandleError(ex, context, HttpStatusCode.Conflict);
+            }
+            catch (NotFoundException ex)
+            {
+                _logger.LogError(ex.Message);
+
+                await HandleError(ex, context, HttpStatusCode.NotFound);
+            }
+            catch (RemovalFailureException ex)
+            {
+                _logger.LogError(ex.Message);
+
+                await HandleError(ex, context, HttpStatusCode.InternalServerError);
+            }
+            catch (CreationFailureException ex)
+            {
+                _logger.LogError(ex.Message);
+
+                await HandleError(ex, context, HttpStatusCode.InternalServerError);
+            }
+            catch (IncorrectDataException ex)
+            {
+                _logger.LogError(ex.Message);
+
+                await HandleError(ex, context, HttpStatusCode.BadRequest);
+            }
             catch (Exception ex)
             {
                 _logger.LogError(ex.Message);
 
-                await HandleError(ex, context);
+                await HandleError(ex, context, HttpStatusCode.InternalServerError);
             }
         }
 
-        private async Task HandleError(Exception ex, HttpContext context)
+        private async Task HandleError(Exception ex, HttpContext context, HttpStatusCode statusCode)
         {
-            context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
+            context.Response.StatusCode = (int)statusCode;
             context.Response.ContentType = "application/json";
 
             await context.Response.WriteAsync(new ErrorDetails()

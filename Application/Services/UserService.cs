@@ -2,6 +2,7 @@
 using Domain.Abstractions.Records;
 using Domain.Abstractions.Services;
 using Domain.Abstractions.UnitsOfWork;
+using Domain.Exceptions.CustomExceptions;
 using FluentValidation;
 
 namespace Application.Services
@@ -24,14 +25,14 @@ namespace Application.Services
             var user = await _uow.UserRepository.GetById(userId);
 
             if (user is null)
-                throw new Exception("User with that ID doesn't exist");
+                throw new NotFoundException("User with that ID doesn't exist");
 
             var book = await _uow.BookRepository.GetById(bookId);
 
             if (book is null)
-                throw new Exception("Book with that ID doesn't exist");
+                throw new NotFoundException("Book with that ID doesn't exist");
             if (book.UserId is not null)
-                throw new Exception("That book is already borrowed");
+                throw new IncorrectDataException("That book is already borrowed");
 
             book.TakenAt = DateOnly.FromDateTime(DateTime.UtcNow);
             book.DueDate = DateOnly.FromDateTime(DateTime.UtcNow.AddDays(30));
@@ -48,7 +49,7 @@ namespace Application.Services
             var user = await _uow.UserRepository.GetById(id);
 
             if (user is null)
-                throw new Exception("User with that ID doesn't exist");
+                throw new AlreadyExistsException("User with that ID doesn't exist");
 
             return _mapper.Map<UserInfoResponse>(user);
         }

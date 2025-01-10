@@ -3,6 +3,7 @@ using Domain.Abstractions.Records;
 using Domain.Abstractions.Services;
 using Domain.Abstractions.UnitsOfWork;
 using Domain.Entities;
+using Domain.Exceptions.CustomExceptions;
 using Domain.JWT;
 using FluentValidation;
 using Microsoft.AspNetCore.Http;
@@ -30,12 +31,12 @@ namespace Application.Services
             var user = await _uow.UserRepository.GetById(id);
 
             if (user is null)
-                throw new Exception("User with that ID wasn't found");
+                throw new NotFoundException("User with that ID wasn't found");
 
             var isDeleted = _uow.AuthenticationRepository.Delete(user);
 
             if (isDeleted is null)
-                throw new Exception("User with that ID wasn't deleted");
+                throw new RemovalFailureException("User with that ID wasn't deleted");
 
             await _uow.Save();
         }
@@ -45,15 +46,15 @@ namespace Application.Services
             var userEntity = await _uow.UserRepository.GetByLogin(user.Login);
 
             if (userEntity is null)
-                throw new Exception("User with that logn wasn't found");
+                throw new NotFoundException("User with that logn wasn't found");
 
             if (userEntity.Email != user.Email)
-                throw new Exception("User with that Email wasn't found");
+                throw new NotFoundException("User with that Email wasn't found");
 
             var result = new PasswordHasher<UserEntity>().VerifyHashedPassword(userEntity, userEntity.PasswordHash, user.Password);
 
             if (result == PasswordVerificationResult.Failed)
-                throw new Exception("Incorrect password");
+                throw new IncorrectDataException("Incorrect password");
 
             var accessToken = _tokenProvider.GenerateAccessToken(userEntity);
             var refreshToken = _tokenProvider.GenerateRefreshToken();
@@ -76,18 +77,21 @@ namespace Application.Services
         {
             var result = await _validator.ValidateAsync(user);
 
+            var messages = result.Errors.Select(e => new { e.ErrorMessage }).ToList();
+            var message = string.Join(".", messages);
+
             if (!result.IsValid)
-                throw new Exception(); //return BadRequest(result.Errors.Select(e => new { e.ErrorCode, e.ErrorMessage }));
+                throw new IncorrectDataException(message);
 
             var isUserExist = await _uow.UserRepository.GetByLogin(user.Login);
 
             if (isUserExist is not null)
-                throw new Exception("User with that login already exists");
+                throw new AlreadyExistsException("User with that login already exists");
 
             isUserExist = await _uow.UserRepository.GetByEmail(user.Email);
 
             if (isUserExist is not null)
-                throw new Exception("User with that email already exists");
+                throw new AlreadyExistsException("User with that email already exists");
 
             var userEntity = _mapper.Map<UserEntity>(user);
 
@@ -104,7 +108,7 @@ namespace Application.Services
             var registeredUser = await _uow.AuthenticationRepository.Create(userEntity);
 
             if (registeredUser is null)
-                throw new Exception("User wasn't registered");
+                throw new CreationFailureException("User wasn't registered");
 
             await _uow.Save();
         }
@@ -114,12 +118,12 @@ namespace Application.Services
             context.Request.Cookies.TryGetValue("refreshToken", out string? refreshToken);
 
             if (refreshToken is null)
-                throw new Exception("Refresh token doesn't exist");
+                throw new NotFoundException("Refresh token doesn't exist");
 
             var user = await _uow.UserRepository.GetById(id);
 
             if (user is null || user.RefreshToken != refreshToken || user.RefreshTokenExpiresAt < DateTime.UtcNow)
-                throw new Exception("Either user with that ID doesn't exist or refresh token has expired");
+                throw new IncorrectDataException("Either user with that ID doesn't exist or refresh token has expired");
 
             var accessToken = _tokenProvider.GenerateAccessToken(user);
 

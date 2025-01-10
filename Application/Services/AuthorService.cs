@@ -3,6 +3,7 @@ using Domain.Abstractions.Records;
 using Domain.Abstractions.Services;
 using Domain.Abstractions.UnitsOfWork;
 using Domain.Entities;
+using Domain.Exceptions.CustomExceptions;
 using FluentValidation;
 
 namespace Application.Services
@@ -24,8 +25,11 @@ namespace Application.Services
         {
             var result = await _validator.ValidateAsync(author);
 
+            var messages = result.Errors.Select(e => new { e.ErrorMessage }).ToList();
+            var message = string.Join(".", messages);
+
             if (!result.IsValid)
-                throw new Exception(); // return BadRequest(result.Errors.Select(e => new { e.ErrorCode, e.ErrorMessage }));
+                throw new IncorrectDataException(message);
 
             var newAuthor = _mapper.Map<AuthorEntity>(author);
             newAuthor.Id = Guid.NewGuid();
@@ -33,7 +37,7 @@ namespace Application.Services
             var createdAuthor = await _uow.AuthorRepository.Create(newAuthor);
 
             if (createdAuthor is null)
-                throw new Exception("Author wasn't created");
+                throw new CreationFailureException("Author wasn't created");
 
             await _uow.Save();
         }
@@ -43,12 +47,12 @@ namespace Application.Services
             var author = await _uow.AuthorRepository.GetById(id);
 
             if (author is null)
-                throw new Exception("Author with that ID doesn't exist");
+                throw new NotFoundException("Author with that ID doesn't exist");
 
             var isDeleted = _uow.AuthorRepository.Delete(author);
 
             if (isDeleted is null)
-                throw new Exception("Author with that ID wasn't deleted");
+                throw new RemovalFailureException("Author with that ID wasn't deleted");
 
             await _uow.Save();
         }
@@ -70,7 +74,7 @@ namespace Application.Services
             var author = await _uow.AuthorRepository.GetById(id);
 
             if (author is null)
-                throw new Exception("Author with that ID doesn't exist");
+                throw new NotFoundException("Author with that ID doesn't exist");
 
             return _mapper.Map<CreateAuthorRecord>(author);
         }
@@ -80,13 +84,16 @@ namespace Application.Services
             var authorToValidate = _mapper.Map<CreateAuthorRecord>(author);
             var result = await _validator.ValidateAsync(authorToValidate);
 
+            var messages = result.Errors.Select(e => new { e.ErrorMessage }).ToList();
+            var message = string.Join(".", messages);
+
             if (!result.IsValid)
-                throw new Exception(); // return BadRequest(result.Errors.Select(e => new { e.ErrorCode, e.ErrorMessage }));
+                throw new IncorrectDataException(message);
 
             var authorToUpdate = await _uow.AuthorRepository.GetById(author.Id);
 
             if (authorToUpdate is null)
-                throw new Exception("Author with that ID doesn't exist");
+                throw new NotFoundException("Author with that ID doesn't exist");
 
             authorToUpdate.Id = author.Id;
             authorToUpdate.BirthDate = author.BirthDate;

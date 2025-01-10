@@ -3,12 +3,56 @@
   "WorkspaceRootPath": "D:\\CSharp\\LibraryWebApp\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{0C7296F9-75CB-4568-A010-2DE4D11B96A3}|Application\\Application.csproj|d:\\csharp\\librarywebapp\\application\\services\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0C7296F9-75CB-4568-A010-2DE4D11B96A3}|Application\\Application.csproj|solutionrelative:application\\services\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{0C7296F9-75CB-4568-A010-2DE4D11B96A3}|Application\\Application.csproj|d:\\csharp\\librarywebapp\\application\\services\\bookservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{0C7296F9-75CB-4568-A010-2DE4D11B96A3}|Application\\Application.csproj|solutionrelative:application\\services\\bookservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{0C7296F9-75CB-4568-A010-2DE4D11B96A3}|Application\\Application.csproj|d:\\csharp\\librarywebapp\\application\\services\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0C7296F9-75CB-4568-A010-2DE4D11B96A3}|Application\\Application.csproj|solutionrelative:application\\services\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{0C7296F9-75CB-4568-A010-2DE4D11B96A3}|Application\\Application.csproj|d:\\csharp\\librarywebapp\\application\\services\\authorservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0C7296F9-75CB-4568-A010-2DE4D11B96A3}|Application\\Application.csproj|solutionrelative:application\\services\\authorservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0C7296F9-75CB-4568-A010-2DE4D11B96A3}|Application\\Application.csproj|d:\\csharp\\librarywebapp\\application\\services\\authenticationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0C7296F9-75CB-4568-A010-2DE4D11B96A3}|Application\\Application.csproj|solutionrelative:application\\services\\authenticationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{36334BFD-F1CD-46D7-9091-B39874FFFA6F}|Domain\\Domain.csproj|d:\\csharp\\librarywebapp\\domain\\exceptions\\globalexceptionshandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{36334BFD-F1CD-46D7-9091-B39874FFFA6F}|Domain\\Domain.csproj|solutionrelative:domain\\exceptions\\globalexceptionshandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0C7296F9-75CB-4568-A010-2DE4D11B96A3}|Application\\Application.csproj|d:\\csharp\\librarywebapp\\application\\dependencyinjection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0C7296F9-75CB-4568-A010-2DE4D11B96A3}|Application\\Application.csproj|solutionrelative:application\\dependencyinjection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{36334BFD-F1CD-46D7-9091-B39874FFFA6F}|Domain\\Domain.csproj|d:\\csharp\\librarywebapp\\domain\\exceptions\\customexceptions\\incorrectdataexception.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{36334BFD-F1CD-46D7-9091-B39874FFFA6F}|Domain\\Domain.csproj|solutionrelative:domain\\exceptions\\customexceptions\\incorrectdataexception.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{36334BFD-F1CD-46D7-9091-B39874FFFA6F}|Domain\\Domain.csproj|d:\\csharp\\librarywebapp\\domain\\exceptions\\customexceptions\\creationfailureexception.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{36334BFD-F1CD-46D7-9091-B39874FFFA6F}|Domain\\Domain.csproj|solutionrelative:domain\\exceptions\\customexceptions\\creationfailureexception.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{36334BFD-F1CD-46D7-9091-B39874FFFA6F}|Domain\\Domain.csproj|d:\\csharp\\librarywebapp\\domain\\exceptions\\customexceptions\\alreadyexistsexception.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{36334BFD-F1CD-46D7-9091-B39874FFFA6F}|Domain\\Domain.csproj|solutionrelative:domain\\exceptions\\customexceptions\\alreadyexistsexception.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{36334BFD-F1CD-46D7-9091-B39874FFFA6F}|Domain\\Domain.csproj|d:\\csharp\\librarywebapp\\domain\\exceptions\\customexceptions\\removalfailureexception.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{36334BFD-F1CD-46D7-9091-B39874FFFA6F}|Domain\\Domain.csproj|solutionrelative:domain\\exceptions\\customexceptions\\removalfailureexception.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{36334BFD-F1CD-46D7-9091-B39874FFFA6F}|Domain\\Domain.csproj|d:\\csharp\\librarywebapp\\domain\\exceptions\\customexceptions\\notfoundexception.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{36334BFD-F1CD-46D7-9091-B39874FFFA6F}|Domain\\Domain.csproj|solutionrelative:domain\\exceptions\\customexceptions\\notfoundexception.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C4D5E27F-EA85-4F3D-903F-46A4913E0DBD}|LibraryWebApp\\LibraryWebApp.csproj|d:\\csharp\\librarywebapp\\librarywebapp\\controllers\\authenticationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C4D5E27F-EA85-4F3D-903F-46A4913E0DBD}|LibraryWebApp\\LibraryWebApp.csproj|solutionrelative:librarywebapp\\controllers\\authenticationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C4D5E27F-EA85-4F3D-903F-46A4913E0DBD}|LibraryWebApp\\LibraryWebApp.csproj|d:\\csharp\\librarywebapp\\librarywebapp\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C4D5E27F-EA85-4F3D-903F-46A4913E0DBD}|LibraryWebApp\\LibraryWebApp.csproj|solutionrelative:librarywebapp\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{36334BFD-F1CD-46D7-9091-B39874FFFA6F}|Domain\\Domain.csproj|d:\\csharp\\librarywebapp\\domain\\abstractions\\repositories\\iauthenticationrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -63,14 +107,6 @@
       "RelativeMoniker": "D:0:0:{37AD2630-A0D2-4B45-94D9-804B508E022A}|Library.DataContext\\Library.DataContext.csproj|solutionrelative:library.datacontext\\repositories\\userrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{0C7296F9-75CB-4568-A010-2DE4D11B96A3}|Application\\Application.csproj|d:\\csharp\\librarywebapp\\application\\services\\authorservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0C7296F9-75CB-4568-A010-2DE4D11B96A3}|Application\\Application.csproj|solutionrelative:application\\services\\authorservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0C7296F9-75CB-4568-A010-2DE4D11B96A3}|Application\\Application.csproj|d:\\csharp\\librarywebapp\\application\\services\\authenticationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0C7296F9-75CB-4568-A010-2DE4D11B96A3}|Application\\Application.csproj|solutionrelative:application\\services\\authenticationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{37AD2630-A0D2-4B45-94D9-804B508E022A}|Library.DataContext\\Library.DataContext.csproj|d:\\csharp\\librarywebapp\\library.datacontext\\dependencyinjection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{37AD2630-A0D2-4B45-94D9-804B508E022A}|Library.DataContext\\Library.DataContext.csproj|solutionrelative:library.datacontext\\dependencyinjection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -83,20 +119,12 @@
       "RelativeMoniker": "D:0:0:{C4D5E27F-EA85-4F3D-903F-46A4913E0DBD}|LibraryWebApp\\LibraryWebApp.csproj|solutionrelative:librarywebapp\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C4D5E27F-EA85-4F3D-903F-46A4913E0DBD}|LibraryWebApp\\LibraryWebApp.csproj|d:\\csharp\\librarywebapp\\librarywebapp\\controllers\\authenticationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C4D5E27F-EA85-4F3D-903F-46A4913E0DBD}|LibraryWebApp\\LibraryWebApp.csproj|solutionrelative:librarywebapp\\controllers\\authenticationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{36334BFD-F1CD-46D7-9091-B39874FFFA6F}|Domain\\Domain.csproj|d:\\csharp\\librarywebapp\\domain\\abstractions\\unitsofwork\\iunitofworklibrary.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{36334BFD-F1CD-46D7-9091-B39874FFFA6F}|Domain\\Domain.csproj|solutionrelative:domain\\abstractions\\unitsofwork\\iunitofworklibrary.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{37AD2630-A0D2-4B45-94D9-804B508E022A}|Library.DataContext\\Library.DataContext.csproj|d:\\csharp\\librarywebapp\\library.datacontext\\librarycontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{37AD2630-A0D2-4B45-94D9-804B508E022A}|Library.DataContext\\Library.DataContext.csproj|solutionrelative:library.datacontext\\librarycontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0C7296F9-75CB-4568-A010-2DE4D11B96A3}|Application\\Application.csproj|d:\\csharp\\librarywebapp\\application\\dependencyinjection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0C7296F9-75CB-4568-A010-2DE4D11B96A3}|Application\\Application.csproj|solutionrelative:application\\dependencyinjection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{36334BFD-F1CD-46D7-9091-B39874FFFA6F}|Domain\\Domain.csproj|d:\\csharp\\librarywebapp\\domain\\dependencyinjection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -147,14 +175,6 @@
       "RelativeMoniker": "D:0:0:{30357679-D2F7-4308-B6B9-AC92BB3B62E7}|xUnitTests\\xUnitTests.csproj|solutionrelative:xunittests\\controllerstests\\authenticationcontrollertests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C4D5E27F-EA85-4F3D-903F-46A4913E0DBD}|LibraryWebApp\\LibraryWebApp.csproj|d:\\csharp\\librarywebapp\\librarywebapp\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C4D5E27F-EA85-4F3D-903F-46A4913E0DBD}|LibraryWebApp\\LibraryWebApp.csproj|solutionrelative:librarywebapp\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{36334BFD-F1CD-46D7-9091-B39874FFFA6F}|Domain\\Domain.csproj|d:\\csharp\\librarywebapp\\domain\\authorization\\handlers\\adminhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{36334BFD-F1CD-46D7-9091-B39874FFFA6F}|Domain\\Domain.csproj|solutionrelative:domain\\authorization\\handlers\\adminhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{30357679-D2F7-4308-B6B9-AC92BB3B62E7}|xUnitTests\\xUnitTests.csproj|d:\\csharp\\librarywebapp\\xunittests\\repositoriestests\\bookrepositorytests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{30357679-D2F7-4308-B6B9-AC92BB3B62E7}|xUnitTests\\xUnitTests.csproj|solutionrelative:xunittests\\repositoriestests\\bookrepositorytests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -202,7 +222,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 6,
+          "SelectedChildIndex": 10,
           "Children": [
             {
               "$type": "Bookmark",
@@ -210,7 +230,83 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 7,
+              "Title": "CreationFailureException.cs",
+              "DocumentMoniker": "D:\\CSharp\\LibraryWebApp\\Domain\\Exceptions\\CustomExceptions\\CreationFailureException.cs",
+              "RelativeDocumentMoniker": "Domain\\Exceptions\\CustomExceptions\\CreationFailureException.cs",
+              "ToolTip": "D:\\CSharp\\LibraryWebApp\\Domain\\Exceptions\\CustomExceptions\\CreationFailureException.cs",
+              "RelativeToolTip": "Domain\\Exceptions\\CustomExceptions\\CreationFailureException.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-10T18:28:28.187Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "IncorrectDataException.cs",
+              "DocumentMoniker": "D:\\CSharp\\LibraryWebApp\\Domain\\Exceptions\\CustomExceptions\\IncorrectDataException.cs",
+              "RelativeDocumentMoniker": "Domain\\Exceptions\\CustomExceptions\\IncorrectDataException.cs",
+              "ToolTip": "D:\\CSharp\\LibraryWebApp\\Domain\\Exceptions\\CustomExceptions\\IncorrectDataException.cs",
+              "RelativeToolTip": "Domain\\Exceptions\\CustomExceptions\\IncorrectDataException.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-10T17:36:05.106Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "RemovalFailureException.cs",
+              "DocumentMoniker": "D:\\CSharp\\LibraryWebApp\\Domain\\Exceptions\\CustomExceptions\\RemovalFailureException.cs",
+              "RelativeDocumentMoniker": "Domain\\Exceptions\\CustomExceptions\\RemovalFailureException.cs",
+              "ToolTip": "D:\\CSharp\\LibraryWebApp\\Domain\\Exceptions\\CustomExceptions\\RemovalFailureException.cs",
+              "RelativeToolTip": "Domain\\Exceptions\\CustomExceptions\\RemovalFailureException.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-10T17:08:58.024Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "NotFoundException.cs",
+              "DocumentMoniker": "D:\\CSharp\\LibraryWebApp\\Domain\\Exceptions\\CustomExceptions\\NotFoundException.cs",
+              "RelativeDocumentMoniker": "Domain\\Exceptions\\CustomExceptions\\NotFoundException.cs",
+              "ToolTip": "D:\\CSharp\\LibraryWebApp\\Domain\\Exceptions\\CustomExceptions\\NotFoundException.cs",
+              "RelativeToolTip": "Domain\\Exceptions\\CustomExceptions\\NotFoundException.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-10T17:02:35.609Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "AlreadyExistsException.cs",
+              "DocumentMoniker": "D:\\CSharp\\LibraryWebApp\\Domain\\Exceptions\\CustomExceptions\\AlreadyExistsException.cs",
+              "RelativeDocumentMoniker": "Domain\\Exceptions\\CustomExceptions\\AlreadyExistsException.cs",
+              "ToolTip": "D:\\CSharp\\LibraryWebApp\\Domain\\Exceptions\\CustomExceptions\\AlreadyExistsException.cs",
+              "RelativeToolTip": "Domain\\Exceptions\\CustomExceptions\\AlreadyExistsException.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAnAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-10T16:52:37.367Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "GlobalExceptionsHandler.cs",
+              "DocumentMoniker": "D:\\CSharp\\LibraryWebApp\\Domain\\Exceptions\\GlobalExceptionsHandler.cs",
+              "RelativeDocumentMoniker": "Domain\\Exceptions\\GlobalExceptionsHandler.cs",
+              "ToolTip": "D:\\CSharp\\LibraryWebApp\\Domain\\Exceptions\\GlobalExceptionsHandler.cs",
+              "RelativeToolTip": "Domain\\Exceptions\\GlobalExceptionsHandler.cs",
+              "ViewState": "AgIAACkAAAAAAAAAAADwvzYAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-10T16:12:45.199Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
               "Title": "DependencyInjection.cs",
               "DocumentMoniker": "D:\\CSharp\\LibraryWebApp\\Library.DataContext\\DependencyInjection.cs",
               "RelativeDocumentMoniker": "Library.DataContext\\DependencyInjection.cs",
@@ -218,12 +314,11 @@
               "RelativeToolTip": "Library.DataContext\\DependencyInjection.cs",
               "ViewState": "AgIAAAYAAAAAAAAAAIAwwBMAAABCAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-10T10:57:21.857Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-10T10:57:21.857Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 24,
               "Title": "GenericRepository.cs",
               "DocumentMoniker": "D:\\CSharp\\LibraryWebApp\\Library.DataContext\\Repositories\\GenericRepository.cs",
               "RelativeDocumentMoniker": "Library.DataContext\\Repositories\\GenericRepository.cs",
@@ -231,12 +326,11 @@
               "RelativeToolTip": "Library.DataContext\\Repositories\\GenericRepository.cs",
               "ViewState": "AgIAABAAAAAAAAAAAAAgwCYAAAAWAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-10T10:02:20.928Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-10T10:02:20.928Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 16,
               "Title": "IGenericRepository.cs",
               "DocumentMoniker": "D:\\CSharp\\LibraryWebApp\\Domain\\Abstractions\\Repositories\\IGenericRepository.cs",
               "RelativeDocumentMoniker": "Domain\\Abstractions\\Repositories\\IGenericRepository.cs",
@@ -244,25 +338,24 @@
               "RelativeToolTip": "Domain\\Abstractions\\Repositories\\IGenericRepository.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-10T10:00:51.81Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-10T10:00:51.81Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "UserService.cs",
               "DocumentMoniker": "D:\\CSharp\\LibraryWebApp\\Application\\Services\\UserService.cs",
               "RelativeDocumentMoniker": "Application\\Services\\UserService.cs",
-              "ToolTip": "D:\\CSharp\\LibraryWebApp\\Application\\Services\\UserService.cs",
-              "RelativeToolTip": "Application\\Services\\UserService.cs",
-              "ViewState": "AgIAABAAAAAAAAAAAAAgwBcAAABBAAAAAAAAAA==",
+              "ToolTip": "D:\\CSharp\\LibraryWebApp\\Application\\Services\\UserService.cs*",
+              "RelativeToolTip": "Application\\Services\\UserService.cs*",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAXAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-01-10T09:07:33.23Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 20,
               "Title": "IUserService.cs",
               "DocumentMoniker": "D:\\CSharp\\LibraryWebApp\\Domain\\Abstractions\\Services\\IUserService.cs",
               "RelativeDocumentMoniker": "Domain\\Abstractions\\Services\\IUserService.cs",
@@ -270,25 +363,24 @@
               "RelativeToolTip": "Domain\\Abstractions\\Services\\IUserService.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAyAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-10T09:07:06.789Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-10T09:07:06.789Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "BookService.cs",
               "DocumentMoniker": "D:\\CSharp\\LibraryWebApp\\Application\\Services\\BookService.cs",
               "RelativeDocumentMoniker": "Application\\Services\\BookService.cs",
-              "ToolTip": "D:\\CSharp\\LibraryWebApp\\Application\\Services\\BookService.cs",
-              "RelativeToolTip": "Application\\Services\\BookService.cs",
-              "ViewState": "AgIAAA4AAAAAAAAAAAAQwGAAAAAbAAAAAAAAAA==",
+              "ToolTip": "D:\\CSharp\\LibraryWebApp\\Application\\Services\\BookService.cs*",
+              "RelativeToolTip": "Application\\Services\\BookService.cs*",
+              "ViewState": "AgIAAMoAAAAAAAAAAAAUwNcAAAAcAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-01-10T06:50:58.795Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 18,
               "Title": "IBookService.cs",
               "DocumentMoniker": "D:\\CSharp\\LibraryWebApp\\Domain\\Abstractions\\Services\\IBookService.cs",
               "RelativeDocumentMoniker": "Domain\\Abstractions\\Services\\IBookService.cs",
@@ -296,12 +388,11 @@
               "RelativeToolTip": "Domain\\Abstractions\\Services\\IBookService.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAhAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-10T06:49:28.338Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-10T06:49:28.338Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 14,
               "Title": "IAuthorRepository.cs",
               "DocumentMoniker": "D:\\CSharp\\LibraryWebApp\\Domain\\Abstractions\\Repositories\\IAuthorRepository.cs",
               "RelativeDocumentMoniker": "Domain\\Abstractions\\Repositories\\IAuthorRepository.cs",
@@ -309,12 +400,11 @@
               "RelativeToolTip": "Domain\\Abstractions\\Repositories\\IAuthorRepository.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAWAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-09T16:46:14.603Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-09T16:46:14.603Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 19,
               "Title": "IAuthorService.cs",
               "DocumentMoniker": "D:\\CSharp\\LibraryWebApp\\Domain\\Abstractions\\Services\\IAuthorService.cs",
               "RelativeDocumentMoniker": "Domain\\Abstractions\\Services\\IAuthorService.cs",
@@ -322,25 +412,24 @@
               "RelativeToolTip": "Domain\\Abstractions\\Services\\IAuthorService.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAqwAoAAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-09T16:34:53.406Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-09T16:34:53.406Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 2,
               "Title": "AuthorService.cs",
               "DocumentMoniker": "D:\\CSharp\\LibraryWebApp\\Application\\Services\\AuthorService.cs",
               "RelativeDocumentMoniker": "Application\\Services\\AuthorService.cs",
-              "ToolTip": "D:\\CSharp\\LibraryWebApp\\Application\\Services\\AuthorService.cs",
-              "RelativeToolTip": "Application\\Services\\AuthorService.cs",
-              "ViewState": "AgIAAEwAAAAAAAAAAAAcwCAAAABCAAAAAAAAAA==",
+              "ToolTip": "D:\\CSharp\\LibraryWebApp\\Application\\Services\\AuthorService.cs*",
+              "RelativeToolTip": "Application\\Services\\AuthorService.cs*",
+              "ViewState": "AgIAAEwAAAAAAAAAAAAUwFkAAAAcAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-01-09T16:30:54.807Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 30,
+              "DocumentIndex": 37,
               "Title": "UserEntity.cs",
               "DocumentMoniker": "D:\\CSharp\\LibraryWebApp\\Domain\\Entities\\UserEntity.cs",
               "RelativeDocumentMoniker": "Domain\\Entities\\UserEntity.cs",
@@ -352,7 +441,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 13,
               "Title": "IAuthenticationRepository.cs",
               "DocumentMoniker": "D:\\CSharp\\LibraryWebApp\\Domain\\Abstractions\\Repositories\\IAuthenticationRepository.cs",
               "RelativeDocumentMoniker": "Domain\\Abstractions\\Repositories\\IAuthenticationRepository.cs",
@@ -360,25 +449,24 @@
               "RelativeToolTip": "Domain\\Abstractions\\Repositories\\IAuthenticationRepository.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAWAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-09T11:09:22.348Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-09T11:09:22.348Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 23,
+              "DocumentIndex": 5,
               "Title": "DependencyInjection.cs",
               "DocumentMoniker": "D:\\CSharp\\LibraryWebApp\\Application\\DependencyInjection.cs",
               "RelativeDocumentMoniker": "Application\\DependencyInjection.cs",
               "ToolTip": "D:\\CSharp\\LibraryWebApp\\Application\\DependencyInjection.cs",
               "RelativeToolTip": "Application\\DependencyInjection.cs",
-              "ViewState": "AgIAADYAAAAAAAAAAAAowBYAAAA4AAAAAAAAAA==",
+              "ViewState": "AgIAADYAAAAAAAAAAAAowEgAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-01-09T10:58:12.749Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 17,
               "Title": "IUserRepository.cs",
               "DocumentMoniker": "D:\\CSharp\\LibraryWebApp\\Domain\\Abstractions\\Repositories\\IUserRepository.cs",
               "RelativeDocumentMoniker": "Domain\\Abstractions\\Repositories\\IUserRepository.cs",
@@ -386,12 +474,11 @@
               "RelativeToolTip": "Domain\\Abstractions\\Repositories\\IUserRepository.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-09T10:01:38.427Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-09T10:01:38.427Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 24,
+              "DocumentIndex": 31,
               "Title": "DependencyInjection.cs",
               "DocumentMoniker": "D:\\CSharp\\LibraryWebApp\\Domain\\DependencyInjection.cs",
               "RelativeDocumentMoniker": "Domain\\DependencyInjection.cs",
@@ -399,12 +486,11 @@
               "RelativeToolTip": "Domain\\DependencyInjection.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAiAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-09T09:57:25.24Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-09T09:57:25.24Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 27,
               "Title": "IAuthenticationService.cs",
               "DocumentMoniker": "D:\\CSharp\\LibraryWebApp\\Domain\\Abstractions\\Services\\IAuthenticationService.cs",
               "RelativeDocumentMoniker": "Domain\\Abstractions\\Services\\IAuthenticationService.cs",
@@ -412,25 +498,24 @@
               "RelativeToolTip": "Domain\\Abstractions\\Services\\IAuthenticationService.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAqwAoAAABFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-09T09:47:48.478Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-09T09:47:48.478Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 3,
               "Title": "AuthenticationService.cs",
               "DocumentMoniker": "D:\\CSharp\\LibraryWebApp\\Application\\Services\\AuthenticationService.cs",
               "RelativeDocumentMoniker": "Application\\Services\\AuthenticationService.cs",
               "ToolTip": "D:\\CSharp\\LibraryWebApp\\Application\\Services\\AuthenticationService.cs",
               "RelativeToolTip": "Application\\Services\\AuthenticationService.cs",
-              "ViewState": "AgIAAGsAAAAAAAAAAAAIwB0AAAAxAAAAAAAAAA==",
+              "ViewState": "AgIAAEUAAAAAAAAAAAAUwFIAAAAdAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-01-09T09:46:27.361Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 28,
+              "DocumentIndex": 35,
               "Title": "UnitOfWork.cs",
               "DocumentMoniker": "D:\\CSharp\\LibraryWebApp\\Library.DataContext\\UnitsOfWork\\UnitOfWork.cs",
               "RelativeDocumentMoniker": "Library.DataContext\\UnitsOfWork\\UnitOfWork.cs",
@@ -442,7 +527,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 29,
               "Title": "IUnitOfWorkLibrary.cs",
               "DocumentMoniker": "D:\\CSharp\\LibraryWebApp\\Domain\\Abstractions\\UnitsOfWork\\IUnitOfWorkLibrary.cs",
               "RelativeDocumentMoniker": "Domain\\Abstractions\\UnitsOfWork\\IUnitOfWorkLibrary.cs",
@@ -450,12 +535,11 @@
               "RelativeToolTip": "Domain\\Abstractions\\UnitsOfWork\\IUnitOfWorkLibrary.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAZAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-08T16:28:08.393Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-08T16:28:08.393Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 32,
+              "DocumentIndex": 39,
               "Title": "UserConfiguration.cs",
               "DocumentMoniker": "D:\\CSharp\\LibraryWebApp\\Library.DataContext\\Configurations\\UserConfiguration.cs",
               "RelativeDocumentMoniker": "Library.DataContext\\Configurations\\UserConfiguration.cs",
@@ -467,7 +551,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 33,
+              "DocumentIndex": 40,
               "Title": "BookConfiguration.cs",
               "DocumentMoniker": "D:\\CSharp\\LibraryWebApp\\Library.DataContext\\Configurations\\BookConfiguration.cs",
               "RelativeDocumentMoniker": "Library.DataContext\\Configurations\\BookConfiguration.cs",
@@ -479,7 +563,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 34,
+              "DocumentIndex": 41,
               "Title": "AuthorConfiguration.cs",
               "DocumentMoniker": "D:\\CSharp\\LibraryWebApp\\Library.DataContext\\Configurations\\AuthorConfiguration.cs",
               "RelativeDocumentMoniker": "Library.DataContext\\Configurations\\AuthorConfiguration.cs",
@@ -491,19 +575,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 37,
-              "Title": "AdminHandler.cs",
-              "DocumentMoniker": "D:\\CSharp\\LibraryWebApp\\Domain\\Authorization\\Handlers\\AdminHandler.cs",
-              "RelativeDocumentMoniker": "Domain\\Authorization\\Handlers\\AdminHandler.cs",
-              "ToolTip": "D:\\CSharp\\LibraryWebApp\\Domain\\Authorization\\Handlers\\AdminHandler.cs",
-              "RelativeToolTip": "Domain\\Authorization\\Handlers\\AdminHandler.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAA3AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-04T10:15:31.001Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 42,
+              "DocumentIndex": 47,
               "Title": "GetBookResponse.cs",
               "DocumentMoniker": "D:\\CSharp\\LibraryWebApp\\Domain\\Abstractions\\Records\\GetBookResponse.cs",
               "RelativeDocumentMoniker": "Domain\\Abstractions\\Records\\GetBookResponse.cs",
@@ -515,19 +587,19 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 36,
+              "DocumentIndex": 12,
               "Title": "Program.cs",
               "DocumentMoniker": "D:\\CSharp\\LibraryWebApp\\LibraryWebApp\\Program.cs",
               "RelativeDocumentMoniker": "LibraryWebApp\\Program.cs",
               "ToolTip": "D:\\CSharp\\LibraryWebApp\\LibraryWebApp\\Program.cs",
               "RelativeToolTip": "LibraryWebApp\\Program.cs",
-              "ViewState": "AgIAAAoAAAAAAAAAAAAtwBoAAAARAAAAAAAAAA==",
+              "ViewState": "AgIAABAAAAAAAAAAAAAtwCYAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-12-21T17:14:57.071Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 38,
+              "DocumentIndex": 43,
               "Title": "BookRepositoryTests.cs",
               "DocumentMoniker": "D:\\CSharp\\LibraryWebApp\\xUnitTests\\RepositoriesTests\\BookRepositoryTests.cs",
               "RelativeDocumentMoniker": "xUnitTests\\RepositoriesTests\\BookRepositoryTests.cs",
@@ -539,7 +611,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 25,
               "Title": "UserRepository.cs",
               "DocumentMoniker": "D:\\CSharp\\LibraryWebApp\\Library.DataContext\\Repositories\\UserRepository.cs",
               "RelativeDocumentMoniker": "Library.DataContext\\Repositories\\UserRepository.cs",
@@ -547,12 +619,11 @@
               "RelativeToolTip": "Library.DataContext\\Repositories\\UserRepository.cs",
               "ViewState": "AgIAAB0AAAAAAAAAAAAwwCUAAAAYAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-21T14:44:59.935Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-21T14:44:59.935Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 45,
+              "DocumentIndex": 50,
               "Title": "UserControllerTests.cs",
               "DocumentMoniker": "D:\\CSharp\\LibraryWebApp\\xUnitTests\\ControllersTests\\UserControllerTests.cs",
               "RelativeDocumentMoniker": "xUnitTests\\ControllersTests\\UserControllerTests.cs",
@@ -564,20 +635,19 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 22,
               "Title": "AuthorRepository.cs",
               "DocumentMoniker": "D:\\CSharp\\LibraryWebApp\\Library.DataContext\\Repositories\\AuthorRepository.cs",
               "RelativeDocumentMoniker": "Library.DataContext\\Repositories\\AuthorRepository.cs",
-              "ToolTip": "D:\\CSharp\\LibraryWebApp\\Library.DataContext\\Repositories\\AuthorRepository.cs*",
-              "RelativeToolTip": "Library.DataContext\\Repositories\\AuthorRepository.cs*",
+              "ToolTip": "D:\\CSharp\\LibraryWebApp\\Library.DataContext\\Repositories\\AuthorRepository.cs",
+              "RelativeToolTip": "Library.DataContext\\Repositories\\AuthorRepository.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-21T14:05:55.711Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-21T14:05:55.711Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 46,
+              "DocumentIndex": 51,
               "Title": "AuthorControllerTests.cs",
               "DocumentMoniker": "D:\\CSharp\\LibraryWebApp\\xUnitTests\\ControllersTests\\AuthorControllerTests.cs",
               "RelativeDocumentMoniker": "xUnitTests\\ControllersTests\\AuthorControllerTests.cs",
@@ -585,25 +655,23 @@
               "RelativeToolTip": "xUnitTests\\ControllersTests\\AuthorControllerTests.cs",
               "ViewState": "AgIAAKwAAAAAAAAAAIBJwMEAAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-21T13:47:31.429Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-21T13:47:31.429Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 21,
               "Title": "AuthenticationRepository.cs",
               "DocumentMoniker": "D:\\CSharp\\LibraryWebApp\\Library.DataContext\\Repositories\\AuthenticationRepository.cs",
               "RelativeDocumentMoniker": "Library.DataContext\\Repositories\\AuthenticationRepository.cs",
-              "ToolTip": "D:\\CSharp\\LibraryWebApp\\Library.DataContext\\Repositories\\AuthenticationRepository.cs*",
-              "RelativeToolTip": "Library.DataContext\\Repositories\\AuthenticationRepository.cs*",
+              "ToolTip": "D:\\CSharp\\LibraryWebApp\\Library.DataContext\\Repositories\\AuthenticationRepository.cs",
+              "RelativeToolTip": "Library.DataContext\\Repositories\\AuthenticationRepository.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-21T09:08:23.236Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-21T09:08:23.236Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 47,
+              "DocumentIndex": 52,
               "Title": "AuthorProfile.cs",
               "DocumentMoniker": "D:\\CSharp\\LibraryWebApp\\Domain\\Profiles\\AuthorProfile.cs",
               "RelativeDocumentMoniker": "Domain\\Profiles\\AuthorProfile.cs",
@@ -615,7 +683,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 40,
+              "DocumentIndex": 45,
               "Title": "BookEntity.cs",
               "DocumentMoniker": "D:\\CSharp\\LibraryWebApp\\Domain\\Entities\\BookEntity.cs",
               "RelativeDocumentMoniker": "Domain\\Entities\\BookEntity.cs",
@@ -627,7 +695,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 31,
+              "DocumentIndex": 38,
               "Title": "BookProfile.cs",
               "DocumentMoniker": "D:\\CSharp\\LibraryWebApp\\Domain\\Profiles\\BookProfile.cs",
               "RelativeDocumentMoniker": "Domain\\Profiles\\BookProfile.cs",
@@ -639,7 +707,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 29,
+              "DocumentIndex": 36,
               "Title": "UserProfile.cs",
               "DocumentMoniker": "D:\\CSharp\\LibraryWebApp\\Domain\\Profiles\\UserProfile.cs",
               "RelativeDocumentMoniker": "Domain\\Profiles\\UserProfile.cs",
@@ -651,7 +719,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 35,
+              "DocumentIndex": 42,
               "Title": "AuthenticationControllerTests.cs",
               "DocumentMoniker": "D:\\CSharp\\LibraryWebApp\\xUnitTests\\ControllersTests\\AuthenticationControllerTests.cs",
               "RelativeDocumentMoniker": "xUnitTests\\ControllersTests\\AuthenticationControllerTests.cs",
@@ -659,12 +727,11 @@
               "RelativeToolTip": "xUnitTests\\ControllersTests\\AuthenticationControllerTests.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAFsAAAAhAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-21T08:02:37.984Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-21T08:02:37.984Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 41,
+              "DocumentIndex": 46,
               "Title": "UpdateBookRecord.cs",
               "DocumentMoniker": "D:\\CSharp\\LibraryWebApp\\Domain\\Abstractions\\Records\\UpdateBookRecord.cs",
               "RelativeDocumentMoniker": "Domain\\Abstractions\\Records\\UpdateBookRecord.cs",
@@ -676,7 +743,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 43,
+              "DocumentIndex": 48,
               "Title": "GetBookRecord.cs",
               "DocumentMoniker": "D:\\CSharp\\LibraryWebApp\\Domain\\Abstractions\\Records\\GetBookRecord.cs",
               "RelativeDocumentMoniker": "Domain\\Abstractions\\Records\\GetBookRecord.cs",
@@ -688,7 +755,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 26,
+              "DocumentIndex": 33,
               "Title": "CreateBookRecord.cs",
               "DocumentMoniker": "D:\\CSharp\\LibraryWebApp\\Domain\\Abstractions\\Records\\CreateBookRecord.cs",
               "RelativeDocumentMoniker": "Domain\\Abstractions\\Records\\CreateBookRecord.cs",
@@ -700,7 +767,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 15,
               "Title": "IBookRepository.cs",
               "DocumentMoniker": "D:\\CSharp\\LibraryWebApp\\Domain\\Abstractions\\Repositories\\IBookRepository.cs",
               "RelativeDocumentMoniker": "Domain\\Abstractions\\Repositories\\IBookRepository.cs",
@@ -708,25 +775,23 @@
               "RelativeToolTip": "Domain\\Abstractions\\Repositories\\IBookRepository.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAWAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-20T20:29:20.196Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-20T20:29:20.196Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 23,
               "Title": "BookRepository.cs",
               "DocumentMoniker": "D:\\CSharp\\LibraryWebApp\\Library.DataContext\\Repositories\\BookRepository.cs",
               "RelativeDocumentMoniker": "Library.DataContext\\Repositories\\BookRepository.cs",
-              "ToolTip": "D:\\CSharp\\LibraryWebApp\\Library.DataContext\\Repositories\\BookRepository.cs*",
-              "RelativeToolTip": "Library.DataContext\\Repositories\\BookRepository.cs*",
+              "ToolTip": "D:\\CSharp\\LibraryWebApp\\Library.DataContext\\Repositories\\BookRepository.cs",
+              "RelativeToolTip": "Library.DataContext\\Repositories\\BookRepository.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-20T20:26:52.288Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-20T20:26:52.288Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 28,
               "Title": "UserController.cs",
               "DocumentMoniker": "D:\\CSharp\\LibraryWebApp\\LibraryWebApp\\Controllers\\UserController.cs",
               "RelativeDocumentMoniker": "LibraryWebApp\\Controllers\\UserController.cs",
@@ -734,12 +799,11 @@
               "RelativeToolTip": "LibraryWebApp\\Controllers\\UserController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAB0AAAAvAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-20T19:22:40.541Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-20T19:22:40.541Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 27,
+              "DocumentIndex": 34,
               "Title": "AuthorController.cs",
               "DocumentMoniker": "D:\\CSharp\\LibraryWebApp\\LibraryWebApp\\Controllers\\AuthorController.cs",
               "RelativeDocumentMoniker": "LibraryWebApp\\Controllers\\AuthorController.cs",
@@ -751,20 +815,19 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 11,
               "Title": "AuthenticationController.cs",
               "DocumentMoniker": "D:\\CSharp\\LibraryWebApp\\LibraryWebApp\\Controllers\\AuthenticationController.cs",
               "RelativeDocumentMoniker": "LibraryWebApp\\Controllers\\AuthenticationController.cs",
               "ToolTip": "D:\\CSharp\\LibraryWebApp\\LibraryWebApp\\Controllers\\AuthenticationController.cs",
               "RelativeToolTip": "LibraryWebApp\\Controllers\\AuthenticationController.cs",
-              "ViewState": "AgIAACMAAAAAAAAAAAAwwDcAAAAJAAAAAAAAAA==",
+              "ViewState": "AgIAADkAAAAAAAAAAAAmwCIAAAASAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-20T19:21:37.168Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-20T19:21:37.168Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 25,
+              "DocumentIndex": 32,
               "Title": "BookController.cs",
               "DocumentMoniker": "D:\\CSharp\\LibraryWebApp\\LibraryWebApp\\Controllers\\BookController.cs",
               "RelativeDocumentMoniker": "LibraryWebApp\\Controllers\\BookController.cs",
@@ -772,12 +835,11 @@
               "RelativeToolTip": "LibraryWebApp\\Controllers\\BookController.cs",
               "ViewState": "AgIAAEoAAAAAAAAAAAAAwFAAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-20T19:15:06.794Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-20T19:15:06.794Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 44,
+              "DocumentIndex": 49,
               "Title": "ContextGenerator.cs",
               "DocumentMoniker": "D:\\CSharp\\LibraryWebApp\\xUnitTests\\ContextGenerator.cs",
               "RelativeDocumentMoniker": "xUnitTests\\ContextGenerator.cs",
@@ -789,7 +851,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 22,
+              "DocumentIndex": 30,
               "Title": "LibraryContext.cs",
               "DocumentMoniker": "D:\\CSharp\\LibraryWebApp\\Library.DataContext\\LibraryContext.cs",
               "RelativeDocumentMoniker": "Library.DataContext\\LibraryContext.cs",
@@ -797,12 +859,11 @@
               "RelativeToolTip": "Library.DataContext\\LibraryContext.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-20T18:32:28.372Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-20T18:32:28.372Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 39,
+              "DocumentIndex": 44,
               "Title": "BookControllerTests.cs",
               "DocumentMoniker": "D:\\CSharp\\LibraryWebApp\\xUnitTests\\ControllersTests\\BookControllerTests.cs",
               "RelativeDocumentMoniker": "xUnitTests\\ControllersTests\\BookControllerTests.cs",
@@ -810,8 +871,7 @@
               "RelativeToolTip": "xUnitTests\\ControllersTests\\BookControllerTests.cs",
               "ViewState": "AgIAAE0AAAAAAAAAAAAwwGsAAABMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-20T18:26:47.141Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-20T18:26:47.141Z"
             }
           ]
         }

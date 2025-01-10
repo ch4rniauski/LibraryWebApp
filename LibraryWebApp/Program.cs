@@ -30,13 +30,13 @@ builder.Services.AddApplicationConfiguration();
 
 var app = builder.Build();
 
-app.UseMiddleware<GlobalExceptionsHandler>();
 
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+app.UseMiddleware<GlobalExceptionsHandler>();
 
 app.UseHttpsRedirection();
 app.UseAuthentication();

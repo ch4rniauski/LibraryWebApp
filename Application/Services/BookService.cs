@@ -3,6 +3,7 @@ using Domain.Abstractions.Records;
 using Domain.Abstractions.Services;
 using Domain.Abstractions.UnitsOfWork;
 using Domain.Entities;
+using Domain.Exceptions.CustomExceptions;
 using FluentValidation;
 
 namespace Application.Services
@@ -23,8 +24,12 @@ namespace Application.Services
         public async Task CreateBook(CreateBookRecord book)
         {
             var result = await _validator.ValidateAsync(book);
+
+            var messages = result.Errors.Select(e => new { e.ErrorMessage }).ToList();
+            var message = string.Join(".", messages);
+
             if (!result.IsValid)
-                throw new Exception(); //return BadRequest(result.Errors.Select(e => new { e.ErrorCode, e.ErrorMessage }));
+                throw new IncorrectDataException(message);
 
             var newBook = _mapper.Map<BookEntity>(book);
 
@@ -90,12 +95,12 @@ namespace Application.Services
             }
 
             if ((book.AuthorFirstName is not null || book.AuthorSecondName is not null) && !isAuthorChanged)
-                throw new Exception("Author with that name doesn't exist");
+                throw new NotFoundException("Author with that name doesn't exist");
 
             var createdBook = await _uow.BookRepository.Create(newBook);
 
             if (createdBook is null)
-                throw new Exception("Author wasn't created");
+                throw new CreationFailureException("Author wasn't created");
 
             await _uow.Save();
         }
@@ -105,12 +110,12 @@ namespace Application.Services
             var book = await _uow.BookRepository.GetById(id);
 
             if (book is null)
-                throw new Exception("Book with that ID wasn't found");
+                throw new NotFoundException("Book with that ID wasn't found");
 
             var isDeleted = _uow.BookRepository.Delete(book);
 
             if (isDeleted is null)
-                throw new Exception("Author with that ID wasn't deleted");
+                throw new RemovalFailureException("Author with that ID wasn't deleted");
 
             await _uow.Save();
         }
@@ -129,7 +134,7 @@ namespace Application.Services
             var book = await _uow.BookRepository.GetById(id);
 
             if (book is null)
-                throw new Exception("Book with that ID wasn't found");
+                throw new NotFoundException("Book with that ID wasn't found");
 
             return _mapper.Map<GetBookRecord>(book);
         }
@@ -139,7 +144,7 @@ namespace Application.Services
             var book = await _uow.BookRepository.GetBookByISBN(ISBN);
 
             if (book is null)
-                throw new Exception("Book with that ISBN wasn't found");
+                throw new NotFoundException("Book with that ISBN wasn't found");
 
             return _mapper.Map<GetBookRecord>(book);
         }
@@ -149,7 +154,7 @@ namespace Application.Services
             var user = await _uow.UserRepository.GetById(id);
 
             if (user is null)
-                throw new Exception("User with that ID doesn't exist");
+                throw new NotFoundException("User with that ID doesn't exist");
 
             var books = await _uow.BookRepository.GetBooksByUserId(id);
 
@@ -191,7 +196,7 @@ namespace Application.Services
             var book = await _uow.BookRepository.GetById(id);
 
             if (book is null)
-                throw new Exception("Book with that ID doesn't exist");
+                throw new NotFoundException("Book with that ID doesn't exist");
 
             book.UserId = null;
             book.User = null;
@@ -205,13 +210,16 @@ namespace Application.Services
         {
             var result = await _validator.ValidateAsync(book);
 
+            var messages = result.Errors.Select(e => new { e.ErrorMessage }).ToList();
+            var message = string.Join(".", messages);
+
             if (!result.IsValid)
-                throw new Exception();//return BadRequest(result.Errors.Select(e => new { e.ErrorCode, e.ErrorMessage }));
+                throw new IncorrectDataException(message);
 
             var bookToUpdate = await _uow.BookRepository.GetById(id);
 
             if (bookToUpdate is null)
-                throw new Exception("Book with that ID wasn't found");
+                throw new NotFoundException("Book with that ID wasn't found");
 
             if (book.AuthorFirstName is null && book.AuthorSecondName is null)
             {
@@ -285,7 +293,7 @@ namespace Application.Services
             }
 
             if ((book.AuthorFirstName is not null || book.AuthorSecondName is not null) && !isAuthorChanged)
-                throw new Exception("Author with that name doesn't exist");
+                throw new NotFoundException("Author with that name doesn't exist");
 
             await _uow.Save();
         }
