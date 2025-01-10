@@ -20,6 +20,7 @@ namespace Application
             services.AddScoped<IAuthenticationUserService, AuthenticationUserService>();
             services.AddScoped<IAuthorService, AuthorService>();
             services.AddScoped<IBookService, BookService>();
+            services.AddScoped<IUserService, UserService>();
 
             return services;
         }

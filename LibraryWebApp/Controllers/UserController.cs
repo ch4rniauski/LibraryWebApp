@@ -1,6 +1,5 @@
 ﻿using Domain.Abstractions.Records;
-using Domain.Abstractions.UnitsOfWork;
-using FluentValidation;
+using Domain.Abstractions.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -10,20 +9,18 @@ namespace LibraryWebApp.Controllers
     [Route("[controller]")]
     public class UserController : ControllerBase
     {
-        private readonly IUnitOfWork _uow;
-        private readonly IValidator<RegisterUserRecord> _validator;
+        private readonly IUserService _userService;
 
-        public UserController(IUnitOfWork uow, IValidator<RegisterUserRecord> validator)
+        public UserController(IUserService userService)
         {
-            _uow = uow;
-            _validator = validator;
+            _userService = userService;
         }
 
         [HttpGet("{id:guid}")]
         [Authorize]
         public async Task<ActionResult<UserInfoResponse>> GetUserInfo(Guid id)
         {
-            var user = await _uow.UserRepository.GetUserInfo(id);
+            var user = await _userService.GetUserInfo(id);
 
             return Ok(user);
         }
@@ -32,9 +29,7 @@ namespace LibraryWebApp.Controllers
         [Authorize]
         public async Task<ActionResult> BorrowBook([FromBody] BorrowBookRequest request)
         {
-            await _uow.UserRepository.BorrowBook(request.UserId, request.BookId);
-
-            await _uow.Save();
+            await _userService.BorrowBook(request.UserId, request.BookId);
 
             return Ok();
         }
