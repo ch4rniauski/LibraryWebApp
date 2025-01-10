@@ -238,8 +238,7 @@
               "RelativeToolTip": "Domain\\Exceptions\\CustomExceptions\\CreationFailureException.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-10T18:28:28.187Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-10T18:28:28.187Z"
             },
             {
               "$type": "Document",
@@ -251,8 +250,7 @@
               "RelativeToolTip": "Domain\\Exceptions\\CustomExceptions\\IncorrectDataException.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-10T17:36:05.106Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-10T17:36:05.106Z"
             },
             {
               "$type": "Document",
@@ -264,8 +262,7 @@
               "RelativeToolTip": "Domain\\Exceptions\\CustomExceptions\\RemovalFailureException.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-10T17:08:58.024Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-10T17:08:58.024Z"
             },
             {
               "$type": "Document",
@@ -301,8 +298,7 @@
               "RelativeToolTip": "Domain\\Exceptions\\GlobalExceptionsHandler.cs",
               "ViewState": "AgIAACkAAAAAAAAAAADwvzYAAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-10T16:12:45.199Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-10T16:12:45.199Z"
             },
             {
               "$type": "Document",
@@ -348,7 +344,7 @@
               "RelativeDocumentMoniker": "Application\\Services\\UserService.cs",
               "ToolTip": "D:\\CSharp\\LibraryWebApp\\Application\\Services\\UserService.cs",
               "RelativeToolTip": "Application\\Services\\UserService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAXAAAAAAAAAA==",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAAAUAAAAXAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-01-10T09:07:33.23Z",
               "EditorCaption": ""
@@ -373,7 +369,7 @@
               "RelativeDocumentMoniker": "Application\\Services\\BookService.cs",
               "ToolTip": "D:\\CSharp\\LibraryWebApp\\Application\\Services\\BookService.cs",
               "RelativeToolTip": "Application\\Services\\BookService.cs",
-              "ViewState": "AgIAAMoAAAAAAAAAAAAUwNcAAAAcAAAAAAAAAA==",
+              "ViewState": "AgIAABEAAAAAAAAAAAAUwB4AAAAfAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-01-10T06:50:58.795Z",
               "EditorCaption": ""
@@ -422,7 +418,7 @@
               "RelativeDocumentMoniker": "Application\\Services\\AuthorService.cs",
               "ToolTip": "D:\\CSharp\\LibraryWebApp\\Application\\Services\\AuthorService.cs",
               "RelativeToolTip": "Application\\Services\\AuthorService.cs",
-              "ViewState": "AgIAAEwAAAAAAAAAAAAUwFkAAAAcAAAAAAAAAA==",
+              "ViewState": "AgIAAEwAAAAAAAAAAAAUwFkAAAAfAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-01-09T16:30:54.807Z",
               "EditorCaption": ""
@@ -461,8 +457,7 @@
               "RelativeToolTip": "Application\\DependencyInjection.cs",
               "ViewState": "AgIAADYAAAAAAAAAAAAowEgAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-09T10:58:12.749Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-09T10:58:12.749Z"
             },
             {
               "$type": "Document",

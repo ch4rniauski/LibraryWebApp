@@ -77,8 +77,8 @@ namespace Application.Services
         {
             var result = await _validator.ValidateAsync(user);
 
-            var messages = result.Errors.Select(e => new { e.ErrorMessage }).ToList();
-            var message = string.Join(".", messages);
+            var messages = result.Errors;
+            var message = string.Join("",messages);
 
             if (!result.IsValid)
                 throw new IncorrectDataException(message);
