@@ -117,7 +117,7 @@ namespace xUnitTests.ControllerTests
             // Arrange
             var id = Guid.NewGuid();
 
-            _authUserServiceMock.Setup(u => u.DeleteUser(id)).ThrowsAsync(new NotFoundException("User with that ID wasn't found"););
+            _authUserServiceMock.Setup(u => u.DeleteUser(id)).ThrowsAsync(new NotFoundException("User with that ID wasn't found"));
 
             var controller = new AuthenticationController(_authUserServiceMock.Object);
 

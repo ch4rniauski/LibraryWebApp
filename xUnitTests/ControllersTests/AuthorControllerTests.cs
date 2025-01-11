@@ -1,19 +1,15 @@
-﻿using AutoMapper;
-using Domain.Abstractions.Records;
-using Domain.Abstractions.UnitsOfWork;
-using Domain.Validators;
+﻿using Domain.Abstractions.Records;
+using Domain.Abstractions.Services;
+using Domain.Exceptions.CustomExceptions;
 using LibraryWebApp.Controllers;
 using Microsoft.AspNetCore.Mvc;
 using Moq;
-using System.Collections.Generic;
 
 namespace xUnitTests.ControllerTests
 {
     public class AuthorControllerTests
     {
-        private readonly Mock<IUnitOfWork> _uowMock = new();
-        private readonly AuthorValidator _validator = new();
-        private readonly Mock<IMapper> _mapperMock = new();
+        private readonly Mock<IAuthorService> _authorServiceMock = new();
 
         [Fact]
         public async Task Create_ReturnsOk()
@@ -25,34 +21,15 @@ namespace xUnitTests.ControllerTests
                 "Country",
                 new DateOnly(2000, 10, 10));
 
-            _uowMock.Setup(u => u.AuthorRepository.CreateAuthor(request)).Returns(Task.CompletedTask);
+            _authorServiceMock.Setup(u => u.CreateAuthor(request)).Returns(Task.CompletedTask);
 
-            var controller = new AuthorController(_uowMock.Object, _validator, _mapperMock.Object);
+            var controller = new AuthorController(_authorServiceMock.Object);
 
             // Act
             var result = await controller.Create(request);
 
             // Assert
             Assert.IsType<OkResult>(result);
-        }
-
-        [Fact]
-        public async Task Create_ReturnsBadRequestWithValidationErrors()
-        {
-            // Arrange
-            var request = new CreateAuthorRecord(
-                "AuthorFirstName",
-                "AuthorSecondName",
-                "Country",
-                new DateOnly(15, 10, 10));
-
-            var controller = new AuthorController(_uowMock.Object, _validator, _mapperMock.Object);
-
-            // Act
-            var result = await controller.Create(request);
-
-            // Assert
-            Assert.IsType<BadRequestObjectResult>(result);
         }
 
         [Fact]
@@ -65,28 +42,28 @@ namespace xUnitTests.ControllerTests
                 "Country",
                 new DateOnly(2000, 10, 10));
 
-            _uowMock.Setup(u => u.AuthorRepository.CreateAuthor(request)).ThrowsAsync(new Exception("Author wasn't created"));
+            _authorServiceMock.Setup(u => u.CreateAuthor(request)).ThrowsAsync(new CreationFailureException("Author wasn't created"));
 
-            var controller = new AuthorController(_uowMock.Object, _validator, _mapperMock.Object);
+            var controller = new AuthorController(_authorServiceMock.Object);
 
             // Act
 
             // Assert
-            await Assert.ThrowsAsync<Exception>(async () => await controller.Create(request));
+            await Assert.ThrowsAsync<CreationFailureException>(async () => await controller.Create(request));
         }
 
         [Fact]
-        public void GetAll_ReturnsOk()
+        public async Task GetAll_ReturnsOk()
         {
             // Arrange
             var list = new List<CreateAuthorRecord>();
 
-            _uowMock.Setup(u => u.AuthorRepository.GetAll()).Returns(list);
+            _authorServiceMock.Setup(u => u.GetAllAuthors()).ReturnsAsync(list);
 
-            var controller = new AuthorController(_uowMock.Object, _validator, _mapperMock.Object);
+            var controller = new AuthorController(_authorServiceMock.Object);
 
             // Act
-            var result = controller.GetAll();
+            var result = await controller.GetAll();
 
             // Assert
             Assert.IsType<ActionResult<List<CreateAuthorRecord>>>(result);
@@ -103,9 +80,9 @@ namespace xUnitTests.ControllerTests
                 "Country",
                 new DateOnly(2000, 10, 10));
 
-            _uowMock.Setup(u => u.AuthorRepository.GetAuthor(id)).ReturnsAsync(author);
+            _authorServiceMock.Setup(u => u.GetAuthorById(id)).ReturnsAsync(author);
 
-            var controller = new AuthorController(_uowMock.Object, _validator, _mapperMock.Object);
+            var controller = new AuthorController(_authorServiceMock.Object);
 
             // Act
             var result = await controller.Get(id);
@@ -125,14 +102,14 @@ namespace xUnitTests.ControllerTests
                 "Country",
                 new DateOnly(2000, 10, 10));
 
-            _uowMock.Setup(u => u.AuthorRepository.GetAuthor(id)).ThrowsAsync(new Exception("Author with that id doesn't exist"));
+            _authorServiceMock.Setup(u => u.GetAuthorById(id)).ThrowsAsync(new NotFoundException("Author with that ID doesn't exist"));
 
-            var controller = new AuthorController(_uowMock.Object, _validator, _mapperMock.Object);
+            var controller = new AuthorController(_authorServiceMock.Object);
 
             // Act
 
             // Assert
-            await Assert.ThrowsAsync<Exception>(async () => await controller.Get(id));
+            await Assert.ThrowsAsync<NotFoundException>(async () => await controller.Get(id));
         }
 
         [Fact]
@@ -141,9 +118,9 @@ namespace xUnitTests.ControllerTests
             // Arrange
             var id = Guid.NewGuid();
 
-            _uowMock.Setup(u => u.AuthorRepository.DeleteAutor(id)).Returns(Task.CompletedTask);
+            _authorServiceMock.Setup(u => u.DeleteAutor(id)).Returns(Task.CompletedTask);
 
-            var controller = new AuthorController(_uowMock.Object, _validator, _mapperMock.Object);
+            var controller = new AuthorController(_authorServiceMock.Object);
 
             // Act
             var result = await controller.Delete(id);
@@ -158,14 +135,14 @@ namespace xUnitTests.ControllerTests
             // Arrange
             var id = Guid.NewGuid();
 
-            _uowMock.Setup(u => u.AuthorRepository.DeleteAutor(id)).ThrowsAsync(new Exception("Author with that id doesn't exist"));
+            _authorServiceMock.Setup(u => u.DeleteAutor(id)).ThrowsAsync(new RemovalFailureException("Author with that ID wasn't deleted"));
 
-            var controller = new AuthorController(_uowMock.Object, _validator, _mapperMock.Object);
+            var controller = new AuthorController(_authorServiceMock.Object);
 
             // Act
 
             // Assert
-            await Assert.ThrowsAsync<Exception>(async () => await controller.Delete(id));
+            await Assert.ThrowsAsync<RemovalFailureException>(async () => await controller.Delete(id));
         }
 
         [Fact]
@@ -180,15 +157,9 @@ namespace xUnitTests.ControllerTests
                 "Country",
                 new DateOnly(2000, 10, 10));
 
-            _mapperMock.Setup(m => m.Map<CreateAuthorRecord>(It.IsAny<UpdateAuthorRecord>())).Returns((UpdateAuthorRecord src) => new CreateAuthorRecord(
-                src.FirstName,
-                src.SecondName,
-                src.Country,
-                src.BirthDate));
+            _authorServiceMock.Setup(u => u.UpdateAuthor(author)).Returns(Task.CompletedTask);
 
-            _uowMock.Setup(u => u.AuthorRepository.UpdateAuthor(author)).Returns(Task.CompletedTask);
-
-            var controller = new AuthorController(_uowMock.Object, _validator, _mapperMock.Object);
+            var controller = new AuthorController(_authorServiceMock.Object);
 
             // Act
             var result = await controller.Update(author);
@@ -209,20 +180,14 @@ namespace xUnitTests.ControllerTests
                 "Country",
                 new DateOnly(2000, 10, 10));
 
-            _mapperMock.Setup(m => m.Map<CreateAuthorRecord>(It.IsAny<UpdateAuthorRecord>())).Returns((UpdateAuthorRecord src) => new CreateAuthorRecord(
-                src.FirstName,
-                src.SecondName,
-                src.Country,
-                src.BirthDate));
+            _authorServiceMock.Setup(u => u.UpdateAuthor(author)).ThrowsAsync(new NotFoundException("Author with that ID doesn't exist"));
 
-            _uowMock.Setup(u => u.AuthorRepository.UpdateAuthor(author)).ThrowsAsync(new Exception("Author with that id doesn't exist"));
-
-            var controller = new AuthorController(_uowMock.Object, _validator, _mapperMock.Object);
+            var controller = new AuthorController(_authorServiceMock.Object);
 
             // Act
 
             // Assert
-            await Assert.ThrowsAsync<Exception>(async () => await controller.Update(author));
+            await Assert.ThrowsAsync<NotFoundException>(async () => await controller.Update(author));
         }
     }
 }
