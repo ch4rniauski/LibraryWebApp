@@ -16,7 +16,6 @@ namespace xUnitTests.ControllerTests
         public async Task Register_ThrowsExceptionWithValidationErrors()
         {
             // Arrange
-            var controller = new AuthenticationController(_authUserServiceMock.Object);
             var registerUser = new RegisterUserRecord(
                 "Login",
                 "Invalid Email",
@@ -24,9 +23,9 @@ namespace xUnitTests.ControllerTests
                 "false");
 
             _authUserServiceMock.Setup(a => a.RegisterUser(registerUser)).ThrowsAsync(new IncorrectDataException("Incorrect data"));
+            var controller = new AuthenticationController(_authUserServiceMock.Object);
 
             // Act
-            var result = await controller.Register(registerUser);
 
             // Assert
             await Assert.ThrowsAsync<IncorrectDataException>(async () => await controller.Register(registerUser));
@@ -124,7 +123,7 @@ namespace xUnitTests.ControllerTests
             // Act
 
             // Assert
-            await Assert.ThrowsAsync<Exception>(async () => await controller.DeleteUser(id));
+            await Assert.ThrowsAsync<NotFoundException>(async () => await controller.DeleteUser(id));
         }
 
         [Fact]

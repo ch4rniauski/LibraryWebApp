@@ -1,12 +1,8 @@
-﻿using Azure.Core;
-using Domain.Abstractions.Records;
+﻿using Domain.Abstractions.Records;
 using Domain.Abstractions.Services;
-using Domain.Abstractions.UnitsOfWork;
 using Domain.Exceptions.CustomExceptions;
-using Domain.Validators;
 using LibraryWebApp.Controllers;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.VisualStudio.TestPlatform.CommunicationUtilities;
 using Moq;
 
 namespace xUnitTests.ControllerTests
@@ -33,7 +29,6 @@ namespace xUnitTests.ControllerTests
             var controller = new BookController(_bookServiceMock.Object);
 
             // Act
-            var result = await controller.Create(book);
 
             // Assert
             await Assert.ThrowsAsync<IncorrectDataException>(async () => await controller.Create(book));
@@ -91,7 +86,7 @@ namespace xUnitTests.ControllerTests
         }
 
         [Fact]
-        public void GetAll_ReturnsOk()
+        public async Task GetAll_ReturnsOk()
         {
             // Arrange
             var list = new List<GetBookRecord>();
@@ -101,10 +96,10 @@ namespace xUnitTests.ControllerTests
             var controller = new BookController(_bookServiceMock.Object);
 
             // Act
-            var result = controller.GetAll();
+            var result = await controller.GetAll();
 
             // Assert
-            Assert.IsType<ActionResult<List<GetBookRecord>>>(result);
+            Assert.IsType<ActionResult<List<GetBookRecord>?>>(result);
         }
 
         [Fact]

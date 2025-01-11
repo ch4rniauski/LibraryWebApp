@@ -1,6 +1,6 @@
 ﻿using Domain.Abstractions.Records;
-using Domain.Abstractions.UnitsOfWork;
-using Domain.Validators;
+using Domain.Abstractions.Services;
+using Domain.Exceptions.CustomExceptions;
 using LibraryWebApp.Controllers;
 using Microsoft.AspNetCore.Mvc;
 using Moq;
@@ -9,8 +9,7 @@ namespace xUnitTests.ControllerTests
 {
     public class UserControllerTests
     {
-        private readonly Mock<IUnitOfWork> _uowMock = new();
-        private readonly UserValidator _validator = new();
+        private readonly Mock<IUserService> _userServiceMock = new();
 
         [Fact]
         public async Task GetUserInfo_ReturnsOk()
@@ -22,9 +21,9 @@ namespace xUnitTests.ControllerTests
                 "email@mail.ru",
                 false);
 
-            _uowMock.Setup(u => u.UserRepository.GetUserInfo(id)).ReturnsAsync(user);
+            _userServiceMock.Setup(u => u.GetUserInfo(id)).ReturnsAsync(user);
 
-            var controller = new UserController(_uowMock.Object, _validator);
+            var controller = new UserController(_userServiceMock.Object);
 
             // Act
             var result = await controller.GetUserInfo(id);
@@ -39,14 +38,14 @@ namespace xUnitTests.ControllerTests
             // Arrange
             var id = Guid.NewGuid();
 
-            _uowMock.Setup(u => u.UserRepository.GetUserInfo(id)).ThrowsAsync(new Exception("Book with that ID wasn't found"));
+            _userServiceMock.Setup(u => u.GetUserInfo(id)).ThrowsAsync(new NotFoundException("User with that ID doesn't exist"));
 
-            var controller = new UserController(_uowMock.Object, _validator);
+            var controller = new UserController(_userServiceMock.Object);
 
             // Act
 
             // Assert
-            await Assert.ThrowsAsync<Exception>(async () => await controller.GetUserInfo(id));
+            await Assert.ThrowsAsync<NotFoundException>(async () => await controller.GetUserInfo(id));
         }
 
         [Fact]
@@ -59,9 +58,9 @@ namespace xUnitTests.ControllerTests
                 userId,
                 bookId);
 
-            _uowMock.Setup(u => u.UserRepository.BorrowBook(userId, bookId)).Returns(Task.CompletedTask);
+            _userServiceMock.Setup(u => u.BorrowBook(userId, bookId)).Returns(Task.CompletedTask);
 
-            var controller = new UserController(_uowMock.Object, _validator);
+            var controller = new UserController(_userServiceMock.Object);
 
             // Act
             var result = await controller.BorrowBook(request);
@@ -80,14 +79,14 @@ namespace xUnitTests.ControllerTests
                 userId,
                 bookId);
 
-            _uowMock.Setup(u => u.UserRepository.BorrowBook(userId, bookId)).ThrowsAsync(new Exception());
+            _userServiceMock.Setup(u => u.BorrowBook(userId, bookId)).ThrowsAsync(new IncorrectDataException("That book is already borrowed"));
 
-            var controller = new UserController(_uowMock.Object, _validator);
+            var controller = new UserController(_userServiceMock.Object);
 
             // Act
 
             // Assert
-            await Assert.ThrowsAsync<Exception>(async () => await controller.BorrowBook(request));
+            await Assert.ThrowsAsync<IncorrectDataException>(async () => await controller.BorrowBook(request));
         }
     }
 }

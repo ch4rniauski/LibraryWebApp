@@ -160,3 +160,5 @@ D:\CSharp\LibraryWebApp\xUnitTests\obj\Debug\net9.0\refint\xUnitTests.dll
 D:\CSharp\LibraryWebApp\xUnitTests\obj\Debug\net9.0\xUnitTests.pdb
 D:\CSharp\LibraryWebApp\xUnitTests\obj\Debug\net9.0\xUnitTests.genruntimeconfig.cache
 D:\CSharp\LibraryWebApp\xUnitTests\obj\Debug\net9.0\ref\xUnitTests.dll
+D:\CSharp\LibraryWebApp\xUnitTests\bin\Debug\net9.0\Application.dll
+D:\CSharp\LibraryWebApp\xUnitTests\bin\Debug\net9.0\Application.pdb

@@ -49,7 +49,7 @@ namespace Application.Services
             var user = await _uow.UserRepository.GetById(id);
 
             if (user is null)
-                throw new AlreadyExistsException("User with that ID doesn't exist");
+                throw new NotFoundException("User with that ID doesn't exist");
 
             return _mapper.Map<UserInfoResponse>(user);
         }
