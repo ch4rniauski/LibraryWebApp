@@ -1,19 +1,22 @@
-﻿using Domain.Abstractions.Records;
+﻿using Azure.Core;
+using Domain.Abstractions.Records;
+using Domain.Abstractions.Services;
 using Domain.Abstractions.UnitsOfWork;
+using Domain.Exceptions.CustomExceptions;
 using Domain.Validators;
 using LibraryWebApp.Controllers;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.VisualStudio.TestPlatform.CommunicationUtilities;
 using Moq;
 
 namespace xUnitTests.ControllerTests
 {
     public class BookControllerTests
     {
-        private readonly Mock<IUnitOfWork> _uowMock = new();
-        private readonly BookValidator _validator = new();
+        private readonly Mock<IBookService> _bookServiceMock = new();
 
         [Fact]
-        public async Task Create_ReturnsBadRequestWithValidationErrors()
+        public async Task Create_ThrowsAnExceptionWithValidationErrors()
         {
             // Arrange
             var book = new CreateBookRecord(
@@ -21,19 +24,19 @@ namespace xUnitTests.ControllerTests
                 "Title",
                 "Genre",
                 "Description",
-                null,
-                null,
-                null,
-                null,
-                null);
-
-            var controller = new BookController(_uowMock.Object, _validator);
+            null,
+            null,
+            null,
+            null,
+            null);
+            _bookServiceMock.Setup(b => b.CreateBook(book)).ThrowsAsync(new IncorrectDataException("Incorrect data"));
+            var controller = new BookController(_bookServiceMock.Object);
 
             // Act
             var result = await controller.Create(book);
 
             // Assert
-            Assert.IsType<BadRequestObjectResult>(result);
+            await Assert.ThrowsAsync<IncorrectDataException>(async () => await controller.Create(book));
         }
 
         [Fact]
@@ -51,9 +54,9 @@ namespace xUnitTests.ControllerTests
                 null,
                 null);
 
-            _uowMock.Setup(uow => uow.BookRepository.CreateBook(book)).Returns(Task.CompletedTask);
+            _bookServiceMock.Setup(uow => uow.CreateBook(book)).Returns(Task.CompletedTask);
 
-            var controller = new BookController(_uowMock.Object, _validator);
+            var controller = new BookController(_bookServiceMock.Object);
 
             // Act
             var result = await controller.Create(book);
@@ -77,14 +80,14 @@ namespace xUnitTests.ControllerTests
                 null,
                 null);
 
-            _uowMock.Setup(u => u.BookRepository.CreateBook(book)).ThrowsAsync(new Exception("Author with that name doesn't exist"));
+            _bookServiceMock.Setup(u => u.CreateBook(book)).ThrowsAsync(new NotFoundException("Author with that name doesn't exist"));
 
-            var controller = new BookController(_uowMock.Object, _validator);
+            var controller = new BookController(_bookServiceMock.Object);
 
             // Act
 
             // Assert
-            await Assert.ThrowsAsync<Exception>(async () => await controller.Create(book));
+            await Assert.ThrowsAsync<NotFoundException>(async () => await controller.Create(book));
         }
 
         [Fact]
@@ -93,9 +96,9 @@ namespace xUnitTests.ControllerTests
             // Arrange
             var list = new List<GetBookRecord>();
 
-            _uowMock.Setup(u => u.BookRepository.GetAll()).Returns(list);
+            _bookServiceMock.Setup(u => u.GetAllBooks()).ReturnsAsync(list);
 
-            var controller = new BookController(_uowMock.Object, _validator);
+            var controller = new BookController(_bookServiceMock.Object);
 
             // Act
             var result = controller.GetAll();
@@ -110,14 +113,14 @@ namespace xUnitTests.ControllerTests
             // Arrange
             var id = Guid.NewGuid();
 
-            _uowMock.Setup(u => u.BookRepository.GetBookById(id)).Throws(new Exception("Book with that ID wasn't found"));
+            _bookServiceMock.Setup(u => u.GetBookById(id)).ThrowsAsync(new NotFoundException("Book with that ID wasn't found"));
 
-            var controller = new BookController(_uowMock.Object, _validator);
+            var controller = new BookController(_bookServiceMock.Object);
 
             // Act
 
             // Assert
-            await Assert.ThrowsAsync<Exception>(async () => await controller.GetById(id));
+            await Assert.ThrowsAsync<NotFoundException>(async () => await controller.GetById(id));
         }
 
         [Fact]
@@ -138,9 +141,9 @@ namespace xUnitTests.ControllerTests
                 null,
                 null);
 
-            _uowMock.Setup(u => u.BookRepository.GetBookById(id)).ReturnsAsync(book);
+            _bookServiceMock.Setup(u => u.GetBookById(id)).ReturnsAsync(book);
 
-            var controller = new BookController(_uowMock.Object, _validator);
+            var controller = new BookController(_bookServiceMock.Object);
 
             // Act
             var result = await controller.GetById(id);
@@ -155,14 +158,14 @@ namespace xUnitTests.ControllerTests
             // Arrange
             var isbn = "978-3-16-148410-0";
 
-            _uowMock.Setup(u => u.BookRepository.GetBookByISBN(isbn)).Throws(new Exception("Book with that ISBN wasn't found"));
+            _bookServiceMock.Setup(u => u.GetBookByISBN(isbn)).Throws(new NotFoundException("Book with that ISBN wasn't found"));
 
-            var controller = new BookController(_uowMock.Object, _validator);
+            var controller = new BookController(_bookServiceMock.Object);
 
             // Act
 
             // Assert
-            await Assert.ThrowsAsync<Exception>(async () => await controller.GetByISBN(isbn));
+            await Assert.ThrowsAsync<NotFoundException>(async () => await controller.GetByISBN(isbn));
         }
 
         [Fact]
@@ -183,9 +186,9 @@ namespace xUnitTests.ControllerTests
                 null,
                 null);
 
-            _uowMock.Setup(u => u.BookRepository.GetBookByISBN(isbn)).ReturnsAsync(book);
+            _bookServiceMock.Setup(u => u.GetBookByISBN(isbn)).ReturnsAsync(book);
 
-            var controller = new BookController(_uowMock.Object, _validator);
+            var controller = new BookController(_bookServiceMock.Object);
 
             // Act
             var result = await controller.GetByISBN(isbn);
@@ -203,9 +206,9 @@ namespace xUnitTests.ControllerTests
                 "author");
             var list = new List<GetBookResponse>();
 
-            _uowMock.Setup(u => u.BookRepository.GetBooksWithParams(request)).ReturnsAsync(list);
+            _bookServiceMock.Setup(u => u.GetBooksWithParams(request)).ReturnsAsync(list);
 
-            var controller = new BookController(_uowMock.Object, _validator);
+            var controller = new BookController(_bookServiceMock.Object);
 
             // Act
             var result = await controller.GetWithParams(request);
@@ -219,15 +222,15 @@ namespace xUnitTests.ControllerTests
         {
             // Arrange
             var id = Guid.NewGuid();
-            
-            _uowMock.Setup(u => u.BookRepository.DeleteBook(id)).ThrowsAsync(new Exception("Book with that ID wasn't found"));
 
-            var controller = new BookController(_uowMock.Object, _validator);
+            _bookServiceMock.Setup(u => u.DeleteBook(id)).ThrowsAsync(new NotFoundException("Book with that ID wasn't found"));
+
+            var controller = new BookController(_bookServiceMock.Object);
 
             // Act
 
             // Assert
-            await Assert.ThrowsAsync<Exception>(async () => await controller.Delete(id));
+            await Assert.ThrowsAsync<NotFoundException>(async () => await controller.Delete(id));
         }
 
         [Fact]
@@ -236,9 +239,9 @@ namespace xUnitTests.ControllerTests
             // Arrange
             var id = Guid.NewGuid();
 
-            _uowMock.Setup(u => u.BookRepository.DeleteBook(id)).Returns(Task.CompletedTask);
+            _bookServiceMock.Setup(u => u.DeleteBook(id)).Returns(Task.CompletedTask);
 
-            var controller = new BookController(_uowMock.Object, _validator);
+            var controller = new BookController(_bookServiceMock.Object);
 
             // Act
             var result = await controller.Delete(id);
@@ -263,14 +266,14 @@ namespace xUnitTests.ControllerTests
                 null);
             var id = Guid.NewGuid();
 
-            _uowMock.Setup(u => u.BookRepository.UpdateBook(request, id)).ThrowsAsync(new Exception());
+            _bookServiceMock.Setup(u => u.UpdateBook(request, id)).ThrowsAsync(new NotFoundException("Book with that ID wasn't found"));
 
-            var controller = new BookController(_uowMock.Object, _validator);
+            var controller = new BookController(_bookServiceMock.Object);
 
             // Act
 
             // Assert
-            await Assert.ThrowsAsync<Exception>(async () => await controller.Update(request, id));
+            await Assert.ThrowsAsync<NotFoundException>(async () => await controller.Update(request, id));
         }
 
         [Fact]
@@ -289,9 +292,9 @@ namespace xUnitTests.ControllerTests
                 null);
             var id = Guid.NewGuid();
 
-            _uowMock.Setup(u => u.BookRepository.UpdateBook(request, id)).Returns(Task.CompletedTask);
+            _bookServiceMock.Setup(u => u.UpdateBook(request, id)).Returns(Task.CompletedTask);
 
-            var controller = new BookController(_uowMock.Object, _validator);
+            var controller = new BookController(_bookServiceMock.Object);
 
             // Act
             var result = await controller.Update(request, id);
@@ -307,9 +310,9 @@ namespace xUnitTests.ControllerTests
             var list = new List<GetBookRecord>();
             var id = Guid.NewGuid();
 
-            _uowMock.Setup(u => u.BookRepository.GetBooksByUserId(id)).ReturnsAsync(list);
+            _bookServiceMock.Setup(u => u.GetBooksByUserId(id)).ReturnsAsync(list);
 
-            var controller = new BookController(_uowMock.Object, _validator);
+            var controller = new BookController(_bookServiceMock.Object);
 
             // Act
             var result = await controller.GetBooksByUserId(id);
@@ -324,14 +327,14 @@ namespace xUnitTests.ControllerTests
             // Arrange
             var id = Guid.NewGuid();
 
-            _uowMock.Setup(u => u.BookRepository.GetBooksByUserId(id)).ThrowsAsync(new Exception("User with that ID doesn't exist"));
+            _bookServiceMock.Setup(u => u.GetBooksByUserId(id)).ThrowsAsync(new NotFoundException("User with that ID doesn't exist"));
 
-            var controller = new BookController(_uowMock.Object, _validator);
+            var controller = new BookController(_bookServiceMock.Object);
 
             // Act
 
             // Assert
-            await Assert.ThrowsAsync<Exception>(async () => await controller.GetBooksByUserId(id));
+            await Assert.ThrowsAsync<NotFoundException>(async () => await controller.GetBooksByUserId(id));
         }
 
         [Fact]
@@ -340,9 +343,9 @@ namespace xUnitTests.ControllerTests
             // Arrange
             var id = Guid.NewGuid();
 
-            _uowMock.Setup(u => u.BookRepository.ReturnBook(id)).Returns(Task.CompletedTask);
+            _bookServiceMock.Setup(u => u.ReturnBook(id)).Returns(Task.CompletedTask);
 
-            var controller = new BookController(_uowMock.Object, _validator);
+            var controller = new BookController(_bookServiceMock.Object);
 
             // Act
             var result = await controller.ReturnBook(id);
@@ -357,14 +360,14 @@ namespace xUnitTests.ControllerTests
             // Arrange
             var id = Guid.NewGuid();
 
-            _uowMock.Setup(u => u.BookRepository.ReturnBook(id)).ThrowsAsync(new Exception("User with that ID doesn't exist"));
+            _bookServiceMock.Setup(u => u.ReturnBook(id)).ThrowsAsync(new NotFoundException("Book with that ID doesn't exist"));
 
-            var controller = new BookController(_uowMock.Object, _validator);
+            var controller = new BookController(_bookServiceMock.Object);
 
             // Act
 
             // Assert
-            await Assert.ThrowsAsync<Exception>(async () => await controller.ReturnBook(id));
+            await Assert.ThrowsAsync<NotFoundException>(async () => await controller.ReturnBook(id));
         }
     }
 }
