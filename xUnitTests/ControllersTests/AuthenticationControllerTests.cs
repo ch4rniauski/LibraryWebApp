@@ -1,7 +1,6 @@
-﻿using AutoMapper;
-using Domain.Abstractions.Records;
-using Domain.Abstractions.UnitsOfWork;
-using Domain.Validators;
+﻿using Domain.Abstractions.Records;
+using Domain.Abstractions.Services;
+using Domain.Exceptions.CustomExceptions;
 using LibraryWebApp.Controllers;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -11,40 +10,40 @@ namespace xUnitTests.ControllerTests
 {
     public class AuthenticationControllerTests
     {
-        private readonly Mock<IUnitOfWork> _uowMock = new();
-        private readonly Mock<IMapper> _mapperMock = new();
-        private readonly UserValidator _validator = new();
+        private readonly Mock<IAuthenticationUserService> _authUserServiceMock = new();
 
         [Fact]
-        public async Task Register_ReturnsBadRequestWithValidationErrors()
+        public async Task Register_ThrowsExceptionWithValidationErrors()
         {
             // Arrange
-            var controller = new AuthenticationController(_uowMock.Object, _validator, _mapperMock.Object);
+            var controller = new AuthenticationController(_authUserServiceMock.Object);
             var registerUser = new RegisterUserRecord(
                 "Login",
                 "Invalid Email",
                 "Password",
                 "false");
 
+            _authUserServiceMock.Setup(a => a.RegisterUser(registerUser)).ThrowsAsync(new IncorrectDataException("Incorrect data"));
+
             // Act
             var result = await controller.Register(registerUser);
 
             // Assert
-            Assert.IsType<BadRequestObjectResult>(result);
+            await Assert.ThrowsAsync<IncorrectDataException>(async () => await controller.Register(registerUser));
         }
 
         [Fact]
         public async Task Register_ReturnsOk()
         {
             // Arrange
+            var controller = new AuthenticationController(_authUserServiceMock.Object);
             var registerUser = new RegisterUserRecord(
                 "Login",
                 "email@mail.ru",
                 "Password",
                 "false");
-            _uowMock.Setup(u => u.AuthenticationRepository.RegisterUser(registerUser)).Returns(Task.CompletedTask);
+            _authUserServiceMock.Setup(a => a.RegisterUser(registerUser)).Returns(Task.CompletedTask);
 
-            var controller = new AuthenticationController(_uowMock.Object, _validator, _mapperMock.Object);
 
             // Act
             var result = await controller.Register(registerUser);
@@ -57,19 +56,18 @@ namespace xUnitTests.ControllerTests
         public async Task Register_ThrowsAnException()
         {
             // Arrange
+            var controller = new AuthenticationController(_authUserServiceMock.Object);
             var registerUser = new RegisterUserRecord(
                 "Login",
                 "email@mail.ru",
                 "Password",
                 "false");
-            _uowMock.Setup(u => u.AuthenticationRepository.RegisterUser(registerUser)).ThrowsAsync(new Exception());
-
-            var controller = new AuthenticationController(_uowMock.Object, _validator, _mapperMock.Object);
+            _authUserServiceMock.Setup(a => a.RegisterUser(registerUser)).ThrowsAsync(new AlreadyExistsException("User with that login already exists"));
 
             // Act
 
             // Assert
-            await Assert.ThrowsAsync<Exception>(async () => await controller.Register(registerUser));
+            await Assert.ThrowsAsync<AlreadyExistsException>(async () => await controller.Register(registerUser));
         }
 
         [Fact]
@@ -85,11 +83,8 @@ namespace xUnitTests.ControllerTests
                 Guid.NewGuid(),
                 "access token",
                 "refresh token");
-
-            _mapperMock.Setup(m => m.Map<RegisterUserRecord>(It.IsAny<LogInRequest>())).Returns((LogInRequest srs) => new RegisterUserRecord(srs.Login, srs.Email, srs.Password, "false"));
-            _uowMock.Setup(u => u.AuthenticationRepository.LogInUser(loginData, context.HttpContext)).ReturnsAsync(uowResult);
-
-            var controller = new AuthenticationController(_uowMock.Object, _validator, _mapperMock.Object);
+            _authUserServiceMock.Setup(a => a.LogInUser(loginData,context.HttpContext!)).ReturnsAsync(uowResult);
+            var controller = new AuthenticationController(_authUserServiceMock.Object);
 
             // Act
             var result = await controller.LogIn(loginData);
@@ -99,7 +94,7 @@ namespace xUnitTests.ControllerTests
         }
 
         [Fact]
-        public async Task LoGin_ThrowsAnExceptions()
+        public async Task LoGin_ThrowsAnException()
         {
             // Arrange
             var loginData = new LogInRequest(
@@ -107,20 +102,13 @@ namespace xUnitTests.ControllerTests
                 "email_that_doesnt_exist@mail.ru",
                 "Incorrect Password");
             var context = new HttpContextAccessor();
-            var uowResult = new LogInResponseRecord(
-                Guid.NewGuid(),
-                "access token",
-                "refresh token");
-
-            _mapperMock.Setup(m => m.Map<RegisterUserRecord>(It.IsAny<LogInRequest>())).Returns((LogInRequest srs) => new RegisterUserRecord(srs.Login, srs.Email, srs.Password, "false"));
-            _uowMock.Setup(u => u.AuthenticationRepository.LogInUser(loginData, context.HttpContext)).ThrowsAsync(new Exception());
-
-            var controller = new AuthenticationController(_uowMock.Object, _validator, _mapperMock.Object);
+            _authUserServiceMock.Setup(a => a.LogInUser(loginData, context.HttpContext!)).ThrowsAsync(new NotFoundException("User with that Email wasn't found"));
+            var controller = new AuthenticationController(_authUserServiceMock.Object);
 
             // Act
 
             // Assert
-            await Assert.ThrowsAsync<Exception>(async () => await controller.LogIn(loginData));
+            await Assert.ThrowsAsync<NotFoundException>(async () => await controller.LogIn(loginData));
         }
 
         [Fact]
@@ -129,9 +117,9 @@ namespace xUnitTests.ControllerTests
             // Arrange
             var id = Guid.NewGuid();
 
-            _uowMock.Setup(u => u.AuthenticationRepository.Delete(id)).ThrowsAsync(new Exception("User with that ID wasn't found"));
+            _authUserServiceMock.Setup(u => u.DeleteUser(id)).ThrowsAsync(new NotFoundException("User with that ID wasn't found"););
 
-            var controller = new AuthenticationController(_uowMock.Object, _validator, _mapperMock.Object);
+            var controller = new AuthenticationController(_authUserServiceMock.Object);
 
             // Act
 
@@ -145,9 +133,9 @@ namespace xUnitTests.ControllerTests
             // Arrange
             var id = Guid.NewGuid();
 
-            _uowMock.Setup(u => u.AuthenticationRepository.Delete(id)).Returns(Task.CompletedTask);
+            _authUserServiceMock.Setup(u => u.DeleteUser(id)).Returns(Task.CompletedTask);
 
-            var controller = new AuthenticationController(_uowMock.Object, _validator, _mapperMock.Object);
+            var controller = new AuthenticationController(_authUserServiceMock.Object);
 
             // Act
             var result = await controller.DeleteUser(id);
