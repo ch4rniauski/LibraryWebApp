@@ -1,4 +1,4 @@
-﻿namespace Domain.Abstractions.Records
+﻿namespace Application.Abstractions.Records
 {
     public record GetBookRequest(
         string Search,

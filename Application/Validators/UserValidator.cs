@@ -1,4 +1,4 @@
-﻿using Domain.Abstractions.Records;
+﻿using Application.Abstractions.Requests;
 using FluentValidation;
 
 namespace Domain.Validators

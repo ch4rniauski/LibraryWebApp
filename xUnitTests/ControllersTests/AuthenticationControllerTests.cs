@@ -16,7 +16,7 @@ namespace xUnitTests.ControllerTests
         public async Task Register_ThrowsExceptionWithValidationErrors()
         {
             // Arrange
-            var registerUser = new RegisterUserRecord(
+            var registerUser = new RegisterUserRecord1(
                 "Login",
                 "Invalid Email",
                 "Password",
@@ -36,7 +36,7 @@ namespace xUnitTests.ControllerTests
         {
             // Arrange
             var controller = new AuthenticationController(_authUserServiceMock.Object);
-            var registerUser = new RegisterUserRecord(
+            var registerUser = new RegisterUserRecord1(
                 "Login",
                 "email@mail.ru",
                 "Password",
@@ -56,7 +56,7 @@ namespace xUnitTests.ControllerTests
         {
             // Arrange
             var controller = new AuthenticationController(_authUserServiceMock.Object);
-            var registerUser = new RegisterUserRecord(
+            var registerUser = new RegisterUserRecord1(
                 "Login",
                 "email@mail.ru",
                 "Password",

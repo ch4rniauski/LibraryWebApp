@@ -1,5 +1,4 @@
 using Library.DataContext;
-using Domain;
 using Microsoft.AspNetCore.CookiePolicy;
 using Domain.Exceptions;
 using Application;
@@ -23,7 +22,6 @@ builder.Services.AddCors(o =>
 
 builder.Services.AddLibraryContext(builder.Configuration);
 
-builder.Services.AddDomainConfiguration();
 builder.Services.AddJWTConfiguration(builder.Configuration);
 builder.Services.AddAutoMapperConfiguration();
 builder.Services.AddApplicationConfiguration();

@@ -1,6 +1,7 @@
-﻿using Domain.Abstractions.Records;
+﻿using Application.Abstractions.Records;
+using Application.Abstractions.Requests;
 
-namespace Domain.Abstractions.Services
+namespace Application.Abstractions.Services
 {
     public interface IAuthorService
     {

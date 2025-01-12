@@ -1,6 +1,8 @@
-﻿using Domain.Abstractions.Records;
+﻿using Application.Abstractions.Records;
+using Application.Abstractions.Requests;
+using Domain.Abstractions.Records;
 
-namespace Domain.Abstractions.Services
+namespace Application.Abstractions.Services
 {
     public interface IBookService
     {

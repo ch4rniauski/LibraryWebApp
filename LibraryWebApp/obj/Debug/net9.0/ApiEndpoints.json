@@ -45,7 +45,7 @@
     "Parameters": [
       {
         "Name": "request",
-        "Type": "Domain.Abstractions.Records.LogInRequest",
+        "Type": "Application.Abstractions.Requests.LogInRequest",
         "IsRequired": true
       }
     ],
@@ -81,7 +81,7 @@
     "Parameters": [
       {
         "Name": "request",
-        "Type": "Domain.Abstractions.Records.RegisterUserRecord",
+        "Type": "Application.Abstractions.Requests.RegisterUserRecord",
         "IsRequired": true
       }
     ],
@@ -123,7 +123,7 @@
     "Parameters": [
       {
         "Name": "request",
-        "Type": "Domain.Abstractions.Records.CreateAuthorRecord",
+        "Type": "Application.Abstractions.Requests.CreateAuthorRecord",
         "IsRequired": true
       }
     ],
@@ -139,7 +139,7 @@
     "Parameters": [],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.List\u00601[[Domain.Abstractions.Records.CreateAuthorRecord, Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.List\u00601[[Application.Abstractions.Requests.CreateAuthorRecord, Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -159,7 +159,7 @@
     "Parameters": [
       {
         "Name": "request",
-        "Type": "Domain.Abstractions.Records.UpdateAuthorRecord",
+        "Type": "Application.Abstractions.Records.UpdateAuthorRecord",
         "IsRequired": true
       }
     ],
@@ -181,7 +181,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "Domain.Abstractions.Records.CreateAuthorRecord",
+        "Type": "Application.Abstractions.Requests.CreateAuthorRecord",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -217,7 +217,7 @@
     "Parameters": [
       {
         "Name": "request",
-        "Type": "Domain.Abstractions.Records.CreateBookRecord",
+        "Type": "Application.Abstractions.Requests.CreateBookRecord",
         "IsRequired": true
       }
     ],
@@ -275,7 +275,7 @@
     "Parameters": [
       {
         "Name": "request",
-        "Type": "Domain.Abstractions.Records.CreateBookRecord",
+        "Type": "Application.Abstractions.Requests.CreateBookRecord",
         "IsRequired": true
       },
       {
@@ -368,7 +368,7 @@
     "Parameters": [
       {
         "Name": "request",
-        "Type": "Domain.Abstractions.Records.GetBookRequest",
+        "Type": "Application.Abstractions.Records.GetBookRequest",
         "IsRequired": true
       }
     ],
@@ -436,7 +436,7 @@
     "Parameters": [
       {
         "Name": "request",
-        "Type": "Domain.Abstractions.Records.BorrowBookRequest",
+        "Type": "Application.Abstractions.Records.BorrowBookRequest",
         "IsRequired": true
       }
     ],

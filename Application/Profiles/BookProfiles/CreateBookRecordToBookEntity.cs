@@ -1,33 +1,13 @@
-﻿using AutoMapper;
-using Domain.Abstractions.Records;
+﻿using Application.Abstractions.Requests;
+using AutoMapper;
 using Domain.Entities;
 
-namespace Domain.Profiles
+namespace Application.Profiles.BookProfiles
 {
-    public class BookProfile : Profile
+    public class CreateBookRecordToBookEntity : Profile
     {
-        public BookProfile()
+        public CreateBookRecordToBookEntity()
         {
-            CreateMap<BookEntity, GetBookResponse>()
-                .ConstructUsing(src => new GetBookResponse(
-                    src.Id,
-                    src.Title, 
-                    src.ImageData));
-
-            CreateMap<BookEntity, GetBookRecord>()
-                .ConstructUsing(src => new GetBookRecord(
-                    src.Id,
-                    src.ISBN,
-                    src.Title,
-                    src.Genre,
-                    src.Description,
-                    src.AuthorFirstName,
-                    src.AuthorSecondName,
-                    src.ImageData,
-                    src.TakenAt,
-                    src.DueDate,
-                    src.UserId));
-
             CreateMap<CreateBookRecord, BookEntity>()
                 .ForMember(dist => dist.ISBN, opt => opt.MapFrom(src => src.ISBN))
                 .ForMember(dist => dist.Title, opt => opt.MapFrom(src => src.Title))

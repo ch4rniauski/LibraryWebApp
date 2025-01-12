@@ -1,4 +1,4 @@
-﻿namespace Domain.Abstractions.Records
+﻿namespace Application.Abstractions.Requests
 {
     public record RegisterUserRecord(
         string Login,
