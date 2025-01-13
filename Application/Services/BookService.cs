@@ -229,12 +229,7 @@ namespace Application.Services
                 bookToUpdate.AuthorSecondName = null;
             }
 
-            bookToUpdate.ISBN = book.ISBN;
-            bookToUpdate.Description = book.Description;
-            bookToUpdate.Genre = book.Genre;
-            bookToUpdate.Title = book.Title;
-            bookToUpdate.Id = id;
-            bookToUpdate.ImageData = book.ImageData;
+            _mapper.Map(book, bookToUpdate);
 
             var isAuthorChanged = false;
 
@@ -276,7 +271,7 @@ namespace Application.Services
             }
             if (isAuthorChanged == false && book.AuthorSecondName is not null)
             {
-                var authorBySecondName = await _uow.AuthorRepository.GetByFirstName(book.AuthorSecondName);
+                var authorBySecondName = await _uow.AuthorRepository.GetBySecondName(book.AuthorSecondName);
 
                 if (authorBySecondName is not null)
                 {

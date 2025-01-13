@@ -40,6 +40,7 @@ namespace Application
             services.AddAutoMapper(typeof(AuthorEntityToCreateAuthorRecord));
             services.AddAutoMapper(typeof(CreateAuthorRecordToAuthorEntity));
             services.AddAutoMapper(typeof(UpdateAuthorRecordToCreateAuthorRecord));
+            services.AddAutoMapper(typeof(UpdateAuthorRecordToAuthorEntity));
 
             return services;
         }

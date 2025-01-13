@@ -95,11 +95,7 @@ namespace Application.Services
             if (authorToUpdate is null)
                 throw new NotFoundException("Author with that ID doesn't exist");
 
-            authorToUpdate.Id = author.Id;
-            authorToUpdate.BirthDate = author.BirthDate;
-            authorToUpdate.FirstName = author.FirstName;
-            authorToUpdate.SecondName = author.SecondName;
-            authorToUpdate.Country = author.Country;
+            _mapper.Map(author, authorToUpdate);
 
             await _uow.Save();
         }
