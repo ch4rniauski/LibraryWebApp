@@ -1,10 +1,10 @@
-﻿using Domain.Exceptions.Abstractions;
-using Domain.Exceptions.CustomExceptions;
+﻿using Application.Exceptions.Abstractions;
+using Application.Exceptions.CustomExceptions;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 using System.Net;
 
-namespace Domain.Exceptions
+namespace Application.Exceptions
 {
     public class GlobalExceptionsHandler
     {

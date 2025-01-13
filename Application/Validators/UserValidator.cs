@@ -1,7 +1,7 @@
 ﻿using Application.Abstractions.Requests;
 using FluentValidation;
 
-namespace Domain.Validators
+namespace Application.Validators
 {
     public class UserValidator : AbstractValidator <RegisterUserRecord>
     {

@@ -1,11 +1,11 @@
 ﻿using Application.Abstractions.Requests;
 using Application.Abstractions.Services;
+using Application.Exceptions.CustomExceptions;
+using Application.JWT;
 using AutoMapper;
 using Domain.Abstractions.Records;
 using Domain.Abstractions.UnitsOfWork;
 using Domain.Entities;
-using Domain.Exceptions.CustomExceptions;
-using Domain.JWT;
 using FluentValidation;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;

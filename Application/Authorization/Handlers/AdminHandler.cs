@@ -1,8 +1,8 @@
-﻿using Domain.Authorization.Requirements;
+﻿using Application.Authorization.Requirements;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 
-namespace Domain.Authorization.Handlers
+namespace Application.Authorization.Handlers
 {
     public class AdminHandler : AuthorizationHandler<AdminRequirement>
     {

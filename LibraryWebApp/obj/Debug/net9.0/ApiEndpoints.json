@@ -159,7 +159,7 @@
     "Parameters": [
       {
         "Name": "request",
-        "Type": "Application.Abstractions.Records.UpdateAuthorRecord",
+        "Type": "Application.Abstractions.Requests.UpdateAuthorRecord",
         "IsRequired": true
       }
     ],
@@ -368,7 +368,7 @@
     "Parameters": [
       {
         "Name": "request",
-        "Type": "Application.Abstractions.Records.GetBookRequest",
+        "Type": "Application.Abstractions.Requests.GetBookRequest",
         "IsRequired": true
       }
     ],
@@ -436,7 +436,7 @@
     "Parameters": [
       {
         "Name": "request",
-        "Type": "Application.Abstractions.Records.BorrowBookRequest",
+        "Type": "Application.Abstractions.Requests.BorrowBookRequest",
         "IsRequired": true
       }
     ],

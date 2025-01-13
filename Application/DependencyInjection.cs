@@ -1,13 +1,13 @@
 ﻿using Application.Abstractions.Requests;
 using Application.Abstractions.Services;
+using Application.Authorization.Handlers;
+using Application.Authorization.Requirements;
+using Application.JWT;
 using Application.Profiles.AuthorProfiles;
 using Application.Profiles.BookProfiles;
 using Application.Profiles.UserProfiles;
 using Application.Services;
-using Domain.Authorization.Handlers;
-using Domain.Authorization.Requirements;
-using Domain.JWT;
-using Domain.Validators;
+using Application.Validators;
 using FluentValidation;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;

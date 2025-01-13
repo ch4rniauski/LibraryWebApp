@@ -5,7 +5,7 @@ using Microsoft.IdentityModel.Tokens;
 using System.Security.Cryptography;
 using System.Text;
 
-namespace Domain.JWT
+namespace Application.JWT
 {
     public class TokenProvider
     {

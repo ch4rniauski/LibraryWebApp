@@ -1,7 +1,7 @@
 using Library.DataContext;
 using Microsoft.AspNetCore.CookiePolicy;
-using Domain.Exceptions;
 using Application;
+using Application.Exceptions;
 
 var builder = WebApplication.CreateBuilder(args);
 

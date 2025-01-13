@@ -1,4 +1,4 @@
-﻿using Application.Abstractions.Records;
+﻿using Application.Abstractions.Requests;
 using Application.Abstractions.Services;
 using Domain.Abstractions.Records;
 using Microsoft.AspNetCore.Authorization;

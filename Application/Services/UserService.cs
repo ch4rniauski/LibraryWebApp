@@ -1,9 +1,9 @@
 ﻿using Application.Abstractions.Requests;
 using Application.Abstractions.Services;
+using Application.Exceptions.CustomExceptions;
 using AutoMapper;
 using Domain.Abstractions.Records;
 using Domain.Abstractions.UnitsOfWork;
-using Domain.Exceptions.CustomExceptions;
 using FluentValidation;
 
 namespace Application.Services
@@ -11,13 +11,11 @@ namespace Application.Services
     public class UserService : IUserService
     {
         private readonly IUnitOfWork _uow;
-        private readonly IValidator<RegisterUserRecord> _validator;
         private readonly IMapper _mapper;
 
-        public UserService(IUnitOfWork uow, IValidator<RegisterUserRecord> validator, IMapper mapper)
+        public UserService(IUnitOfWork uow, IMapper mapper)
         {
             _uow = uow;
-            _validator = validator;
             _mapper = mapper;
         }
 

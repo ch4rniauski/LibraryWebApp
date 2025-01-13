@@ -1,12 +1,13 @@
-﻿using Domain.Abstractions.Records;
-using Domain.Abstractions.Services;
-using Domain.Exceptions.CustomExceptions;
+﻿using Application.Abstractions.Requests;
+using Application.Abstractions.Services;
+using Application.Exceptions.CustomExceptions;
+using Domain.Abstractions.Records;
 using LibraryWebApp.Controllers;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Moq;
 
-namespace xUnitTests.ControllerTests
+namespace xUnitTests.ControllersTests
 {
     public class AuthenticationControllerTests
     {
@@ -16,7 +17,7 @@ namespace xUnitTests.ControllerTests
         public async Task Register_ThrowsExceptionWithValidationErrors()
         {
             // Arrange
-            var registerUser = new RegisterUserRecord1(
+            var registerUser = new RegisterUserRecord(
                 "Login",
                 "Invalid Email",
                 "Password",
@@ -36,7 +37,7 @@ namespace xUnitTests.ControllerTests
         {
             // Arrange
             var controller = new AuthenticationController(_authUserServiceMock.Object);
-            var registerUser = new RegisterUserRecord1(
+            var registerUser = new RegisterUserRecord(
                 "Login",
                 "email@mail.ru",
                 "Password",
@@ -56,7 +57,7 @@ namespace xUnitTests.ControllerTests
         {
             // Arrange
             var controller = new AuthenticationController(_authUserServiceMock.Object);
-            var registerUser = new RegisterUserRecord1(
+            var registerUser = new RegisterUserRecord(
                 "Login",
                 "email@mail.ru",
                 "Password",

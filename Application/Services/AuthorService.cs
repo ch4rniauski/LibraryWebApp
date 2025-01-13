@@ -1,10 +1,9 @@
-﻿using Application.Abstractions.Records;
-using Application.Abstractions.Requests;
+﻿using Application.Abstractions.Requests;
 using Application.Abstractions.Services;
+using Application.Exceptions.CustomExceptions;
 using AutoMapper;
 using Domain.Abstractions.UnitsOfWork;
 using Domain.Entities;
-using Domain.Exceptions.CustomExceptions;
 using FluentValidation;
 
 namespace Application.Services

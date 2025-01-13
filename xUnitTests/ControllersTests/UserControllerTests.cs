@@ -1,11 +1,12 @@
-﻿using Domain.Abstractions.Records;
-using Domain.Abstractions.Services;
-using Domain.Exceptions.CustomExceptions;
+﻿using Application.Abstractions.Requests;
+using Application.Abstractions.Services;
+using Application.Exceptions.CustomExceptions;
+using Domain.Abstractions.Records;
 using LibraryWebApp.Controllers;
 using Microsoft.AspNetCore.Mvc;
 using Moq;
 
-namespace xUnitTests.ControllerTests
+namespace xUnitTests.ControllersTests
 {
     public class UserControllerTests
     {

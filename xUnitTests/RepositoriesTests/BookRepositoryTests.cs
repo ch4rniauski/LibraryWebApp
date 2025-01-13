@@ -1,9 +1,6 @@
-﻿using AutoMapper;
-using Domain.Abstractions.Records;
-using Domain.Entities;
+﻿using Domain.Entities;
 using Library.DataContext;
 using Library.DataContext.Repositories;
-using Moq;
 
 namespace xUnitTests.RepositoriesTests
 {

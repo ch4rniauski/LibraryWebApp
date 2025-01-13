@@ -1,4 +1,4 @@
-﻿namespace Application.Abstractions.Records
+﻿namespace Application.Abstractions.Requests
 {
     public record BorrowBookRequest(
         Guid UserId,

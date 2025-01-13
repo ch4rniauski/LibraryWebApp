@@ -1,5 +1,4 @@
-﻿using Application.Abstractions.Records;
-using Application.Abstractions.Requests;
+﻿using Application.Abstractions.Requests;
 
 namespace Application.Abstractions.Services
 {

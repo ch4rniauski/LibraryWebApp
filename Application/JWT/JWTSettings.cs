@@ -1,4 +1,4 @@
-﻿namespace Domain.JWT
+﻿namespace Application.JWT
 {
     public class JWTSettings
     {

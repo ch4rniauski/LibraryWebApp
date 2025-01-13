@@ -1,4 +1,4 @@
-﻿namespace Domain.Exceptions.CustomExceptions
+﻿namespace Application.Exceptions.CustomExceptions
 {
     public class IncorrectDataException : Exception
     {

@@ -2,7 +2,7 @@
 using FluentValidation;
 using System.Text.RegularExpressions;
 
-namespace Domain.Validators
+namespace Application.Validators
 {
     public class BookValidator : AbstractValidator<CreateBookRecord>
     {
@@ -32,15 +32,15 @@ namespace Domain.Validators
                 .LessThan(DateOnly.FromDateTime(DateTime.Today.AddDays(30)));
 
             RuleFor(book => book.ISBN)
-                .Must(isValidISBNCode)
+                .Must(IsValidISBNCode)
                 .WithMessage("Invalid ISBN format");
         }
 
-        public static bool isValidISBNCode(string str)
+        public static bool IsValidISBNCode(string str)
         {
             string strRegex
                 = @"^(?=(?:[^0-9]*[0-9]){10}(?:(?:[^0-9]*[0-9]){3})?$)[\d-]+$";
-            Regex re = new Regex(strRegex);
+            Regex re = new(strRegex);
             if (re.IsMatch(str))
                 return (true);
             else

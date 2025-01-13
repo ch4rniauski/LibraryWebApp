@@ -1,6 +1,6 @@
 ﻿using System.Text.Json;
 
-namespace Domain.Exceptions.Abstractions
+namespace Application.Exceptions.Abstractions
 {
     public class ErrorDetails
     {
