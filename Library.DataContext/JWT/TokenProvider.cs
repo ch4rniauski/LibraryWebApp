@@ -1,13 +1,14 @@
-﻿using Domain.Entities;
+﻿using Domain.Abstractions.JWT;
+using Domain.Entities;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.JsonWebTokens;
 using Microsoft.IdentityModel.Tokens;
 using System.Security.Cryptography;
 using System.Text;
 
-namespace Application.JWT
+namespace Library.DataContext.JWT
 {
-    public class TokenProvider
+    public class TokenProvider : ITokenProvider
     {
         private readonly JWTSettings _settings;
 

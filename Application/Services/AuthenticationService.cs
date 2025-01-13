@@ -1,8 +1,8 @@
 ﻿using Application.Abstractions.Requests;
 using Application.Abstractions.Services;
 using Application.Exceptions.CustomExceptions;
-using Application.JWT;
 using AutoMapper;
+using Domain.Abstractions.JWT;
 using Domain.Abstractions.Records;
 using Domain.Abstractions.UnitsOfWork;
 using Domain.Entities;
@@ -15,11 +15,11 @@ namespace Application.Services
     public class AuthenticationUserService : IAuthenticationUserService
     {
         private readonly IUnitOfWork _uow; 
-        private readonly TokenProvider _tokenProvider;
+        private readonly ITokenProvider _tokenProvider;
         private readonly IMapper _mapper;
         private readonly IValidator<RegisterUserRecord> _validator;
 
-        public AuthenticationUserService(IUnitOfWork uow, TokenProvider tokenProvider, IValidator<RegisterUserRecord> validator, IMapper mapper)
+        public AuthenticationUserService(IUnitOfWork uow, ITokenProvider tokenProvider, IValidator<RegisterUserRecord> validator, IMapper mapper)
         {
             _uow = uow;
             _tokenProvider = tokenProvider;

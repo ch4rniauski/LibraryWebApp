@@ -1,4 +1,4 @@
-﻿namespace Application.JWT
+﻿namespace Library.DataContext.JWT
 {
     public class JWTSettings
     {

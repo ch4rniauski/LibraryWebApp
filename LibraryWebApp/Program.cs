@@ -1,7 +1,7 @@
 using Library.DataContext;
 using Microsoft.AspNetCore.CookiePolicy;
 using Application;
-using Application.Exceptions;
+using LibraryWebApp.Middleware;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -34,7 +34,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-app.UseMiddleware<GlobalExceptionsHandler>();
+app.UseMiddleware<GlobalExceptionsHandlerMiddleware>();
 
 app.UseHttpsRedirection();
 app.UseAuthentication();

@@ -22,7 +22,7 @@ namespace Library.DataContext.Repositories
 
         public async Task<AuthorEntity?> GetBySecondName(string secondName)
         {
-            var authorByFirstName = await _db.Auhtors.FirstOrDefaultAsync(a => a.FirstName.ToLower() == secondName.ToLower());
+            var authorByFirstName = await _db.Auhtors.FirstOrDefaultAsync(a => a.SecondName.ToLower() == secondName.ToLower());
 
             return authorByFirstName;
         }

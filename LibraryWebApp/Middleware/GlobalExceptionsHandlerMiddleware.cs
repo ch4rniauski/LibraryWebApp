@@ -1,17 +1,15 @@
 ﻿using Application.Exceptions.Abstractions;
 using Application.Exceptions.CustomExceptions;
-using Microsoft.AspNetCore.Http;
-using Microsoft.Extensions.Logging;
 using System.Net;
 
-namespace Application.Exceptions
+namespace LibraryWebApp.Middleware
 {
-    public class GlobalExceptionsHandler
+    public class GlobalExceptionsHandlerMiddleware
     {
         private readonly RequestDelegate _next;
-        private readonly ILogger<GlobalExceptionsHandler> _logger;
+        private readonly ILogger<GlobalExceptionsHandlerMiddleware> _logger;
 
-        public GlobalExceptionsHandler(RequestDelegate next, ILogger<GlobalExceptionsHandler> logger)
+        public GlobalExceptionsHandlerMiddleware(RequestDelegate next, ILogger<GlobalExceptionsHandlerMiddleware> logger)
         {
             _next = next;
             _logger = logger;
