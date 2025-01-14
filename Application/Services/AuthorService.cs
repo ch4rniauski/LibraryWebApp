@@ -1,8 +1,6 @@
 ﻿using Application.Abstractions.Requests;
 using Application.Abstractions.Services;
 using Application.Abstractions.UseCases.AuthorUseCases;
-using Application.Exceptions.CustomExceptions;
-using FluentValidation;
 
 namespace Application.Services
 {

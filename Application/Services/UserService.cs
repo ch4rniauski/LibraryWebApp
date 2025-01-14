@@ -1,54 +1,31 @@
 ﻿using Application.Abstractions.Records;
 using Application.Abstractions.Services;
-using Application.Exceptions.CustomExceptions;
-using AutoMapper;
-using Domain.Abstractions.UnitsOfWork;
+using Application.Abstractions.UseCases.UserUseCases;
 
 namespace Application.Services
 {
     public class UserService : IUserService
     {
-        private readonly IUnitOfWork _uow;
-        private readonly IMapper _mapper;
+        private readonly IBorrowBookUseCase _borrowBookUseCase;
+        private readonly IGetUserInfoUseCase _getUserInfoUseCase;
 
-        public UserService(IUnitOfWork uow, IMapper mapper)
+        public UserService(IBorrowBookUseCase borrowBookUseCase,
+            IGetUserInfoUseCase getUserInfoUseCase)
         {
-            _uow = uow;
-            _mapper = mapper;
+            _borrowBookUseCase = borrowBookUseCase;
+            _getUserInfoUseCase = getUserInfoUseCase;
         }
 
         public async Task BorrowBook(Guid userId, Guid bookId)
         {
-            var user = await _uow.UserRepository.GetById(userId);
-
-            if (user is null)
-                throw new NotFoundException("User with that ID doesn't exist");
-
-            var book = await _uow.BookRepository.GetById(bookId);
-
-            if (book is null)
-                throw new NotFoundException("Book with that ID doesn't exist");
-            if (book.UserId is not null)
-                throw new IncorrectDataException("That book is already borrowed");
-
-            book.TakenAt = DateOnly.FromDateTime(DateTime.UtcNow);
-            book.DueDate = DateOnly.FromDateTime(DateTime.UtcNow.AddDays(30));
-            book.UserId = user.Id;
-            book.User = user;
-
-            user.Books.Add(book);
-
-            await _uow.Save();
+            await _borrowBookUseCase.Execute(userId, bookId);
         }
 
         public async Task<UserInfoResponse> GetUserInfo(Guid id)
         {
-            var user = await _uow.UserRepository.GetById(id);
+            var user = await _getUserInfoUseCase.Execute(id);
 
-            if (user is null)
-                throw new NotFoundException("User with that ID doesn't exist");
-
-            return _mapper.Map<UserInfoResponse>(user);
+            return user;
         }
     }
 }

@@ -3,6 +3,7 @@ using Application.Abstractions.Services;
 using Application.Abstractions.UseCases.AuthenticationUserUseCases;
 using Application.Abstractions.UseCases.AuthorUseCases;
 using Application.Abstractions.UseCases.BookUseCases;
+using Application.Abstractions.UseCases.UserUseCases;
 using Application.Profiles.AuthorProfiles;
 using Application.Profiles.BookProfiles;
 using Application.Profiles.UserProfiles;
@@ -10,6 +11,7 @@ using Application.Services;
 using Application.UseCases.AuthenticationUserUseCases;
 using Application.UseCases.AuthorUseCases;
 using Application.UseCases.BookUseCases;
+using Application.UseCases.UserUseCases;
 using Application.Validators;
 using FluentValidation;
 using Microsoft.Extensions.DependencyInjection;
@@ -49,6 +51,9 @@ namespace Application
             services.AddScoped<IGetAllAuthorsUseCase, GetAllAuthorsUseCase>();
             services.AddScoped<IGetAuthorByIdUseCase, GetAuthorByIdUseCase>();
             services.AddScoped<IUpdateAuthorUseCase, UpdateAuthorUseCase>();
+
+            services.AddScoped<IBorrowBookUseCase, BorrowBookUseCase>();
+            services.AddScoped<IGetUserInfoUseCase, GetUserInfoUseCase>();
 
             return services;
         }
