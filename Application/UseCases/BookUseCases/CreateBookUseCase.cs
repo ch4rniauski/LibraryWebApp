@@ -97,9 +97,9 @@ namespace Application.UseCases.BookUseCases
             if ((book.AuthorFirstName is not null || book.AuthorSecondName is not null) && !isAuthorChanged)
                 throw new NotFoundException("Author with that name doesn't exist");
 
-            var createdBook = await _uow.BookRepository.Create(newBook);
+            var isCreated = await _uow.BookRepository.Create(newBook);
 
-            if (createdBook is null)
+            if (!isCreated)
                 throw new CreationFailureException("Author wasn't created");
 
             await _uow.Save();

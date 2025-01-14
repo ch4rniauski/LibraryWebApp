@@ -34,9 +34,9 @@ namespace Application.UseCases.AuthorUseCases
             var newAuthor = _mapper.Map<AuthorEntity>(author);
             newAuthor.Id = Guid.NewGuid();
 
-            var createdAuthor = await _uow.AuthorRepository.Create(newAuthor);
+            var isCreated = await _uow.AuthorRepository.Create(newAuthor);
 
-            if (createdAuthor is null)
+            if (!isCreated)
                 throw new CreationFailureException("Author wasn't created");
 
             await _uow.Save();

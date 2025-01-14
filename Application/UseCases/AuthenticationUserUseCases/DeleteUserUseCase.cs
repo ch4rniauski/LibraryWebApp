@@ -22,7 +22,7 @@ namespace Application.UseCases.AuthenticationUserUseCases
 
             var isDeleted = _uow.AuthenticationRepository.Delete(user);
 
-            if (isDeleted is null)
+            if (!isDeleted)
                 throw new RemovalFailureException("User with that ID wasn't deleted");
 
             await _uow.Save();

@@ -22,7 +22,7 @@ namespace Application.UseCases.AuthorUseCases
 
             var isDeleted = _uow.AuthorRepository.Delete(author);
 
-            if (isDeleted is null)
+            if (!isDeleted)
                 throw new RemovalFailureException("Author with that ID wasn't deleted");
 
             await _uow.Save();

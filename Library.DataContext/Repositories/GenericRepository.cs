@@ -1,6 +1,5 @@
 ﻿using Domain.Abstractions.Repositories;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.ChangeTracking;
 
 namespace Library.DataContext.Repositories
 {
@@ -15,18 +14,18 @@ namespace Library.DataContext.Repositories
             _dbSet = _db.Set<T>();
         }
 
-        public async Task<EntityEntry<T>?> Create(T entity)
+        public async Task<bool> Create(T entity)
         {
             var createdEntity = await _dbSet.AddAsync(entity);
 
-            return createdEntity;
+            return !(createdEntity is null);
         }
 
-        public EntityEntry<T>? Delete(T entity)
+        public bool Delete(T entity)
         {
             var deletedEntity = _dbSet.Remove(entity);
 
-            return deletedEntity;
+            return !(deletedEntity is null);
         }
 
         public async Task<List<T>?> GetAll()

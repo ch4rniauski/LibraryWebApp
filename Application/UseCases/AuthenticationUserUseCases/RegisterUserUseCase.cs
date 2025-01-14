@@ -56,7 +56,7 @@ namespace Application.UseCases.AuthenticationUserUseCases
 
             var registeredUser = await _uow.AuthenticationRepository.Create(userEntity);
 
-            if (registeredUser is null)
+            if (!registeredUser)
                 throw new CreationFailureException("User wasn't registered");
 
             await _uow.Save();

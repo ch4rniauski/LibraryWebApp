@@ -22,7 +22,7 @@ namespace Application.UseCases.BookUseCases
 
             var isDeleted = _uow.BookRepository.Delete(book);
 
-            if (isDeleted is null)
+            if (!isDeleted)
                 throw new RemovalFailureException("Author with that ID wasn't deleted");
 
             await _uow.Save();
