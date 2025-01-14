@@ -1,103 +1,59 @@
 ﻿using Application.Abstractions.Requests;
 using Application.Abstractions.Services;
+using Application.Abstractions.UseCases.AuthorUseCases;
 using Application.Exceptions.CustomExceptions;
-using AutoMapper;
-using Domain.Abstractions.UnitsOfWork;
-using Domain.Entities;
 using FluentValidation;
 
 namespace Application.Services
 {
     public class AuthorService : IAuthorService
     {
-        private readonly IUnitOfWork _uow;
-        private readonly IMapper _mapper;
-        private readonly IValidator<CreateAuthorRecord> _validator;
+        private readonly ICreateAuthorUseCase _createAuthorUseCase;
+        private readonly IDeleteAutorUseCase _deleteAuthorUseCase;
+        private readonly IGetAllAuthorsUseCase _getAllAuthorsUseCase;
+        private readonly IGetAuthorByIdUseCase _getAuthorByIdUseCase;
+        private readonly IUpdateAuthorUseCase _updateAuthorUseCase;
 
-        public AuthorService(IUnitOfWork uow, IMapper mapper, IValidator<CreateAuthorRecord> validator)
+        public AuthorService(ICreateAuthorUseCase createAuthorUseCase,
+            IDeleteAutorUseCase deleteAuthorUseCase,
+            IGetAllAuthorsUseCase getAllAuthorsUseCase,
+            IGetAuthorByIdUseCase getAuthorByIdUseCase,
+            IUpdateAuthorUseCase updateAuthorUseCase)
         {
-            _mapper = mapper;
-            _uow = uow;
-            _validator = validator;
+            _createAuthorUseCase = createAuthorUseCase;
+            _deleteAuthorUseCase = deleteAuthorUseCase;
+            _getAllAuthorsUseCase = getAllAuthorsUseCase;
+            _getAuthorByIdUseCase = getAuthorByIdUseCase;
+            _updateAuthorUseCase = updateAuthorUseCase;
         }
 
         public async Task CreateAuthor(CreateAuthorRecord author)
         {
-            var result = await _validator.ValidateAsync(author);
-
-            var messages = result.Errors;
-            var message = string.Join("", messages);
-
-            if (!result.IsValid)
-                throw new IncorrectDataException(message);
-
-            var newAuthor = _mapper.Map<AuthorEntity>(author);
-            newAuthor.Id = Guid.NewGuid();
-
-            var createdAuthor = await _uow.AuthorRepository.Create(newAuthor);
-
-            if (createdAuthor is null)
-                throw new CreationFailureException("Author wasn't created");
-
-            await _uow.Save();
+            await _createAuthorUseCase.Execute(author);
         }
 
         public async Task DeleteAutor(Guid id)
         {
-            var author = await _uow.AuthorRepository.GetById(id);
-
-            if (author is null)
-                throw new NotFoundException("Author with that ID doesn't exist");
-
-            var isDeleted = _uow.AuthorRepository.Delete(author);
-
-            if (isDeleted is null)
-                throw new RemovalFailureException("Author with that ID wasn't deleted");
-
-            await _uow.Save();
+            await _deleteAuthorUseCase.Execute(id);
         }
 
         public async Task<List<CreateAuthorRecord>?> GetAllAuthors()
         {
-            var list = await _uow.AuthorRepository.GetAll();
+            var list = await _getAllAuthorsUseCase.Execute();
 
-            if (list is null)
-                return null;
-
-            var listToReturn = _mapper.Map<List<CreateAuthorRecord>>(list);
-
-            return listToReturn;
+            return list;
         }
 
         public async Task<CreateAuthorRecord> GetAuthorById(Guid id)
         {
-            var author = await _uow.AuthorRepository.GetById(id);
+            var author = await _getAuthorByIdUseCase.Execute(id);
 
-            if (author is null)
-                throw new NotFoundException("Author with that ID doesn't exist");
-
-            return _mapper.Map<CreateAuthorRecord>(author);
+            return author;
         }
 
         public async Task UpdateAuthor(UpdateAuthorRecord author)
-        {
-            var authorToValidate = _mapper.Map<CreateAuthorRecord>(author);
-            var result = await _validator.ValidateAsync(authorToValidate);
-
-            var messages = result.Errors;
-            var message = string.Join("", messages);
-
-            if (!result.IsValid)
-                throw new IncorrectDataException(message);
-
-            var authorToUpdate = await _uow.AuthorRepository.GetById(author.Id);
-
-            if (authorToUpdate is null)
-                throw new NotFoundException("Author with that ID doesn't exist");
-
-            _mapper.Map(author, authorToUpdate);
-
-            await _uow.Save();
+        {            
+            await _updateAuthorUseCase.Execute(author);
         }
     }
 }

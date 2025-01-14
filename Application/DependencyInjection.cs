@@ -1,12 +1,14 @@
 ﻿using Application.Abstractions.Requests;
 using Application.Abstractions.Services;
 using Application.Abstractions.UseCases.AuthenticationUserUseCases;
+using Application.Abstractions.UseCases.AuthorUseCases;
 using Application.Abstractions.UseCases.BookUseCases;
 using Application.Profiles.AuthorProfiles;
 using Application.Profiles.BookProfiles;
 using Application.Profiles.UserProfiles;
 using Application.Services;
 using Application.UseCases.AuthenticationUserUseCases;
+using Application.UseCases.AuthorUseCases;
 using Application.UseCases.BookUseCases;
 using Application.Validators;
 using FluentValidation;
@@ -41,6 +43,12 @@ namespace Application
             services.AddScoped<ILogInUserUseCase, LogInUserUseCase>();
             services.AddScoped<IRegisterUserUseCase, RegisterUserUseCase>();
             services.AddScoped<IUpdateAccessTokenUseCase, UpdateAccessTokenUseCase>();
+
+            services.AddScoped<ICreateAuthorUseCase, CreateAuthorUseCase>();
+            services.AddScoped<IDeleteAutorUseCase, DeleteAutorUseCase>();
+            services.AddScoped<IGetAllAuthorsUseCase, GetAllAuthorsUseCase>();
+            services.AddScoped<IGetAuthorByIdUseCase, GetAuthorByIdUseCase>();
+            services.AddScoped<IUpdateAuthorUseCase, UpdateAuthorUseCase>();
 
             return services;
         }
