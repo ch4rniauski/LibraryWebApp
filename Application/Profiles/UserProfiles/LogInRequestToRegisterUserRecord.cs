@@ -1,6 +1,5 @@
 ﻿using Application.Abstractions.Requests;
 using AutoMapper;
-using Domain.Abstractions.Records;
 
 namespace Application.Profiles.UserProfiles
 {

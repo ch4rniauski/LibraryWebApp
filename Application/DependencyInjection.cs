@@ -1,9 +1,13 @@
 ﻿using Application.Abstractions.Requests;
 using Application.Abstractions.Services;
+using Application.Abstractions.UseCases.AuthenticationUserUseCases;
+using Application.Abstractions.UseCases.BookUseCases;
 using Application.Profiles.AuthorProfiles;
 using Application.Profiles.BookProfiles;
 using Application.Profiles.UserProfiles;
 using Application.Services;
+using Application.UseCases.AuthenticationUserUseCases;
+using Application.UseCases.BookUseCases;
 using Application.Validators;
 using FluentValidation;
 using Microsoft.Extensions.DependencyInjection;
@@ -22,6 +26,21 @@ namespace Application
             services.AddScoped<IAuthorService, AuthorService>();
             services.AddScoped<IBookService, BookService>();
             services.AddScoped<IUserService, UserService>();
+
+            services.AddScoped<ICreateBookUseCase, CreateBookUseCase>();
+            services.AddScoped<IDeleteBookUseCase, DeleteBookUseCase>();
+            services.AddScoped<IGetAllBooksUseCase, GetAllBooksUseCase>();
+            services.AddScoped<IGetBookByIdUseCase, GetBookByIdUseCase>();
+            services.AddScoped<IGetBookByISBNUseCase, GetBookByISBNUseCase>();
+            services.AddScoped<IGetBooksByUserIdUseCase, GetBooksByUserIdUseCase>();
+            services.AddScoped<IGetBooksWithParamsUseCase, GetBooksWithParamsUseCase>();
+            services.AddScoped<IReturnBookUseCase, ReturnBookUseCase>();
+            services.AddScoped<IUpdateBookUseCase, UpdateBookUseCase>();
+
+            services.AddScoped<IDeleteUserUseCase, DeleteUserUseCase>();
+            services.AddScoped<ILogInUserUseCase, LogInUserUseCase>();
+            services.AddScoped<IRegisterUserUseCase, RegisterUserUseCase>();
+            services.AddScoped<IUpdateAccessTokenUseCase, UpdateAccessTokenUseCase>();
 
             return services;
         }

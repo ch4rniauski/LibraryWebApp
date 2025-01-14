@@ -1,4 +1,4 @@
-﻿using Domain.Abstractions.Records;
+﻿using Application.Abstractions.Records;
 
 namespace Application.Abstractions.Services;
 

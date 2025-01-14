@@ -51,7 +51,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "Domain.Abstractions.Records.LogInResponseRecord",
+        "Type": "Application.Abstractions.Records.LogInResponseRecord",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -239,7 +239,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "Domain.Abstractions.Records.GetBookRecord",
+        "Type": "Application.Abstractions.Records.GetBookRecord",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -302,7 +302,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "Domain.Abstractions.Records.GetBookRecord",
+        "Type": "Application.Abstractions.Records.GetBookRecord",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -322,7 +322,7 @@
     "Parameters": [],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.List\u00601[[Domain.Abstractions.Records.GetBookRecord, Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.List\u00601[[Application.Abstractions.Records.GetBookRecord, Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -348,7 +348,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.List\u00601[[Domain.Abstractions.Records.GetBookRecord, Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.List\u00601[[Application.Abstractions.Records.GetBookRecord, Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -374,7 +374,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.List\u00601[[Domain.Abstractions.Records.GetBookResponse, Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.List\u00601[[Application.Abstractions.Records.GetBookResponse, Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -416,7 +416,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "Domain.Abstractions.Records.UserInfoResponse",
+        "Type": "Application.Abstractions.Records.UserInfoResponse",
         "MediaTypes": [
           "text/plain",
           "application/json",

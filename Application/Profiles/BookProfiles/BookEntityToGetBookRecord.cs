@@ -1,5 +1,5 @@
-﻿using AutoMapper;
-using Domain.Abstractions.Records;
+﻿using Application.Abstractions.Records;
+using AutoMapper;
 using Domain.Entities;
 
 namespace Application.Profiles.BookProfiles

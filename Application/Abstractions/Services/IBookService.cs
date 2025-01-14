@@ -1,5 +1,5 @@
-﻿using Application.Abstractions.Requests;
-using Domain.Abstractions.Records;
+﻿using Application.Abstractions.Records;
+using Application.Abstractions.Requests;
 
 namespace Application.Abstractions.Services
 {

@@ -1,7 +1,7 @@
-﻿using Application.Abstractions.Services;
+﻿using Application.Abstractions.Records;
+using Application.Abstractions.Services;
 using Application.Exceptions.CustomExceptions;
 using AutoMapper;
-using Domain.Abstractions.Records;
 using Domain.Abstractions.UnitsOfWork;
 
 namespace Application.Services
