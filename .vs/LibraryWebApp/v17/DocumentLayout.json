@@ -3,16 +3,28 @@
   "WorkspaceRootPath": "D:\\CSharp\\LibraryWebApp\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{30357679-D2F7-4308-B6B9-AC92BB3B62E7}|xUnitTests\\xUnitTests.csproj|d:\\csharp\\librarywebapp\\xunittests\\usecases\\userusecasestests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{30357679-D2F7-4308-B6B9-AC92BB3B62E7}|xUnitTests\\xUnitTests.csproj|solutionrelative:xunittests\\usecases\\userusecasestests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0C7296F9-75CB-4568-A010-2DE4D11B96A3}|Application\\Application.csproj|d:\\csharp\\librarywebapp\\application\\usecases\\userusecases\\getuserinfousecase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0C7296F9-75CB-4568-A010-2DE4D11B96A3}|Application\\Application.csproj|solutionrelative:application\\usecases\\userusecases\\getuserinfousecase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0C7296F9-75CB-4568-A010-2DE4D11B96A3}|Application\\Application.csproj|d:\\csharp\\librarywebapp\\application\\usecases\\userusecases\\borrowbookusecase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0C7296F9-75CB-4568-A010-2DE4D11B96A3}|Application\\Application.csproj|solutionrelative:application\\usecases\\userusecases\\borrowbookusecase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{30357679-D2F7-4308-B6B9-AC92BB3B62E7}|xUnitTests\\xUnitTests.csproj|d:\\csharp\\librarywebapp\\xunittests\\usecases\\bookusecasestests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{30357679-D2F7-4308-B6B9-AC92BB3B62E7}|xUnitTests\\xUnitTests.csproj|solutionrelative:xunittests\\usecases\\bookusecasestests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{0C7296F9-75CB-4568-A010-2DE4D11B96A3}|Application\\Application.csproj|d:\\csharp\\librarywebapp\\application\\usecases\\bookusecases\\updatebookusecase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0C7296F9-75CB-4568-A010-2DE4D11B96A3}|Application\\Application.csproj|solutionrelative:application\\usecases\\bookusecases\\updatebookusecase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{30357679-D2F7-4308-B6B9-AC92BB3B62E7}|xUnitTests\\xUnitTests.csproj|d:\\csharp\\librarywebapp\\xunittests\\usecases\\authenticationuserusecasestests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{30357679-D2F7-4308-B6B9-AC92BB3B62E7}|xUnitTests\\xUnitTests.csproj|solutionrelative:xunittests\\usecases\\authenticationuserusecasestests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0C7296F9-75CB-4568-A010-2DE4D11B96A3}|Application\\Application.csproj|d:\\csharp\\librarywebapp\\application\\usecases\\bookusecases\\updatebookusecase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0C7296F9-75CB-4568-A010-2DE4D11B96A3}|Application\\Application.csproj|solutionrelative:application\\usecases\\bookusecases\\updatebookusecase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{30357679-D2F7-4308-B6B9-AC92BB3B62E7}|xUnitTests\\xUnitTests.csproj|d:\\csharp\\librarywebapp\\xunittests\\usecases\\authorusecasestests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -137,16 +149,8 @@
       "RelativeMoniker": "D:0:0:{30357679-D2F7-4308-B6B9-AC92BB3B62E7}|xUnitTests\\xUnitTests.csproj|solutionrelative:xunittests\\xunittests.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{0C7296F9-75CB-4568-A010-2DE4D11B96A3}|Application\\Application.csproj|d:\\csharp\\librarywebapp\\application\\usecases\\userusecases\\borrowbookusecase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0C7296F9-75CB-4568-A010-2DE4D11B96A3}|Application\\Application.csproj|solutionrelative:application\\usecases\\userusecases\\borrowbookusecase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{0C7296F9-75CB-4568-A010-2DE4D11B96A3}|Application\\Application.csproj|d:\\csharp\\librarywebapp\\application\\services\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{0C7296F9-75CB-4568-A010-2DE4D11B96A3}|Application\\Application.csproj|solutionrelative:application\\services\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0C7296F9-75CB-4568-A010-2DE4D11B96A3}|Application\\Application.csproj|d:\\csharp\\librarywebapp\\application\\usecases\\userusecases\\getuserinfousecase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0C7296F9-75CB-4568-A010-2DE4D11B96A3}|Application\\Application.csproj|solutionrelative:application\\usecases\\userusecases\\getuserinfousecase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{0C7296F9-75CB-4568-A010-2DE4D11B96A3}|Application\\Application.csproj|d:\\csharp\\librarywebapp\\application\\abstractions\\usecases\\userusecases\\igetuserinfousecase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -188,7 +192,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 8,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Bookmark",
@@ -196,7 +200,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
+              "Title": "UserUseCasesTests.cs",
+              "DocumentMoniker": "D:\\CSharp\\LibraryWebApp\\xUnitTests\\UseCases\\UserUseCasesTests.cs",
+              "RelativeDocumentMoniker": "xUnitTests\\UseCases\\UserUseCasesTests.cs",
+              "ToolTip": "D:\\CSharp\\LibraryWebApp\\xUnitTests\\UseCases\\UserUseCasesTests.cs",
+              "RelativeToolTip": "xUnitTests\\UseCases\\UserUseCasesTests.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-15T15:59:31.622Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
               "Title": "UpdateBookUseCase.cs",
               "DocumentMoniker": "D:\\CSharp\\LibraryWebApp\\Application\\UseCases\\BookUseCases\\UpdateBookUseCase.cs",
               "RelativeDocumentMoniker": "Application\\UseCases\\BookUseCases\\UpdateBookUseCase.cs",
@@ -204,12 +221,11 @@
               "RelativeToolTip": "Application\\UseCases\\BookUseCases\\UpdateBookUseCase.cs",
               "ViewState": "AgIAAF0AAAAAAAAAAAAowBYAAAAyAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-15T11:41:18.822Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-15T11:41:18.822Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 8,
               "Title": "ReturnBookUseCase.cs",
               "DocumentMoniker": "D:\\CSharp\\LibraryWebApp\\Application\\UseCases\\BookUseCases\\ReturnBookUseCase.cs",
               "RelativeDocumentMoniker": "Application\\UseCases\\BookUseCases\\ReturnBookUseCase.cs",
@@ -221,7 +237,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 10,
               "Title": "GetAllBooksUseCase.cs",
               "DocumentMoniker": "D:\\CSharp\\LibraryWebApp\\Application\\UseCases\\BookUseCases\\GetAllBooksUseCase.cs",
               "RelativeDocumentMoniker": "Application\\UseCases\\BookUseCases\\GetAllBooksUseCase.cs",
@@ -233,7 +249,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 9,
               "Title": "GetBooksWithParamsUseCase.cs",
               "DocumentMoniker": "D:\\CSharp\\LibraryWebApp\\Application\\UseCases\\BookUseCases\\GetBooksWithParamsUseCase.cs",
               "RelativeDocumentMoniker": "Application\\UseCases\\BookUseCases\\GetBooksWithParamsUseCase.cs",
@@ -245,7 +261,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 11,
               "Title": "GetBooksByUserIdUseCase.cs",
               "DocumentMoniker": "D:\\CSharp\\LibraryWebApp\\Application\\UseCases\\BookUseCases\\GetBooksByUserIdUseCase.cs",
               "RelativeDocumentMoniker": "Application\\UseCases\\BookUseCases\\GetBooksByUserIdUseCase.cs",
@@ -257,7 +273,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 12,
               "Title": "GetBookByIdUseCase.cs",
               "DocumentMoniker": "D:\\CSharp\\LibraryWebApp\\Application\\UseCases\\BookUseCases\\GetBookByIdUseCase.cs",
               "RelativeDocumentMoniker": "Application\\UseCases\\BookUseCases\\GetBookByIdUseCase.cs",
@@ -269,7 +285,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 13,
               "Title": "GetBookByISBNUseCase.cs",
               "DocumentMoniker": "D:\\CSharp\\LibraryWebApp\\Application\\UseCases\\BookUseCases\\GetBookByISBNUseCase.cs",
               "RelativeDocumentMoniker": "Application\\UseCases\\BookUseCases\\GetBookByISBNUseCase.cs",
@@ -281,20 +297,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 3,
               "Title": "BookUseCasesTests.cs",
               "DocumentMoniker": "D:\\CSharp\\LibraryWebApp\\xUnitTests\\UseCases\\BookUseCasesTests.cs",
               "RelativeDocumentMoniker": "xUnitTests\\UseCases\\BookUseCasesTests.cs",
               "ToolTip": "D:\\CSharp\\LibraryWebApp\\xUnitTests\\UseCases\\BookUseCasesTests.cs",
               "RelativeToolTip": "xUnitTests\\UseCases\\BookUseCasesTests.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAiAAAAAAAAAA==",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAABAAAABTAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-01-15T10:35:48.945Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 6,
               "Title": "AuthorUseCasesTests.cs",
               "DocumentMoniker": "D:\\CSharp\\LibraryWebApp\\xUnitTests\\UseCases\\AuthorUseCasesTests.cs",
               "RelativeDocumentMoniker": "xUnitTests\\UseCases\\AuthorUseCasesTests.cs",
@@ -302,12 +318,11 @@
               "RelativeToolTip": "xUnitTests\\UseCases\\AuthorUseCasesTests.cs",
               "ViewState": "AgIAAOQAAAAAAAAAAAAQwAIBAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-15T09:04:42.288Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-15T09:04:42.288Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 22,
+              "DocumentIndex": 25,
               "Title": "TokenProvider.cs",
               "DocumentMoniker": "D:\\CSharp\\LibraryWebApp\\Library.DataContext\\JWT\\TokenProvider.cs",
               "RelativeDocumentMoniker": "Library.DataContext\\JWT\\TokenProvider.cs",
@@ -319,7 +334,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 23,
+              "DocumentIndex": 26,
               "Title": "DependencyInjection.cs",
               "DocumentMoniker": "D:\\CSharp\\LibraryWebApp\\Library.DataContext\\DependencyInjection.cs",
               "RelativeDocumentMoniker": "Library.DataContext\\DependencyInjection.cs",
@@ -331,7 +346,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 25,
+              "DocumentIndex": 28,
               "Title": "UpdateAccessTokenUseCase.cs",
               "DocumentMoniker": "D:\\CSharp\\LibraryWebApp\\Application\\UseCases\\AuthenticationUserUseCases\\UpdateAccessTokenUseCase.cs",
               "RelativeDocumentMoniker": "Application\\UseCases\\AuthenticationUserUseCases\\UpdateAccessTokenUseCase.cs",
@@ -343,7 +358,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 15,
               "Title": "CreateBookUseCase.cs",
               "DocumentMoniker": "D:\\CSharp\\LibraryWebApp\\Application\\UseCases\\BookUseCases\\CreateBookUseCase.cs",
               "RelativeDocumentMoniker": "Application\\UseCases\\BookUseCases\\CreateBookUseCase.cs",
@@ -355,7 +370,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 28,
+              "DocumentIndex": 31,
               "Title": "ExceptionAggregator.cs",
               "DocumentMoniker": "C:\\Users\\Admin\\AppData\\Local\\SourceServer\\2417a689e69df75573fe9d62965f623d8b59c0b0c4b9140670ef0285114a95c0\\src\\xunit.core\\Sdk\\ExceptionAggregator.cs",
               "ToolTip": "C:\\Users\\Admin\\AppData\\Local\\SourceServer\\2417a689e69df75573fe9d62965f623d8b59c0b0c4b9140670ef0285114a95c0\\src\\xunit.core\\Sdk\\ExceptionAggregator.cs",
@@ -365,7 +380,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 18,
               "Title": "AuthorControllerTests.cs",
               "DocumentMoniker": "D:\\CSharp\\LibraryWebApp\\xUnitTests\\ControllersTests\\AuthorControllerTests.cs",
               "RelativeDocumentMoniker": "xUnitTests\\ControllersTests\\AuthorControllerTests.cs",
@@ -377,7 +392,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 27,
+              "DocumentIndex": 30,
               "Title": "RegisterUserUseCase.cs",
               "DocumentMoniker": "D:\\CSharp\\LibraryWebApp\\Application\\UseCases\\AuthenticationUserUseCases\\RegisterUserUseCase.cs",
               "RelativeDocumentMoniker": "Application\\UseCases\\AuthenticationUserUseCases\\RegisterUserUseCase.cs",
@@ -389,7 +404,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 29,
+              "DocumentIndex": 32,
               "Title": "TestInvoker.cs",
               "DocumentMoniker": "C:\\Users\\Admin\\AppData\\Local\\SourceServer\\8ff042b29289ff4a74d78c27d087211b254491a33d1a6e01133ab0f3d0953e07\\src\\xunit.execution\\Sdk\\Frameworks\\Runners\\TestInvoker.cs",
               "ToolTip": "C:\\Users\\Admin\\AppData\\Local\\SourceServer\\8ff042b29289ff4a74d78c27d087211b254491a33d1a6e01133ab0f3d0953e07\\src\\xunit.execution\\Sdk\\Frameworks\\Runners\\TestInvoker.cs",
@@ -399,7 +414,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 24,
+              "DocumentIndex": 27,
               "Title": "LogInUserUseCase.cs",
               "DocumentMoniker": "D:\\CSharp\\LibraryWebApp\\Application\\UseCases\\AuthenticationUserUseCases\\LogInUserUseCase.cs",
               "RelativeDocumentMoniker": "Application\\UseCases\\AuthenticationUserUseCases\\LogInUserUseCase.cs",
@@ -411,7 +426,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 31,
+              "DocumentIndex": 34,
               "Title": "AdminRequirement.cs",
               "DocumentMoniker": "D:\\CSharp\\LibraryWebApp\\Application\\Authorization\\Requirements\\AdminRequirement.cs",
               "RelativeDocumentMoniker": "Application\\Authorization\\Requirements\\AdminRequirement.cs",
@@ -423,7 +438,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 14,
               "Title": "DeleteBookUseCase.cs",
               "DocumentMoniker": "D:\\CSharp\\LibraryWebApp\\Application\\UseCases\\BookUseCases\\DeleteBookUseCase.cs",
               "RelativeDocumentMoniker": "Application\\UseCases\\BookUseCases\\DeleteBookUseCase.cs",
@@ -435,7 +450,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 22,
               "Title": "IGenericRepository.cs",
               "DocumentMoniker": "D:\\CSharp\\LibraryWebApp\\Domain\\Abstractions\\Repositories\\IGenericRepository.cs",
               "RelativeDocumentMoniker": "Domain\\Abstractions\\Repositories\\IGenericRepository.cs",
@@ -447,7 +462,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 23,
               "Title": "GenericRepository.cs",
               "DocumentMoniker": "D:\\CSharp\\LibraryWebApp\\Library.DataContext\\Repositories\\GenericRepository.cs",
               "RelativeDocumentMoniker": "Library.DataContext\\Repositories\\GenericRepository.cs",
@@ -459,7 +474,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 30,
+              "DocumentIndex": 33,
               "Title": "DeleteUserUseCase.cs",
               "DocumentMoniker": "D:\\CSharp\\LibraryWebApp\\Application\\UseCases\\AuthenticationUserUseCases\\DeleteUserUseCase.cs",
               "RelativeDocumentMoniker": "Application\\UseCases\\AuthenticationUserUseCases\\DeleteUserUseCase.cs",
@@ -471,20 +486,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 4,
               "Title": "AuthenticationUserUseCasesTests.cs",
               "DocumentMoniker": "D:\\CSharp\\LibraryWebApp\\xUnitTests\\UseCases\\AuthenticationUserUseCasesTests.cs",
               "RelativeDocumentMoniker": "xUnitTests\\UseCases\\AuthenticationUserUseCasesTests.cs",
               "ToolTip": "D:\\CSharp\\LibraryWebApp\\xUnitTests\\UseCases\\AuthenticationUserUseCasesTests.cs",
               "RelativeToolTip": "xUnitTests\\UseCases\\AuthenticationUserUseCasesTests.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACwBAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAwAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-01-14T09:50:42.518Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 33,
+              "DocumentIndex": 36,
               "Title": "xUnitTests.csproj",
               "DocumentMoniker": "D:\\CSharp\\LibraryWebApp\\xUnitTests\\xUnitTests.csproj",
               "RelativeDocumentMoniker": "xUnitTests\\xUnitTests.csproj",
@@ -496,7 +511,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 16,
               "Title": "UserControllerTests.cs",
               "DocumentMoniker": "D:\\CSharp\\LibraryWebApp\\xUnitTests\\ControllersTests\\UserControllerTests.cs",
               "RelativeDocumentMoniker": "xUnitTests\\ControllersTests\\UserControllerTests.cs",
@@ -508,7 +523,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 7,
               "Title": "BookControllerTests.cs",
               "DocumentMoniker": "D:\\CSharp\\LibraryWebApp\\xUnitTests\\ControllersTests\\BookControllerTests.cs",
               "RelativeDocumentMoniker": "xUnitTests\\ControllersTests\\BookControllerTests.cs",
@@ -520,7 +535,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 26,
+              "DocumentIndex": 29,
               "Title": "AuthenticationControllerTests.cs",
               "DocumentMoniker": "D:\\CSharp\\LibraryWebApp\\xUnitTests\\ControllersTests\\AuthenticationControllerTests.cs",
               "RelativeDocumentMoniker": "xUnitTests\\ControllersTests\\AuthenticationControllerTests.cs",
@@ -532,19 +547,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 36,
+              "DocumentIndex": 1,
               "Title": "GetUserInfoUseCase.cs",
               "DocumentMoniker": "D:\\CSharp\\LibraryWebApp\\Application\\UseCases\\UserUseCases\\GetUserInfoUseCase.cs",
               "RelativeDocumentMoniker": "Application\\UseCases\\UserUseCases\\GetUserInfoUseCase.cs",
               "ToolTip": "D:\\CSharp\\LibraryWebApp\\Application\\UseCases\\UserUseCases\\GetUserInfoUseCase.cs",
               "RelativeToolTip": "Application\\UseCases\\UserUseCases\\GetUserInfoUseCase.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAA5AAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABoAAAAvAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-14T09:42:50.855Z"
+              "WhenOpened": "2025-01-14T09:42:50.855Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 37,
+              "DocumentIndex": 38,
               "Title": "IGetUserInfoUseCase.cs",
               "DocumentMoniker": "D:\\CSharp\\LibraryWebApp\\Application\\Abstractions\\UseCases\\UserUseCases\\IGetUserInfoUseCase.cs",
               "RelativeDocumentMoniker": "Application\\Abstractions\\UseCases\\UserUseCases\\IGetUserInfoUseCase.cs",
@@ -556,19 +572,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 34,
+              "DocumentIndex": 2,
               "Title": "BorrowBookUseCase.cs",
               "DocumentMoniker": "D:\\CSharp\\LibraryWebApp\\Application\\UseCases\\UserUseCases\\BorrowBookUseCase.cs",
               "RelativeDocumentMoniker": "Application\\UseCases\\UserUseCases\\BorrowBookUseCase.cs",
               "ToolTip": "D:\\CSharp\\LibraryWebApp\\Application\\UseCases\\UserUseCases\\BorrowBookUseCase.cs",
               "RelativeToolTip": "Application\\UseCases\\UserUseCases\\BorrowBookUseCase.cs",
-              "ViewState": "AgIAABEAAAAAAAAAAAAnwCIAAAAMAAAAAAAAAA==",
+              "ViewState": "AgIAAA0AAAAAAAAAAAAgwCIAAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-14T09:39:14.816Z"
+              "WhenOpened": "2025-01-14T09:39:14.816Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 39,
+              "DocumentIndex": 40,
               "Title": "IBorrowBookUseCase.cs",
               "DocumentMoniker": "D:\\CSharp\\LibraryWebApp\\Application\\Abstractions\\UseCases\\UserUseCases\\IBorrowBookUseCase.cs",
               "RelativeDocumentMoniker": "Application\\Abstractions\\UseCases\\UserUseCases\\IBorrowBookUseCase.cs",
@@ -580,7 +597,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 35,
+              "DocumentIndex": 37,
               "Title": "UserService.cs",
               "DocumentMoniker": "D:\\CSharp\\LibraryWebApp\\Application\\Services\\UserService.cs",
               "RelativeDocumentMoniker": "Application\\Services\\UserService.cs",
@@ -592,7 +609,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 17,
               "Title": "UpdateAuthorUseCase.cs",
               "DocumentMoniker": "D:\\CSharp\\LibraryWebApp\\Application\\UseCases\\AuthorUseCases\\UpdateAuthorUseCase.cs",
               "RelativeDocumentMoniker": "Application\\UseCases\\AuthorUseCases\\UpdateAuthorUseCase.cs",
@@ -604,7 +621,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 40,
+              "DocumentIndex": 41,
               "Title": "IUpdateAuthorUseCase.cs",
               "DocumentMoniker": "D:\\CSharp\\LibraryWebApp\\Application\\Abstractions\\UseCases\\AuthorUseCases\\IUpdateAuthorUseCase.cs",
               "RelativeDocumentMoniker": "Application\\Abstractions\\UseCases\\AuthorUseCases\\IUpdateAuthorUseCase.cs",
@@ -616,7 +633,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 19,
               "Title": "GetAuthorByIdUseCase.cs",
               "DocumentMoniker": "D:\\CSharp\\LibraryWebApp\\Application\\UseCases\\AuthorUseCases\\GetAuthorByIdUseCase.cs",
               "RelativeDocumentMoniker": "Application\\UseCases\\AuthorUseCases\\GetAuthorByIdUseCase.cs",
@@ -628,7 +645,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 41,
+              "DocumentIndex": 42,
               "Title": "IGetAuthorByIdUseCase.cs",
               "DocumentMoniker": "D:\\CSharp\\LibraryWebApp\\Application\\Abstractions\\UseCases\\AuthorUseCases\\IGetAuthorByIdUseCase.cs",
               "RelativeDocumentMoniker": "Application\\Abstractions\\UseCases\\AuthorUseCases\\IGetAuthorByIdUseCase.cs",
@@ -640,7 +657,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 20,
               "Title": "GetAllAuthorsUseCase.cs",
               "DocumentMoniker": "D:\\CSharp\\LibraryWebApp\\Application\\UseCases\\AuthorUseCases\\GetAllAuthorsUseCase.cs",
               "RelativeDocumentMoniker": "Application\\UseCases\\AuthorUseCases\\GetAllAuthorsUseCase.cs",
@@ -652,7 +669,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 42,
+              "DocumentIndex": 43,
               "Title": "IGetAllAuthorsUseCase.cs",
               "DocumentMoniker": "D:\\CSharp\\LibraryWebApp\\Application\\Abstractions\\UseCases\\AuthorUseCases\\IGetAllAuthorsUseCase.cs",
               "RelativeDocumentMoniker": "Application\\Abstractions\\UseCases\\AuthorUseCases\\IGetAllAuthorsUseCase.cs",
@@ -664,7 +681,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 21,
               "Title": "DeleteAutorUseCase.cs",
               "DocumentMoniker": "D:\\CSharp\\LibraryWebApp\\Application\\UseCases\\AuthorUseCases\\DeleteAutorUseCase.cs",
               "RelativeDocumentMoniker": "Application\\UseCases\\AuthorUseCases\\DeleteAutorUseCase.cs",
@@ -676,7 +693,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 43,
+              "DocumentIndex": 44,
               "Title": "IDeleteAutorUseCase.cs",
               "DocumentMoniker": "D:\\CSharp\\LibraryWebApp\\Application\\Abstractions\\UseCases\\AuthorUseCases\\IDeleteAutorUseCase.cs",
               "RelativeDocumentMoniker": "Application\\Abstractions\\UseCases\\AuthorUseCases\\IDeleteAutorUseCase.cs",
@@ -688,7 +705,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 38,
+              "DocumentIndex": 39,
               "Title": "AuthorService.cs",
               "DocumentMoniker": "D:\\CSharp\\LibraryWebApp\\Application\\Services\\AuthorService.cs",
               "RelativeDocumentMoniker": "Application\\Services\\AuthorService.cs",
@@ -700,7 +717,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 32,
+              "DocumentIndex": 35,
               "Title": "DependencyInjection.cs",
               "DocumentMoniker": "D:\\CSharp\\LibraryWebApp\\Application\\DependencyInjection.cs",
               "RelativeDocumentMoniker": "Application\\DependencyInjection.cs",
@@ -712,7 +729,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 24,
               "Title": "CreateAuthorUseCase.cs",
               "DocumentMoniker": "D:\\CSharp\\LibraryWebApp\\Application\\UseCases\\AuthorUseCases\\CreateAuthorUseCase.cs",
               "RelativeDocumentMoniker": "Application\\UseCases\\AuthorUseCases\\CreateAuthorUseCase.cs",
@@ -724,7 +741,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 44,
+              "DocumentIndex": 45,
               "Title": "ICreateAuthorUseCase.cs",
               "DocumentMoniker": "D:\\CSharp\\LibraryWebApp\\Application\\Abstractions\\UseCases\\AuthorUseCases\\ICreateAuthorUseCase.cs",
               "RelativeDocumentMoniker": "Application\\Abstractions\\UseCases\\AuthorUseCases\\ICreateAuthorUseCase.cs",
