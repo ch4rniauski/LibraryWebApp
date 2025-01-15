@@ -9,7 +9,7 @@ using Moq;
 
 namespace xUnitTests.UseCases
 {
-    public class AuthorUserUseCasesTests
+    public class AuthorUseCasesTests
     {
         private readonly Mock<IUnitOfWork> _unitOfWork = new();
         private readonly Mock<IMapper> _mapperMock = new();
@@ -24,7 +24,6 @@ namespace xUnitTests.UseCases
                 "AuthorSecondName",
                 "Country",
                 new DateOnly(2000, 10, 10));
-            var validationResult = new Mock<FluentValidation.Results.ValidationFailure>();
 
             _validatorMock.Setup(v => v.ValidateAsync(request, It.IsAny<CancellationToken>())).ThrowsAsync(new IncorrectDataException("Incorrect data"));
 
@@ -180,7 +179,6 @@ namespace xUnitTests.UseCases
                 "AuthorSecondName",
                 "Country",
                 new DateOnly(2000, 10, 10));
-            var validationResult = new Mock<FluentValidation.Results.ValidationFailure>();
 
             _mapperMock.Setup(m => m.Map<CreateAuthorRecord>(It.IsAny<UpdateAuthorRecord>())).Returns(authorToValidate);
 
