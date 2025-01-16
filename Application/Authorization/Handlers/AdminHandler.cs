@@ -19,7 +19,7 @@ namespace Application.Authorization.Handlers
 
             httpContext!.Request.Cookies.TryGetValue("admin", out string? value);
 
-            if (value is null)
+            if (value is null || value != "True")
             {
                 context.Fail();
 

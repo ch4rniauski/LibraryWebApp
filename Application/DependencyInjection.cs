@@ -20,17 +20,27 @@ namespace Application
 {
     static public class DependencyInjection
     {
-        static public IServiceCollection AddApplicationConfiguration(this IServiceCollection services)
+        static public IServiceCollection AddValidators(this IServiceCollection services)
         {
             services.AddScoped<IValidator<RegisterUserRecord>, UserValidator>();
             services.AddScoped<IValidator<CreateAuthorRecord>, AuthorValidator>();
             services.AddScoped<IValidator<CreateBookRecord>, BookValidator>();
 
+            return services;
+        }
+
+        static public IServiceCollection AddServices(this IServiceCollection services)
+        {
             services.AddScoped<IAuthenticationUserService, AuthenticationUserService>();
             services.AddScoped<IAuthorService, AuthorService>();
             services.AddScoped<IBookService, BookService>();
             services.AddScoped<IUserService, UserService>();
 
+            return services;
+        }
+
+        static public IServiceCollection AddUseCases(this IServiceCollection services)
+        {
             services.AddScoped<ICreateBookUseCase, CreateBookUseCase>();
             services.AddScoped<IDeleteBookUseCase, DeleteBookUseCase>();
             services.AddScoped<IGetAllBooksUseCase, GetAllBooksUseCase>();

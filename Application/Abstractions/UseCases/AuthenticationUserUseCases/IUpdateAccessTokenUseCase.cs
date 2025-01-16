@@ -1,9 +1,7 @@
-﻿using Microsoft.AspNetCore.Http;
-
-namespace Application.Abstractions.UseCases.AuthenticationUserUseCases
+﻿namespace Application.Abstractions.UseCases.AuthenticationUserUseCases
 {
     public interface IUpdateAccessTokenUseCase
     {
-        Task<string> Execute(Guid id, HttpContext context);
+        Task<string> Execute(Guid id, string? refreshToken);
     }
 }

@@ -5,7 +5,6 @@ using Application.Exceptions.CustomExceptions;
 using Domain.Abstractions.JWT;
 using Domain.Abstractions.UnitsOfWork;
 using Domain.Entities;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 
 namespace Application.UseCases.AuthenticationUserUseCases
@@ -21,8 +20,9 @@ namespace Application.UseCases.AuthenticationUserUseCases
             _tokenProvider = tokenProvider;
         }
 
-        public async Task<LogInResponseRecord> Execute(LogInRequest user, HttpContext context)
+        public async Task<LogInResponseRecord> Execute(LogInRequest user)
         {
+            bool isAdmin = false;
             var userEntity = await _uow.UserRepository.GetByLogin(user.Login);
 
             if (userEntity is null)
@@ -42,15 +42,12 @@ namespace Application.UseCases.AuthenticationUserUseCases
             userEntity.RefreshToken = refreshToken;
             userEntity.RefreshTokenExpiresAt = DateTime.UtcNow.AddDays(3);
 
-            context.Response.Cookies.Append("accessToken", accessToken);
-            context.Response.Cookies.Append("refreshToken", refreshToken);
-
             if (userEntity.IsAdmin)
-                context.Response.Cookies.Append("admin", "true");
+                isAdmin = true;
 
             await _uow.Save();
 
-            return new LogInResponseRecord(userEntity.Id, accessToken, refreshToken);
+            return new LogInResponseRecord(userEntity.Id, accessToken, refreshToken, isAdmin);
         }
     }
 }

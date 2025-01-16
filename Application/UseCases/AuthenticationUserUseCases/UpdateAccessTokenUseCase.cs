@@ -2,7 +2,6 @@
 using Application.Exceptions.CustomExceptions;
 using Domain.Abstractions.JWT;
 using Domain.Abstractions.UnitsOfWork;
-using Microsoft.AspNetCore.Http;
 
 namespace Application.UseCases.AuthenticationUserUseCases
 {
@@ -17,10 +16,8 @@ namespace Application.UseCases.AuthenticationUserUseCases
             _tokenProvider = tokenProvider;
         }
 
-        public async Task<string> Execute(Guid id, HttpContext context)
+        public async Task<string> Execute(Guid id, string? refreshToken)
         {
-            context.Request.Cookies.TryGetValue("refreshToken", out string? refreshToken);
-
             if (refreshToken is null)
                 throw new NotFoundException("Refresh token doesn't exist");
 
@@ -30,8 +27,6 @@ namespace Application.UseCases.AuthenticationUserUseCases
                 throw new IncorrectDataException("Either user with that ID doesn't exist or refresh token has expired");
 
             var accessToken = _tokenProvider.GenerateAccessToken(user);
-
-            context.Response.Cookies.Append("accessToken", accessToken);
 
             return accessToken;
         }

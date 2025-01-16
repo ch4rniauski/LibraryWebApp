@@ -3,5 +3,6 @@
     public record LogInResponseRecord(
         Guid Id,
         string AccessToken,
-        string RefreshToken);
+        string RefreshToken,
+        bool IsAdmin);
 }

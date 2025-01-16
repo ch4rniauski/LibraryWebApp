@@ -2,7 +2,6 @@
 using Application.Abstractions.Requests;
 using Application.Abstractions.Services;
 using Application.Abstractions.UseCases.AuthenticationUserUseCases;
-using Microsoft.AspNetCore.Http;
 
 namespace Application.Services
 {
@@ -29,9 +28,9 @@ namespace Application.Services
             await _deleteUserUseCase.Execute(id);
         }
 
-        public async Task<LogInResponseRecord> LogInUser(LogInRequest user, HttpContext context)
+        public async Task<LogInResponseRecord> LogInUser(LogInRequest user)
         {
-            var response = await _logInUserUseCase.Execute(user, context);
+            var response = await _logInUserUseCase.Execute(user);
             
             return response;
         }
@@ -41,9 +40,9 @@ namespace Application.Services
             await _registerUserUseCase.Execute(user);
         }
 
-        public async Task<string> UpdateAccessToken(Guid id, HttpContext context)
+        public async Task<string> UpdateAccessToken(Guid id, string? refreshToken)
         {
-            var accessToken = await _updateAccessTokenUseCase.Execute(id, context);
+            var accessToken = await _updateAccessTokenUseCase.Execute(id, refreshToken);
 
             return accessToken;
         }

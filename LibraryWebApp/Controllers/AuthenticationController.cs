@@ -28,7 +28,11 @@ namespace LibraryWebApp.Controllers
         [HttpPost("login")]
         public async Task<ActionResult<LogInResponseRecord>> LogIn([FromBody] LogInRequest request)
         {
-            var response = await _authUserService.LogInUser(request, HttpContext);
+            var response = await _authUserService.LogInUser(request);
+
+            HttpContext.Response.Cookies.Append("accessToken", response.AccessToken);
+            HttpContext.Response.Cookies.Append("refreshToken", response.RefreshToken);
+            HttpContext.Response.Cookies.Append("admin", response.IsAdmin.ToString());
 
             return Ok(response);
         }
@@ -59,8 +63,12 @@ namespace LibraryWebApp.Controllers
         [HttpGet("relogin")]
         public async Task<ActionResult<string>> UpdateAccessToken(Guid id)
         {
-            var accessToken = await _authUserService.UpdateAccessToken(id, HttpContext);
-            
+            HttpContext.Request.Cookies.TryGetValue("refreshToken", out string? refreshToken);
+
+            var accessToken = await _authUserService.UpdateAccessToken(id, refreshToken);
+
+            HttpContext.Response.Cookies.Append("accessToken", accessToken);
+
             return Ok(accessToken);
         }
 
