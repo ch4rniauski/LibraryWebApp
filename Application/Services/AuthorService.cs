@@ -1,57 +1,57 @@
 ﻿using Application.Abstractions.Requests;
 using Application.Abstractions.Services;
-using Application.Abstractions.UseCases.AuthorUseCases;
+using Application.Commands.AuthorCommands;
+using Application.Queries.AuthorQueries;
+using MediatR;
 
 namespace Application.Services
 {
     public class AuthorService : IAuthorService
     {
-        private readonly ICreateAuthorUseCase _createAuthorUseCase;
-        private readonly IDeleteAutorUseCase _deleteAuthorUseCase;
-        private readonly IGetAllAuthorsUseCase _getAllAuthorsUseCase;
-        private readonly IGetAuthorByIdUseCase _getAuthorByIdUseCase;
-        private readonly IUpdateAuthorUseCase _updateAuthorUseCase;
+        private readonly IMediator _mediator;
 
-        public AuthorService(ICreateAuthorUseCase createAuthorUseCase,
-            IDeleteAutorUseCase deleteAuthorUseCase,
-            IGetAllAuthorsUseCase getAllAuthorsUseCase,
-            IGetAuthorByIdUseCase getAuthorByIdUseCase,
-            IUpdateAuthorUseCase updateAuthorUseCase)
+        public AuthorService(IMediator mediator)
         {
-            _createAuthorUseCase = createAuthorUseCase;
-            _deleteAuthorUseCase = deleteAuthorUseCase;
-            _getAllAuthorsUseCase = getAllAuthorsUseCase;
-            _getAuthorByIdUseCase = getAuthorByIdUseCase;
-            _updateAuthorUseCase = updateAuthorUseCase;
+            _mediator = mediator;
         }
 
         public async Task CreateAuthor(CreateAuthorRecord author)
         {
-            await _createAuthorUseCase.Execute(author);
+            var command = new CreateAuthorCommand { Author = author };
+
+            await _mediator.Send(command);
         }
 
         public async Task DeleteAutor(Guid id)
         {
-            await _deleteAuthorUseCase.Execute(id);
+            var command = new DeleteAutorCommand { AuthorId = id };
+
+            await _mediator.Send(command);
         }
 
         public async Task<List<CreateAuthorRecord>?> GetAllAuthors()
         {
-            var list = await _getAllAuthorsUseCase.Execute();
+            var query = new GetAllAuthorsQuery();
+
+            var list = await _mediator.Send(query);
 
             return list;
         }
 
         public async Task<CreateAuthorRecord> GetAuthorById(Guid id)
         {
-            var author = await _getAuthorByIdUseCase.Execute(id);
+            var query = new GetAuthorByIdQuery { AuthorId = id };
+
+            var author = await _mediator.Send(query);
 
             return author;
         }
 
         public async Task UpdateAuthor(UpdateAuthorRecord author)
-        {            
-            await _updateAuthorUseCase.Execute(author);
+        {
+            var command = new UpdateAuthorCommand { Author = author };
+
+            await _mediator.Send(command);
         }
     }
 }
