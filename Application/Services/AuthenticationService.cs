@@ -1,48 +1,52 @@
 ﻿using Application.Abstractions.Records;
 using Application.Abstractions.Requests;
 using Application.Abstractions.Services;
-using Application.Abstractions.UseCases.AuthenticationUserUseCases;
+using Application.Commands.AuthenticationUserCommands;
+using Application.Queries.AuthenticationUserQueries;
+using MediatR;
 
 namespace Application.Services
 {
     public class AuthenticationUserService : IAuthenticationUserService
     {
-        private readonly IDeleteUserUseCase _deleteUserUseCase;
-        private readonly ILogInUserUseCase _logInUserUseCase;
-        private readonly IRegisterUserUseCase _registerUserUseCase;
-        private readonly IUpdateAccessTokenUseCase _updateAccessTokenUseCase;
+        private readonly IMediator _mediator;
 
-        public AuthenticationUserService(IDeleteUserUseCase deleteUserUseCase,
-            ILogInUserUseCase logInUserUseCase,
-            IRegisterUserUseCase registerUserUseCase,
-            IUpdateAccessTokenUseCase updateAccessTokenUseCase)
+        public AuthenticationUserService(IMediator mediator)
         {
-            _deleteUserUseCase = deleteUserUseCase;
-            _logInUserUseCase = logInUserUseCase;
-            _registerUserUseCase = registerUserUseCase;
-            _updateAccessTokenUseCase = updateAccessTokenUseCase;
+            _mediator = mediator;
         }
 
         public async Task DeleteUser(Guid id)
         {
-            await _deleteUserUseCase.Execute(id);
+            var command = new DeleteUserCommand { UserId = id };
+
+            await _mediator.Send(command);
         }
 
         public async Task<LogInResponseRecord> LogInUser(LogInRequest user)
         {
-            var response = await _logInUserUseCase.Execute(user);
+            var query = new LogInUserQuery { User = user };
+
+            var response = await _mediator.Send(query);
             
             return response;
         }
 
         public async Task RegisterUser(RegisterUserRecord user)
         {            
-            await _registerUserUseCase.Execute(user);
+            var command = new RegisterUserCommand { User = user };
+
+            await _mediator.Send(command);
         }
 
         public async Task<string> UpdateAccessToken(Guid id, string? refreshToken)
         {
-            var accessToken = await _updateAccessTokenUseCase.Execute(id, refreshToken);
+            var query = new UpdateAccessTokenQuery {
+                Id = id,
+                RefreshToken = refreshToken
+            };
+
+            var accessToken = await _mediator.Send(query);
 
             return accessToken;
         }

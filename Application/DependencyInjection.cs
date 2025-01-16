@@ -20,6 +20,16 @@ namespace Application
 {
     static public class DependencyInjection
     {
+        static public IServiceCollection AddApplicationConfiguration(this IServiceCollection services)
+        {
+            services.AddMediatR(configuration =>
+            {
+                configuration.RegisterServicesFromAssembly(typeof(DependencyInjection).Assembly);
+            });
+
+            return services;
+        }
+
         static public IServiceCollection AddValidators(this IServiceCollection services)
         {
             services.AddScoped<IValidator<RegisterUserRecord>, UserValidator>();

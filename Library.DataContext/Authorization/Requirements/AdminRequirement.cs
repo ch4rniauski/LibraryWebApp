@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 
-namespace Application.Authorization.Requirements
+namespace Library.DataContext.Authorization.Requirements
 {
     public class AdminRequirement : IAuthorizationRequirement
     {

@@ -1,8 +1,8 @@
-﻿using Application.Authorization.Requirements;
+﻿using Library.DataContext.Authorization.Requirements;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 
-namespace Application.Authorization.Handlers
+namespace Library.DataContext.Authorization.Handlers
 {
     public class AdminHandler : AuthorizationHandler<AdminRequirement>
     {

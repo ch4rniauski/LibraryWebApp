@@ -1,5 +1,4 @@
-﻿using Application.Authorization.Handlers;
-using Application.Authorization.Requirements;
+﻿using Library.DataContext.Authorization.Handlers;
 using Domain.Abstractions.JWT;
 using Domain.Abstractions.Repositories;
 using Domain.Abstractions.UnitsOfWork;
@@ -14,6 +13,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using Library.DataContext.Authorization.Requirements;
 
 namespace Library.DataContext
 {
