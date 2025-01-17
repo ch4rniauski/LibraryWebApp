@@ -1,96 +1,96 @@
 ﻿using Application.Abstractions.Records;
 using Application.Abstractions.Requests;
 using Application.Abstractions.Services;
-using Application.Abstractions.UseCases.BookUseCases;
+using Application.Commands.BookCommands;
+using Application.Queries.BookQueries;
+using MediatR;
 
 namespace Application.Services
 {
     public class BookService : IBookService
     {
-        private readonly ICreateBookUseCase _createBookUseCase;
-        private readonly IDeleteBookUseCase _deleteBookUseCase;
-        private readonly IGetAllBooksUseCase _getAllBooksUseCase;
-        private readonly IGetBookByIdUseCase _getBookByIDUseCase;
-        private readonly IGetBookByISBNUseCase _getBookByISBNUseCase;
-        private readonly IGetBooksByUserIdUseCase _getBookByUserIdUseCase;
-        private readonly IGetBooksWithParamsUseCase _getBooksWithParamsUseCase;
-        private readonly IReturnBookUseCase _returnBookUseCase;
-        private readonly IUpdateBookUseCase _updateBookUseCase;
+        private readonly IMediator _mediator;
 
-        public BookService(ICreateBookUseCase createBookUseCase,
-            IDeleteBookUseCase deleteBookUseCase,
-            IGetAllBooksUseCase getAllBooksUseCase,
-            IGetBookByIdUseCase getBookByIDUseCase,
-            IGetBookByISBNUseCase getBookByISBNUseCase,
-            IGetBooksByUserIdUseCase getBookByUserIdUseCase,
-            IGetBooksWithParamsUseCase getBooksWithParamsUseCase,
-            IReturnBookUseCase returnBookUseCase,
-            IUpdateBookUseCase updateBookUseCase)
+        public BookService(IMediator mediator)
         {
-            _createBookUseCase = createBookUseCase;
-            _deleteBookUseCase = deleteBookUseCase;
-            _getAllBooksUseCase = getAllBooksUseCase;
-            _getBookByIDUseCase = getBookByIDUseCase;
-            _getBookByISBNUseCase = getBookByISBNUseCase;
-            _getBookByUserIdUseCase = getBookByUserIdUseCase;
-            _getBooksWithParamsUseCase = getBooksWithParamsUseCase;
-            _returnBookUseCase = returnBookUseCase;
-            _updateBookUseCase = updateBookUseCase;
+            _mediator = mediator;
         }
 
         public async Task CreateBook(CreateBookRecord book)
         {
-            await _createBookUseCase.Execute(book);
+            var command = new CreateBookCommand { Book = book };
+
+            await _mediator.Send(command);
         }
 
         public async Task DeleteBook(Guid id)
         {
-            await _deleteBookUseCase.Execute(id);
+            var command = new DeleteBookCommand { BookId = id };
+
+            await _mediator.Send(command);
         }
 
         public async Task<List<GetBookRecord>?> GetAllBooks()
         {
-            var list = await _getAllBooksUseCase.Execute();
+            var query = new GetAllBooksQuery();
 
-            return list;
+            var books = await _mediator.Send(query);
+
+            return books;
         }
 
         public async Task<GetBookRecord> GetBookById(Guid id)
         {
-            var book = await _getBookByIDUseCase.Execute(id);
+            var qeury = new GetBookByIdQuery { BookId = id };
+
+            var book = await _mediator.Send(qeury);
 
             return book;
         }
 
         public async Task<GetBookRecord> GetBookByISBN(string ISBN)
         {
-            var book = await _getBookByISBNUseCase.Execute(ISBN);
+            var query = new GetBookByISBNQuery { BookISBN = ISBN };
+
+            var book = await _mediator.Send(query);
 
             return book;
         }
 
         public async Task<List<GetBookRecord>?> GetBooksByUserId(Guid id)
         {
-            var list = await _getBookByUserIdUseCase.Execute(id);
+            var query = new GetBooksByUserIdQuery { UserId = id };
+
+            var list = await _mediator.Send(query);
 
             return list;
         }
 
         public async Task<List<GetBookResponse>?> GetBooksWithParams(GetBookRequest request)
         {
-            var books = await _getBooksWithParamsUseCase.Execute(request);
+            var query = new GetBooksWithParamsQuery { Request = request };
+
+            var books = await _mediator.Send(query);
 
             return books;
         }
 
         public async Task ReturnBook(Guid id)
         {
-            await _returnBookUseCase.Execute(id);
+            var command = new ReturnBookCommand { BookId = id };
+
+            await _mediator.Send(command);
         }
 
         public async Task UpdateBook(CreateBookRecord book, Guid id)
         {
-            await _updateBookUseCase.Execute(book, id);
+            var command = new UpdateBookCommand
+            {
+                Book = book,
+                BookId = id 
+            };
+
+            await _mediator.Send(command);
         }
     }
 }

@@ -19,30 +19,14 @@ namespace Application.UseCases.BookUseCases
 
         public async Task<List<GetBookResponse>?> Execute(GetBookRequest request)
         {
-            List<GetBookResponse>? booksToReturn = new();
-            var books = await _uow.BookRepository.GetAll();
-
-            if (!string.IsNullOrWhiteSpace(request.Search) && books is not null)
+            var books = request.SortBy switch
             {
-                books = books
-                    .Where(b => b.Title.Contains(request.Search))
-                    .ToList();
-            }
+                "genre" => await _uow.BookRepository.SortByGenreAndSearch(request.Search),
+                "author" => await _uow.BookRepository.SortByAuthorAndSearch(request.Search),
+                _ => await _uow.BookRepository.GetAll()
+            };
 
-            if (books is not null)
-            {
-                books = request.SortBy switch
-                {
-                    "genre" => books.OrderBy(b => b.Genre).ToList(),
-                    "author" => books.OrderBy(b => b.AuthorFirstName).ThenBy(b => b.AuthorSecondName).ToList(),
-                    _ => books
-                };
-            }
-
-            if (books is not null)
-                booksToReturn = _mapper.Map<List<GetBookResponse>>(books);
-
-            return booksToReturn;
+            return _mapper.Map<List<GetBookResponse>>(books);
         }
     }
 }

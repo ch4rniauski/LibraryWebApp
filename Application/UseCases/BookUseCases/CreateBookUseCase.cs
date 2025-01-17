@@ -31,6 +31,11 @@ namespace Application.UseCases.BookUseCases
             if (!result.IsValid)
                 throw new IncorrectDataException(message);
 
+            var bookWithTheSameISBN = await _uow.BookRepository.GetBookByISBN(book.ISBN);
+
+            if (bookWithTheSameISBN is not null)
+                throw new AlreadyExistsException("Book with that ISBN already exists");
+
             var newBook = _mapper.Map<BookEntity>(book);
 
             newBook.Id = Guid.NewGuid();

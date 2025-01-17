@@ -28,5 +28,26 @@ namespace Library.DataContext.Repositories
 
             return books;
         }
+
+        public async Task<List<BookEntity>?> SortByAuthorAndSearch(string search)
+        {
+            var books = await _db.Books
+                .Where(b => b.Title.Contains(search))
+                .OrderBy(b => b.AuthorFirstName)
+                .ThenBy(b => b.AuthorSecondName)
+                .ToListAsync();
+
+            return books;
+        }
+
+        public async Task<List<BookEntity>?> SortByGenreAndSearch(string search)
+        {
+            var books = await _db.Books
+                .Where(b => b.Title.Contains(search))
+                .OrderBy(b => b.Genre)
+                .ToListAsync();
+
+            return books;
+        }
     }
 }
