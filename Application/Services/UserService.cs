@@ -1,31 +1,38 @@
 ﻿using Application.Abstractions.Records;
 using Application.Abstractions.Services;
-using Application.Abstractions.UseCases.UserUseCases;
+using Application.Commands.UserCommands;
+using Application.Queries.UserQueries;
+using MediatR;
 
 namespace Application.Services
 {
     public class UserService : IUserService
     {
-        private readonly IBorrowBookUseCase _borrowBookUseCase;
-        private readonly IGetUserInfoUseCase _getUserInfoUseCase;
+        private readonly IMediator _mediator;
 
-        public UserService(IBorrowBookUseCase borrowBookUseCase,
-            IGetUserInfoUseCase getUserInfoUseCase)
+        public UserService(IMediator mediator)
         {
-            _borrowBookUseCase = borrowBookUseCase;
-            _getUserInfoUseCase = getUserInfoUseCase;
+            _mediator = mediator;
         }
 
         public async Task BorrowBook(Guid userId, Guid bookId)
         {
-            await _borrowBookUseCase.Execute(userId, bookId);
+            var command = new BorrowBookCommand 
+            { 
+                BookId = bookId,
+                UserId = userId,
+            };
+
+            await _mediator.Send(command);
         }
 
         public async Task<UserInfoResponse> GetUserInfo(Guid id)
         {
-            var user = await _getUserInfoUseCase.Execute(id);
+            var query = new GetUserInfoQuery { UserId = id };
 
-            return user;
+            var userInfo = await _mediator.Send(query);
+
+            return userInfo;
         }
     }
 }
