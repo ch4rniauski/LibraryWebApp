@@ -71,29 +71,6 @@ namespace xUnitTests.ControllersTests
         }
 
         [Fact]
-        public async Task LoGin_ReturnsOk()
-        {
-            // Arrange
-            var loginData = new LogInRequest(
-                "Login",
-                "email@mail.ru",
-                "Password");
-            var context = new HttpContextAccessor();
-            var uowResult = new LogInResponseRecord(
-                Guid.NewGuid(),
-                "access token",
-                "refresh token");
-            _authUserServiceMock.Setup(a => a.LogInUser(loginData,context.HttpContext!)).ReturnsAsync(uowResult);
-            var controller = new AuthenticationController(_authUserServiceMock.Object);
-
-            // Act
-            var result = await controller.LogIn(loginData);
-
-            // Assert
-            Assert.IsType<ActionResult<LogInResponseRecord>>(result);
-        }
-
-        [Fact]
         public async Task LoGin_ThrowsAnException()
         {
             // Arrange
@@ -101,8 +78,7 @@ namespace xUnitTests.ControllersTests
                 "LoginThatDoesntExist",
                 "email_that_doesnt_exist@mail.ru",
                 "Incorrect Password");
-            var context = new HttpContextAccessor();
-            _authUserServiceMock.Setup(a => a.LogInUser(loginData, context.HttpContext!)).ThrowsAsync(new NotFoundException("User with that Email wasn't found"));
+            _authUserServiceMock.Setup(a => a.LogInUser(loginData)).ThrowsAsync(new NotFoundException("User with that Email wasn't found"));
             var controller = new AuthenticationController(_authUserServiceMock.Object);
 
             // Act

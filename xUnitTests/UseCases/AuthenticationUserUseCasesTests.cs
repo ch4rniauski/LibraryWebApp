@@ -81,7 +81,6 @@ namespace xUnitTests.UseCases
                 "LoginThatDoesntExist",
                 "email_that_doesnt_exist@mail.ru",
                 "Incorrect Password");
-            var context = new HttpContextAccessor();
             UserEntity? userEntity = null;
 
             _unitOfWork.Setup(u => u.UserRepository.GetByLogin("LoginThatDoesntExist")).ReturnsAsync(userEntity);
@@ -91,7 +90,7 @@ namespace xUnitTests.UseCases
             // Act
 
             // Assert
-            await Assert.ThrowsAsync<NotFoundException>(async () => await logInUserUseCase.Execute(loginData, context.HttpContext!));
+            await Assert.ThrowsAsync<NotFoundException>(async () => await logInUserUseCase.Execute(loginData));
         }
 
         [Fact]
@@ -102,7 +101,6 @@ namespace xUnitTests.UseCases
                 "Login",
                 "email@mail.ru",
                 "Password");
-            var context = new HttpContextAccessor();
             var userEntity = new UserEntity
             {
                 Email = "email@mail.ru"
@@ -115,7 +113,7 @@ namespace xUnitTests.UseCases
             // Act
 
             // Assert
-            await Assert.ThrowsAsync<IncorrectDataException>(async () => await logInUserUseCase.Execute(loginData, context.HttpContext!));
+            await Assert.ThrowsAsync<IncorrectDataException>(async () => await logInUserUseCase.Execute(loginData));
         }
 
         [Fact]
@@ -134,18 +132,12 @@ namespace xUnitTests.UseCases
             var passwordHash = new PasswordHasher<UserEntity>().HashPassword(userEntity, loginData.Password);
             userEntity.PasswordHash = passwordHash;
 
-            var httpContextMock = new Mock<HttpContext>();
-            var responseMock = new Mock<HttpResponse>();
-            var cookiesMock = new Mock<IResponseCookies>();
-            responseMock.Setup(r => r.Cookies).Returns(cookiesMock.Object);
-            httpContextMock.Setup(c => c.Response).Returns(responseMock.Object);
-
             _unitOfWork.Setup(u => u.UserRepository.GetByLogin("Login")).ReturnsAsync(userEntity);
 
             var logInUserUseCase = new LogInUserUseCase(_unitOfWork.Object, _tokenProvider.Object);
 
             // Act
-            var result = await logInUserUseCase.Execute(loginData, httpContextMock.Object);
+            var result = await logInUserUseCase.Execute(loginData);
 
             // Assert
             Assert.IsType<LogInResponseRecord>(result);
@@ -299,19 +291,14 @@ namespace xUnitTests.UseCases
             // Arrange
             var id = Guid.NewGuid();
 
-            var httpContextMock = new Mock<HttpContext>();
-            var requesteMock = new Mock<HttpRequest>();
-            var cookiesMock = new Mock<IRequestCookieCollection>();
-
-            requesteMock.Setup(r => r.Cookies).Returns(cookiesMock.Object);
-            httpContextMock.Setup(c => c.Request).Returns(requesteMock.Object);
+            string? refreshToken = null;
 
             var updateAccessTokenUseCase = new UpdateAccessTokenUseCase(_unitOfWork.Object, _tokenProvider.Object);
 
             // Act
 
             // Assert
-            await Assert.ThrowsAsync<NotFoundException>(async () => await updateAccessTokenUseCase.Execute(id, httpContextMock.Object));
+            await Assert.ThrowsAsync<NotFoundException>(async () => await updateAccessTokenUseCase.Execute(id, refreshToken));
         }
         
         [Fact]
@@ -319,13 +306,9 @@ namespace xUnitTests.UseCases
         {
             // Arrange
             var id = Guid.NewGuid();
-            var context = new DefaultHttpContext();
             var refreshToken = "refreshToken";
 
             UserEntity? user = null;
-
-            context.Request.Cookies = new Mock<IRequestCookieCollection>().Object;
-            Mock.Get(context.Request.Cookies).Setup(cookies => cookies.TryGetValue("refreshToken", out refreshToken)).Returns(true);
 
             _unitOfWork.Setup(u => u.UserRepository.GetById(id)).ReturnsAsync(user);
 
@@ -334,7 +317,7 @@ namespace xUnitTests.UseCases
             // Act
 
             // Assert
-            await Assert.ThrowsAsync<IncorrectDataException>(async () => await updateAccessTokenUseCase.Execute(id, context));
+            await Assert.ThrowsAsync<IncorrectDataException>(async () => await updateAccessTokenUseCase.Execute(id, refreshToken));
         }
 
         [Fact]
@@ -342,7 +325,6 @@ namespace xUnitTests.UseCases
         {
             // Arrange
             var id = Guid.NewGuid();
-            var context = new DefaultHttpContext();
             var refreshToken = "refreshToken";
 
             var user = new UserEntity
@@ -353,15 +335,12 @@ namespace xUnitTests.UseCases
 
             _tokenProvider.Setup(t => t.GenerateAccessToken(user)).Returns("accessToken");
 
-            context.Request.Cookies = new Mock<IRequestCookieCollection>().Object;
-            Mock.Get(context.Request.Cookies).Setup(cookies => cookies.TryGetValue("refreshToken", out refreshToken)).Returns(true);
-
             _unitOfWork.Setup(u => u.UserRepository.GetById(id)).ReturnsAsync(user);
 
             var updateAccessTokenUseCase = new UpdateAccessTokenUseCase(_unitOfWork.Object, _tokenProvider.Object);
 
             // Act
-            var result = await updateAccessTokenUseCase.Execute(id, context);
+            var result = await updateAccessTokenUseCase.Execute(id, refreshToken);
 
             // Assert
             Assert.IsType<string>(result);

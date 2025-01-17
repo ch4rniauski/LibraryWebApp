@@ -56,6 +56,8 @@ namespace xUnitTests.UseCases
                 null,
                 null);
             AuthorEntity? author = null;
+            BookEntity? book = null;
+
             var validationResult = new Mock<FluentValidation.Results.ValidationResult>();
             validationResult.Setup(v => v.IsValid).Returns(true);
 
@@ -74,6 +76,7 @@ namespace xUnitTests.UseCases
             });
             _unitOfWork.Setup(u => u.AuthorRepository.GetByFirstName(request.AuthorFirstName!)).ReturnsAsync(author);
             _unitOfWork.Setup(u => u.AuthorRepository.GetBySecondName(request.AuthorSecondName!)).ReturnsAsync(author);
+            _unitOfWork.Setup(u => u.BookRepository.GetBookByISBN(request.ISBN)).ReturnsAsync(book);
 
             var createBookUseCase = new CreateBookUseCase(_unitOfWork.Object, _mapperMock.Object, _validatorMock.Object);
 
@@ -81,6 +84,36 @@ namespace xUnitTests.UseCases
 
             // Assert
             await Assert.ThrowsAsync<NotFoundException>(async () => await createBookUseCase.Execute(request));
+        }
+
+        [Fact]
+        public async Task CreateBookUseCase_ThrowsAnExceptionThatBookWithThatIsbnAlreadyExists()
+        {
+            // Arrange
+            var request = new CreateBookRecord(
+                "978-3-16-148410-0",
+                "Title",
+                "Genre",
+                null,
+                "Author That Doesn't exist",
+                "Author That Doesn't exist",
+                null,
+                null,
+                null);
+            var book = new BookEntity();
+
+            var validationResult = new Mock<FluentValidation.Results.ValidationResult>();
+            validationResult.Setup(v => v.IsValid).Returns(true);
+
+            _validatorMock.Setup(v => v.ValidateAsync(request, It.IsAny<CancellationToken>())).ReturnsAsync(validationResult.Object);
+            _unitOfWork.Setup(u => u.BookRepository.GetBookByISBN(request.ISBN)).ReturnsAsync(book);
+
+            var createBookUseCase = new CreateBookUseCase(_unitOfWork.Object, _mapperMock.Object, _validatorMock.Object);
+
+            // Act
+
+            // Assert
+            await Assert.ThrowsAsync<AlreadyExistsException>(async () => await createBookUseCase.Execute(request));
         }
 
         [Fact]
@@ -325,7 +358,8 @@ namespace xUnitTests.UseCases
             var request = new GetBookRequest("search", "genre");
             var list = new List<BookEntity>();
 
-            _unitOfWork.Setup(u => u.BookRepository.GetAll()).ReturnsAsync(list);
+            _unitOfWork.Setup(u => u.BookRepository.SortByAuthorAndSearch(request.Search)).ReturnsAsync(list);
+            _unitOfWork.Setup(u => u.BookRepository.SortByGenreAndSearch(request.Search)).ReturnsAsync(list);
 
             _mapperMock.Setup(m => m.Map<List<GetBookRecord>>(list)).Returns(new List<GetBookRecord>());
             _mapperMock.Setup(m => m.Map<List<GetBookResponse>>(list)).Returns(new List<GetBookResponse>());
