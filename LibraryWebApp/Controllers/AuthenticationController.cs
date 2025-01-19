@@ -1,6 +1,6 @@
 ﻿using Application.Abstractions.Records;
 using Application.Abstractions.Requests;
-using Application.Abstractions.Services;
+using Application.Abstractions.UseCases.AuthenticationUserUseCases;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -10,17 +10,26 @@ namespace LibraryWebApp.Controllers
     [Route("[controller]")]
     public class AuthenticationController : ControllerBase
     {
-        private readonly IAuthenticationUserService _authUserService;
+        private readonly IDeleteUserUseCase _deleteUserUseCase;
+        private readonly ILogInUserUseCase _logInUserUseCase;
+        private readonly IRegisterUserUseCase _registerUserUseCase;
+        private readonly IUpdateAccessTokenUseCase _updateAccessTokenUseCase;
 
-        public AuthenticationController(IAuthenticationUserService authUserService)
+        public AuthenticationController(IDeleteUserUseCase deleteUserUseCase,
+            ILogInUserUseCase logInUserUseCase,
+            IRegisterUserUseCase registerUserUseCase,
+            IUpdateAccessTokenUseCase updateAccessTokenUseCase)
         {
-            _authUserService = authUserService;
+            _deleteUserUseCase = deleteUserUseCase;
+            _logInUserUseCase = logInUserUseCase;
+            _registerUserUseCase = registerUserUseCase;
+            _updateAccessTokenUseCase = updateAccessTokenUseCase;
         }
 
         [HttpPost("register")]
         public async Task<ActionResult> Register([FromBody] RegisterUserRecord request)
         {
-            await _authUserService.RegisterUser(request);
+            await _registerUserUseCase.Execute(request);
 
             return Ok();
         }
@@ -28,7 +37,7 @@ namespace LibraryWebApp.Controllers
         [HttpPost("login")]
         public async Task<ActionResult<LogInResponseRecord>> LogIn([FromBody] LogInRequest request)
         {
-            var response = await _authUserService.LogInUser(request);
+            var response = await _logInUserUseCase.Execute(request);
 
             HttpContext.Response.Cookies.Append("accessToken", response.AccessToken);
             HttpContext.Response.Cookies.Append("refreshToken", response.RefreshToken);
@@ -55,7 +64,7 @@ namespace LibraryWebApp.Controllers
         [Authorize]
         public async Task<ActionResult> DeleteUser(Guid id)
         {
-            await _authUserService.DeleteUser(id);
+            await _deleteUserUseCase.Execute(id);
 
             return Ok();
         }
@@ -65,7 +74,7 @@ namespace LibraryWebApp.Controllers
         {
             HttpContext.Request.Cookies.TryGetValue("refreshToken", out string? refreshToken);
 
-            var accessToken = await _authUserService.UpdateAccessToken(id, refreshToken);
+            var accessToken = await _updateAccessTokenUseCase.Execute(id, refreshToken);
 
             HttpContext.Response.Cookies.Append("accessToken", accessToken);
 

@@ -1,6 +1,6 @@
 ﻿using Application.Abstractions.Records;
 using Application.Abstractions.Requests;
-using Application.Abstractions.Services;
+using Application.Abstractions.UseCases.BookUseCases;
 using Application.Exceptions.CustomExceptions;
 using LibraryWebApp.Controllers;
 using Microsoft.AspNetCore.Mvc;
@@ -10,7 +10,15 @@ namespace xUnitTests.ControllersTests
 {
     public class BookControllerTests
     {
-        private readonly Mock<IBookService> _bookServiceMock = new();
+        private readonly Mock<ICreateBookUseCase> _createBookUseCase = new();
+        private readonly Mock<IDeleteBookUseCase> _deleteBookUseCase = new();
+        private readonly Mock<IGetAllBooksUseCase> _getAllBooksUseCase = new();
+        private readonly Mock<IGetBookByIdUseCase> _getBookByIdUseCase = new();
+        private readonly Mock<IGetBookByISBNUseCase> _getBookByISBNUseCase = new();
+        private readonly Mock<IGetBooksByUserIdUseCase> _getBooksByUserIdUseCase = new();
+        private readonly Mock<IGetBooksWithParamsUseCase> _getBooksWithParamsUseCase = new();
+        private readonly Mock<IReturnBookUseCase> _returnBookUseCase = new();
+        private readonly Mock<IUpdateBookUseCase> _updateBookUseCase = new();
 
         [Fact]
         public async Task Create_ThrowsAnExceptionWithValidationErrors()
@@ -26,8 +34,16 @@ namespace xUnitTests.ControllersTests
             null,
             null,
             null);
-            _bookServiceMock.Setup(b => b.CreateBook(book)).ThrowsAsync(new IncorrectDataException("Incorrect data"));
-            var controller = new BookController(_bookServiceMock.Object);
+            _createBookUseCase.Setup(c => c.Execute(book)).ThrowsAsync(new IncorrectDataException("Incorrect data"));
+            var controller = new BookController(_createBookUseCase.Object,
+                _deleteBookUseCase.Object,
+                _getAllBooksUseCase.Object,
+                _getBookByIdUseCase.Object,
+                _getBookByISBNUseCase.Object,
+                _getBooksByUserIdUseCase.Object,
+                _getBooksWithParamsUseCase.Object,
+                _returnBookUseCase.Object,
+                _updateBookUseCase.Object);
 
             // Act
 
@@ -50,9 +66,17 @@ namespace xUnitTests.ControllersTests
                 null,
                 null);
 
-            _bookServiceMock.Setup(uow => uow.CreateBook(book)).Returns(Task.CompletedTask);
+            _createBookUseCase.Setup(c => c.Execute(book)).Returns(Task.CompletedTask);
 
-            var controller = new BookController(_bookServiceMock.Object);
+            var controller = new BookController(_createBookUseCase.Object,
+                _deleteBookUseCase.Object,
+                _getAllBooksUseCase.Object,
+                _getBookByIdUseCase.Object,
+                _getBookByISBNUseCase.Object,
+                _getBooksByUserIdUseCase.Object,
+                _getBooksWithParamsUseCase.Object,
+                _returnBookUseCase.Object,
+                _updateBookUseCase.Object);
 
             // Act
             var result = await controller.Create(book);
@@ -76,9 +100,17 @@ namespace xUnitTests.ControllersTests
                 null,
                 null);
 
-            _bookServiceMock.Setup(u => u.CreateBook(book)).ThrowsAsync(new NotFoundException("Author with that name doesn't exist"));
+            _createBookUseCase.Setup(c => c.Execute(book)).ThrowsAsync(new NotFoundException("Author with that name doesn't exist"));
 
-            var controller = new BookController(_bookServiceMock.Object);
+            var controller = new BookController(_createBookUseCase.Object,
+                _deleteBookUseCase.Object,
+                _getAllBooksUseCase.Object,
+                _getBookByIdUseCase.Object,
+                _getBookByISBNUseCase.Object,
+                _getBooksByUserIdUseCase.Object,
+                _getBooksWithParamsUseCase.Object,
+                _returnBookUseCase.Object,
+                _updateBookUseCase.Object);
 
             // Act
 
@@ -92,9 +124,17 @@ namespace xUnitTests.ControllersTests
             // Arrange
             var list = new List<GetBookRecord>();
 
-            _bookServiceMock.Setup(u => u.GetAllBooks()).ReturnsAsync(list);
+            _getAllBooksUseCase.Setup(g => g.Execute()).ReturnsAsync(list);
 
-            var controller = new BookController(_bookServiceMock.Object);
+            var controller = new BookController(_createBookUseCase.Object,
+                _deleteBookUseCase.Object,
+                _getAllBooksUseCase.Object,
+                _getBookByIdUseCase.Object,
+                _getBookByISBNUseCase.Object,
+                _getBooksByUserIdUseCase.Object,
+                _getBooksWithParamsUseCase.Object,
+                _returnBookUseCase.Object,
+                _updateBookUseCase.Object);
 
             // Act
             var result = await controller.GetAll();
@@ -109,9 +149,17 @@ namespace xUnitTests.ControllersTests
             // Arrange
             var id = Guid.NewGuid();
 
-            _bookServiceMock.Setup(u => u.GetBookById(id)).ThrowsAsync(new NotFoundException("Book with that ID wasn't found"));
+            _getBookByIdUseCase.Setup(g => g.Execute(id)).ThrowsAsync(new NotFoundException("Book with that ID wasn't found"));
 
-            var controller = new BookController(_bookServiceMock.Object);
+            var controller = new BookController(_createBookUseCase.Object,
+                _deleteBookUseCase.Object,
+                _getAllBooksUseCase.Object,
+                _getBookByIdUseCase.Object,
+                _getBookByISBNUseCase.Object,
+                _getBooksByUserIdUseCase.Object,
+                _getBooksWithParamsUseCase.Object,
+                _returnBookUseCase.Object,
+                _updateBookUseCase.Object);
 
             // Act
 
@@ -137,9 +185,17 @@ namespace xUnitTests.ControllersTests
                 null,
                 null);
 
-            _bookServiceMock.Setup(u => u.GetBookById(id)).ReturnsAsync(book);
+            _getBookByIdUseCase.Setup(g => g.Execute(id)).ReturnsAsync(book);
 
-            var controller = new BookController(_bookServiceMock.Object);
+            var controller = new BookController(_createBookUseCase.Object,
+                _deleteBookUseCase.Object,
+                _getAllBooksUseCase.Object,
+                _getBookByIdUseCase.Object,
+                _getBookByISBNUseCase.Object,
+                _getBooksByUserIdUseCase.Object,
+                _getBooksWithParamsUseCase.Object,
+                _returnBookUseCase.Object,
+                _updateBookUseCase.Object);
 
             // Act
             var result = await controller.GetById(id);
@@ -154,9 +210,17 @@ namespace xUnitTests.ControllersTests
             // Arrange
             var isbn = "978-3-16-148410-0";
 
-            _bookServiceMock.Setup(u => u.GetBookByISBN(isbn)).Throws(new NotFoundException("Book with that ISBN wasn't found"));
+            _getBookByISBNUseCase.Setup(g => g.Execute(isbn)).Throws(new NotFoundException("Book with that ISBN wasn't found"));
 
-            var controller = new BookController(_bookServiceMock.Object);
+            var controller = new BookController(_createBookUseCase.Object,
+                _deleteBookUseCase.Object,
+                _getAllBooksUseCase.Object,
+                _getBookByIdUseCase.Object,
+                _getBookByISBNUseCase.Object,
+                _getBooksByUserIdUseCase.Object,
+                _getBooksWithParamsUseCase.Object,
+                _returnBookUseCase.Object,
+                _updateBookUseCase.Object);
 
             // Act
 
@@ -182,9 +246,17 @@ namespace xUnitTests.ControllersTests
                 null,
                 null);
 
-            _bookServiceMock.Setup(u => u.GetBookByISBN(isbn)).ReturnsAsync(book);
+            _getBookByISBNUseCase.Setup(g => g.Execute(isbn)).ReturnsAsync(book);
 
-            var controller = new BookController(_bookServiceMock.Object);
+            var controller = new BookController(_createBookUseCase.Object,
+                _deleteBookUseCase.Object,
+                _getAllBooksUseCase.Object,
+                _getBookByIdUseCase.Object,
+                _getBookByISBNUseCase.Object,
+                _getBooksByUserIdUseCase.Object,
+                _getBooksWithParamsUseCase.Object,
+                _returnBookUseCase.Object,
+                _updateBookUseCase.Object);
 
             // Act
             var result = await controller.GetByISBN(isbn);
@@ -202,9 +274,17 @@ namespace xUnitTests.ControllersTests
                 "author");
             var list = new List<GetBookResponse>();
 
-            _bookServiceMock.Setup(u => u.GetBooksWithParams(request)).ReturnsAsync(list);
+            _getBooksWithParamsUseCase.Setup(g => g.Execute(request)).ReturnsAsync(list);
 
-            var controller = new BookController(_bookServiceMock.Object);
+            var controller = new BookController(_createBookUseCase.Object,
+                _deleteBookUseCase.Object,
+                _getAllBooksUseCase.Object,
+                _getBookByIdUseCase.Object,
+                _getBookByISBNUseCase.Object,
+                _getBooksByUserIdUseCase.Object,
+                _getBooksWithParamsUseCase.Object,
+                _returnBookUseCase.Object,
+                _updateBookUseCase.Object);
 
             // Act
             var result = await controller.GetWithParams(request);
@@ -219,9 +299,17 @@ namespace xUnitTests.ControllersTests
             // Arrange
             var id = Guid.NewGuid();
 
-            _bookServiceMock.Setup(u => u.DeleteBook(id)).ThrowsAsync(new NotFoundException("Book with that ID wasn't found"));
+            _deleteBookUseCase.Setup(d => d.Execute(id)).ThrowsAsync(new NotFoundException("Book with that ID wasn't found"));
 
-            var controller = new BookController(_bookServiceMock.Object);
+            var controller = new BookController(_createBookUseCase.Object,
+                _deleteBookUseCase.Object,
+                _getAllBooksUseCase.Object,
+                _getBookByIdUseCase.Object,
+                _getBookByISBNUseCase.Object,
+                _getBooksByUserIdUseCase.Object,
+                _getBooksWithParamsUseCase.Object,
+                _returnBookUseCase.Object,
+                _updateBookUseCase.Object);
 
             // Act
 
@@ -235,9 +323,17 @@ namespace xUnitTests.ControllersTests
             // Arrange
             var id = Guid.NewGuid();
 
-            _bookServiceMock.Setup(u => u.DeleteBook(id)).Returns(Task.CompletedTask);
+            _deleteBookUseCase.Setup(d => d.Execute(id)).Returns(Task.CompletedTask);
 
-            var controller = new BookController(_bookServiceMock.Object);
+            var controller = new BookController(_createBookUseCase.Object,
+                _deleteBookUseCase.Object,
+                _getAllBooksUseCase.Object,
+                _getBookByIdUseCase.Object,
+                _getBookByISBNUseCase.Object,
+                _getBooksByUserIdUseCase.Object,
+                _getBooksWithParamsUseCase.Object,
+                _returnBookUseCase.Object,
+                _updateBookUseCase.Object);
 
             // Act
             var result = await controller.Delete(id);
@@ -262,9 +358,17 @@ namespace xUnitTests.ControllersTests
                 null);
             var id = Guid.NewGuid();
 
-            _bookServiceMock.Setup(u => u.UpdateBook(request, id)).ThrowsAsync(new NotFoundException("Book with that ID wasn't found"));
+            _updateBookUseCase.Setup(u => u.Execute(request, id)).ThrowsAsync(new NotFoundException("Book with that ID wasn't found"));
 
-            var controller = new BookController(_bookServiceMock.Object);
+            var controller = new BookController(_createBookUseCase.Object,
+                _deleteBookUseCase.Object,
+                _getAllBooksUseCase.Object,
+                _getBookByIdUseCase.Object,
+                _getBookByISBNUseCase.Object,
+                _getBooksByUserIdUseCase.Object,
+                _getBooksWithParamsUseCase.Object,
+                _returnBookUseCase.Object,
+                _updateBookUseCase.Object);
 
             // Act
 
@@ -288,9 +392,17 @@ namespace xUnitTests.ControllersTests
                 null);
             var id = Guid.NewGuid();
 
-            _bookServiceMock.Setup(u => u.UpdateBook(request, id)).Returns(Task.CompletedTask);
+            _updateBookUseCase.Setup(u => u.Execute(request, id)).Returns(Task.CompletedTask);
 
-            var controller = new BookController(_bookServiceMock.Object);
+            var controller = new BookController(_createBookUseCase.Object,
+                _deleteBookUseCase.Object,
+                _getAllBooksUseCase.Object,
+                _getBookByIdUseCase.Object,
+                _getBookByISBNUseCase.Object,
+                _getBooksByUserIdUseCase.Object,
+                _getBooksWithParamsUseCase.Object,
+                _returnBookUseCase.Object,
+                _updateBookUseCase.Object);
 
             // Act
             var result = await controller.Update(request, id);
@@ -306,9 +418,17 @@ namespace xUnitTests.ControllersTests
             var list = new List<GetBookRecord>();
             var id = Guid.NewGuid();
 
-            _bookServiceMock.Setup(u => u.GetBooksByUserId(id)).ReturnsAsync(list);
+            _getBooksByUserIdUseCase.Setup(g => g.Execute(id)).ReturnsAsync(list);
 
-            var controller = new BookController(_bookServiceMock.Object);
+            var controller = new BookController(_createBookUseCase.Object,
+                _deleteBookUseCase.Object,
+                _getAllBooksUseCase.Object,
+                _getBookByIdUseCase.Object,
+                _getBookByISBNUseCase.Object,
+                _getBooksByUserIdUseCase.Object,
+                _getBooksWithParamsUseCase.Object,
+                _returnBookUseCase.Object,
+                _updateBookUseCase.Object);
 
             // Act
             var result = await controller.GetBooksByUserId(id);
@@ -323,9 +443,17 @@ namespace xUnitTests.ControllersTests
             // Arrange
             var id = Guid.NewGuid();
 
-            _bookServiceMock.Setup(u => u.GetBooksByUserId(id)).ThrowsAsync(new NotFoundException("User with that ID doesn't exist"));
+            _getBooksByUserIdUseCase.Setup(g => g.Execute(id)).ThrowsAsync(new NotFoundException("User with that ID doesn't exist"));
 
-            var controller = new BookController(_bookServiceMock.Object);
+            var controller = new BookController(_createBookUseCase.Object,
+                _deleteBookUseCase.Object,
+                _getAllBooksUseCase.Object,
+                _getBookByIdUseCase.Object,
+                _getBookByISBNUseCase.Object,
+                _getBooksByUserIdUseCase.Object,
+                _getBooksWithParamsUseCase.Object,
+                _returnBookUseCase.Object,
+                _updateBookUseCase.Object);
 
             // Act
 
@@ -339,9 +467,17 @@ namespace xUnitTests.ControllersTests
             // Arrange
             var id = Guid.NewGuid();
 
-            _bookServiceMock.Setup(u => u.ReturnBook(id)).Returns(Task.CompletedTask);
+            _returnBookUseCase.Setup(r => r.Execute(id)).Returns(Task.CompletedTask);
 
-            var controller = new BookController(_bookServiceMock.Object);
+            var controller = new BookController(_createBookUseCase.Object,
+                _deleteBookUseCase.Object,
+                _getAllBooksUseCase.Object,
+                _getBookByIdUseCase.Object,
+                _getBookByISBNUseCase.Object,
+                _getBooksByUserIdUseCase.Object,
+                _getBooksWithParamsUseCase.Object,
+                _returnBookUseCase.Object,
+                _updateBookUseCase.Object);
 
             // Act
             var result = await controller.ReturnBook(id);
@@ -356,9 +492,17 @@ namespace xUnitTests.ControllersTests
             // Arrange
             var id = Guid.NewGuid();
 
-            _bookServiceMock.Setup(u => u.ReturnBook(id)).ThrowsAsync(new NotFoundException("Book with that ID doesn't exist"));
+            _returnBookUseCase.Setup(r => r.Execute(id)).ThrowsAsync(new NotFoundException("Book with that ID doesn't exist"));
 
-            var controller = new BookController(_bookServiceMock.Object);
+            var controller = new BookController(_createBookUseCase.Object,
+                _deleteBookUseCase.Object,
+                _getAllBooksUseCase.Object,
+                _getBookByIdUseCase.Object,
+                _getBookByISBNUseCase.Object,
+                _getBooksByUserIdUseCase.Object,
+                _getBooksWithParamsUseCase.Object,
+                _returnBookUseCase.Object,
+                _updateBookUseCase.Object);
 
             // Act
 

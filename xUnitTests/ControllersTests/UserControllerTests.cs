@@ -1,6 +1,6 @@
 ﻿using Application.Abstractions.Records;
 using Application.Abstractions.Requests;
-using Application.Abstractions.Services;
+using Application.Abstractions.UseCases.UserUseCases;
 using Application.Exceptions.CustomExceptions;
 using LibraryWebApp.Controllers;
 using Microsoft.AspNetCore.Mvc;
@@ -10,7 +10,8 @@ namespace xUnitTests.ControllersTests
 {
     public class UserControllerTests
     {
-        private readonly Mock<IUserService> _userServiceMock = new();
+        private readonly Mock<IBorrowBookUseCase> _borrowBookUseCase = new();
+        private readonly Mock<IGetUserInfoUseCase> _getUserInfoUseCase = new();
 
         [Fact]
         public async Task GetUserInfo_ReturnsOk()
@@ -22,9 +23,9 @@ namespace xUnitTests.ControllersTests
                 "email@mail.ru",
                 false);
 
-            _userServiceMock.Setup(u => u.GetUserInfo(id)).ReturnsAsync(user);
+            _getUserInfoUseCase.Setup(g => g.Execute(id)).ReturnsAsync(user);
 
-            var controller = new UserController(_userServiceMock.Object);
+            var controller = new UserController(_borrowBookUseCase.Object, _getUserInfoUseCase.Object);
 
             // Act
             var result = await controller.GetUserInfo(id);
@@ -39,9 +40,9 @@ namespace xUnitTests.ControllersTests
             // Arrange
             var id = Guid.NewGuid();
 
-            _userServiceMock.Setup(u => u.GetUserInfo(id)).ThrowsAsync(new NotFoundException("User with that ID doesn't exist"));
+            _getUserInfoUseCase.Setup(g => g.Execute(id)).ThrowsAsync(new NotFoundException("User with that ID doesn't exist"));
 
-            var controller = new UserController(_userServiceMock.Object);
+            var controller = new UserController(_borrowBookUseCase.Object, _getUserInfoUseCase.Object);
 
             // Act
 
@@ -59,9 +60,9 @@ namespace xUnitTests.ControllersTests
                 userId,
                 bookId);
 
-            _userServiceMock.Setup(u => u.BorrowBook(userId, bookId)).Returns(Task.CompletedTask);
+            _borrowBookUseCase.Setup(b => b.Execute(userId, bookId)).Returns(Task.CompletedTask);
 
-            var controller = new UserController(_userServiceMock.Object);
+            var controller = new UserController(_borrowBookUseCase.Object, _getUserInfoUseCase.Object);
 
             // Act
             var result = await controller.BorrowBook(request);
@@ -80,9 +81,9 @@ namespace xUnitTests.ControllersTests
                 userId,
                 bookId);
 
-            _userServiceMock.Setup(u => u.BorrowBook(userId, bookId)).ThrowsAsync(new IncorrectDataException("That book is already borrowed"));
+            _borrowBookUseCase.Setup(b => b.Execute(userId, bookId)).ThrowsAsync(new IncorrectDataException("That book is already borrowed"));
 
-            var controller = new UserController(_userServiceMock.Object);
+            var controller = new UserController(_borrowBookUseCase.Object, _getUserInfoUseCase.Object);
 
             // Act
 

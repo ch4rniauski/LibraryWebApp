@@ -24,10 +24,8 @@ builder.Services.AddLibraryContext(builder.Configuration);
 
 builder.Services.AddJWTConfiguration(builder.Configuration);
 builder.Services.AddAutoMapperConfiguration();
-builder.Services.AddApplicationConfiguration();
 builder.Services.AddUseCases();
 builder.Services.AddValidators();
-builder.Services.AddServices();
 
 var app = builder.Build();
 

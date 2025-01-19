@@ -1,5 +1,5 @@
 ﻿using Application.Abstractions.Requests;
-using Application.Abstractions.Services;
+using Application.Abstractions.UseCases.AuthorUseCases;
 using Application.Exceptions.CustomExceptions;
 using LibraryWebApp.Controllers;
 using Microsoft.AspNetCore.Mvc;
@@ -9,7 +9,11 @@ namespace xUnitTests.ControllersTests
 {
     public class AuthorControllerTests
     {
-        private readonly Mock<IAuthorService> _authorServiceMock = new();
+        private readonly Mock<ICreateAuthorUseCase> _createAuthorUseCase = new();
+        private readonly Mock<IDeleteAutorUseCase> _deleteAutorUseCase = new();
+        private readonly Mock<IGetAllAuthorsUseCase> _getAllAuthorsUseCase = new();
+        private readonly Mock<IGetAuthorByIdUseCase> _getAuthorByIdUseCase = new();
+        private readonly Mock<IUpdateAuthorUseCase> _updateAuthorUseCase = new();
 
         [Fact]
         public async Task Create_ReturnsOk()
@@ -21,9 +25,13 @@ namespace xUnitTests.ControllersTests
                 "Country",
                 new DateOnly(2000, 10, 10));
 
-            _authorServiceMock.Setup(u => u.CreateAuthor(request)).Returns(Task.CompletedTask);
+            _createAuthorUseCase.Setup(c => c.Execute(request)).Returns(Task.CompletedTask);
 
-            var controller = new AuthorController(_authorServiceMock.Object);
+            var controller = new AuthorController(_createAuthorUseCase.Object,
+                _deleteAutorUseCase.Object,
+                _getAllAuthorsUseCase.Object,
+                _getAuthorByIdUseCase.Object,
+                _updateAuthorUseCase.Object);
 
             // Act
             var result = await controller.Create(request);
@@ -42,9 +50,13 @@ namespace xUnitTests.ControllersTests
                 "Country",
                 new DateOnly(2000, 10, 10));
 
-            _authorServiceMock.Setup(u => u.CreateAuthor(request)).ThrowsAsync(new CreationFailureException("Author wasn't created"));
+            _createAuthorUseCase.Setup(c => c.Execute(request)).ThrowsAsync(new CreationFailureException("Author wasn't created"));
 
-            var controller = new AuthorController(_authorServiceMock.Object);
+            var controller = new AuthorController(_createAuthorUseCase.Object,
+                _deleteAutorUseCase.Object,
+                _getAllAuthorsUseCase.Object,
+                _getAuthorByIdUseCase.Object,
+                _updateAuthorUseCase.Object);
 
             // Act
 
@@ -58,9 +70,13 @@ namespace xUnitTests.ControllersTests
             // Arrange
             var list = new List<CreateAuthorRecord>();
 
-            _authorServiceMock.Setup(u => u.GetAllAuthors()).ReturnsAsync(list);
+            _getAllAuthorsUseCase.Setup(g => g.Execute()).ReturnsAsync(list);
 
-            var controller = new AuthorController(_authorServiceMock.Object);
+            var controller = new AuthorController(_createAuthorUseCase.Object,
+                _deleteAutorUseCase.Object,
+                _getAllAuthorsUseCase.Object,
+                _getAuthorByIdUseCase.Object,
+                _updateAuthorUseCase.Object);
 
             // Act
             var result = await controller.GetAll();
@@ -80,9 +96,13 @@ namespace xUnitTests.ControllersTests
                 "Country",
                 new DateOnly(2000, 10, 10));
 
-            _authorServiceMock.Setup(u => u.GetAuthorById(id)).ReturnsAsync(author);
+            _getAuthorByIdUseCase.Setup(g => g.Execute(id)).ReturnsAsync(author);
 
-            var controller = new AuthorController(_authorServiceMock.Object);
+            var controller = new AuthorController(_createAuthorUseCase.Object,
+                _deleteAutorUseCase.Object,
+                _getAllAuthorsUseCase.Object,
+                _getAuthorByIdUseCase.Object,
+                _updateAuthorUseCase.Object);
 
             // Act
             var result = await controller.Get(id);
@@ -102,9 +122,13 @@ namespace xUnitTests.ControllersTests
                 "Country",
                 new DateOnly(2000, 10, 10));
 
-            _authorServiceMock.Setup(u => u.GetAuthorById(id)).ThrowsAsync(new NotFoundException("Author with that ID doesn't exist"));
+            _getAuthorByIdUseCase.Setup(g => g.Execute(id)).ThrowsAsync(new NotFoundException("Author with that ID doesn't exist"));
 
-            var controller = new AuthorController(_authorServiceMock.Object);
+            var controller = new AuthorController(_createAuthorUseCase.Object,
+                _deleteAutorUseCase.Object,
+                _getAllAuthorsUseCase.Object,
+                _getAuthorByIdUseCase.Object,
+                _updateAuthorUseCase.Object);
 
             // Act
 
@@ -118,9 +142,13 @@ namespace xUnitTests.ControllersTests
             // Arrange
             var id = Guid.NewGuid();
 
-            _authorServiceMock.Setup(u => u.DeleteAutor(id)).Returns(Task.CompletedTask);
+            _deleteAutorUseCase.Setup(d => d.Execute(id)).Returns(Task.CompletedTask);
 
-            var controller = new AuthorController(_authorServiceMock.Object);
+            var controller = new AuthorController(_createAuthorUseCase.Object,
+                _deleteAutorUseCase.Object,
+                _getAllAuthorsUseCase.Object,
+                _getAuthorByIdUseCase.Object,
+                _updateAuthorUseCase.Object);
 
             // Act
             var result = await controller.Delete(id);
@@ -135,9 +163,13 @@ namespace xUnitTests.ControllersTests
             // Arrange
             var id = Guid.NewGuid();
 
-            _authorServiceMock.Setup(u => u.DeleteAutor(id)).ThrowsAsync(new RemovalFailureException("Author with that ID wasn't deleted"));
+            _deleteAutorUseCase.Setup(d => d.Execute(id)).ThrowsAsync(new RemovalFailureException("Author with that ID wasn't deleted"));
 
-            var controller = new AuthorController(_authorServiceMock.Object);
+            var controller = new AuthorController(_createAuthorUseCase.Object,
+                _deleteAutorUseCase.Object,
+                _getAllAuthorsUseCase.Object,
+                _getAuthorByIdUseCase.Object,
+                _updateAuthorUseCase.Object);
 
             // Act
 
@@ -157,9 +189,13 @@ namespace xUnitTests.ControllersTests
                 "Country",
                 new DateOnly(2000, 10, 10));
 
-            _authorServiceMock.Setup(u => u.UpdateAuthor(author)).Returns(Task.CompletedTask);
+            _updateAuthorUseCase.Setup(u => u.Execute(author)).Returns(Task.CompletedTask);
 
-            var controller = new AuthorController(_authorServiceMock.Object);
+            var controller = new AuthorController(_createAuthorUseCase.Object,
+                _deleteAutorUseCase.Object,
+                _getAllAuthorsUseCase.Object,
+                _getAuthorByIdUseCase.Object,
+                _updateAuthorUseCase.Object);
 
             // Act
             var result = await controller.Update(author);
@@ -180,9 +216,13 @@ namespace xUnitTests.ControllersTests
                 "Country",
                 new DateOnly(2000, 10, 10));
 
-            _authorServiceMock.Setup(u => u.UpdateAuthor(author)).ThrowsAsync(new NotFoundException("Author with that ID doesn't exist"));
+            _updateAuthorUseCase.Setup(u => u.Execute(author)).ThrowsAsync(new NotFoundException("Author with that ID doesn't exist"));
 
-            var controller = new AuthorController(_authorServiceMock.Object);
+            var controller = new AuthorController(_createAuthorUseCase.Object,
+                _deleteAutorUseCase.Object,
+                _getAllAuthorsUseCase.Object,
+                _getAuthorByIdUseCase.Object,
+                _updateAuthorUseCase.Object);
 
             // Act
 

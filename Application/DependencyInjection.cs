@@ -7,7 +7,6 @@ using Application.Abstractions.UseCases.UserUseCases;
 using Application.Profiles.AuthorProfiles;
 using Application.Profiles.BookProfiles;
 using Application.Profiles.UserProfiles;
-using Application.Services;
 using Application.UseCases.AuthenticationUserUseCases;
 using Application.UseCases.AuthorUseCases;
 using Application.UseCases.BookUseCases;
@@ -20,31 +19,11 @@ namespace Application
 {
     static public class DependencyInjection
     {
-        static public IServiceCollection AddApplicationConfiguration(this IServiceCollection services)
-        {
-            services.AddMediatR(configuration =>
-            {
-                configuration.RegisterServicesFromAssembly(typeof(DependencyInjection).Assembly);
-            });
-
-            return services;
-        }
-
         static public IServiceCollection AddValidators(this IServiceCollection services)
         {
             services.AddScoped<IValidator<RegisterUserRecord>, UserValidator>();
             services.AddScoped<IValidator<CreateAuthorRecord>, AuthorValidator>();
             services.AddScoped<IValidator<CreateBookRecord>, BookValidator>();
-
-            return services;
-        }
-
-        static public IServiceCollection AddServices(this IServiceCollection services)
-        {
-            services.AddScoped<IAuthenticationUserService, AuthenticationUserService>();
-            services.AddScoped<IAuthorService, AuthorService>();
-            services.AddScoped<IBookService, BookService>();
-            services.AddScoped<IUserService, UserService>();
 
             return services;
         }

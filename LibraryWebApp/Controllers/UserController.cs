@@ -1,6 +1,6 @@
 ﻿using Application.Abstractions.Records;
 using Application.Abstractions.Requests;
-using Application.Abstractions.Services;
+using Application.Abstractions.UseCases.UserUseCases;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -10,18 +10,21 @@ namespace LibraryWebApp.Controllers
     [Route("[controller]")]
     public class UserController : ControllerBase
     {
-        private readonly IUserService _userService;
+        private readonly IBorrowBookUseCase _borrowBookUseCase;
+        private readonly IGetUserInfoUseCase _getUserInfoUseCase;
 
-        public UserController(IUserService userService)
+        public UserController(IBorrowBookUseCase borrowBookUseCase,
+            IGetUserInfoUseCase getUserInfoUseCase)
         {
-            _userService = userService;
+            _borrowBookUseCase = borrowBookUseCase;
+            _getUserInfoUseCase = getUserInfoUseCase;
         }
 
         [HttpGet("{id:guid}")]
         [Authorize]
         public async Task<ActionResult<UserInfoResponse>> GetUserInfo(Guid id)
         {
-            var user = await _userService.GetUserInfo(id);
+            var user = await _getUserInfoUseCase.Execute(id);
 
             return Ok(user);
         }
@@ -30,7 +33,7 @@ namespace LibraryWebApp.Controllers
         [Authorize]
         public async Task<ActionResult> BorrowBook([FromBody] BorrowBookRequest request)
         {
-            await _userService.BorrowBook(request.UserId, request.BookId);
+            await _borrowBookUseCase.Execute(request.UserId, request.BookId);
 
             return Ok();
         }
