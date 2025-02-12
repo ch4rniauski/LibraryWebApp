@@ -49,5 +49,14 @@ namespace Library.DataContext.Repositories
 
             return books;
         }
+
+        public override async Task<BookEntity?> GetById(Guid id)
+        {
+            var book = await _db.Books
+                .Include(b => b.Author)
+                .FirstOrDefaultAsync(b => b.Id == id);
+
+            return book;
+        }
     }
 }

@@ -15,6 +15,8 @@ namespace Application.Profiles.BookProfiles
                     src.Title,
                     src.Genre,
                     src.Description,
+                    src.Author != null ? src.Author.FirstName : null,
+                    src.Author != null ? src.Author.SecondName : null,
                     src.ImageData,
                     src.TakenAt,
                     src.DueDate,

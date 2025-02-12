@@ -5,6 +5,8 @@
         string ISBN,
         string Title,
         string Genre,
+        string? AuthorFirstName,
+        string? AuthorSecondName,
         string? Description,
         byte[]? ImageData,
         DateOnly? TakenAt,
