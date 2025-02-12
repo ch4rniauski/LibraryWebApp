@@ -7,8 +7,6 @@
         public string Title { get; set; } = string.Empty;
         public string Genre { get; set; } = string.Empty;
         public string? Description { get; set; }
-        public string? AuthorFirstName { get; set; }
-        public string? AuthorSecondName { get; set; }
         public Guid? AuthorId { get; set; } = null;
         public AuthorEntity? Author { get; set; }
         public DateOnly? TakenAt { get; set; } = null;

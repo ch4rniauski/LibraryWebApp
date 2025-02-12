@@ -13,8 +13,6 @@ namespace Application.Profiles.BookProfiles
                 .ForMember(dist => dist.Title, opt => opt.MapFrom(src => src.Title))
                 .ForMember(dist => dist.Genre, opt => opt.MapFrom(src => src.Genre))
                 .ForMember(dist => dist.Description, opt => opt.MapFrom(src => src.Description))
-                .ForMember(dist => dist.AuthorFirstName, opt => opt.MapFrom(src => src.AuthorFirstName))
-                .ForMember(dist => dist.AuthorSecondName, opt => opt.MapFrom(src => src.AuthorSecondName))
                 .ForMember(dist => dist.TakenAt, opt => opt.MapFrom(src => src.TakenAt))
                 .ForMember(dist => dist.DueDate, opt => opt.MapFrom(src => src.DueDate))
                 .ForMember(dist => dist.ImageData, opt => opt.MapFrom(src => src.ImageData));

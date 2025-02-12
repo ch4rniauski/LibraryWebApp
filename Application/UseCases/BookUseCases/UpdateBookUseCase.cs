@@ -36,11 +36,7 @@ namespace Application.UseCases.BookUseCases
                 throw new NotFoundException("Book with that ID wasn't found");
 
             if (book.AuthorFirstName is null && book.AuthorSecondName is null)
-            {
                 bookToUpdate.AuthorId = null;
-                bookToUpdate.AuthorFirstName = null;
-                bookToUpdate.AuthorSecondName = null;
-            }
 
             _mapper.Map(book, bookToUpdate);
 
@@ -57,11 +53,6 @@ namespace Application.UseCases.BookUseCases
 
                     if (book.AuthorSecondName is not null && book.AuthorSecondName.ToLower() != authorByFirstName.SecondName.ToLower())
                         isAuthorChanged = false;
-                    else
-                    {
-                        bookToUpdate.AuthorFirstName = authorByFirstName.FirstName;
-                        bookToUpdate.AuthorSecondName = authorByFirstName.SecondName;
-                    }
                 }
                 if (book.AuthorSecondName is not null)
                 {
@@ -74,11 +65,6 @@ namespace Application.UseCases.BookUseCases
 
                         if (book.AuthorFirstName is not null && book.AuthorFirstName.ToLower() != authorBySecondName.SecondName.ToLower())
                             isAuthorChanged = false;
-                        else
-                        {
-                            bookToUpdate.AuthorFirstName = authorBySecondName.FirstName;
-                            bookToUpdate.AuthorSecondName = authorBySecondName.SecondName;
-                        }
                     }
                 }
             }
@@ -93,11 +79,6 @@ namespace Application.UseCases.BookUseCases
 
                     if (book.AuthorFirstName is not null && book.AuthorFirstName.ToLower() != authorBySecondName.FirstName.ToLower())
                         isAuthorChanged = false;
-                    else
-                    {
-                        bookToUpdate.AuthorFirstName = authorBySecondName.FirstName;
-                        bookToUpdate.AuthorSecondName = authorBySecondName.SecondName;
-                    }
                 }
             }
 

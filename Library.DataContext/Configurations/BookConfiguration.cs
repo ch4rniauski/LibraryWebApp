@@ -24,10 +24,6 @@ namespace Library.DataContext.Configurations
 
             builder.Property(b => b.Description).HasMaxLength(250);
 
-            builder.Property(b => b.AuthorFirstName).HasMaxLength(30);
-
-            builder.Property(b => b.AuthorSecondName).HasMaxLength(30);
-
             builder.HasOne(b => b.Author)
                 .WithMany(a => a.Books)
                 .HasForeignKey(b => b.AuthorId)

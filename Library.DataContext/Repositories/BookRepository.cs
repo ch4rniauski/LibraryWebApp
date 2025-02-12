@@ -33,8 +33,8 @@ namespace Library.DataContext.Repositories
         {
             var books = await _db.Books
                 .Where(b => b.Title.Contains(search))
-                .OrderBy(b => b.AuthorFirstName)
-                .ThenBy(b => b.AuthorSecondName)
+                .OrderBy(b => b.Author.FirstName)
+                .ThenBy(b => b.Author.SecondName)
                 .ToListAsync();
 
             return books;

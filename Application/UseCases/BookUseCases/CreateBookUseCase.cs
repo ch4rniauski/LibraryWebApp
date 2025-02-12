@@ -39,8 +39,6 @@ namespace Application.UseCases.BookUseCases
             var newBook = _mapper.Map<BookEntity>(book);
 
             newBook.Id = Guid.NewGuid();
-            newBook.AuthorFirstName = null;
-            newBook.AuthorSecondName = null;
 
             var isAuthorChanged = false;
 
@@ -55,11 +53,6 @@ namespace Application.UseCases.BookUseCases
 
                     if (book.AuthorSecondName is not null && book.AuthorSecondName.ToLower() != authorByFirstName.SecondName.ToLower())
                         isAuthorChanged = false;
-                    else
-                    {
-                        newBook.AuthorFirstName = authorByFirstName.FirstName;
-                        newBook.AuthorSecondName = authorByFirstName.SecondName;
-                    }
                 }
                 if (book.AuthorSecondName is not null)
                 {
@@ -72,11 +65,6 @@ namespace Application.UseCases.BookUseCases
 
                         if (book.AuthorFirstName is not null && book.AuthorFirstName.ToLower() != authorBySecondName.SecondName.ToLower())
                             isAuthorChanged = false;
-                        else
-                        {
-                            newBook.AuthorFirstName = authorBySecondName.FirstName;
-                            newBook.AuthorSecondName = authorBySecondName.SecondName;
-                        }
                     }
                 }
             }
@@ -91,11 +79,6 @@ namespace Application.UseCases.BookUseCases
 
                     if (book.AuthorFirstName is not null && book.AuthorFirstName.ToLower() != authorBySecondName.FirstName.ToLower())
                         isAuthorChanged = false;
-                    else
-                    {
-                        newBook.AuthorFirstName = authorBySecondName.FirstName;
-                        newBook.AuthorSecondName = authorBySecondName.SecondName;
-                    }
                 }
             }
 
